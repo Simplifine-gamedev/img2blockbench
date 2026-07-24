@@ -1,0 +1,33 @@
+{
+  "agent_blueprint": "../../../tools/img2threejs/blueprints/tiger.json",
+  "blockbench_atlas": {
+    "bytes": 7240,
+    "path": "blockbench/tiger-lane3.png",
+    "sha256": "b57aeeb6e6436101b563de4d62cb2278358ab38d3e1c9fa4b07263cf54558f62",
+    "source": "7 embedded Three.js albedo maps, sampled nearest-neighbor"
+  },
+  "blockbench_model": {
+    "bytes": 60176,
+    "path": "blockbench/tiger-lane3.bbmodel",
+    "sha256": "b7e9781bccefed5a6657707e0bb10e9344e204f2c7ac15dd736525beccd0f3bf"
+  },
+  "generated_factory": {
+    "bytes": 219679,
+    "path": "createMinecraftTigerModel.generated.ts",
+    "sha256": "e4c0361e8b8a70da26afbc8958f4c571507545928e0d693147b5dd4d728b3241"
+  },
+  "reference": "../reference.png",
+  "spec": "img2threejs-spec.json",
+  "threejs_scene": {
+    "bytes": 1230868,
+    "path": "tiger.img2threejs.three.json",
+    "sha256": "3ad237fc9772c12561b288a67e3344536c7bbd2753d3a111444b71ac4458a625"
+  },
+  "upstream": {
+    "commit": "c9077d5ecce834f6802d6742b4a5b2c682d6279d",
+    "generated_pass": "blockout",
+    "generator": "forge/stage3_build/generate_threejs_factory.py",
+    "license": "Apache-2.0",
+    "repository": "https://github.com/hoainho/img2threejs"
+  }
+}

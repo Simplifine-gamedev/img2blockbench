@@ -1,0 +1,5100 @@
+{
+  "actionReadiness": {
+    "authoringRules": [
+      "Do not collapse independently movable parts into one mesh.",
+      "Put transforms on component pivot groups, not only on raw meshes.",
+      "For attached child parts, put the pivot at the semantic root/socket and build visible geometry from localStart to localEnd.",
+      "Represent hinge, socket, detachable, and breakable intent even when no animation is implemented yet.",
+      "Use simplified collider proxies for runtime physics instead of visual mesh colliders by default."
+    ],
+    "contract": "Every macro/meso component should be generated as a stable named Object3D pivot node with a mesh child, action metadata, optional sockets, collider proxy, and destruction metadata.",
+    "defaultRigType": "action-ready-static-rig",
+    "destructionPolicy": {
+      "debrisStrategy": "Prefer detachable component groups and a small number of procedural fragments over random mesh explosion.",
+      "defaultBreakable": false,
+      "fractureGroupNaming": "Use stable semantic names such as body-shell, left-hinge, glass-panel, branch-segment."
+    },
+    "requiredComponentFields": [
+      "id",
+      "parent",
+      "transform",
+      "attachment for child appendages, connectors, limbs, tubes, handles, legs, horns, wings, branches, or cables",
+      "actionProfile.animationRole",
+      "actionProfile.pivot",
+      "actionProfile.collider",
+      "actionProfile.destruction"
+    ],
+    "rootMotionNode": "root",
+    "transformChannels": [
+      "translate",
+      "rotate",
+      "scale",
+      "bend",
+      "twist",
+      "detach",
+      "visibility",
+      "material-state"
+    ]
+  },
+  "animationAnchors": [
+    "root pivot node supports whole-object translation, rotation, scale, and visibility changes",
+    "component pivot groups support later local transforms without rebuilding geometry"
+  ],
+  "assumptions": [
+    "Hidden right-side details mirror the visible left-side structure.",
+    "The generated source is constrained to boxes so conversion remains lossless."
+  ],
+  "buildPasses": [
+    {
+      "acceptance": [
+        "Silhouette reads correctly without materials.",
+        "Quality contract has named all required macro feature groups before code generation.",
+        "AI vision comparison score meets selfCorrectLoop.visualAcceptance.threshold."
+      ],
+      "componentRefs": [
+        "body",
+        "shoulders",
+        "neck",
+        "head",
+        "ear_left",
+        "ear_right",
+        "ear_inner_left",
+        "ear_inner_right",
+        "eye_left",
+        "eye_right",
+        "trunk_base",
+        "trunk_mid",
+        "trunk_tip",
+        "tusk_left",
+        "tusk_right",
+        "leg_front_left",
+        "foot_front_left",
+        "leg_front_right",
+        "foot_front_right",
+        "leg_rear_left",
+        "foot_rear_left",
+        "leg_rear_right",
+        "foot_rear_right",
+        "tail_base",
+        "tail_tuft"
+      ],
+      "goal": "Match macro silhouette and proportions.",
+      "id": "blockout"
+    },
+    {
+      "acceptance": [
+        "Macro, meso, and repeated structures meet qualityContract.minimumSpecDepth.",
+        "Parent-child relations, joints, seams, sockets, and contact points are explicit.",
+        "Every attached child appendage/connector has parentSocket, localStart/localEnd, contactType, embedDepth or overlap, and gapTolerance.",
+        "AI vision comparison score meets selfCorrectLoop.visualAcceptance.threshold."
+      ],
+      "componentRefs": [
+        "body",
+        "shoulders",
+        "neck",
+        "head",
+        "ear_left",
+        "ear_right",
+        "ear_inner_left",
+        "ear_inner_right",
+        "eye_left",
+        "eye_right",
+        "trunk_base",
+        "trunk_mid",
+        "trunk_tip",
+        "tusk_left",
+        "tusk_right",
+        "leg_front_left",
+        "foot_front_left",
+        "leg_front_right",
+        "foot_front_right",
+        "leg_rear_left",
+        "foot_rear_left",
+        "leg_rear_right",
+        "foot_rear_right",
+        "tail_base",
+        "tail_tuft"
+      ],
+      "goal": "Build the component hierarchy implied by the pre-spec complexity assessment.",
+      "id": "structural-pass"
+    },
+    {
+      "acceptance": [
+        "Important visible forms are represented in component geometryDescriptor, deformations, localFeatures, or repetitionSystems.",
+        "Endpoint-based child parts are rooted at their attachment sockets and do not visibly float away from parents.",
+        "AI vision comparison score meets selfCorrectLoop.visualAcceptance.threshold."
+      ],
+      "componentRefs": [
+        "body",
+        "shoulders",
+        "neck",
+        "head",
+        "ear_left",
+        "ear_right",
+        "ear_inner_left",
+        "ear_inner_right",
+        "eye_left",
+        "eye_right",
+        "trunk_base",
+        "trunk_mid",
+        "trunk_tip",
+        "tusk_left",
+        "tusk_right",
+        "leg_front_left",
+        "foot_front_left",
+        "leg_front_right",
+        "foot_front_right",
+        "leg_rear_left",
+        "foot_rear_left",
+        "leg_rear_right",
+        "foot_rear_right",
+        "tail_base",
+        "tail_tuft"
+      ],
+      "goal": "Refine shape, deformation, bevels, tapers, curves, asymmetry, and visible local geometry.",
+      "id": "form-refinement"
+    },
+    {
+      "acceptance": [
+        "Reference-derived albedo palette records dominant, secondary, and accent colors per visible material.",
+        "Each important material defines roughness variation and at least one normal/bump/displacement response.",
+        "Local material overrides, dirt/wear/stains/moss/chips/scratches or equivalent masks are tied to evidenceRefs.",
+        "Thin, transparent, reflective, wet, or fibrous materials document alpha/transmission/clearcoat/metalness/fiber response when relevant.",
+        "Generated preview uses procedural albedo/roughness/bump texture or vertex color variation instead of one flat color.",
+        "Generated preview uses independent PBR maps at 1024px or higher for the quality-first tier.",
+        "If source pixels are available, referencePbr extraction passed at confidence >= 0.7 or the pass is stopped/requesting better references.",
+        "Macro, meso, and micro surface frequency bands are visible at the intended review distance without obvious tiling.",
+        "AI vision comparison score meets selfCorrectLoop.visualAcceptance.threshold."
+      ],
+      "componentRefs": [
+        "body",
+        "shoulders",
+        "neck",
+        "head",
+        "ear_left",
+        "ear_right",
+        "ear_inner_left",
+        "ear_inner_right",
+        "eye_left",
+        "eye_right",
+        "trunk_base",
+        "trunk_mid",
+        "trunk_tip",
+        "tusk_left",
+        "tusk_right",
+        "leg_front_left",
+        "foot_front_left",
+        "leg_front_right",
+        "foot_front_right",
+        "leg_rear_left",
+        "foot_rear_left",
+        "leg_rear_right",
+        "foot_rear_right",
+        "tail_base",
+        "tail_tuft"
+      ],
+      "goal": "Match material color, roughness, bump, and local variation.",
+      "id": "material-pass"
+    },
+    {
+      "acceptance": [
+        "Every required material feature group has local overrides or surfaceDetail tied to evidenceRefs.",
+        "A grazing-angle close-up proves that normal/height detail breaks highlights naturally and does not read as smooth plastic.",
+        "AI vision comparison score meets selfCorrectLoop.visualAcceptance.threshold."
+      ],
+      "componentRefs": [
+        "body",
+        "shoulders",
+        "neck",
+        "head",
+        "ear_left",
+        "ear_right",
+        "ear_inner_left",
+        "ear_inner_right",
+        "eye_left",
+        "eye_right",
+        "trunk_base",
+        "trunk_mid",
+        "trunk_tip",
+        "tusk_left",
+        "tusk_right",
+        "leg_front_left",
+        "foot_front_left",
+        "leg_front_right",
+        "foot_front_right",
+        "leg_rear_left",
+        "foot_rear_left",
+        "leg_rear_right",
+        "foot_rear_right",
+        "tail_base",
+        "tail_tuft"
+      ],
+      "goal": "Add procedural surface locality such as normal/bump/displacement, AO, dirt, stains, chips, grain, moss, scratches, and wear.",
+      "id": "surface-pass"
+    },
+    {
+      "acceptance": [
+        "lightingFromPhoto identifies key light direction/color/intensity, fill light, rim or environment light, and ambient color.",
+        "Exposure, tone mapping, background color/gradient, shadow softness, and contact shadow behavior are specified.",
+        "Lighting does not hide geometry/material gaps and screenshots can be compared fairly to the reference.",
+        "Neutral, grazing, and reference-matched lighting checks distinguish material errors from lighting errors.",
+        "AI vision comparison score meets selfCorrectLoop.visualAcceptance.threshold."
+      ],
+      "componentRefs": [
+        "body",
+        "shoulders",
+        "neck",
+        "head",
+        "ear_left",
+        "ear_right",
+        "ear_inner_left",
+        "ear_inner_right",
+        "eye_left",
+        "eye_right",
+        "trunk_base",
+        "trunk_mid",
+        "trunk_tip",
+        "tusk_left",
+        "tusk_right",
+        "leg_front_left",
+        "foot_front_left",
+        "leg_front_right",
+        "foot_front_right",
+        "leg_rear_left",
+        "foot_rear_left",
+        "leg_rear_right",
+        "foot_rear_right",
+        "tail_base",
+        "tail_tuft"
+      ],
+      "goal": "Make material and form readable under neutral turntable lighting plus optional reference lighting.",
+      "id": "lighting-pass"
+    },
+    {
+      "acceptance": [
+        "Macro and movable meso components have stable pivot nodes.",
+        "Sockets, collider proxies, and destruction metadata are present for future runtime actions.",
+        "AI vision comparison score meets selfCorrectLoop.visualAcceptance.threshold."
+      ],
+      "componentRefs": [
+        "body",
+        "shoulders",
+        "neck",
+        "head",
+        "ear_left",
+        "ear_right",
+        "ear_inner_left",
+        "ear_inner_right",
+        "eye_left",
+        "eye_right",
+        "trunk_base",
+        "trunk_mid",
+        "trunk_tip",
+        "tusk_left",
+        "tusk_right",
+        "leg_front_left",
+        "foot_front_left",
+        "leg_front_right",
+        "foot_front_right",
+        "leg_rear_left",
+        "foot_rear_left",
+        "leg_rear_right",
+        "foot_rear_right",
+        "tail_base",
+        "tail_tuft"
+      ],
+      "goal": "Make the model ready for future animation, transformation, physics, or destruction.",
+      "id": "interaction-pass"
+    },
+    {
+      "acceptance": [
+        "Triangle count, draw calls, instancing, LOD strategy, and FPS target are documented or verified.",
+        "Repeated detail is instanced or simplified where possible without breaking silhouette/material believability."
+      ],
+      "componentRefs": [
+        "body",
+        "shoulders",
+        "neck",
+        "head",
+        "ear_left",
+        "ear_right",
+        "ear_inner_left",
+        "ear_inner_right",
+        "eye_left",
+        "eye_right",
+        "trunk_base",
+        "trunk_mid",
+        "trunk_tip",
+        "tusk_left",
+        "tusk_right",
+        "leg_front_left",
+        "foot_front_left",
+        "leg_front_right",
+        "foot_front_right",
+        "leg_rear_left",
+        "foot_rear_left",
+        "leg_rear_right",
+        "foot_rear_right",
+        "tail_base",
+        "tail_tuft"
+      ],
+      "goal": "Protect runtime performance after visual fidelity is accepted.",
+      "id": "optimization-pass"
+    }
+  ],
+  "componentTree": [
+    {
+      "actionProfile": {
+        "animationRole": "body",
+        "collider": {
+          "isTrigger": false,
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            12.4,
+            9.2,
+            14.4
+          ],
+          "type": "box"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakImpulse": 0.0,
+          "breakable": false,
+          "debrisMaterial": "gray_hide",
+          "detachableFragments": [],
+          "fractureGroup": "body",
+          "seamRefs": []
+        },
+        "pivot": {
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.85,
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "mode": "component-center"
+        },
+        "sockets": [],
+        "transformChannels": {
+          "bend": false,
+          "detach": false,
+          "materialState": true,
+          "rotate": true,
+          "scale": true,
+          "translate": true,
+          "twist": false,
+          "visibility": true
+        }
+      },
+      "attachment": null,
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(102, 101, 101, 1.0)",
+        "materialClass": "rubber",
+        "materialClassConfidence": 0.82,
+        "secondaryAlbedo": "rgba(65, 65, 66, 1.0)"
+      },
+      "confidence": 0.88,
+      "deformations": [],
+      "details": [
+        "mottled-hide"
+      ],
+      "dimensions": {
+        "confidence": 0.9,
+        "depth": 14.4,
+        "height": 9.2,
+        "units": "Blockbench units",
+        "width": 12.4
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "fidelityTier": "blockout",
+      "geometryDescriptor": {
+        "deformationStack": [],
+        "edgeTreatment": {
+          "bevelRadius": 0.0,
+          "segments": 1,
+          "type": "none"
+        },
+        "normalStrategy": "flat cuboid normals",
+        "topologyIntent": "native Minecraft cuboid with hard square edges",
+        "uvStrategy": "generated procedural coordinates"
+      },
+      "id": "body",
+      "importance": 1.0,
+      "joints": [],
+      "level": "macro",
+      "localFeatures": [
+        "mottled-hide"
+      ],
+      "material": "gray_hide",
+      "materialLayers": [
+        "gray_hide"
+      ],
+      "name": "Body",
+      "parent": null,
+      "primitive": "box",
+      "role": "massive elephant torso",
+      "seams": [],
+      "surfaceDetail": {
+        "bumpAmplitude": 0.02,
+        "displacementPattern": "",
+        "edgeWearPattern": "minimal",
+        "macroRoughness": 0.12,
+        "microRoughness": 0.04,
+        "normalPattern": "square-pixel mottling",
+        "notes": "Preserve the Minecraft block silhouette.",
+        "occlusionPattern": "contact darkening"
+      },
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.",
+      "transform": {
+        "position": [
+          0,
+          10.2,
+          0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "scale": [
+          12.4,
+          9.2,
+          14.4
+        ]
+      }
+    },
+    {
+      "actionProfile": {
+        "animationRole": "shoulders",
+        "collider": {
+          "isTrigger": false,
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            12.8,
+            9.8,
+            5.2
+          ],
+          "type": "box"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakImpulse": 0.0,
+          "breakable": false,
+          "debrisMaterial": "gray_hide",
+          "detachableFragments": [],
+          "fractureGroup": "shoulders",
+          "seamRefs": []
+        },
+        "pivot": {
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.85,
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "mode": "component-center"
+        },
+        "sockets": [],
+        "transformChannels": {
+          "bend": false,
+          "detach": false,
+          "materialState": true,
+          "rotate": true,
+          "scale": true,
+          "translate": true,
+          "twist": false,
+          "visibility": true
+        }
+      },
+      "attachment": null,
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(102, 101, 101, 1.0)",
+        "materialClass": "rubber",
+        "materialClassConfidence": 0.82,
+        "secondaryAlbedo": "rgba(65, 65, 66, 1.0)"
+      },
+      "confidence": 0.88,
+      "deformations": [],
+      "details": [
+        "mottled-hide"
+      ],
+      "dimensions": {
+        "confidence": 0.9,
+        "depth": 5.2,
+        "height": 9.8,
+        "units": "Blockbench units",
+        "width": 12.8
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "fidelityTier": "blockout",
+      "geometryDescriptor": {
+        "deformationStack": [],
+        "edgeTreatment": {
+          "bevelRadius": 0.0,
+          "segments": 1,
+          "type": "none"
+        },
+        "normalStrategy": "flat cuboid normals",
+        "topologyIntent": "native Minecraft cuboid with hard square edges",
+        "uvStrategy": "generated procedural coordinates"
+      },
+      "id": "shoulders",
+      "importance": 1.0,
+      "joints": [],
+      "level": "macro",
+      "localFeatures": [
+        "mottled-hide"
+      ],
+      "material": "gray_hide",
+      "materialLayers": [
+        "gray_hide"
+      ],
+      "name": "Shoulders",
+      "parent": null,
+      "primitive": "box",
+      "role": "high shoulder mass",
+      "seams": [],
+      "surfaceDetail": {
+        "bumpAmplitude": 0.02,
+        "displacementPattern": "",
+        "edgeWearPattern": "minimal",
+        "macroRoughness": 0.12,
+        "microRoughness": 0.04,
+        "normalPattern": "square-pixel mottling",
+        "notes": "Preserve the Minecraft block silhouette.",
+        "occlusionPattern": "contact darkening"
+      },
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.",
+      "transform": {
+        "position": [
+          0,
+          10.7,
+          4.8
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "scale": [
+          12.8,
+          9.8,
+          5.2
+        ]
+      }
+    },
+    {
+      "actionProfile": {
+        "animationRole": "neck",
+        "collider": {
+          "isTrigger": false,
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            8.2,
+            8.2,
+            4.2
+          ],
+          "type": "box"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakImpulse": 0.0,
+          "breakable": false,
+          "debrisMaterial": "dark_gray",
+          "detachableFragments": [],
+          "fractureGroup": "neck",
+          "seamRefs": []
+        },
+        "pivot": {
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.85,
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "mode": "component-center"
+        },
+        "sockets": [],
+        "transformChannels": {
+          "bend": false,
+          "detach": false,
+          "materialState": true,
+          "rotate": true,
+          "scale": true,
+          "translate": true,
+          "twist": false,
+          "visibility": true
+        }
+      },
+      "attachment": null,
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(75, 74, 75, 1.0)",
+        "materialClass": "rubber",
+        "materialClassConfidence": 0.82,
+        "secondaryAlbedo": "rgba(48, 48, 51, 1.0)"
+      },
+      "confidence": 0.88,
+      "deformations": [],
+      "details": [],
+      "dimensions": {
+        "confidence": 0.9,
+        "depth": 4.2,
+        "height": 8.2,
+        "units": "Blockbench units",
+        "width": 8.2
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "fidelityTier": "blockout",
+      "geometryDescriptor": {
+        "deformationStack": [],
+        "edgeTreatment": {
+          "bevelRadius": 0.0,
+          "segments": 1,
+          "type": "none"
+        },
+        "normalStrategy": "flat cuboid normals",
+        "topologyIntent": "native Minecraft cuboid with hard square edges",
+        "uvStrategy": "generated procedural coordinates"
+      },
+      "id": "neck",
+      "importance": 0.78,
+      "joints": [],
+      "level": "meso",
+      "localFeatures": [],
+      "material": "dark_gray",
+      "materialLayers": [
+        "dark_gray"
+      ],
+      "name": "Neck",
+      "parent": null,
+      "primitive": "box",
+      "role": "short thick neck",
+      "seams": [],
+      "surfaceDetail": {
+        "bumpAmplitude": 0.02,
+        "displacementPattern": "",
+        "edgeWearPattern": "minimal",
+        "macroRoughness": 0.12,
+        "microRoughness": 0.04,
+        "normalPattern": "square-pixel mottling",
+        "notes": "Preserve the Minecraft block silhouette.",
+        "occlusionPattern": "contact darkening"
+      },
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.",
+      "transform": {
+        "position": [
+          0,
+          11.7,
+          6.5
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "scale": [
+          8.2,
+          8.2,
+          4.2
+        ]
+      }
+    },
+    {
+      "actionProfile": {
+        "animationRole": "head",
+        "collider": {
+          "isTrigger": false,
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            9.2,
+            9.2,
+            8.2
+          ],
+          "type": "box"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakImpulse": 0.0,
+          "breakable": false,
+          "debrisMaterial": "gray_hide",
+          "detachableFragments": [],
+          "fractureGroup": "head",
+          "seamRefs": []
+        },
+        "pivot": {
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.85,
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "mode": "component-center"
+        },
+        "sockets": [],
+        "transformChannels": {
+          "bend": false,
+          "detach": false,
+          "materialState": true,
+          "rotate": true,
+          "scale": true,
+          "translate": true,
+          "twist": false,
+          "visibility": true
+        }
+      },
+      "attachment": null,
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(102, 101, 101, 1.0)",
+        "materialClass": "rubber",
+        "materialClassConfidence": 0.82,
+        "secondaryAlbedo": "rgba(65, 65, 66, 1.0)"
+      },
+      "confidence": 0.88,
+      "deformations": [],
+      "details": [
+        "mottled-hide"
+      ],
+      "dimensions": {
+        "confidence": 0.9,
+        "depth": 8.2,
+        "height": 9.2,
+        "units": "Blockbench units",
+        "width": 9.2
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "fidelityTier": "blockout",
+      "geometryDescriptor": {
+        "deformationStack": [],
+        "edgeTreatment": {
+          "bevelRadius": 0.0,
+          "segments": 1,
+          "type": "none"
+        },
+        "normalStrategy": "flat cuboid normals",
+        "topologyIntent": "native Minecraft cuboid with hard square edges",
+        "uvStrategy": "generated procedural coordinates"
+      },
+      "id": "head",
+      "importance": 1.0,
+      "joints": [],
+      "level": "macro",
+      "localFeatures": [
+        "mottled-hide"
+      ],
+      "material": "gray_hide",
+      "materialLayers": [
+        "gray_hide"
+      ],
+      "name": "Head",
+      "parent": null,
+      "primitive": "box",
+      "role": "large elephant head",
+      "seams": [],
+      "surfaceDetail": {
+        "bumpAmplitude": 0.02,
+        "displacementPattern": "",
+        "edgeWearPattern": "minimal",
+        "macroRoughness": 0.12,
+        "microRoughness": 0.04,
+        "normalPattern": "square-pixel mottling",
+        "notes": "Preserve the Minecraft block silhouette.",
+        "occlusionPattern": "contact darkening"
+      },
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.",
+      "transform": {
+        "position": [
+          0,
+          12.2,
+          9.7
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "scale": [
+          9.2,
+          9.2,
+          8.2
+        ]
+      }
+    },
+    {
+      "actionProfile": {
+        "animationRole": "ear_left",
+        "collider": {
+          "isTrigger": false,
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            6.2,
+            10.2,
+            2.0
+          ],
+          "type": "box"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakImpulse": 0.0,
+          "breakable": false,
+          "debrisMaterial": "gray_hide",
+          "detachableFragments": [],
+          "fractureGroup": "ear_left",
+          "seamRefs": []
+        },
+        "pivot": {
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.85,
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "mode": "component-center"
+        },
+        "sockets": [],
+        "transformChannels": {
+          "bend": false,
+          "detach": false,
+          "materialState": true,
+          "rotate": true,
+          "scale": true,
+          "translate": true,
+          "twist": false,
+          "visibility": true
+        }
+      },
+      "attachment": null,
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(102, 101, 101, 1.0)",
+        "materialClass": "rubber",
+        "materialClassConfidence": 0.82,
+        "secondaryAlbedo": "rgba(65, 65, 66, 1.0)"
+      },
+      "confidence": 0.88,
+      "deformations": [],
+      "details": [
+        "broad-ears",
+        "mottled-hide"
+      ],
+      "dimensions": {
+        "confidence": 0.9,
+        "depth": 2.0,
+        "height": 10.2,
+        "units": "Blockbench units",
+        "width": 6.2
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "fidelityTier": "blockout",
+      "geometryDescriptor": {
+        "deformationStack": [],
+        "edgeTreatment": {
+          "bevelRadius": 0.0,
+          "segments": 1,
+          "type": "none"
+        },
+        "normalStrategy": "flat cuboid normals",
+        "topologyIntent": "native Minecraft cuboid with hard square edges",
+        "uvStrategy": "generated procedural coordinates"
+      },
+      "id": "ear_left",
+      "importance": 1.0,
+      "joints": [],
+      "level": "macro",
+      "localFeatures": [
+        "broad-ears",
+        "mottled-hide"
+      ],
+      "material": "gray_hide",
+      "materialLayers": [
+        "gray_hide"
+      ],
+      "name": "Left ear",
+      "parent": null,
+      "primitive": "box",
+      "role": "broad left ear",
+      "seams": [],
+      "surfaceDetail": {
+        "bumpAmplitude": 0.02,
+        "displacementPattern": "",
+        "edgeWearPattern": "minimal",
+        "macroRoughness": 0.12,
+        "microRoughness": 0.04,
+        "normalPattern": "square-pixel mottling",
+        "notes": "Preserve the Minecraft block silhouette.",
+        "occlusionPattern": "contact darkening"
+      },
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.",
+      "transform": {
+        "position": [
+          5.25,
+          12.7,
+          8.3
+        ],
+        "rotation": [
+          0.0,
+          -0.08726646259971647,
+          -0.05235987755982989
+        ],
+        "scale": [
+          6.2,
+          10.2,
+          2.0
+        ]
+      }
+    },
+    {
+      "actionProfile": {
+        "animationRole": "ear_right",
+        "collider": {
+          "isTrigger": false,
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            6.2,
+            10.2,
+            2.0
+          ],
+          "type": "box"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakImpulse": 0.0,
+          "breakable": false,
+          "debrisMaterial": "gray_hide",
+          "detachableFragments": [],
+          "fractureGroup": "ear_right",
+          "seamRefs": []
+        },
+        "pivot": {
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.85,
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "mode": "component-center"
+        },
+        "sockets": [],
+        "transformChannels": {
+          "bend": false,
+          "detach": false,
+          "materialState": true,
+          "rotate": true,
+          "scale": true,
+          "translate": true,
+          "twist": false,
+          "visibility": true
+        }
+      },
+      "attachment": null,
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(102, 101, 101, 1.0)",
+        "materialClass": "rubber",
+        "materialClassConfidence": 0.82,
+        "secondaryAlbedo": "rgba(65, 65, 66, 1.0)"
+      },
+      "confidence": 0.88,
+      "deformations": [],
+      "details": [
+        "mottled-hide"
+      ],
+      "dimensions": {
+        "confidence": 0.9,
+        "depth": 2.0,
+        "height": 10.2,
+        "units": "Blockbench units",
+        "width": 6.2
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "fidelityTier": "blockout",
+      "geometryDescriptor": {
+        "deformationStack": [],
+        "edgeTreatment": {
+          "bevelRadius": 0.0,
+          "segments": 1,
+          "type": "none"
+        },
+        "normalStrategy": "flat cuboid normals",
+        "topologyIntent": "native Minecraft cuboid with hard square edges",
+        "uvStrategy": "generated procedural coordinates"
+      },
+      "id": "ear_right",
+      "importance": 1.0,
+      "joints": [],
+      "level": "macro",
+      "localFeatures": [
+        "mottled-hide"
+      ],
+      "material": "gray_hide",
+      "materialLayers": [
+        "gray_hide"
+      ],
+      "name": "Right ear",
+      "parent": null,
+      "primitive": "box",
+      "role": "broad right ear",
+      "seams": [],
+      "surfaceDetail": {
+        "bumpAmplitude": 0.02,
+        "displacementPattern": "",
+        "edgeWearPattern": "minimal",
+        "macroRoughness": 0.12,
+        "microRoughness": 0.04,
+        "normalPattern": "square-pixel mottling",
+        "notes": "Preserve the Minecraft block silhouette.",
+        "occlusionPattern": "contact darkening"
+      },
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.",
+      "transform": {
+        "position": [
+          -5.25,
+          12.7,
+          8.3
+        ],
+        "rotation": [
+          0.0,
+          0.08726646259971647,
+          0.05235987755982989
+        ],
+        "scale": [
+          6.2,
+          10.2,
+          2.0
+        ]
+      }
+    },
+    {
+      "actionProfile": {
+        "animationRole": "ear_inner_left",
+        "collider": {
+          "isTrigger": false,
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            4.5,
+            8.0,
+            0.45
+          ],
+          "type": "box"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakImpulse": 0.0,
+          "breakable": false,
+          "debrisMaterial": "ear_inner",
+          "detachableFragments": [],
+          "fractureGroup": "ear_inner_left",
+          "seamRefs": []
+        },
+        "pivot": {
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.85,
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "mode": "component-center"
+        },
+        "sockets": [],
+        "transformChannels": {
+          "bend": false,
+          "detach": false,
+          "materialState": true,
+          "rotate": true,
+          "scale": true,
+          "translate": true,
+          "twist": false,
+          "visibility": true
+        }
+      },
+      "attachment": null,
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(143, 118, 95, 1.0)",
+        "materialClass": "rubber",
+        "materialClassConfidence": 0.82,
+        "secondaryAlbedo": "rgba(103, 81, 63, 1.0)"
+      },
+      "confidence": 0.88,
+      "deformations": [],
+      "details": [
+        "warm-inner-ears"
+      ],
+      "dimensions": {
+        "confidence": 0.9,
+        "depth": 0.45,
+        "height": 8.0,
+        "units": "Blockbench units",
+        "width": 4.5
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "fidelityTier": "blockout",
+      "geometryDescriptor": {
+        "deformationStack": [],
+        "edgeTreatment": {
+          "bevelRadius": 0.0,
+          "segments": 1,
+          "type": "none"
+        },
+        "normalStrategy": "flat cuboid normals",
+        "topologyIntent": "native Minecraft cuboid with hard square edges",
+        "uvStrategy": "generated procedural coordinates"
+      },
+      "id": "ear_inner_left",
+      "importance": 0.78,
+      "joints": [],
+      "level": "meso",
+      "localFeatures": [
+        "warm-inner-ears"
+      ],
+      "material": "ear_inner",
+      "materialLayers": [
+        "ear_inner"
+      ],
+      "name": "Left inner ear",
+      "parent": null,
+      "primitive": "box",
+      "role": "warm left inner ear panel",
+      "seams": [],
+      "surfaceDetail": {
+        "bumpAmplitude": 0.02,
+        "displacementPattern": "",
+        "edgeWearPattern": "minimal",
+        "macroRoughness": 0.12,
+        "microRoughness": 0.04,
+        "normalPattern": "square-pixel mottling",
+        "notes": "Preserve the Minecraft block silhouette.",
+        "occlusionPattern": "contact darkening"
+      },
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.",
+      "transform": {
+        "position": [
+          5.45,
+          12.5,
+          9.25
+        ],
+        "rotation": [
+          0.0,
+          -0.08726646259971647,
+          -0.05235987755982989
+        ],
+        "scale": [
+          4.5,
+          8.0,
+          0.45
+        ]
+      }
+    },
+    {
+      "actionProfile": {
+        "animationRole": "ear_inner_right",
+        "collider": {
+          "isTrigger": false,
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            4.5,
+            8.0,
+            0.45
+          ],
+          "type": "box"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakImpulse": 0.0,
+          "breakable": false,
+          "debrisMaterial": "ear_inner",
+          "detachableFragments": [],
+          "fractureGroup": "ear_inner_right",
+          "seamRefs": []
+        },
+        "pivot": {
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.85,
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "mode": "component-center"
+        },
+        "sockets": [],
+        "transformChannels": {
+          "bend": false,
+          "detach": false,
+          "materialState": true,
+          "rotate": true,
+          "scale": true,
+          "translate": true,
+          "twist": false,
+          "visibility": true
+        }
+      },
+      "attachment": null,
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(143, 118, 95, 1.0)",
+        "materialClass": "rubber",
+        "materialClassConfidence": 0.82,
+        "secondaryAlbedo": "rgba(103, 81, 63, 1.0)"
+      },
+      "confidence": 0.88,
+      "deformations": [],
+      "details": [],
+      "dimensions": {
+        "confidence": 0.9,
+        "depth": 0.45,
+        "height": 8.0,
+        "units": "Blockbench units",
+        "width": 4.5
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "fidelityTier": "blockout",
+      "geometryDescriptor": {
+        "deformationStack": [],
+        "edgeTreatment": {
+          "bevelRadius": 0.0,
+          "segments": 1,
+          "type": "none"
+        },
+        "normalStrategy": "flat cuboid normals",
+        "topologyIntent": "native Minecraft cuboid with hard square edges",
+        "uvStrategy": "generated procedural coordinates"
+      },
+      "id": "ear_inner_right",
+      "importance": 0.78,
+      "joints": [],
+      "level": "meso",
+      "localFeatures": [],
+      "material": "ear_inner",
+      "materialLayers": [
+        "ear_inner"
+      ],
+      "name": "Right inner ear",
+      "parent": null,
+      "primitive": "box",
+      "role": "warm right inner ear panel",
+      "seams": [],
+      "surfaceDetail": {
+        "bumpAmplitude": 0.02,
+        "displacementPattern": "",
+        "edgeWearPattern": "minimal",
+        "macroRoughness": 0.12,
+        "microRoughness": 0.04,
+        "normalPattern": "square-pixel mottling",
+        "notes": "Preserve the Minecraft block silhouette.",
+        "occlusionPattern": "contact darkening"
+      },
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.",
+      "transform": {
+        "position": [
+          -5.45,
+          12.5,
+          9.25
+        ],
+        "rotation": [
+          0.0,
+          0.08726646259971647,
+          0.05235987755982989
+        ],
+        "scale": [
+          4.5,
+          8.0,
+          0.45
+        ]
+      }
+    },
+    {
+      "actionProfile": {
+        "animationRole": "eye_left",
+        "collider": {
+          "isTrigger": false,
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            0.9,
+            1.0,
+            0.55
+          ],
+          "type": "box"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakImpulse": 0.0,
+          "breakable": false,
+          "debrisMaterial": "eye",
+          "detachableFragments": [],
+          "fractureGroup": "eye_left",
+          "seamRefs": []
+        },
+        "pivot": {
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.85,
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "mode": "component-center"
+        },
+        "sockets": [],
+        "transformChannels": {
+          "bend": false,
+          "detach": false,
+          "materialState": true,
+          "rotate": true,
+          "scale": true,
+          "translate": true,
+          "twist": false,
+          "visibility": true
+        }
+      },
+      "attachment": null,
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(16, 16, 16, 1.0)",
+        "materialClass": "rubber",
+        "materialClassConfidence": 0.82,
+        "secondaryAlbedo": "rgba(2, 2, 2, 1.0)"
+      },
+      "confidence": 0.88,
+      "deformations": [],
+      "details": [
+        "square-eyes"
+      ],
+      "dimensions": {
+        "confidence": 0.9,
+        "depth": 0.55,
+        "height": 1.0,
+        "units": "Blockbench units",
+        "width": 0.9
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "fidelityTier": "blockout",
+      "geometryDescriptor": {
+        "deformationStack": [],
+        "edgeTreatment": {
+          "bevelRadius": 0.0,
+          "segments": 1,
+          "type": "none"
+        },
+        "normalStrategy": "flat cuboid normals",
+        "topologyIntent": "native Minecraft cuboid with hard square edges",
+        "uvStrategy": "generated procedural coordinates"
+      },
+      "id": "eye_left",
+      "importance": 0.58,
+      "joints": [],
+      "level": "micro",
+      "localFeatures": [
+        "square-eyes"
+      ],
+      "material": "eye",
+      "materialLayers": [
+        "eye"
+      ],
+      "name": "Left eye",
+      "parent": null,
+      "primitive": "box",
+      "role": "square left eye",
+      "seams": [],
+      "surfaceDetail": {
+        "bumpAmplitude": 0.02,
+        "displacementPattern": "",
+        "edgeWearPattern": "minimal",
+        "macroRoughness": 0.12,
+        "microRoughness": 0.04,
+        "normalPattern": "square-pixel mottling",
+        "notes": "Preserve the Minecraft block silhouette.",
+        "occlusionPattern": "contact darkening"
+      },
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.",
+      "transform": {
+        "position": [
+          2.55,
+          13.2,
+          13.85
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "scale": [
+          0.9,
+          1.0,
+          0.55
+        ]
+      }
+    },
+    {
+      "actionProfile": {
+        "animationRole": "eye_right",
+        "collider": {
+          "isTrigger": false,
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            0.9,
+            1.0,
+            0.55
+          ],
+          "type": "box"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakImpulse": 0.0,
+          "breakable": false,
+          "debrisMaterial": "eye",
+          "detachableFragments": [],
+          "fractureGroup": "eye_right",
+          "seamRefs": []
+        },
+        "pivot": {
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.85,
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "mode": "component-center"
+        },
+        "sockets": [],
+        "transformChannels": {
+          "bend": false,
+          "detach": false,
+          "materialState": true,
+          "rotate": true,
+          "scale": true,
+          "translate": true,
+          "twist": false,
+          "visibility": true
+        }
+      },
+      "attachment": null,
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(16, 16, 16, 1.0)",
+        "materialClass": "rubber",
+        "materialClassConfidence": 0.82,
+        "secondaryAlbedo": "rgba(2, 2, 2, 1.0)"
+      },
+      "confidence": 0.88,
+      "deformations": [],
+      "details": [],
+      "dimensions": {
+        "confidence": 0.9,
+        "depth": 0.55,
+        "height": 1.0,
+        "units": "Blockbench units",
+        "width": 0.9
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "fidelityTier": "blockout",
+      "geometryDescriptor": {
+        "deformationStack": [],
+        "edgeTreatment": {
+          "bevelRadius": 0.0,
+          "segments": 1,
+          "type": "none"
+        },
+        "normalStrategy": "flat cuboid normals",
+        "topologyIntent": "native Minecraft cuboid with hard square edges",
+        "uvStrategy": "generated procedural coordinates"
+      },
+      "id": "eye_right",
+      "importance": 0.58,
+      "joints": [],
+      "level": "micro",
+      "localFeatures": [],
+      "material": "eye",
+      "materialLayers": [
+        "eye"
+      ],
+      "name": "Right eye",
+      "parent": null,
+      "primitive": "box",
+      "role": "square right eye",
+      "seams": [],
+      "surfaceDetail": {
+        "bumpAmplitude": 0.02,
+        "displacementPattern": "",
+        "edgeWearPattern": "minimal",
+        "macroRoughness": 0.12,
+        "microRoughness": 0.04,
+        "normalPattern": "square-pixel mottling",
+        "notes": "Preserve the Minecraft block silhouette.",
+        "occlusionPattern": "contact darkening"
+      },
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.",
+      "transform": {
+        "position": [
+          -2.55,
+          13.2,
+          13.85
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "scale": [
+          0.9,
+          1.0,
+          0.55
+        ]
+      }
+    },
+    {
+      "actionProfile": {
+        "animationRole": "trunk_base",
+        "collider": {
+          "isTrigger": false,
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            4.3,
+            6.2,
+            4.1
+          ],
+          "type": "box"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakImpulse": 0.0,
+          "breakable": false,
+          "debrisMaterial": "dark_gray",
+          "detachableFragments": [],
+          "fractureGroup": "trunk_base",
+          "seamRefs": []
+        },
+        "pivot": {
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.85,
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "mode": "component-center"
+        },
+        "sockets": [],
+        "transformChannels": {
+          "bend": false,
+          "detach": false,
+          "materialState": true,
+          "rotate": true,
+          "scale": true,
+          "translate": true,
+          "twist": false,
+          "visibility": true
+        }
+      },
+      "attachment": null,
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(75, 74, 75, 1.0)",
+        "materialClass": "rubber",
+        "materialClassConfidence": 0.82,
+        "secondaryAlbedo": "rgba(48, 48, 51, 1.0)"
+      },
+      "confidence": 0.88,
+      "deformations": [],
+      "details": [
+        "segmented-trunk"
+      ],
+      "dimensions": {
+        "confidence": 0.9,
+        "depth": 4.1,
+        "height": 6.2,
+        "units": "Blockbench units",
+        "width": 4.3
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "fidelityTier": "blockout",
+      "geometryDescriptor": {
+        "deformationStack": [],
+        "edgeTreatment": {
+          "bevelRadius": 0.0,
+          "segments": 1,
+          "type": "none"
+        },
+        "normalStrategy": "flat cuboid normals",
+        "topologyIntent": "native Minecraft cuboid with hard square edges",
+        "uvStrategy": "generated procedural coordinates"
+      },
+      "id": "trunk_base",
+      "importance": 1.0,
+      "joints": [],
+      "level": "macro",
+      "localFeatures": [
+        "segmented-trunk"
+      ],
+      "material": "dark_gray",
+      "materialLayers": [
+        "dark_gray"
+      ],
+      "name": "Trunk base",
+      "parent": null,
+      "primitive": "box",
+      "role": "upper hanging trunk",
+      "seams": [],
+      "surfaceDetail": {
+        "bumpAmplitude": 0.02,
+        "displacementPattern": "",
+        "edgeWearPattern": "minimal",
+        "macroRoughness": 0.12,
+        "microRoughness": 0.04,
+        "normalPattern": "square-pixel mottling",
+        "notes": "Preserve the Minecraft block silhouette.",
+        "occlusionPattern": "contact darkening"
+      },
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.",
+      "transform": {
+        "position": [
+          0,
+          9.5,
+          13.25
+        ],
+        "rotation": [
+          0.08726646259971647,
+          0.0,
+          0.0
+        ],
+        "scale": [
+          4.3,
+          6.2,
+          4.1
+        ]
+      }
+    },
+    {
+      "actionProfile": {
+        "animationRole": "trunk_mid",
+        "collider": {
+          "isTrigger": false,
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            3.7,
+            5.1,
+            3.6
+          ],
+          "type": "box"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakImpulse": 0.0,
+          "breakable": false,
+          "debrisMaterial": "gray_hide",
+          "detachableFragments": [],
+          "fractureGroup": "trunk_mid",
+          "seamRefs": []
+        },
+        "pivot": {
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.85,
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "mode": "component-center"
+        },
+        "sockets": [],
+        "transformChannels": {
+          "bend": false,
+          "detach": false,
+          "materialState": true,
+          "rotate": true,
+          "scale": true,
+          "translate": true,
+          "twist": false,
+          "visibility": true
+        }
+      },
+      "attachment": null,
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(102, 101, 101, 1.0)",
+        "materialClass": "rubber",
+        "materialClassConfidence": 0.82,
+        "secondaryAlbedo": "rgba(65, 65, 66, 1.0)"
+      },
+      "confidence": 0.88,
+      "deformations": [],
+      "details": [
+        "mottled-hide"
+      ],
+      "dimensions": {
+        "confidence": 0.9,
+        "depth": 3.6,
+        "height": 5.1,
+        "units": "Blockbench units",
+        "width": 3.7
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "fidelityTier": "blockout",
+      "geometryDescriptor": {
+        "deformationStack": [],
+        "edgeTreatment": {
+          "bevelRadius": 0.0,
+          "segments": 1,
+          "type": "none"
+        },
+        "normalStrategy": "flat cuboid normals",
+        "topologyIntent": "native Minecraft cuboid with hard square edges",
+        "uvStrategy": "generated procedural coordinates"
+      },
+      "id": "trunk_mid",
+      "importance": 0.78,
+      "joints": [],
+      "level": "meso",
+      "localFeatures": [
+        "mottled-hide"
+      ],
+      "material": "gray_hide",
+      "materialLayers": [
+        "gray_hide"
+      ],
+      "name": "Trunk middle",
+      "parent": null,
+      "primitive": "box",
+      "role": "middle hanging trunk",
+      "seams": [],
+      "surfaceDetail": {
+        "bumpAmplitude": 0.02,
+        "displacementPattern": "",
+        "edgeWearPattern": "minimal",
+        "macroRoughness": 0.12,
+        "microRoughness": 0.04,
+        "normalPattern": "square-pixel mottling",
+        "notes": "Preserve the Minecraft block silhouette.",
+        "occlusionPattern": "contact darkening"
+      },
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.",
+      "transform": {
+        "position": [
+          0,
+          5.8,
+          14.2
+        ],
+        "rotation": [
+          0.15707963267948966,
+          0.0,
+          0.0
+        ],
+        "scale": [
+          3.7,
+          5.1,
+          3.6
+        ]
+      }
+    },
+    {
+      "actionProfile": {
+        "animationRole": "trunk_tip",
+        "collider": {
+          "isTrigger": false,
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            3.3,
+            3.6,
+            3.1
+          ],
+          "type": "box"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakImpulse": 0.0,
+          "breakable": false,
+          "debrisMaterial": "dark_gray",
+          "detachableFragments": [],
+          "fractureGroup": "trunk_tip",
+          "seamRefs": []
+        },
+        "pivot": {
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.85,
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "mode": "component-center"
+        },
+        "sockets": [],
+        "transformChannels": {
+          "bend": false,
+          "detach": false,
+          "materialState": true,
+          "rotate": true,
+          "scale": true,
+          "translate": true,
+          "twist": false,
+          "visibility": true
+        }
+      },
+      "attachment": null,
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(75, 74, 75, 1.0)",
+        "materialClass": "rubber",
+        "materialClassConfidence": 0.82,
+        "secondaryAlbedo": "rgba(48, 48, 51, 1.0)"
+      },
+      "confidence": 0.88,
+      "deformations": [],
+      "details": [],
+      "dimensions": {
+        "confidence": 0.9,
+        "depth": 3.1,
+        "height": 3.6,
+        "units": "Blockbench units",
+        "width": 3.3
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "fidelityTier": "blockout",
+      "geometryDescriptor": {
+        "deformationStack": [],
+        "edgeTreatment": {
+          "bevelRadius": 0.0,
+          "segments": 1,
+          "type": "none"
+        },
+        "normalStrategy": "flat cuboid normals",
+        "topologyIntent": "native Minecraft cuboid with hard square edges",
+        "uvStrategy": "generated procedural coordinates"
+      },
+      "id": "trunk_tip",
+      "importance": 0.78,
+      "joints": [],
+      "level": "meso",
+      "localFeatures": [],
+      "material": "dark_gray",
+      "materialLayers": [
+        "dark_gray"
+      ],
+      "name": "Trunk tip",
+      "parent": null,
+      "primitive": "box",
+      "role": "curved trunk tip",
+      "seams": [],
+      "surfaceDetail": {
+        "bumpAmplitude": 0.02,
+        "displacementPattern": "",
+        "edgeWearPattern": "minimal",
+        "macroRoughness": 0.12,
+        "microRoughness": 0.04,
+        "normalPattern": "square-pixel mottling",
+        "notes": "Preserve the Minecraft block silhouette.",
+        "occlusionPattern": "contact darkening"
+      },
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.",
+      "transform": {
+        "position": [
+          0,
+          2.75,
+          14.9
+        ],
+        "rotation": [
+          0.22689280275926285,
+          0.0,
+          0.0
+        ],
+        "scale": [
+          3.3,
+          3.6,
+          3.1
+        ]
+      }
+    },
+    {
+      "actionProfile": {
+        "animationRole": "tusk_left",
+        "collider": {
+          "isTrigger": false,
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1.25,
+            1.25,
+            5.2
+          ],
+          "type": "box"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakImpulse": 0.0,
+          "breakable": false,
+          "debrisMaterial": "ivory",
+          "detachableFragments": [],
+          "fractureGroup": "tusk_left",
+          "seamRefs": []
+        },
+        "pivot": {
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.85,
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "mode": "component-center"
+        },
+        "sockets": [],
+        "transformChannels": {
+          "bend": false,
+          "detach": false,
+          "materialState": true,
+          "rotate": true,
+          "scale": true,
+          "translate": true,
+          "twist": false,
+          "visibility": true
+        }
+      },
+      "attachment": null,
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(234, 212, 182, 1.0)",
+        "materialClass": "rubber",
+        "materialClassConfidence": 0.82,
+        "secondaryAlbedo": "rgba(189, 167, 140, 1.0)"
+      },
+      "confidence": 0.88,
+      "deformations": [],
+      "details": [
+        "ivory-tusks"
+      ],
+      "dimensions": {
+        "confidence": 0.9,
+        "depth": 5.2,
+        "height": 1.25,
+        "units": "Blockbench units",
+        "width": 1.25
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "fidelityTier": "blockout",
+      "geometryDescriptor": {
+        "deformationStack": [],
+        "edgeTreatment": {
+          "bevelRadius": 0.0,
+          "segments": 1,
+          "type": "none"
+        },
+        "normalStrategy": "flat cuboid normals",
+        "topologyIntent": "native Minecraft cuboid with hard square edges",
+        "uvStrategy": "generated procedural coordinates"
+      },
+      "id": "tusk_left",
+      "importance": 0.78,
+      "joints": [],
+      "level": "meso",
+      "localFeatures": [
+        "ivory-tusks"
+      ],
+      "material": "ivory",
+      "materialLayers": [
+        "ivory"
+      ],
+      "name": "Left tusk",
+      "parent": null,
+      "primitive": "box",
+      "role": "forward ivory left tusk",
+      "seams": [],
+      "surfaceDetail": {
+        "bumpAmplitude": 0.02,
+        "displacementPattern": "",
+        "edgeWearPattern": "minimal",
+        "macroRoughness": 0.12,
+        "microRoughness": 0.04,
+        "normalPattern": "square-pixel mottling",
+        "notes": "Preserve the Minecraft block silhouette.",
+        "occlusionPattern": "contact darkening"
+      },
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.",
+      "transform": {
+        "position": [
+          2.75,
+          8.25,
+          14.3
+        ],
+        "rotation": [
+          -0.29670597283903605,
+          -0.10471975511965978,
+          0.0
+        ],
+        "scale": [
+          1.25,
+          1.25,
+          5.2
+        ]
+      }
+    },
+    {
+      "actionProfile": {
+        "animationRole": "tusk_right",
+        "collider": {
+          "isTrigger": false,
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1.25,
+            1.25,
+            5.2
+          ],
+          "type": "box"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakImpulse": 0.0,
+          "breakable": false,
+          "debrisMaterial": "ivory",
+          "detachableFragments": [],
+          "fractureGroup": "tusk_right",
+          "seamRefs": []
+        },
+        "pivot": {
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.85,
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "mode": "component-center"
+        },
+        "sockets": [],
+        "transformChannels": {
+          "bend": false,
+          "detach": false,
+          "materialState": true,
+          "rotate": true,
+          "scale": true,
+          "translate": true,
+          "twist": false,
+          "visibility": true
+        }
+      },
+      "attachment": null,
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(234, 212, 182, 1.0)",
+        "materialClass": "rubber",
+        "materialClassConfidence": 0.82,
+        "secondaryAlbedo": "rgba(189, 167, 140, 1.0)"
+      },
+      "confidence": 0.88,
+      "deformations": [],
+      "details": [],
+      "dimensions": {
+        "confidence": 0.9,
+        "depth": 5.2,
+        "height": 1.25,
+        "units": "Blockbench units",
+        "width": 1.25
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "fidelityTier": "blockout",
+      "geometryDescriptor": {
+        "deformationStack": [],
+        "edgeTreatment": {
+          "bevelRadius": 0.0,
+          "segments": 1,
+          "type": "none"
+        },
+        "normalStrategy": "flat cuboid normals",
+        "topologyIntent": "native Minecraft cuboid with hard square edges",
+        "uvStrategy": "generated procedural coordinates"
+      },
+      "id": "tusk_right",
+      "importance": 0.78,
+      "joints": [],
+      "level": "meso",
+      "localFeatures": [],
+      "material": "ivory",
+      "materialLayers": [
+        "ivory"
+      ],
+      "name": "Right tusk",
+      "parent": null,
+      "primitive": "box",
+      "role": "forward ivory right tusk",
+      "seams": [],
+      "surfaceDetail": {
+        "bumpAmplitude": 0.02,
+        "displacementPattern": "",
+        "edgeWearPattern": "minimal",
+        "macroRoughness": 0.12,
+        "microRoughness": 0.04,
+        "normalPattern": "square-pixel mottling",
+        "notes": "Preserve the Minecraft block silhouette.",
+        "occlusionPattern": "contact darkening"
+      },
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.",
+      "transform": {
+        "position": [
+          -2.75,
+          8.25,
+          14.3
+        ],
+        "rotation": [
+          -0.29670597283903605,
+          0.10471975511965978,
+          0.0
+        ],
+        "scale": [
+          1.25,
+          1.25,
+          5.2
+        ]
+      }
+    },
+    {
+      "actionProfile": {
+        "animationRole": "leg_front_left",
+        "collider": {
+          "isTrigger": false,
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            4.1,
+            8.2,
+            4.1
+          ],
+          "type": "box"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakImpulse": 0.0,
+          "breakable": false,
+          "debrisMaterial": "gray_hide",
+          "detachableFragments": [],
+          "fractureGroup": "leg_front_left",
+          "seamRefs": []
+        },
+        "pivot": {
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.85,
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "mode": "component-center"
+        },
+        "sockets": [],
+        "transformChannels": {
+          "bend": false,
+          "detach": false,
+          "materialState": true,
+          "rotate": true,
+          "scale": true,
+          "translate": true,
+          "twist": false,
+          "visibility": true
+        }
+      },
+      "attachment": null,
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(102, 101, 101, 1.0)",
+        "materialClass": "rubber",
+        "materialClassConfidence": 0.82,
+        "secondaryAlbedo": "rgba(65, 65, 66, 1.0)"
+      },
+      "confidence": 0.88,
+      "deformations": [],
+      "details": [
+        "pillar-legs",
+        "mottled-hide"
+      ],
+      "dimensions": {
+        "confidence": 0.9,
+        "depth": 4.1,
+        "height": 8.2,
+        "units": "Blockbench units",
+        "width": 4.1
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "fidelityTier": "blockout",
+      "geometryDescriptor": {
+        "deformationStack": [],
+        "edgeTreatment": {
+          "bevelRadius": 0.0,
+          "segments": 1,
+          "type": "none"
+        },
+        "normalStrategy": "flat cuboid normals",
+        "topologyIntent": "native Minecraft cuboid with hard square edges",
+        "uvStrategy": "generated procedural coordinates"
+      },
+      "id": "leg_front_left",
+      "importance": 1.0,
+      "joints": [],
+      "level": "macro",
+      "localFeatures": [
+        "pillar-legs",
+        "mottled-hide"
+      ],
+      "material": "gray_hide",
+      "materialLayers": [
+        "gray_hide"
+      ],
+      "name": "Front left leg",
+      "parent": null,
+      "primitive": "box",
+      "role": "front left pillar leg",
+      "seams": [],
+      "surfaceDetail": {
+        "bumpAmplitude": 0.02,
+        "displacementPattern": "",
+        "edgeWearPattern": "minimal",
+        "macroRoughness": 0.12,
+        "microRoughness": 0.04,
+        "normalPattern": "square-pixel mottling",
+        "notes": "Preserve the Minecraft block silhouette.",
+        "occlusionPattern": "contact darkening"
+      },
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.",
+      "transform": {
+        "position": [
+          4.1,
+          4.45,
+          4.7
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "scale": [
+          4.1,
+          8.2,
+          4.1
+        ]
+      }
+    },
+    {
+      "actionProfile": {
+        "animationRole": "foot_front_left",
+        "collider": {
+          "isTrigger": false,
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            4.6,
+            1.7,
+            4.9
+          ],
+          "type": "box"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakImpulse": 0.0,
+          "breakable": false,
+          "debrisMaterial": "feet_gray",
+          "detachableFragments": [],
+          "fractureGroup": "foot_front_left",
+          "seamRefs": []
+        },
+        "pivot": {
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.85,
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "mode": "component-center"
+        },
+        "sockets": [],
+        "transformChannels": {
+          "bend": false,
+          "detach": false,
+          "materialState": true,
+          "rotate": true,
+          "scale": true,
+          "translate": true,
+          "twist": false,
+          "visibility": true
+        }
+      },
+      "attachment": null,
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(85, 84, 85, 1.0)",
+        "materialClass": "rubber",
+        "materialClassConfidence": 0.82,
+        "secondaryAlbedo": "rgba(53, 53, 56, 1.0)"
+      },
+      "confidence": 0.88,
+      "deformations": [],
+      "details": [],
+      "dimensions": {
+        "confidence": 0.9,
+        "depth": 4.9,
+        "height": 1.7,
+        "units": "Blockbench units",
+        "width": 4.6
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "fidelityTier": "blockout",
+      "geometryDescriptor": {
+        "deformationStack": [],
+        "edgeTreatment": {
+          "bevelRadius": 0.0,
+          "segments": 1,
+          "type": "none"
+        },
+        "normalStrategy": "flat cuboid normals",
+        "topologyIntent": "native Minecraft cuboid with hard square edges",
+        "uvStrategy": "generated procedural coordinates"
+      },
+      "id": "foot_front_left",
+      "importance": 0.78,
+      "joints": [],
+      "level": "meso",
+      "localFeatures": [],
+      "material": "feet_gray",
+      "materialLayers": [
+        "feet_gray"
+      ],
+      "name": "Front left foot",
+      "parent": null,
+      "primitive": "box",
+      "role": "front left broad foot",
+      "seams": [],
+      "surfaceDetail": {
+        "bumpAmplitude": 0.02,
+        "displacementPattern": "",
+        "edgeWearPattern": "minimal",
+        "macroRoughness": 0.12,
+        "microRoughness": 0.04,
+        "normalPattern": "square-pixel mottling",
+        "notes": "Preserve the Minecraft block silhouette.",
+        "occlusionPattern": "contact darkening"
+      },
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.",
+      "transform": {
+        "position": [
+          4.1,
+          0.85,
+          5.1
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "scale": [
+          4.6,
+          1.7,
+          4.9
+        ]
+      }
+    },
+    {
+      "actionProfile": {
+        "animationRole": "leg_front_right",
+        "collider": {
+          "isTrigger": false,
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            4.1,
+            8.2,
+            4.1
+          ],
+          "type": "box"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakImpulse": 0.0,
+          "breakable": false,
+          "debrisMaterial": "gray_hide",
+          "detachableFragments": [],
+          "fractureGroup": "leg_front_right",
+          "seamRefs": []
+        },
+        "pivot": {
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.85,
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "mode": "component-center"
+        },
+        "sockets": [],
+        "transformChannels": {
+          "bend": false,
+          "detach": false,
+          "materialState": true,
+          "rotate": true,
+          "scale": true,
+          "translate": true,
+          "twist": false,
+          "visibility": true
+        }
+      },
+      "attachment": null,
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(102, 101, 101, 1.0)",
+        "materialClass": "rubber",
+        "materialClassConfidence": 0.82,
+        "secondaryAlbedo": "rgba(65, 65, 66, 1.0)"
+      },
+      "confidence": 0.88,
+      "deformations": [],
+      "details": [
+        "mottled-hide"
+      ],
+      "dimensions": {
+        "confidence": 0.9,
+        "depth": 4.1,
+        "height": 8.2,
+        "units": "Blockbench units",
+        "width": 4.1
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "fidelityTier": "blockout",
+      "geometryDescriptor": {
+        "deformationStack": [],
+        "edgeTreatment": {
+          "bevelRadius": 0.0,
+          "segments": 1,
+          "type": "none"
+        },
+        "normalStrategy": "flat cuboid normals",
+        "topologyIntent": "native Minecraft cuboid with hard square edges",
+        "uvStrategy": "generated procedural coordinates"
+      },
+      "id": "leg_front_right",
+      "importance": 1.0,
+      "joints": [],
+      "level": "macro",
+      "localFeatures": [
+        "mottled-hide"
+      ],
+      "material": "gray_hide",
+      "materialLayers": [
+        "gray_hide"
+      ],
+      "name": "Front right leg",
+      "parent": null,
+      "primitive": "box",
+      "role": "front right pillar leg",
+      "seams": [],
+      "surfaceDetail": {
+        "bumpAmplitude": 0.02,
+        "displacementPattern": "",
+        "edgeWearPattern": "minimal",
+        "macroRoughness": 0.12,
+        "microRoughness": 0.04,
+        "normalPattern": "square-pixel mottling",
+        "notes": "Preserve the Minecraft block silhouette.",
+        "occlusionPattern": "contact darkening"
+      },
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.",
+      "transform": {
+        "position": [
+          -4.1,
+          4.45,
+          4.7
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "scale": [
+          4.1,
+          8.2,
+          4.1
+        ]
+      }
+    },
+    {
+      "actionProfile": {
+        "animationRole": "foot_front_right",
+        "collider": {
+          "isTrigger": false,
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            4.6,
+            1.7,
+            4.9
+          ],
+          "type": "box"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakImpulse": 0.0,
+          "breakable": false,
+          "debrisMaterial": "feet_gray",
+          "detachableFragments": [],
+          "fractureGroup": "foot_front_right",
+          "seamRefs": []
+        },
+        "pivot": {
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.85,
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "mode": "component-center"
+        },
+        "sockets": [],
+        "transformChannels": {
+          "bend": false,
+          "detach": false,
+          "materialState": true,
+          "rotate": true,
+          "scale": true,
+          "translate": true,
+          "twist": false,
+          "visibility": true
+        }
+      },
+      "attachment": null,
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(85, 84, 85, 1.0)",
+        "materialClass": "rubber",
+        "materialClassConfidence": 0.82,
+        "secondaryAlbedo": "rgba(53, 53, 56, 1.0)"
+      },
+      "confidence": 0.88,
+      "deformations": [],
+      "details": [],
+      "dimensions": {
+        "confidence": 0.9,
+        "depth": 4.9,
+        "height": 1.7,
+        "units": "Blockbench units",
+        "width": 4.6
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "fidelityTier": "blockout",
+      "geometryDescriptor": {
+        "deformationStack": [],
+        "edgeTreatment": {
+          "bevelRadius": 0.0,
+          "segments": 1,
+          "type": "none"
+        },
+        "normalStrategy": "flat cuboid normals",
+        "topologyIntent": "native Minecraft cuboid with hard square edges",
+        "uvStrategy": "generated procedural coordinates"
+      },
+      "id": "foot_front_right",
+      "importance": 0.78,
+      "joints": [],
+      "level": "meso",
+      "localFeatures": [],
+      "material": "feet_gray",
+      "materialLayers": [
+        "feet_gray"
+      ],
+      "name": "Front right foot",
+      "parent": null,
+      "primitive": "box",
+      "role": "front right broad foot",
+      "seams": [],
+      "surfaceDetail": {
+        "bumpAmplitude": 0.02,
+        "displacementPattern": "",
+        "edgeWearPattern": "minimal",
+        "macroRoughness": 0.12,
+        "microRoughness": 0.04,
+        "normalPattern": "square-pixel mottling",
+        "notes": "Preserve the Minecraft block silhouette.",
+        "occlusionPattern": "contact darkening"
+      },
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.",
+      "transform": {
+        "position": [
+          -4.1,
+          0.85,
+          5.1
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "scale": [
+          4.6,
+          1.7,
+          4.9
+        ]
+      }
+    },
+    {
+      "actionProfile": {
+        "animationRole": "leg_rear_left",
+        "collider": {
+          "isTrigger": false,
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            4.1,
+            8.2,
+            4.1
+          ],
+          "type": "box"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakImpulse": 0.0,
+          "breakable": false,
+          "debrisMaterial": "gray_hide",
+          "detachableFragments": [],
+          "fractureGroup": "leg_rear_left",
+          "seamRefs": []
+        },
+        "pivot": {
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.85,
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "mode": "component-center"
+        },
+        "sockets": [],
+        "transformChannels": {
+          "bend": false,
+          "detach": false,
+          "materialState": true,
+          "rotate": true,
+          "scale": true,
+          "translate": true,
+          "twist": false,
+          "visibility": true
+        }
+      },
+      "attachment": null,
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(102, 101, 101, 1.0)",
+        "materialClass": "rubber",
+        "materialClassConfidence": 0.82,
+        "secondaryAlbedo": "rgba(65, 65, 66, 1.0)"
+      },
+      "confidence": 0.88,
+      "deformations": [],
+      "details": [
+        "mottled-hide"
+      ],
+      "dimensions": {
+        "confidence": 0.9,
+        "depth": 4.1,
+        "height": 8.2,
+        "units": "Blockbench units",
+        "width": 4.1
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "fidelityTier": "blockout",
+      "geometryDescriptor": {
+        "deformationStack": [],
+        "edgeTreatment": {
+          "bevelRadius": 0.0,
+          "segments": 1,
+          "type": "none"
+        },
+        "normalStrategy": "flat cuboid normals",
+        "topologyIntent": "native Minecraft cuboid with hard square edges",
+        "uvStrategy": "generated procedural coordinates"
+      },
+      "id": "leg_rear_left",
+      "importance": 1.0,
+      "joints": [],
+      "level": "macro",
+      "localFeatures": [
+        "mottled-hide"
+      ],
+      "material": "gray_hide",
+      "materialLayers": [
+        "gray_hide"
+      ],
+      "name": "Rear left leg",
+      "parent": null,
+      "primitive": "box",
+      "role": "rear left pillar leg",
+      "seams": [],
+      "surfaceDetail": {
+        "bumpAmplitude": 0.02,
+        "displacementPattern": "",
+        "edgeWearPattern": "minimal",
+        "macroRoughness": 0.12,
+        "microRoughness": 0.04,
+        "normalPattern": "square-pixel mottling",
+        "notes": "Preserve the Minecraft block silhouette.",
+        "occlusionPattern": "contact darkening"
+      },
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.",
+      "transform": {
+        "position": [
+          4.1,
+          4.45,
+          -4.6
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "scale": [
+          4.1,
+          8.2,
+          4.1
+        ]
+      }
+    },
+    {
+      "actionProfile": {
+        "animationRole": "foot_rear_left",
+        "collider": {
+          "isTrigger": false,
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            4.6,
+            1.7,
+            4.9
+          ],
+          "type": "box"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakImpulse": 0.0,
+          "breakable": false,
+          "debrisMaterial": "feet_gray",
+          "detachableFragments": [],
+          "fractureGroup": "foot_rear_left",
+          "seamRefs": []
+        },
+        "pivot": {
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.85,
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "mode": "component-center"
+        },
+        "sockets": [],
+        "transformChannels": {
+          "bend": false,
+          "detach": false,
+          "materialState": true,
+          "rotate": true,
+          "scale": true,
+          "translate": true,
+          "twist": false,
+          "visibility": true
+        }
+      },
+      "attachment": null,
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(85, 84, 85, 1.0)",
+        "materialClass": "rubber",
+        "materialClassConfidence": 0.82,
+        "secondaryAlbedo": "rgba(53, 53, 56, 1.0)"
+      },
+      "confidence": 0.88,
+      "deformations": [],
+      "details": [],
+      "dimensions": {
+        "confidence": 0.9,
+        "depth": 4.9,
+        "height": 1.7,
+        "units": "Blockbench units",
+        "width": 4.6
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "fidelityTier": "blockout",
+      "geometryDescriptor": {
+        "deformationStack": [],
+        "edgeTreatment": {
+          "bevelRadius": 0.0,
+          "segments": 1,
+          "type": "none"
+        },
+        "normalStrategy": "flat cuboid normals",
+        "topologyIntent": "native Minecraft cuboid with hard square edges",
+        "uvStrategy": "generated procedural coordinates"
+      },
+      "id": "foot_rear_left",
+      "importance": 0.78,
+      "joints": [],
+      "level": "meso",
+      "localFeatures": [],
+      "material": "feet_gray",
+      "materialLayers": [
+        "feet_gray"
+      ],
+      "name": "Rear left foot",
+      "parent": null,
+      "primitive": "box",
+      "role": "rear left broad foot",
+      "seams": [],
+      "surfaceDetail": {
+        "bumpAmplitude": 0.02,
+        "displacementPattern": "",
+        "edgeWearPattern": "minimal",
+        "macroRoughness": 0.12,
+        "microRoughness": 0.04,
+        "normalPattern": "square-pixel mottling",
+        "notes": "Preserve the Minecraft block silhouette.",
+        "occlusionPattern": "contact darkening"
+      },
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.",
+      "transform": {
+        "position": [
+          4.1,
+          0.85,
+          -4.2
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "scale": [
+          4.6,
+          1.7,
+          4.9
+        ]
+      }
+    },
+    {
+      "actionProfile": {
+        "animationRole": "leg_rear_right",
+        "collider": {
+          "isTrigger": false,
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            4.1,
+            8.2,
+            4.1
+          ],
+          "type": "box"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakImpulse": 0.0,
+          "breakable": false,
+          "debrisMaterial": "gray_hide",
+          "detachableFragments": [],
+          "fractureGroup": "leg_rear_right",
+          "seamRefs": []
+        },
+        "pivot": {
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.85,
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "mode": "component-center"
+        },
+        "sockets": [],
+        "transformChannels": {
+          "bend": false,
+          "detach": false,
+          "materialState": true,
+          "rotate": true,
+          "scale": true,
+          "translate": true,
+          "twist": false,
+          "visibility": true
+        }
+      },
+      "attachment": null,
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(102, 101, 101, 1.0)",
+        "materialClass": "rubber",
+        "materialClassConfidence": 0.82,
+        "secondaryAlbedo": "rgba(65, 65, 66, 1.0)"
+      },
+      "confidence": 0.88,
+      "deformations": [],
+      "details": [
+        "mottled-hide"
+      ],
+      "dimensions": {
+        "confidence": 0.9,
+        "depth": 4.1,
+        "height": 8.2,
+        "units": "Blockbench units",
+        "width": 4.1
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "fidelityTier": "blockout",
+      "geometryDescriptor": {
+        "deformationStack": [],
+        "edgeTreatment": {
+          "bevelRadius": 0.0,
+          "segments": 1,
+          "type": "none"
+        },
+        "normalStrategy": "flat cuboid normals",
+        "topologyIntent": "native Minecraft cuboid with hard square edges",
+        "uvStrategy": "generated procedural coordinates"
+      },
+      "id": "leg_rear_right",
+      "importance": 1.0,
+      "joints": [],
+      "level": "macro",
+      "localFeatures": [
+        "mottled-hide"
+      ],
+      "material": "gray_hide",
+      "materialLayers": [
+        "gray_hide"
+      ],
+      "name": "Rear right leg",
+      "parent": null,
+      "primitive": "box",
+      "role": "rear right pillar leg",
+      "seams": [],
+      "surfaceDetail": {
+        "bumpAmplitude": 0.02,
+        "displacementPattern": "",
+        "edgeWearPattern": "minimal",
+        "macroRoughness": 0.12,
+        "microRoughness": 0.04,
+        "normalPattern": "square-pixel mottling",
+        "notes": "Preserve the Minecraft block silhouette.",
+        "occlusionPattern": "contact darkening"
+      },
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.",
+      "transform": {
+        "position": [
+          -4.1,
+          4.45,
+          -4.6
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "scale": [
+          4.1,
+          8.2,
+          4.1
+        ]
+      }
+    },
+    {
+      "actionProfile": {
+        "animationRole": "foot_rear_right",
+        "collider": {
+          "isTrigger": false,
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            4.6,
+            1.7,
+            4.9
+          ],
+          "type": "box"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakImpulse": 0.0,
+          "breakable": false,
+          "debrisMaterial": "feet_gray",
+          "detachableFragments": [],
+          "fractureGroup": "foot_rear_right",
+          "seamRefs": []
+        },
+        "pivot": {
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.85,
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "mode": "component-center"
+        },
+        "sockets": [],
+        "transformChannels": {
+          "bend": false,
+          "detach": false,
+          "materialState": true,
+          "rotate": true,
+          "scale": true,
+          "translate": true,
+          "twist": false,
+          "visibility": true
+        }
+      },
+      "attachment": null,
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(85, 84, 85, 1.0)",
+        "materialClass": "rubber",
+        "materialClassConfidence": 0.82,
+        "secondaryAlbedo": "rgba(53, 53, 56, 1.0)"
+      },
+      "confidence": 0.88,
+      "deformations": [],
+      "details": [],
+      "dimensions": {
+        "confidence": 0.9,
+        "depth": 4.9,
+        "height": 1.7,
+        "units": "Blockbench units",
+        "width": 4.6
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "fidelityTier": "blockout",
+      "geometryDescriptor": {
+        "deformationStack": [],
+        "edgeTreatment": {
+          "bevelRadius": 0.0,
+          "segments": 1,
+          "type": "none"
+        },
+        "normalStrategy": "flat cuboid normals",
+        "topologyIntent": "native Minecraft cuboid with hard square edges",
+        "uvStrategy": "generated procedural coordinates"
+      },
+      "id": "foot_rear_right",
+      "importance": 0.78,
+      "joints": [],
+      "level": "meso",
+      "localFeatures": [],
+      "material": "feet_gray",
+      "materialLayers": [
+        "feet_gray"
+      ],
+      "name": "Rear right foot",
+      "parent": null,
+      "primitive": "box",
+      "role": "rear right broad foot",
+      "seams": [],
+      "surfaceDetail": {
+        "bumpAmplitude": 0.02,
+        "displacementPattern": "",
+        "edgeWearPattern": "minimal",
+        "macroRoughness": 0.12,
+        "microRoughness": 0.04,
+        "normalPattern": "square-pixel mottling",
+        "notes": "Preserve the Minecraft block silhouette.",
+        "occlusionPattern": "contact darkening"
+      },
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.",
+      "transform": {
+        "position": [
+          -4.1,
+          0.85,
+          -4.2
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "scale": [
+          4.6,
+          1.7,
+          4.9
+        ]
+      }
+    },
+    {
+      "actionProfile": {
+        "animationRole": "tail_base",
+        "collider": {
+          "isTrigger": false,
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            1.5,
+            1.5,
+            4.6
+          ],
+          "type": "box"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakImpulse": 0.0,
+          "breakable": false,
+          "debrisMaterial": "dark_gray",
+          "detachableFragments": [],
+          "fractureGroup": "tail_base",
+          "seamRefs": []
+        },
+        "pivot": {
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.85,
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "mode": "component-center"
+        },
+        "sockets": [],
+        "transformChannels": {
+          "bend": false,
+          "detach": false,
+          "materialState": true,
+          "rotate": true,
+          "scale": true,
+          "translate": true,
+          "twist": false,
+          "visibility": true
+        }
+      },
+      "attachment": null,
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(75, 74, 75, 1.0)",
+        "materialClass": "rubber",
+        "materialClassConfidence": 0.82,
+        "secondaryAlbedo": "rgba(48, 48, 51, 1.0)"
+      },
+      "confidence": 0.88,
+      "deformations": [],
+      "details": [],
+      "dimensions": {
+        "confidence": 0.9,
+        "depth": 4.6,
+        "height": 1.5,
+        "units": "Blockbench units",
+        "width": 1.5
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "fidelityTier": "blockout",
+      "geometryDescriptor": {
+        "deformationStack": [],
+        "edgeTreatment": {
+          "bevelRadius": 0.0,
+          "segments": 1,
+          "type": "none"
+        },
+        "normalStrategy": "flat cuboid normals",
+        "topologyIntent": "native Minecraft cuboid with hard square edges",
+        "uvStrategy": "generated procedural coordinates"
+      },
+      "id": "tail_base",
+      "importance": 0.78,
+      "joints": [],
+      "level": "meso",
+      "localFeatures": [],
+      "material": "dark_gray",
+      "materialLayers": [
+        "dark_gray"
+      ],
+      "name": "Tail base",
+      "parent": null,
+      "primitive": "box",
+      "role": "short hanging tail",
+      "seams": [],
+      "surfaceDetail": {
+        "bumpAmplitude": 0.02,
+        "displacementPattern": "",
+        "edgeWearPattern": "minimal",
+        "macroRoughness": 0.12,
+        "microRoughness": 0.04,
+        "normalPattern": "square-pixel mottling",
+        "notes": "Preserve the Minecraft block silhouette.",
+        "occlusionPattern": "contact darkening"
+      },
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.",
+      "transform": {
+        "position": [
+          0,
+          8.8,
+          -8.9
+        ],
+        "rotation": [
+          -0.5061454830783556,
+          0.0,
+          0.0
+        ],
+        "scale": [
+          1.5,
+          1.5,
+          4.6
+        ]
+      }
+    },
+    {
+      "actionProfile": {
+        "animationRole": "tail_tuft",
+        "collider": {
+          "isTrigger": false,
+          "offset": [
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            2.3,
+            2.6,
+            2.9
+          ],
+          "type": "box"
+        },
+        "constraints": [],
+        "destruction": {
+          "breakImpulse": 0.0,
+          "breakable": false,
+          "debrisMaterial": "tail_dark",
+          "detachableFragments": [],
+          "fractureGroup": "tail_tuft",
+          "seamRefs": []
+        },
+        "pivot": {
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "confidence": 0.85,
+          "localPosition": [
+            0,
+            0,
+            0
+          ],
+          "mode": "component-center"
+        },
+        "sockets": [],
+        "transformChannels": {
+          "bend": false,
+          "detach": false,
+          "materialState": true,
+          "rotate": true,
+          "scale": true,
+          "translate": true,
+          "twist": false,
+          "visibility": true
+        }
+      },
+      "attachment": null,
+      "colorMaterialRecipe": {
+        "dominantAlbedo": "rgba(57, 56, 58, 1.0)",
+        "materialClass": "rubber",
+        "materialClassConfidence": 0.82,
+        "secondaryAlbedo": "rgba(34, 34, 37, 1.0)"
+      },
+      "confidence": 0.88,
+      "deformations": [],
+      "details": [
+        "tufted-tail"
+      ],
+      "dimensions": {
+        "confidence": 0.9,
+        "depth": 2.9,
+        "height": 2.6,
+        "units": "Blockbench units",
+        "width": 2.3
+      },
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "fidelityTier": "blockout",
+      "geometryDescriptor": {
+        "deformationStack": [],
+        "edgeTreatment": {
+          "bevelRadius": 0.0,
+          "segments": 1,
+          "type": "none"
+        },
+        "normalStrategy": "flat cuboid normals",
+        "topologyIntent": "native Minecraft cuboid with hard square edges",
+        "uvStrategy": "generated procedural coordinates"
+      },
+      "id": "tail_tuft",
+      "importance": 0.78,
+      "joints": [],
+      "level": "meso",
+      "localFeatures": [
+        "tufted-tail"
+      ],
+      "material": "tail_dark",
+      "materialLayers": [
+        "tail_dark"
+      ],
+      "name": "Tail tuft",
+      "parent": null,
+      "primitive": "box",
+      "role": "dark blocky tail tuft",
+      "seams": [],
+      "surfaceDetail": {
+        "bumpAmplitude": 0.02,
+        "displacementPattern": "",
+        "edgeWearPattern": "minimal",
+        "macroRoughness": 0.12,
+        "microRoughness": 0.04,
+        "normalPattern": "square-pixel mottling",
+        "notes": "Preserve the Minecraft block silhouette.",
+        "occlusionPattern": "contact darkening"
+      },
+      "topologyClass": "assembled-solid",
+      "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.",
+      "transform": {
+        "position": [
+          0,
+          6.7,
+          -10.7
+        ],
+        "rotation": [
+          -0.33161255787892263,
+          0.0,
+          0.0
+        ],
+        "scale": [
+          2.3,
+          2.6,
+          2.9
+        ]
+      }
+    }
+  ],
+  "coordinateFrame": {
+    "front": "camera-facing side in the reference image",
+    "scaleReference": "unit scale; adjust after first browser render",
+    "up": "image up direction"
+  },
+  "destructionAnchors": [
+    "actionProfile.destruction.fractureGroup marks detachable or breakable component sets",
+    "component seams and sockets define plausible break points instead of random explosions"
+  ],
+  "featureReviewTargets": [
+    {
+      "componentRefs": [
+        "body",
+        "shoulders",
+        "head",
+        "ear_left",
+        "ear_right",
+        "trunk_base"
+      ],
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "id": "pose-silhouette",
+      "minimumScore": 0.8,
+      "mustPass": true,
+      "name": "massive high-backed quadruped with broad ears, pillar legs, and a hanging segmented trunk",
+      "passIds": [
+        "blockout",
+        "structural-pass"
+      ],
+      "tier": "critical"
+    },
+    {
+      "componentRefs": [
+        "head",
+        "ear_left",
+        "ear_right",
+        "trunk_base",
+        "tusk_left",
+        "tusk_right"
+      ],
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "id": "face-landmark-placement",
+      "minimumScore": 0.8,
+      "mustPass": true,
+      "name": "Broad ears, square eyes, segmented trunk, and paired tusks",
+      "passIds": [
+        "form-refinement",
+        "material-pass"
+      ],
+      "tier": "critical"
+    },
+    {
+      "componentRefs": [
+        "body",
+        "leg_front_left",
+        "leg_front_right",
+        "leg_rear_left",
+        "leg_rear_right"
+      ],
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "id": "anatomy-proportion",
+      "minimumScore": 0.72,
+      "mustPass": true,
+      "name": "Massive torso supported by four pillar legs",
+      "passIds": [
+        "structural-pass",
+        "form-refinement"
+      ],
+      "tier": "important"
+    },
+    {
+      "componentRefs": [
+        "body",
+        "ear_inner_left",
+        "tusk_left",
+        "foot_front_left"
+      ],
+      "evidenceRefs": [
+        "full-object"
+      ],
+      "id": "outfit-and-palette",
+      "minimumScore": 0.76,
+      "mustPass": true,
+      "name": "Mottled gray hide with warm ears and ivory tusks",
+      "passIds": [
+        "material-pass",
+        "surface-pass"
+      ],
+      "tier": "critical"
+    }
+  ],
+  "lightingFromPhoto": [
+    "Warm key light from upper left with soft shadows.",
+    "Cool neutral fill light from camera right.",
+    "Soft environment rim light separates the dark tail and feet.",
+    "Filmic tone mapping at neutral exposure.",
+    "Subtle ground contact shadow beneath all four feet."
+  ],
+  "lodPlan": [
+    {
+      "distance": 0,
+      "strategy": "full component tree and material layers",
+      "tier": "near"
+    },
+    {
+      "distance": 30,
+      "strategy": "merge static components and reduce local feature geometry",
+      "tier": "far"
+    }
+  ],
+  "lookDevTargets": {
+    "lightingPass": {
+      "mustAvoid": [
+        "ambient-only lighting",
+        "flat value range",
+        "missing contact shadow",
+        "reference lighting copied without separating material readability"
+      ],
+      "requiredTerms": [
+        "key light",
+        "fill light",
+        "rim or environment light",
+        "exposure",
+        "tone mapping",
+        "background",
+        "contact shadow"
+      ]
+    },
+    "materialPass": {
+      "albedoPaletteRequired": true,
+      "geometryReliefRequiredWhenSilhouetteAffected": true,
+      "independentMapChannels": [
+        "albedo",
+        "roughness",
+        "height",
+        "normal",
+        "ambient-occlusion"
+      ],
+      "localOverridesRequired": true,
+      "minimumTextureResolution": 64,
+      "mustAvoid": [
+        "single flat albedo per material",
+        "uniform roughness",
+        "albedo texture reused as roughness/height/normal/AO",
+        "single-frequency random noise",
+        "plastic-looking smooth bark, stone, cloth, foliage, or aged material",
+        "local color/detail described only in prose without material masks",
+        "claiming exact PBR recovery when confidence is below the target threshold"
+      ],
+      "normalOrBumpRequired": true,
+      "preferredTextureResolution": 128,
+      "referencePbrExtraction": {
+        "acceptedLimitation": "This benchmark tests procedural geometry cost, not single-view PBR recovery.",
+        "requiredWhenSourceImagePresent": false,
+        "stopOnLowConfidence": false,
+        "targetThreshold": 0.7
+      },
+      "requiredSurfaceFrequencyBands": [
+        "macro",
+        "meso",
+        "micro"
+      ],
+      "roughnessVariationRequired": true
+    },
+    "qualityPriority": "balanced",
+    "screenshotReview": [
+      "Compare albedo palette and local color zones.",
+      "Compare roughness/normal/bump response under light.",
+      "Compare cavity dirt, edge wear, stains, moss, scratches, or other local masks.",
+      "Compare key/fill/rim structure, exposure, tone mapping, background, and contact shadows.",
+      "Capture a neutral-light render to verify material readability without reference lighting.",
+      "Capture a grazing-light close-up to expose flat normals, uniform roughness, tiling, and plastic highlights.",
+      "Capture a reference-matched render from the same camera framing as the source."
+    ]
+  },
+  "materials": [
+    {
+      "albedo": {
+        "dominant": "#666565",
+        "samplingNotes": "Palette sampled from the Minecraft-style reference.",
+        "secondary": [
+          "#414142",
+          "#858382"
+        ]
+      },
+      "ambientOcclusion": {
+        "cavityStrength": 0.3,
+        "contactShadowBias": 0.25
+      },
+      "baseColor": "#666565",
+      "color": "#666565",
+      "colorVariation": {
+        "amplitude": 0.12,
+        "heightCorrelation": 0.16,
+        "palette": [
+          "#666565",
+          "#414142",
+          "#858382"
+        ],
+        "pattern": "blocky mottled pixels"
+      },
+      "dirt": {
+        "amount": 0.02,
+        "cavityBias": 0.25,
+        "color": "#414142"
+      },
+      "id": "gray_hide",
+      "localOverrides": [
+        {
+          "description": "Reference-matched square-pixel color variation.",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "id": "gray_hide-pixel-variation"
+        }
+      ],
+      "metalness": {
+        "base": 0.0,
+        "variation": 0.0
+      },
+      "name": "Gray Hide",
+      "normal": {
+        "pattern": "independent-height-field",
+        "scale": 12.0,
+        "strength": 0.12
+      },
+      "roughness": {
+        "base": 0.88,
+        "map": "independent-procedural-field",
+        "variation": 0.08
+      },
+      "shaderModel": "MeshPhysicalMaterial",
+      "shaderNotes": [
+        "Keep the material matte and readable under neutral turntable lighting.",
+        "Use nearest-looking color steps rather than smooth organic noise."
+      ],
+      "surfaceFrequencyBands": [
+        {
+          "amplitude": 0.18,
+          "frequency": 2.0,
+          "id": "macro",
+          "role": "broad color zones"
+        },
+        {
+          "amplitude": 0.09,
+          "frequency": 8.0,
+          "id": "meso",
+          "role": "pixel mottling"
+        },
+        {
+          "amplitude": 0.025,
+          "frequency": 24.0,
+          "id": "micro",
+          "role": "subtle highlight breakup"
+        }
+      ],
+      "textureProjection": {
+        "anisotropy": 4,
+        "mode": "uv",
+        "repeat": [
+          3.0,
+          3.0
+        ],
+        "texelDensityIntent": "Crisp low-resolution material variation."
+      },
+      "textureResolution": 128,
+      "type": "standard",
+      "wear": {
+        "chips": [],
+        "edgeWear": 0.02,
+        "scratches": []
+      }
+    },
+    {
+      "albedo": {
+        "dominant": "#4b4a4b",
+        "samplingNotes": "Palette sampled from the Minecraft-style reference.",
+        "secondary": [
+          "#303033",
+          "#696769"
+        ]
+      },
+      "ambientOcclusion": {
+        "cavityStrength": 0.3,
+        "contactShadowBias": 0.25
+      },
+      "baseColor": "#4b4a4b",
+      "color": "#4b4a4b",
+      "colorVariation": {
+        "amplitude": 0.12,
+        "heightCorrelation": 0.16,
+        "palette": [
+          "#4b4a4b",
+          "#303033",
+          "#696769"
+        ],
+        "pattern": "blocky mottled pixels"
+      },
+      "dirt": {
+        "amount": 0.02,
+        "cavityBias": 0.25,
+        "color": "#303033"
+      },
+      "id": "dark_gray",
+      "localOverrides": [
+        {
+          "description": "Reference-matched square-pixel color variation.",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "id": "dark_gray-pixel-variation"
+        }
+      ],
+      "metalness": {
+        "base": 0.0,
+        "variation": 0.0
+      },
+      "name": "Dark Gray",
+      "normal": {
+        "pattern": "independent-height-field",
+        "scale": 12.0,
+        "strength": 0.12
+      },
+      "roughness": {
+        "base": 0.9,
+        "map": "independent-procedural-field",
+        "variation": 0.08
+      },
+      "shaderModel": "MeshPhysicalMaterial",
+      "shaderNotes": [
+        "Keep the material matte and readable under neutral turntable lighting.",
+        "Use nearest-looking color steps rather than smooth organic noise."
+      ],
+      "surfaceFrequencyBands": [
+        {
+          "amplitude": 0.18,
+          "frequency": 2.0,
+          "id": "macro",
+          "role": "broad color zones"
+        },
+        {
+          "amplitude": 0.09,
+          "frequency": 8.0,
+          "id": "meso",
+          "role": "pixel mottling"
+        },
+        {
+          "amplitude": 0.025,
+          "frequency": 24.0,
+          "id": "micro",
+          "role": "subtle highlight breakup"
+        }
+      ],
+      "textureProjection": {
+        "anisotropy": 4,
+        "mode": "uv",
+        "repeat": [
+          3.0,
+          3.0
+        ],
+        "texelDensityIntent": "Crisp low-resolution material variation."
+      },
+      "textureResolution": 128,
+      "type": "standard",
+      "wear": {
+        "chips": [],
+        "edgeWear": 0.02,
+        "scratches": []
+      }
+    },
+    {
+      "albedo": {
+        "dominant": "#8f765f",
+        "samplingNotes": "Palette sampled from the Minecraft-style reference.",
+        "secondary": [
+          "#67513f",
+          "#ad9278"
+        ]
+      },
+      "ambientOcclusion": {
+        "cavityStrength": 0.3,
+        "contactShadowBias": 0.25
+      },
+      "baseColor": "#8f765f",
+      "color": "#8f765f",
+      "colorVariation": {
+        "amplitude": 0.12,
+        "heightCorrelation": 0.16,
+        "palette": [
+          "#8f765f",
+          "#67513f",
+          "#ad9278"
+        ],
+        "pattern": "blocky mottled pixels"
+      },
+      "dirt": {
+        "amount": 0.02,
+        "cavityBias": 0.25,
+        "color": "#67513f"
+      },
+      "id": "ear_inner",
+      "localOverrides": [
+        {
+          "description": "Reference-matched square-pixel color variation.",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "id": "ear_inner-pixel-variation"
+        }
+      ],
+      "metalness": {
+        "base": 0.0,
+        "variation": 0.0
+      },
+      "name": "Ear Inner",
+      "normal": {
+        "pattern": "independent-height-field",
+        "scale": 12.0,
+        "strength": 0.12
+      },
+      "roughness": {
+        "base": 0.84,
+        "map": "independent-procedural-field",
+        "variation": 0.08
+      },
+      "shaderModel": "MeshPhysicalMaterial",
+      "shaderNotes": [
+        "Keep the material matte and readable under neutral turntable lighting.",
+        "Use nearest-looking color steps rather than smooth organic noise."
+      ],
+      "surfaceFrequencyBands": [
+        {
+          "amplitude": 0.18,
+          "frequency": 2.0,
+          "id": "macro",
+          "role": "broad color zones"
+        },
+        {
+          "amplitude": 0.09,
+          "frequency": 8.0,
+          "id": "meso",
+          "role": "pixel mottling"
+        },
+        {
+          "amplitude": 0.025,
+          "frequency": 24.0,
+          "id": "micro",
+          "role": "subtle highlight breakup"
+        }
+      ],
+      "textureProjection": {
+        "anisotropy": 4,
+        "mode": "uv",
+        "repeat": [
+          3.0,
+          3.0
+        ],
+        "texelDensityIntent": "Crisp low-resolution material variation."
+      },
+      "textureResolution": 128,
+      "type": "standard",
+      "wear": {
+        "chips": [],
+        "edgeWear": 0.02,
+        "scratches": []
+      }
+    },
+    {
+      "albedo": {
+        "dominant": "#ead4b6",
+        "samplingNotes": "Palette sampled from the Minecraft-style reference.",
+        "secondary": [
+          "#bda78c",
+          "#fff0d3"
+        ]
+      },
+      "ambientOcclusion": {
+        "cavityStrength": 0.3,
+        "contactShadowBias": 0.25
+      },
+      "baseColor": "#ead4b6",
+      "color": "#ead4b6",
+      "colorVariation": {
+        "amplitude": 0.12,
+        "heightCorrelation": 0.16,
+        "palette": [
+          "#ead4b6",
+          "#bda78c",
+          "#fff0d3"
+        ],
+        "pattern": "blocky mottled pixels"
+      },
+      "dirt": {
+        "amount": 0.02,
+        "cavityBias": 0.25,
+        "color": "#bda78c"
+      },
+      "id": "ivory",
+      "localOverrides": [
+        {
+          "description": "Reference-matched square-pixel color variation.",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "id": "ivory-pixel-variation"
+        }
+      ],
+      "metalness": {
+        "base": 0.0,
+        "variation": 0.0
+      },
+      "name": "Ivory",
+      "normal": {
+        "pattern": "independent-height-field",
+        "scale": 12.0,
+        "strength": 0.12
+      },
+      "roughness": {
+        "base": 0.62,
+        "map": "independent-procedural-field",
+        "variation": 0.08
+      },
+      "shaderModel": "MeshPhysicalMaterial",
+      "shaderNotes": [
+        "Keep the material matte and readable under neutral turntable lighting.",
+        "Use nearest-looking color steps rather than smooth organic noise."
+      ],
+      "surfaceFrequencyBands": [
+        {
+          "amplitude": 0.18,
+          "frequency": 2.0,
+          "id": "macro",
+          "role": "broad color zones"
+        },
+        {
+          "amplitude": 0.09,
+          "frequency": 8.0,
+          "id": "meso",
+          "role": "pixel mottling"
+        },
+        {
+          "amplitude": 0.025,
+          "frequency": 24.0,
+          "id": "micro",
+          "role": "subtle highlight breakup"
+        }
+      ],
+      "textureProjection": {
+        "anisotropy": 4,
+        "mode": "uv",
+        "repeat": [
+          3.0,
+          3.0
+        ],
+        "texelDensityIntent": "Crisp low-resolution material variation."
+      },
+      "textureResolution": 128,
+      "type": "standard",
+      "wear": {
+        "chips": [],
+        "edgeWear": 0.02,
+        "scratches": []
+      }
+    },
+    {
+      "albedo": {
+        "dominant": "#555455",
+        "samplingNotes": "Palette sampled from the Minecraft-style reference.",
+        "secondary": [
+          "#353538",
+          "#777577"
+        ]
+      },
+      "ambientOcclusion": {
+        "cavityStrength": 0.3,
+        "contactShadowBias": 0.25
+      },
+      "baseColor": "#555455",
+      "color": "#555455",
+      "colorVariation": {
+        "amplitude": 0.12,
+        "heightCorrelation": 0.16,
+        "palette": [
+          "#555455",
+          "#353538",
+          "#777577"
+        ],
+        "pattern": "blocky mottled pixels"
+      },
+      "dirt": {
+        "amount": 0.02,
+        "cavityBias": 0.25,
+        "color": "#353538"
+      },
+      "id": "feet_gray",
+      "localOverrides": [
+        {
+          "description": "Reference-matched square-pixel color variation.",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "id": "feet_gray-pixel-variation"
+        }
+      ],
+      "metalness": {
+        "base": 0.0,
+        "variation": 0.0
+      },
+      "name": "Feet Gray",
+      "normal": {
+        "pattern": "independent-height-field",
+        "scale": 12.0,
+        "strength": 0.12
+      },
+      "roughness": {
+        "base": 0.9,
+        "map": "independent-procedural-field",
+        "variation": 0.08
+      },
+      "shaderModel": "MeshPhysicalMaterial",
+      "shaderNotes": [
+        "Keep the material matte and readable under neutral turntable lighting.",
+        "Use nearest-looking color steps rather than smooth organic noise."
+      ],
+      "surfaceFrequencyBands": [
+        {
+          "amplitude": 0.18,
+          "frequency": 2.0,
+          "id": "macro",
+          "role": "broad color zones"
+        },
+        {
+          "amplitude": 0.09,
+          "frequency": 8.0,
+          "id": "meso",
+          "role": "pixel mottling"
+        },
+        {
+          "amplitude": 0.025,
+          "frequency": 24.0,
+          "id": "micro",
+          "role": "subtle highlight breakup"
+        }
+      ],
+      "textureProjection": {
+        "anisotropy": 4,
+        "mode": "uv",
+        "repeat": [
+          3.0,
+          3.0
+        ],
+        "texelDensityIntent": "Crisp low-resolution material variation."
+      },
+      "textureResolution": 128,
+      "type": "standard",
+      "wear": {
+        "chips": [],
+        "edgeWear": 0.02,
+        "scratches": []
+      }
+    },
+    {
+      "albedo": {
+        "dominant": "#39383a",
+        "samplingNotes": "Palette sampled from the Minecraft-style reference.",
+        "secondary": [
+          "#222225",
+          "#575659"
+        ]
+      },
+      "ambientOcclusion": {
+        "cavityStrength": 0.3,
+        "contactShadowBias": 0.25
+      },
+      "baseColor": "#39383a",
+      "color": "#39383a",
+      "colorVariation": {
+        "amplitude": 0.12,
+        "heightCorrelation": 0.16,
+        "palette": [
+          "#39383a",
+          "#222225",
+          "#575659"
+        ],
+        "pattern": "blocky mottled pixels"
+      },
+      "dirt": {
+        "amount": 0.02,
+        "cavityBias": 0.25,
+        "color": "#222225"
+      },
+      "id": "tail_dark",
+      "localOverrides": [
+        {
+          "description": "Reference-matched square-pixel color variation.",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "id": "tail_dark-pixel-variation"
+        }
+      ],
+      "metalness": {
+        "base": 0.0,
+        "variation": 0.0
+      },
+      "name": "Tail Dark",
+      "normal": {
+        "pattern": "independent-height-field",
+        "scale": 12.0,
+        "strength": 0.12
+      },
+      "roughness": {
+        "base": 0.92,
+        "map": "independent-procedural-field",
+        "variation": 0.08
+      },
+      "shaderModel": "MeshPhysicalMaterial",
+      "shaderNotes": [
+        "Keep the material matte and readable under neutral turntable lighting.",
+        "Use nearest-looking color steps rather than smooth organic noise."
+      ],
+      "surfaceFrequencyBands": [
+        {
+          "amplitude": 0.18,
+          "frequency": 2.0,
+          "id": "macro",
+          "role": "broad color zones"
+        },
+        {
+          "amplitude": 0.09,
+          "frequency": 8.0,
+          "id": "meso",
+          "role": "pixel mottling"
+        },
+        {
+          "amplitude": 0.025,
+          "frequency": 24.0,
+          "id": "micro",
+          "role": "subtle highlight breakup"
+        }
+      ],
+      "textureProjection": {
+        "anisotropy": 4,
+        "mode": "uv",
+        "repeat": [
+          3.0,
+          3.0
+        ],
+        "texelDensityIntent": "Crisp low-resolution material variation."
+      },
+      "textureResolution": 128,
+      "type": "standard",
+      "wear": {
+        "chips": [],
+        "edgeWear": 0.02,
+        "scratches": []
+      }
+    },
+    {
+      "albedo": {
+        "dominant": "#101010",
+        "samplingNotes": "Palette sampled from the Minecraft-style reference.",
+        "secondary": [
+          "#020202",
+          "#2a2928"
+        ]
+      },
+      "ambientOcclusion": {
+        "cavityStrength": 0.3,
+        "contactShadowBias": 0.25
+      },
+      "baseColor": "#101010",
+      "color": "#101010",
+      "colorVariation": {
+        "amplitude": 0.02,
+        "heightCorrelation": 0.16,
+        "palette": [
+          "#101010",
+          "#020202",
+          "#2a2928"
+        ],
+        "pattern": "blocky mottled pixels"
+      },
+      "dirt": {
+        "amount": 0.02,
+        "cavityBias": 0.25,
+        "color": "#020202"
+      },
+      "id": "eye",
+      "localOverrides": [
+        {
+          "description": "Reference-matched square-pixel color variation.",
+          "evidenceRefs": [
+            "full-object"
+          ],
+          "id": "eye-pixel-variation"
+        }
+      ],
+      "metalness": {
+        "base": 0.0,
+        "variation": 0.0
+      },
+      "name": "Eye",
+      "normal": {
+        "pattern": "independent-height-field",
+        "scale": 12.0,
+        "strength": 0.12
+      },
+      "roughness": {
+        "base": 0.28,
+        "map": "independent-procedural-field",
+        "variation": 0.08
+      },
+      "shaderModel": "MeshPhysicalMaterial",
+      "shaderNotes": [
+        "Keep the material matte and readable under neutral turntable lighting.",
+        "Use nearest-looking color steps rather than smooth organic noise."
+      ],
+      "surfaceFrequencyBands": [
+        {
+          "amplitude": 0.18,
+          "frequency": 2.0,
+          "id": "macro",
+          "role": "broad color zones"
+        },
+        {
+          "amplitude": 0.09,
+          "frequency": 8.0,
+          "id": "meso",
+          "role": "pixel mottling"
+        },
+        {
+          "amplitude": 0.025,
+          "frequency": 24.0,
+          "id": "micro",
+          "role": "subtle highlight breakup"
+        }
+      ],
+      "textureProjection": {
+        "anisotropy": 4,
+        "mode": "uv",
+        "repeat": [
+          3.0,
+          3.0
+        ],
+        "texelDensityIntent": "Crisp low-resolution material variation."
+      },
+      "textureResolution": 128,
+      "type": "standard",
+      "wear": {
+        "chips": [],
+        "edgeWear": 0.02,
+        "scratches": []
+      }
+    }
+  ],
+  "performanceBudget": {
+    "fpsTarget": 60,
+    "maxDrawCalls": 48,
+    "optimizationPolicy": "Keep all identity-defining cuboids; reduce procedural texture resolution first.",
+    "qualityPriority": "reference-fidelity",
+    "targetTriangles": 20000,
+    "textureSize": 128
+  },
+  "preSpecAssessment": {
+    "anatomy": {
+      "applies": true,
+      "confidence": 0.86,
+      "faceLandmarks": {
+        "eyeLine": 0.38,
+        "eyeSpacing": 0.95,
+        "hairline": 0.0,
+        "mouthLine": 0.72,
+        "noseBase": 0.57
+      },
+      "features": [
+        "broad ears",
+        "three-piece hanging trunk",
+        "paired tusks",
+        "pillar legs",
+        "tufted tail"
+      ],
+      "note": "Head-unit values describe the stylized animal rather than a humanoid.",
+      "pose": {
+        "jointAngles": {},
+        "type": "neutral standing quadruped"
+      },
+      "proportions": {
+        "headUnit": 8.0,
+        "hipWidth": 1.45,
+        "legs": 1.0,
+        "shoulderWidth": 1.55,
+        "torso": 1.75
+      },
+      "styleHeads": 3.0
+    },
+    "complexity": {
+      "estimatedCounts": {
+        "macroComponents": 10,
+        "materialLayers": 7,
+        "mesoComponents": 13,
+        "microFeatureGroups": 2,
+        "repetitionSystems": 1
+      },
+      "reasoning": [
+        "The reference exposes a compound cuboid creature with repeated limbs and facial details."
+      ],
+      "scores": {
+        "actionReadinessNeed": 2,
+        "componentCount": 3,
+        "hierarchyDepth": 2,
+        "localDetailDensity": 2,
+        "materialLayerCount": 2,
+        "occlusionRisk": 1,
+        "repetitionDensity": 3,
+        "silhouetteComplexity": 2
+      },
+      "tier": "complex"
+    },
+    "detailInventory": {
+      "details": [
+        {
+          "affects": "identity",
+          "confidence": 0.88,
+          "description": "Broad square ears frame the head",
+          "evidenceRef": "full-object",
+          "id": "broad-ears",
+          "kind": "contour",
+          "mapsTo": {
+            "ref": "ear_left",
+            "type": "component-or-material"
+          },
+          "region": {
+            "units": "normalized"
+          },
+          "scale": "meso"
+        },
+        {
+          "affects": "identity",
+          "confidence": 0.88,
+          "description": "Warm inset panels distinguish ear interiors",
+          "evidenceRef": "full-object",
+          "id": "warm-inner-ears",
+          "kind": "stain",
+          "mapsTo": {
+            "ref": "ear_inner_left",
+            "type": "component-or-material"
+          },
+          "region": {
+            "units": "normalized"
+          },
+          "scale": "meso"
+        },
+        {
+          "affects": "identity",
+          "confidence": 0.88,
+          "description": "Three blocks create a hanging trunk",
+          "evidenceRef": "full-object",
+          "id": "segmented-trunk",
+          "kind": "contour",
+          "mapsTo": {
+            "ref": "trunk_base",
+            "type": "component-or-material"
+          },
+          "region": {
+            "units": "normalized"
+          },
+          "scale": "meso"
+        },
+        {
+          "affects": "identity",
+          "confidence": 0.88,
+          "description": "Paired ivory tusks project forward",
+          "evidenceRef": "full-object",
+          "id": "ivory-tusks",
+          "kind": "ridge",
+          "mapsTo": {
+            "ref": "tusk_left",
+            "type": "component-or-material"
+          },
+          "region": {
+            "units": "normalized"
+          },
+          "scale": "meso"
+        },
+        {
+          "affects": "identity",
+          "confidence": 0.88,
+          "description": "Paired dark square eyes",
+          "evidenceRef": "full-object",
+          "id": "square-eyes",
+          "kind": "decal",
+          "mapsTo": {
+            "ref": "eye_left",
+            "type": "component-or-material"
+          },
+          "region": {
+            "units": "normalized"
+          },
+          "scale": "micro"
+        },
+        {
+          "affects": "identity",
+          "confidence": 0.88,
+          "description": "Four heavy vertical legs support the body",
+          "evidenceRef": "full-object",
+          "id": "pillar-legs",
+          "kind": "contour",
+          "mapsTo": {
+            "ref": "leg_front_left",
+            "type": "component-or-material"
+          },
+          "region": {
+            "units": "normalized"
+          },
+          "scale": "meso"
+        },
+        {
+          "affects": "identity",
+          "confidence": 0.88,
+          "description": "Short tail ends in a dark tuft",
+          "evidenceRef": "full-object",
+          "id": "tufted-tail",
+          "kind": "contour",
+          "mapsTo": {
+            "ref": "tail_tuft",
+            "type": "component-or-material"
+          },
+          "region": {
+            "units": "normalized"
+          },
+          "scale": "meso"
+        },
+        {
+          "affects": "identity",
+          "confidence": 0.88,
+          "description": "Blocky gray hide variation",
+          "evidenceRef": "full-object",
+          "id": "mottled-hide",
+          "kind": "stain",
+          "mapsTo": {
+            "ref": "gray_hide",
+            "type": "component-or-material"
+          },
+          "region": {
+            "units": "normalized"
+          },
+          "scale": "meso"
+        }
+      ],
+      "note": "Details were inventoried from face, torso, limbs, and tail zones.",
+      "scanMethod": "component-zones",
+      "targetMinDetails": 8
+    },
+    "objectClass": {
+      "formLanguage": [
+        "cuboid",
+        "blocky",
+        "bilateral",
+        "heavy"
+      ],
+      "materialFamilies": [
+        "mottled gray hide",
+        "warm inner ears",
+        "matte ivory"
+      ],
+      "motionPotential": [
+        "walk",
+        "trunk curl",
+        "ear flap",
+        "head pitch"
+      ],
+      "notes": "A creature represented with explicit Minecraft cuboids.",
+      "primaryDomain": "hybrid",
+      "primaryType": "stylized Minecraft elephant",
+      "structureKind": [
+        "assembled creature",
+        "articulated quadruped"
+      ]
+    },
+    "sourceImage": "../../reference.png",
+    "specDepthDecision": {
+      "minimumComponentLevels": [
+        "macro",
+        "meso",
+        "micro"
+      ],
+      "needsActionReadyHierarchy": true,
+      "needsMaterialLocalOverrides": true,
+      "needsMultipleReviewViews": true,
+      "needsRepetitionSystems": true,
+      "rationale": "Choose simple/moderate/complex/ultra-complex from observed structure, not from a hardcoded domain.",
+      "requiredDepth": "complex"
+    },
+    "unknownsToResolveBeforeImplementation": []
+  },
+  "proceduralStrategy": [
+    "Block out macro silhouette first.",
+    "Add component hierarchy and joints.",
+    "Create stable pivot groups, sockets, collider proxies, and destruction metadata before visual polish.",
+    "Refine forms with bevels, tapers, bends, and procedural noise.",
+    "Run reference PBR extraction for important source-image materials and stop when confidence is below the target threshold.",
+    "Add material variation before adding expensive micro-geometry."
+  ],
+  "qualityContract": {
+    "antiShallowSpecRules": [
+      "Do not proceed to code if qualityContract.qualityBar is unassessed.",
+      "Do not proceed to code if the spec only contains a root component for a moderate or complex object.",
+      "Do not proceed to code if required featureGroups are not represented by componentTree, materials, or repetitionSystems.",
+      "Do not proceed to code if visible local features are described only in prose and not attached to components/materials/evidenceRefs.",
+      "Do not proceed past structural-pass if attached child parts lack attachment.parentSocket, localStart, localEnd, embedDepth/overlap, and gapTolerance.",
+      "Do not pass material look-dev when albedo is reused as roughness, height, normal, or AO.",
+      "Do not pass material look-dev without macro, meso, and micro surface frequency bands for close-up materials.",
+      "Do not pass reference-fidelity material look-dev from a source image without usable referencePbr maps or an explicit documented limitation.",
+      "Do not patch a spec with extracted PBR maps when extraction confidence is below the target threshold unless the user explicitly accepts lower fidelity."
+    ],
+    "definitionOfDone": [
+      "The result preserves the heavy torso, broad ears, segmented hanging trunk, paired tusks, four pillar legs, and gray palette.",
+      "Every generated geometry node remains a BoxGeometry compatible with deterministic Blockbench conversion."
+    ],
+    "featureGroups": [
+      {
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "failureModes": [
+          "model reads as a generic placeholder instead of the reference object",
+          "major proportions are guessed without evidence"
+        ],
+        "id": "overall-silhouette",
+        "name": "Overall silhouette and proportions",
+        "qualityCriteria": [
+          "Bounding shape, dominant curves, negative spaces, and scale relationships are explicitly described."
+        ],
+        "required": true
+      },
+      {
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "failureModes": [
+          "large visible parts are merged into one mesh",
+          "component hierarchy is too shallow for the observed complexity"
+        ],
+        "id": "primary-structure",
+        "name": "Primary structure and hierarchy",
+        "qualityCriteria": [
+          "Major parts, joints, seams, contact points, and parent-child relationships are named before code generation."
+        ],
+        "required": true
+      },
+      {
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "failureModes": [
+          "child part root floats away from the parent",
+          "branch/limb/tube is centered in space instead of pivoting from its root",
+          "parent-child transform mixes world and local coordinates"
+        ],
+        "id": "attachment-joint-correctness",
+        "name": "Attachment and joint correctness",
+        "qualityCriteria": [
+          "Every visible child appendage, branch, limb, handle, connector, tube, cable, horn, wing, leg, or hinged part has an attachment contract with parent socket, localStart/localEnd, contact type, embed/overlap, and gap tolerance."
+        ],
+        "required": true
+      },
+      {
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "failureModes": [
+          "surface looks like flat plastic",
+          "local material variation is missing or not tied to image evidence"
+        ],
+        "id": "surface-material-response",
+        "name": "Surface material response",
+        "qualityCriteria": [
+          "Albedo zones, roughness, normal/bump/displacement intent, cavity dirt, edge wear, and local overrides are specified where visible.",
+          "Important materials define independent albedo, roughness, height/normal, and AO responses instead of reusing one texture for unrelated PBR channels.",
+          "Surface response is decomposed into macro, meso, and micro frequency bands with scale and amplitude tied to object scale."
+        ],
+        "required": true
+      },
+      {
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "failureModes": [
+          "model has acceptable shape but reads as flat shaded or plastic",
+          "colors are a generic average instead of reference-observed local color zones",
+          "lighting is evenly ambient and cannot reproduce the source value range"
+        ],
+        "id": "reference-lookdev",
+        "name": "Reference color, material, and lighting response",
+        "qualityCriteria": [
+          "Material-pass names the reference-derived albedo palette, roughness variation, tactile normal/bump/displacement response, and local masks.",
+          "When a source image is available, run reference PBR extraction and require confidence >= 0.7 before treating maps as implementation-ready.",
+          "Lighting-pass names key/fill/rim or environment light, exposure, tone mapping, background, and contact shadow behavior.",
+          "Neutral, grazing-angle, and reference-matched renders prove that surface relief survives relighting and is not painted into albedo."
+        ],
+        "required": true
+      }
+    ],
+    "minimumSpecDepth": {
+      "macroComponents": 9,
+      "materialLayers": 6,
+      "mesoComponents": 11,
+      "microFeatureGroups": 2,
+      "repetitionSystems": 1,
+      "reviewViewpoints": 5
+    },
+    "qualityBar": "complex",
+    "visualDeltaChecks": [
+      "silhouette and negative-space delta",
+      "component hierarchy depth delta",
+      "repetition density and distribution delta",
+      "material albedo/roughness/normal response delta",
+      "local feature placement and scale delta"
+    ]
+  },
+  "qualityTargets": {
+    "fpsTarget": 60,
+    "mustMatch": [
+      "macro silhouette and proportions",
+      "primary material albedo/roughness response",
+      "reference-derived PBR material response at or above 0.7 confidence when source pixels are usable",
+      "most recognizable local features"
+    ],
+    "niceToHave": [
+      "micro scratches, stains, chips, and dirt masks",
+      "secondary lighting match"
+    ],
+    "reviewViewpoints": [
+      "front",
+      "left",
+      "right",
+      "three-quarter",
+      "top"
+    ],
+    "targetFidelity": 0.7
+  },
+  "referenceCamera": {
+    "aspect": 1.0,
+    "fovDegrees": 40.0,
+    "note": "For likeness work, solve the reference camera (forge/stage1_intake/solve_camera_pose.py) so the review render aligns with the photo and the reference can be projected. Confirm by overlay review.",
+    "orientation": {
+      "pitch": 0.0,
+      "roll": 0.0,
+      "yaw": 0.0
+    },
+    "positionHint": [
+      0.0,
+      0.0,
+      3.0
+    ],
+    "solved": false
+  },
+  "repetitionSystems": [
+    {
+      "componentRefs": [
+        "ear_left",
+        "ear_right",
+        "ear_inner_left",
+        "ear_inner_right",
+        "eye_left",
+        "eye_right",
+        "tusk_left",
+        "tusk_right",
+        "leg_front_left",
+        "foot_front_left",
+        "leg_front_right",
+        "foot_front_right",
+        "leg_rear_left",
+        "foot_rear_left",
+        "leg_rear_right",
+        "foot_rear_right"
+      ],
+      "count": 16,
+      "id": "paired-anatomy",
+      "notes": "Mirrored anatomy follows the visible Minecraft reference.",
+      "type": "bilateral-repeat"
+    }
+  ],
+  "reviewHistory": [],
+  "risks": [
+    "A single three-quarter image leaves hidden surfaces inferred by symmetry."
+  ],
+  "schemaVersion": "2.1",
+  "scores": {
+    "depth_inference": 2,
+    "interaction_fit": 2,
+    "material_procedurality": 3,
+    "object_isolation": 3,
+    "occlusion_risk": 1,
+    "primitive_decomposition": 3,
+    "silhouette_readability": 3
+  },
+  "sculptPipeline": {
+    "blockedReason": "blockout requires a browser screenshot and self-correction review before structural-pass unlocks",
+    "completedPasses": [],
+    "currentPass": "blockout",
+    "lastCompletedPass": "",
+    "nextRequiredEvidence": [
+      "blockout browser render screenshot from your agent's browser/screenshot tool",
+      "side-by-side reference/render comparison sheet",
+      "AI vision score >= 0.7 with layer scores and mismatch critique",
+      "critical semantic feature scores from the same image pair meeting their individual thresholds",
+      "reviewHistory entry for blockout with action=continue"
+    ],
+    "passGateMode": "locked-sequential",
+    "passOrder": [
+      "blockout",
+      "structural-pass",
+      "form-refinement",
+      "material-pass",
+      "surface-pass",
+      "lighting-pass",
+      "interaction-pass",
+      "optimization-pass"
+    ]
+  },
+  "selfCorrectLoop": {
+    "allowedActions": [
+      "continue",
+      "refine-spec",
+      "refine-code",
+      "request-input",
+      "stop"
+    ],
+    "codeRefineTriggers": [
+      "spec is adequate but generated geometry/material does not match",
+      "browser render differs from reference",
+      "performance budget exceeded",
+      "lighting hides geometry or material response"
+    ],
+    "enabled": true,
+    "reviewAfterPasses": [
+      "blockout",
+      "structural-pass",
+      "form-refinement",
+      "material-pass",
+      "surface-pass",
+      "lighting-pass",
+      "interaction-pass",
+      "optimization-pass"
+    ],
+    "screenshotPolicy": {
+      "acceptanceAuthority": "AI vision review of the comparison sheet. Code-generated pixel similarity is not sufficient evidence.",
+      "fallbackCapture": "user-supplied-screenshot-path",
+      "minimumEvidence": "Each visual pass needs a reference image, rendered screenshot, side-by-side comparison sheet, AI vision score, layer scores, and critique before choosing continue.",
+      "preferredCapture": "in-app-browser-screenshot",
+      "requiredForPasses": [
+        "blockout",
+        "structural-pass",
+        "form-refinement",
+        "material-pass",
+        "surface-pass",
+        "lighting-pass",
+        "interaction-pass"
+      ],
+      "reviewPairRule": "Compare the same camera/viewpoint whenever possible; do not judge a front reference against a random render angle."
+    },
+    "specRefineTriggers": [
+      "missing component",
+      "wrong primitive family",
+      "wrong proportions",
+      "material layer under-specified",
+      "local feature not traceable to viewEvidence",
+      "reference ambiguity discovered during implementation"
+    ],
+    "stopCriteria": [
+      "target fidelity reached or user accepts current approximation",
+      "remaining gaps require new reference images or manual art"
+    ],
+    "visualAcceptance": {
+      "codePixelDiffIsAcceptanceAuthority": false,
+      "comparisonArtifactRequired": true,
+      "featureReviewPolicy": {
+        "adaptiveEscalation": true,
+        "criticalDefaultThreshold": 0.8,
+        "enabled": true,
+        "importantAverageThreshold": 0.65,
+        "maxCriticalFeaturesPerPass": 5,
+        "maxImportantFeaturesPerPass": 3,
+        "reviewUnit": "semantic-subsystem",
+        "selectionRule": "Choose only the most visually salient, identity-defining, user-prioritized, or high-risk semantic systems. Group repeated parts instead of reviewing every mesh. AI vision scores every selected feature from the same full reference/render pair.",
+        "singleImagePairOnly": true
+      },
+      "layerScoresRequired": true,
+      "requiredLayerScores": [
+        "silhouetteProportion",
+        "componentStructure",
+        "formDetail",
+        "materialSurface",
+        "lightingCamera"
+      ],
+      "reviewer": "ai-vision",
+      "scoringRule": "AI vision must inspect a side-by-side reference/render sheet and score the current pass from 0 to 1. Pixel-diff code may assist diagnostics but cannot approve a pass.",
+      "threshold": 0.7
+    }
+  },
+  "silhouette": {
+    "aspectRatios": [
+      "body length approximately 1.6x shoulder height",
+      "ear height approximately equals head height"
+    ],
+    "boundingShape": "massive high-backed quadruped with broad ears, pillar legs, and a hanging segmented trunk",
+    "dominantCurves": [
+      "level blocky back",
+      "stepped descending trunk",
+      "small hanging tail"
+    ],
+    "landmarks": [
+      "broad ears",
+      "long trunk",
+      "paired ivory tusks",
+      "square dark eyes"
+    ],
+    "negativeSpaces": [
+      "four separated pillar legs",
+      "gap between trunk and tusks"
+    ],
+    "symmetry": "bilateral"
+  },
+  "sourceImage": "../../reference.png",
+  "suitability": "pass",
+  "targetId": "minecraft-elephant-img2threejs",
+  "targetName": "Minecraft Elephant",
+  "terminologyProfile": {
+    "descriptionRule": "Use measurable 3D graphics terms. Avoid vague words unless they are paired with concrete geometry/material/shader parameters.",
+    "domain": "real-time procedural Three.js asset",
+    "geometryTerms": [
+      "silhouette",
+      "topology",
+      "primitive",
+      "bevel",
+      "chamfer",
+      "taper",
+      "bend",
+      "boolean cut",
+      "edge loop",
+      "surface normal",
+      "displacement"
+    ],
+    "lightingTerms": [
+      "key light",
+      "fill light",
+      "rim light",
+      "HDRI/environment reflection",
+      "contact shadow"
+    ],
+    "materialTerms": [
+      "albedo",
+      "baseColor",
+      "roughness",
+      "metalness",
+      "normal map",
+      "bump map",
+      "ambient occlusion",
+      "cavity dirt",
+      "edge wear",
+      "clearcoat"
+    ]
+  },
+  "viewEvidence": [
+    {
+      "confidence": 0.94,
+      "id": "full-object",
+      "imageRegion": {
+        "height": 1,
+        "units": "normalized",
+        "width": 1,
+        "x": 0,
+        "y": 0
+      },
+      "observations": [
+        "Full body, bill, four feet, and tail are unobstructed.",
+        "Minecraft cuboid construction is directly visible."
+      ],
+      "view": "three-quarter"
+    }
+  ],
+  "visualEvidence": []
+}

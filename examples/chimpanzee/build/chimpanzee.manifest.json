@@ -1,0 +1,18 @@
+{
+  "collision": {
+    "eye_height": 21.0,
+    "height": 25.5,
+    "width": 11.0
+  },
+  "converter_version": "1.0.0",
+  "files": {
+    "chimpanzee_lane2.bbmodel": "d87b8d030fa0895d38a4342272ceda537e3a9839a393c2098c1c069cdb974f79",
+    "chimpanzee_lane2.geo.json": "6c3e2aeab6c1039455c21ac735046e88d1504d5deccd84526817091f7b8b3daf",
+    "chimpanzee_lane2.png": "67b05d18122f6d4df14e071c54c6a55897851698a7cb278a79a89e75965d6bdc",
+    "model-audit.json": "4e4b91e30dc8c24182d8ebad5c4ff9bb002913c3f1ea44052e1cc36386d7004b",
+    "source-audit.json": "c85fca4a08e2c0ec7cad0d78a62c295b6bdaa05f0548273a3caf17c0b6f2b9be"
+  },
+  "source_sha256": "5f4f30207e68102ac83585eac940ff1acaf1d45c2c3d5446cabbb34a9b256d90",
+  "spec_schema_version": 1,
+  "spec_sha256": "14d7a77cae03c355ca7f4a18b42eb2a26ede26c0833191714c9dd028ff8d51e9"
+}

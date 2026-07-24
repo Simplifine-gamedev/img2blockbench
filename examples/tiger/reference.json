@@ -1,0 +1,43 @@
+{
+  "aspect_ratio": 1.5,
+  "dominant_colors": [
+    {
+      "hex": "#f0f8fe",
+      "pixels": 6070
+    },
+    {
+      "hex": "#983e00",
+      "pixels": 1900
+    },
+    {
+      "hex": "#000000",
+      "pixels": 783
+    },
+    {
+      "hex": "#5b5042",
+      "pixels": 706
+    },
+    {
+      "hex": "#a27655",
+      "pixels": 633
+    },
+    {
+      "hex": "#f2d4ab",
+      "pixels": 339
+    },
+    {
+      "hex": "#a0a0a0",
+      "pixels": 338
+    },
+    {
+      "hex": "#de721d",
+      "pixels": 111
+    }
+  ],
+  "has_alpha": false,
+  "height": 1024,
+  "mode": "RGBA",
+  "path": "examples/tiger/reference.png",
+  "sha256": "853b644227280aa46826a40cae21a36c311074f5e3bf90c91f5773d8f6205341",
+  "width": 1536
+}

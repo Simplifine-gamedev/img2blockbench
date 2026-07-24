@@ -1,0 +1,40 @@
+{
+  "path": "/private/tmp/coyote-v2-source.glb",
+  "geometry_count": 1,
+  "vertices": 3217,
+  "faces": 3828,
+  "bounds": [
+    [
+      -0.16503986716270447,
+      -0.34162771701812744,
+      -0.5004996061325073
+    ],
+    [
+      0.16510935127735138,
+      0.34173110127449036,
+      0.5002713799476624
+    ]
+  ],
+  "extents": [
+    0.33014921844005585,
+    0.6833588182926178,
+    1.0007709860801697
+  ],
+  "longest_axis": "z",
+  "geometries": [
+    {
+      "name": "geometry_0",
+      "vertices": 3217,
+      "faces": 3828,
+      "watertight": false,
+      "visual_kind": "texture",
+      "has_uv": true,
+      "texture_size": null
+    }
+  ],
+  "texture_sizes": [],
+  "warnings": [
+    "No embedded base-color texture detected.",
+    "One or more meshes are open/non-watertight; prefer surface fitting over filled voxelization."
+  ]
+}

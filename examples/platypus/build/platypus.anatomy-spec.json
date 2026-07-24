@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "id": "platypus_lane2",
+  "canonical_transform": [
+    34, 0, 0, 0,
+    0, 39, 0, 6.1,
+    0, 0, 34, 0,
+    0, 0, 0, 1
+  ],
+  "bones": [
+    {"name": "root", "parent": null, "pivot": [0, 0, 0]},
+    {"name": "body", "parent": "root", "pivot": [0, 8, 1]},
+    {"name": "head", "parent": "body", "pivot": [0, 8, -6]},
+    {"name": "bill", "parent": "head", "pivot": [0, 6, -11]},
+    {"name": "front_left_leg", "parent": "body", "pivot": [-4, 6, -4]},
+    {"name": "front_right_leg", "parent": "body", "pivot": [4, 6, -4]},
+    {"name": "back_left_leg", "parent": "body", "pivot": [-4, 6, 6]},
+    {"name": "back_right_leg", "parent": "body", "pivot": [4, 6, 6]},
+    {"name": "tail", "parent": "body", "pivot": [0, 8, 9]}
+  ],
+  "cubes": [
+    {"name": "body_main", "bone": "body", "center": [0, 8, 1], "size": [12, 8, 16], "rotation": [0, 0, 0], "origin": [0, 8, 1], "role": "body"},
+    {"name": "head_main", "bone": "head", "center": [0, 7.5, -9], "size": [10, 7, 7], "rotation": [0, 0, 0], "origin": [0, 8, -6], "role": "head"},
+    {"name": "bill_upper", "bone": "bill", "center": [0, 6.2, -14.3], "size": [11, 3, 6.5], "rotation": [-2, 0, 0], "origin": [0, 6.5, -11], "role": "bill"},
+    {"name": "bill_lower", "bone": "bill", "center": [0, 5.1, -14], "size": [10, 1.7, 5.8], "rotation": [2, 0, 0], "origin": [0, 5.8, -11], "role": "bill"},
+    {"name": "front_left_leg_block", "bone": "front_left_leg", "center": [-4, 3.8, -4], "size": [3.5, 5, 4], "rotation": [0, 0, 0], "origin": [-4, 6, -4], "role": "leg"},
+    {"name": "front_right_leg_block", "bone": "front_right_leg", "center": [4, 3.8, -4], "size": [3.5, 5, 4], "rotation": [0, 0, 0], "origin": [4, 6, -4], "role": "leg"},
+    {"name": "back_left_leg_block", "bone": "back_left_leg", "center": [-4, 3.8, 6], "size": [3.5, 5, 4], "rotation": [0, 0, 0], "origin": [-4, 6, 6], "role": "leg"},
+    {"name": "back_right_leg_block", "bone": "back_right_leg", "center": [4, 3.8, 6], "size": [3.5, 5, 4], "rotation": [0, 0, 0], "origin": [4, 6, 6], "role": "leg"},
+    {"name": "front_left_web", "bone": "front_left_leg", "center": [-4, 0.9, -5], "size": [5.2, 1.8, 5], "rotation": [0, 0, 0], "origin": [-4, 1.5, -4], "role": "webbed_foot"},
+    {"name": "front_left_toe_outer", "bone": "front_left_leg", "center": [-6, 0.8, -6.5], "size": [2, 1.5, 3.5], "rotation": [0, -20, 0], "origin": [-4, 1, -5], "role": "webbed_toe"},
+    {"name": "front_left_toe_inner", "bone": "front_left_leg", "center": [-2.4, 0.8, -6.7], "size": [2, 1.5, 3.5], "rotation": [0, 15, 0], "origin": [-4, 1, -5], "role": "webbed_toe"},
+    {"name": "front_right_web", "bone": "front_right_leg", "center": [4, 0.9, -5], "size": [5.2, 1.8, 5], "rotation": [0, 0, 0], "origin": [4, 1.5, -4], "role": "webbed_foot"},
+    {"name": "front_right_toe_outer", "bone": "front_right_leg", "center": [6, 0.8, -6.5], "size": [2, 1.5, 3.5], "rotation": [0, 20, 0], "origin": [4, 1, -5], "role": "webbed_toe"},
+    {"name": "front_right_toe_inner", "bone": "front_right_leg", "center": [2.4, 0.8, -6.7], "size": [2, 1.5, 3.5], "rotation": [0, -15, 0], "origin": [4, 1, -5], "role": "webbed_toe"},
+    {"name": "back_left_web", "bone": "back_left_leg", "center": [-4, 0.9, 5], "size": [5.2, 1.8, 5], "rotation": [0, 0, 0], "origin": [-4, 1.5, 6], "role": "webbed_foot"},
+    {"name": "back_left_toe_outer", "bone": "back_left_leg", "center": [-6, 0.8, 3.5], "size": [2, 1.5, 3.5], "rotation": [0, -20, 0], "origin": [-4, 1, 5], "role": "webbed_toe"},
+    {"name": "back_left_toe_inner", "bone": "back_left_leg", "center": [-2.4, 0.8, 3.3], "size": [2, 1.5, 3.5], "rotation": [0, 15, 0], "origin": [-4, 1, 5], "role": "webbed_toe"},
+    {"name": "back_right_web", "bone": "back_right_leg", "center": [4, 0.9, 5], "size": [5.2, 1.8, 5], "rotation": [0, 0, 0], "origin": [4, 1.5, 6], "role": "webbed_foot"},
+    {"name": "back_right_toe_outer", "bone": "back_right_leg", "center": [6, 0.8, 3.5], "size": [2, 1.5, 3.5], "rotation": [0, 20, 0], "origin": [4, 1, 5], "role": "webbed_toe"},
+    {"name": "back_right_toe_inner", "bone": "back_right_leg", "center": [2.4, 0.8, 3.3], "size": [2, 1.5, 3.5], "rotation": [0, -15, 0], "origin": [4, 1, 5], "role": "webbed_toe"},
+    {"name": "tail_base", "bone": "tail", "center": [0, 7.2, 11.5], "size": [8, 3, 7], "rotation": [-5, 0, 0], "origin": [0, 8, 9], "role": "tail"},
+    {"name": "tail_paddle", "bone": "tail", "center": [0, 6.5, 15.2], "size": [9, 2.5, 5], "rotation": [-7, 0, 0], "origin": [0, 7, 12], "role": "tail_paddle"}
+  ],
+  "texture": {
+    "density": 2,
+    "palette_size": 48,
+    "gutter": 2,
+    "bilateral_mirror_x": true,
+    "atlas_size": 256
+  },
+  "landmarks": [
+    {"name": "left_eye", "cube": "head_main", "face": "west", "center_uv": [0.72, 0.66], "size": [3, 3], "fill": [10, 10, 12], "center": [245, 245, 238]},
+    {"name": "right_eye", "cube": "head_main", "face": "east", "center_uv": [0.28, 0.66], "size": [3, 3], "fill": [10, 10, 12], "center": [245, 245, 238]},
+    {"name": "left_nostril", "cube": "bill_upper", "face": "north", "center_uv": [0.35, 0.55], "size": [2, 1], "fill": [20, 24, 30]},
+    {"name": "right_nostril", "cube": "bill_upper", "face": "north", "center_uv": [0.65, 0.55], "size": [2, 1], "fill": [20, 24, 30]}
+  ],
+  "collision": {
+    "width": 12,
+    "height": 12,
+    "eye_height": 8
+  }
+}

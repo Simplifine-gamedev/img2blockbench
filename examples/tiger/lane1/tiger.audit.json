@@ -1,0 +1,12 @@
+{
+  "bones": 17,
+  "cuboids": 20,
+  "errors": [],
+  "estimated_triangles": 240,
+  "ok": true,
+  "texture_size": [
+    256,
+    256
+  ],
+  "warnings": []
+}

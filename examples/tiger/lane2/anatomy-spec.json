@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "id": "tiger_lane2",
+  "canonical_transform": [
+    0, 0, 55, 0,
+    0, 46, 0, 11,
+    -38, 0, 0, -1,
+    0, 0, 0, 1
+  ],
+  "bones": [
+    {"name": "root", "parent": null, "pivot": [0, 0, 0]},
+    {"name": "body", "parent": "root", "pivot": [0, 12, 2]},
+    {"name": "head", "parent": "body", "pivot": [0, 15, -10]},
+    {"name": "ear_left", "parent": "head", "pivot": [-3.2, 19, -14]},
+    {"name": "ear_right", "parent": "head", "pivot": [3.2, 19, -14]},
+    {"name": "front_left_leg", "parent": "body", "pivot": [-3.8, 11, -5]},
+    {"name": "front_right_leg", "parent": "body", "pivot": [3.8, 11, -5]},
+    {"name": "back_left_leg", "parent": "body", "pivot": [-3.8, 11, 7]},
+    {"name": "back_right_leg", "parent": "body", "pivot": [3.8, 11, 7]},
+    {"name": "tail_base", "parent": "body", "pivot": [0, 14, 11]},
+    {"name": "tail_mid", "parent": "tail_base", "pivot": [0, 12, 15]},
+    {"name": "tail_lower", "parent": "tail_mid", "pivot": [0, 8, 17]},
+    {"name": "tail_tip", "parent": "tail_lower", "pivot": [0, 4, 16]}
+  ],
+  "cubes": [
+    {"name": "body_main", "bone": "body", "center": [0, 12.5, 2], "size": [12, 9, 18], "rotation": [0, 0, 0], "origin": [0, 12, 2], "role": "body"},
+    {"name": "chest", "bone": "body", "center": [0, 12, -7], "size": [11, 10, 7], "rotation": [0, 0, 0], "origin": [0, 12, -5], "role": "chest"},
+    {"name": "underbelly", "bone": "body", "center": [0, 8.5, 2], "size": [10, 3, 14], "rotation": [0, 0, 0], "origin": [0, 10, 2], "role": "underbelly"},
+    {"name": "neck", "bone": "head", "center": [0, 14, -10], "size": [9, 8, 6], "rotation": [0, 0, 0], "origin": [0, 14, -8], "role": "neck"},
+    {"name": "head_main", "bone": "head", "center": [0, 15, -14], "size": [10, 9, 8], "rotation": [0, 0, 0], "origin": [0, 15, -10], "role": "head"},
+    {"name": "muzzle_upper", "bone": "head", "center": [0, 12.7, -18.5], "size": [7, 4.5, 4], "rotation": [0, 0, 0], "origin": [0, 14, -16], "role": "muzzle"},
+    {"name": "jaw", "bone": "head", "center": [0, 10.8, -18], "size": [6.5, 3, 4.5], "rotation": [2, 0, 0], "origin": [0, 12, -16], "role": "jaw"},
+    {"name": "left_cheek", "bone": "head", "center": [-3.7, 12.5, -16.5], "size": [3.5, 4.5, 3], "rotation": [0, -4, -3], "origin": [-3, 14, -15], "role": "cheek"},
+    {"name": "right_cheek", "bone": "head", "center": [3.7, 12.5, -16.5], "size": [3.5, 4.5, 3], "rotation": [0, 4, 3], "origin": [3, 14, -15], "role": "cheek"},
+    {"name": "left_ear", "bone": "ear_left", "center": [-3.4, 20, -14], "size": [3.2, 4, 2.5], "rotation": [0, -5, -4], "origin": [-3.2, 19, -14], "role": "ear"},
+    {"name": "right_ear", "bone": "ear_right", "center": [3.4, 20, -14], "size": [3.2, 4, 2.5], "rotation": [0, 5, 4], "origin": [3.2, 19, -14], "role": "ear"},
+    {"name": "front_left_leg_block", "bone": "front_left_leg", "center": [-3.8, 6, -5], "size": [4, 10, 5], "rotation": [0, 0, 0], "origin": [-3.8, 11, -5], "role": "leg"},
+    {"name": "front_left_paw", "bone": "front_left_leg", "center": [-3.8, 1.4, -5.8], "size": [5, 2.8, 6.5], "rotation": [0, 0, 0], "origin": [-3.8, 2.5, -5], "role": "paw"},
+    {"name": "front_right_leg_block", "bone": "front_right_leg", "center": [3.8, 6, -5], "size": [4, 10, 5], "rotation": [0, 0, 0], "origin": [3.8, 11, -5], "role": "leg"},
+    {"name": "front_right_paw", "bone": "front_right_leg", "center": [3.8, 1.4, -5.8], "size": [5, 2.8, 6.5], "rotation": [0, 0, 0], "origin": [3.8, 2.5, -5], "role": "paw"},
+    {"name": "back_left_leg_block", "bone": "back_left_leg", "center": [-3.8, 6, 7], "size": [4, 10, 5], "rotation": [0, 0, 0], "origin": [-3.8, 11, 7], "role": "leg"},
+    {"name": "back_left_paw", "bone": "back_left_leg", "center": [-3.8, 1.4, 6.2], "size": [5, 2.8, 6.5], "rotation": [0, 0, 0], "origin": [-3.8, 2.5, 7], "role": "paw"},
+    {"name": "back_right_leg_block", "bone": "back_right_leg", "center": [3.8, 6, 7], "size": [4, 10, 5], "rotation": [0, 0, 0], "origin": [3.8, 11, 7], "role": "leg"},
+    {"name": "back_right_paw", "bone": "back_right_leg", "center": [3.8, 1.4, 6.2], "size": [5, 2.8, 6.5], "rotation": [0, 0, 0], "origin": [3.8, 2.5, 7], "role": "paw"},
+    {"name": "tail_base_block", "bone": "tail_base", "center": [0, 13, 13], "size": [2.8, 3, 6], "rotation": [-18, 0, 0], "origin": [0, 14, 11], "role": "tail"},
+    {"name": "tail_mid_block", "bone": "tail_mid", "center": [0, 10.5, 16], "size": [2.5, 6, 3], "rotation": [-28, 0, 0], "origin": [0, 12, 15], "role": "tail"},
+    {"name": "tail_lower_block", "bone": "tail_lower", "center": [0, 6.5, 17], "size": [2.3, 5, 2.8], "rotation": [8, 0, 0], "origin": [0, 8.5, 17], "role": "tail"},
+    {"name": "tail_tip_block", "bone": "tail_tip", "center": [0, 3.8, 15.5], "size": [2.8, 3, 4], "rotation": [35, 0, 0], "origin": [0, 5, 17], "role": "tail_tip"}
+  ],
+  "texture": {
+    "density": 2,
+    "palette_size": 64,
+    "gutter": 2,
+    "bilateral_mirror_x": true,
+    "atlas_size": 256
+  },
+  "landmarks": [
+    {"name": "left_eye", "cube": "head_main", "face": "north", "center_uv": [0.27, 0.64], "size": [3, 3], "fill": [12, 10, 8], "center": [220, 142, 18]},
+    {"name": "right_eye", "cube": "head_main", "face": "north", "center_uv": [0.73, 0.64], "size": [3, 3], "fill": [12, 10, 8], "center": [220, 142, 18]},
+    {"name": "nose", "cube": "muzzle_upper", "face": "north", "center_uv": [0.5, 0.46], "size": [3, 2], "fill": [35, 20, 20]}
+  ],
+  "collision": {
+    "width": 12,
+    "height": 22,
+    "eye_height": 15
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "artifacts": [
+    {
+      "bytes": 351645,
+      "path": "tiger-lane3.model-spec.json",
+      "sha256": "205c138c51eba3e45db9f1380be8c07afc39c12ab14c9d7ea068cb83927385aa"
+    },
+    {
+      "bytes": 7240,
+      "path": "tiger-lane3.png",
+      "sha256": "b57aeeb6e6436101b563de4d62cb2278358ab38d3e1c9fa4b07263cf54558f62"
+    },
+    {
+      "bytes": 60176,
+      "path": "tiger-lane3.bbmodel",
+      "sha256": "b7e9781bccefed5a6657707e0bb10e9344e204f2c7ac15dd736525beccd0f3bf"
+    },
+    {
+      "bytes": 55005,
+      "path": "tiger-lane3.geo.json",
+      "sha256": "e85d8e7bec40e4dfe989497341fefe17e7156f3e4c59d401b3ef7a91cefb0e2f"
+    },
+    {
+      "bytes": 155,
+      "path": "tiger-lane3.audit.json",
+      "sha256": "441b24d9bf14e1763dd5bdc3dda5979fd35144ce390464383ad4cd27b879bed9"
+    },
+    {
+      "bytes": 1488652,
+      "path": "tiger-lane3.reference.png",
+      "sha256": "853b644227280aa46826a40cae21a36c311074f5e3bf90c91f5773d8f6205341"
+    }
+  ],
+  "collision": {
+    "eye_height": 0.697,
+    "height": 0.894,
+    "width": 0.594
+  },
+  "generator": {
+    "lane": "threejs",
+    "name": "img2blockbench",
+    "version": "0.1.0"
+  },
+  "model_id": "tiger-lane3",
+  "reference": {
+    "height": 1024,
+    "image": "tiger-lane3.reference.png",
+    "sha256": "853b644227280aa46826a40cae21a36c311074f5e3bf90c91f5773d8f6205341",
+    "width": 1536
+  },
+  "schema_version": 1
+}

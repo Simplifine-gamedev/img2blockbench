@@ -1,0 +1,52 @@
+{
+  "artifacts": [
+    {
+      "bytes": 278153,
+      "path": "platypus-lane3.model-spec.json",
+      "sha256": "7ae19a8b45ff424354985d2bddae04240fb639a4399118da8b793615fd1baa69"
+    },
+    {
+      "bytes": 8202,
+      "path": "platypus-lane3.png",
+      "sha256": "340ff530ba3b3765b0a2b721983b6ab0afcc9a59d9e53f3cd6401925441f447b"
+    },
+    {
+      "bytes": 77116,
+      "path": "platypus-lane3.bbmodel",
+      "sha256": "5de2fe488fcfed2b2b2d6ca70c8282ea9198fa7566bec3f62182b9c1375a639e"
+    },
+    {
+      "bytes": 71967,
+      "path": "platypus-lane3.geo.json",
+      "sha256": "8ab540b12f563be8054cdb3391df6d98943cc07c6f63e0a2d50c963f4cf36446"
+    },
+    {
+      "bytes": 155,
+      "path": "platypus-lane3.audit.json",
+      "sha256": "15d975e1d35d5e4bae75eb1e21509a1a8c632930cd3066a37c91ce3d086f8793"
+    },
+    {
+      "bytes": 1391869,
+      "path": "platypus-lane3.reference.png",
+      "sha256": "31d3cbaf477bb1d5dcb36321c09fcf7fdcf781a732bffd64bab52050ca6e8bd1"
+    }
+  ],
+  "collision": {
+    "eye_height": 0.57,
+    "height": 0.731,
+    "width": 0.725
+  },
+  "generator": {
+    "lane": "threejs",
+    "name": "img2blockbench",
+    "version": "0.1.0"
+  },
+  "model_id": "platypus-lane3",
+  "reference": {
+    "height": 1024,
+    "image": "platypus-lane3.reference.png",
+    "sha256": "31d3cbaf477bb1d5dcb36321c09fcf7fdcf781a732bffd64bab52050ca6e8bd1",
+    "width": 1536
+  },
+  "schema_version": 1
+}

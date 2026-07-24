@@ -1,0 +1,9 @@
+{
+  "pipeline": "image -> Trellis GLB -> anatomy reasoning -> production finalize_model -> Blockbench",
+  "generation_id": "img2blockbench-tiger-lane2-20260723-v1",
+  "job_id": "fd33dc4f-46cc-470a-9ade-8dbad31ef36f",
+  "visual_qa_approved": true,
+  "cuboids": 23,
+  "groups": 13,
+  "texture_size": 256
+}

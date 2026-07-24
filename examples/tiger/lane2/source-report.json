@@ -1,0 +1,40 @@
+{
+  "path": "/private/tmp/tiger-source.glb",
+  "geometry_count": 1,
+  "vertices": 4205,
+  "faces": 5078,
+  "bounds": [
+    [
+      -0.5009090900421143,
+      -0.23695135116577148,
+      -0.13598699867725372
+    ],
+    [
+      0.5003343820571899,
+      0.23905214667320251,
+      0.13389870524406433
+    ]
+  ],
+  "extents": [
+    1.0012434720993042,
+    0.476003497838974,
+    0.26988570392131805
+  ],
+  "longest_axis": "x",
+  "geometries": [
+    {
+      "name": "geometry_0",
+      "vertices": 4205,
+      "faces": 5078,
+      "watertight": false,
+      "visual_kind": "texture",
+      "has_uv": true,
+      "texture_size": null
+    }
+  ],
+  "texture_sizes": [],
+  "warnings": [
+    "No embedded base-color texture detected.",
+    "One or more meshes are open/non-watertight; prefer surface fitting over filled voxelization."
+  ]
+}

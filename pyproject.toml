@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "img2blockbench"
+version = "0.1.0"
+description = "Turn a Minecraft-style image into a native Blockbench model through agent reasoning."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "img2blockbench contributors" }]
+dependencies = ["Pillow>=10,<13"]
+keywords = ["blockbench", "minecraft", "image-to-3d", "ai-agent", "pixel-art"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Multimedia :: Graphics :: 3D Modeling",
+]
+
+[project.optional-dependencies]
+overlap-audit = ["numpy>=1.26,<3", "trimesh>=4.10,<5"]
+
+[project.scripts]
+img2blockbench = "img2blockbench:main"
+img2blockbench-overlap = "audit_source_overlap:main"
+
+[tool.setuptools]
+py-modules = ["img2blockbench", "audit_source_overlap"]
+package-dir = { "" = "skill/img2blockbench/scripts" }

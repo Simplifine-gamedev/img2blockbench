@@ -1,0 +1,411 @@
+{
+  "schema_version": 1,
+  "id": "chimpanzee",
+  "reference": {
+    "image": "reference.png",
+    "sha256": "b7222c453e41eca310ea7f4b4ebea723af5e2b9aba40a0a60508b058713e1047",
+    "width": 1536,
+    "height": 1024
+  },
+  "subject": {
+    "type": "mob",
+    "description": "A Minecraft-style chimpanzee in a neutral knuckle-walking stance with very long arms, compact legs, tan face and hands, and no tail",
+    "symmetry": "bilateral",
+    "uncertainties": [
+      "The rear hand and far ear are inferred by bilateral symmetry",
+      "The back of the head is only partially visible"
+    ]
+  },
+  "quality_contract": {
+    "complexity": "moderate",
+    "target_cuboids": [15, 35],
+    "identity_features": [
+      "long arms reaching the ground",
+      "compact bent hind legs",
+      "tan brow face and projecting muzzle",
+      "large square ears",
+      "no tail"
+    ],
+    "required_views": ["front", "back", "left", "right", "isometric"],
+    "review_targets": ["silhouette", "face", "joints", "texture"]
+  },
+  "texture": {
+    "density": 2,
+    "palette_size": 24,
+    "gutter": 2,
+    "atlas_size": 128
+  },
+  "materials": {
+    "black_fur": {
+      "base": "#242322",
+      "shade": "#090909",
+      "highlight": "#444342",
+      "pattern": "dither",
+      "pattern_scale": 4
+    },
+    "dark_fur": {
+      "base": "#363431",
+      "shade": "#181716",
+      "highlight": "#5b5752",
+      "pattern": "gradient",
+      "pattern_scale": 5
+    },
+    "face_tan": {
+      "base": "#a97751",
+      "shade": "#744a31",
+      "highlight": "#ce9f79",
+      "pattern": "dither",
+      "pattern_scale": 4
+    },
+    "muzzle_tan": {
+      "base": "#bd8963",
+      "shade": "#81583e",
+      "highlight": "#ddb08a",
+      "pattern": "gradient",
+      "pattern_scale": 4
+    },
+    "palm_tan": {
+      "base": "#9e6e4c",
+      "shade": "#68442f",
+      "highlight": "#cb9a72",
+      "pattern": "dither",
+      "pattern_scale": 3
+    }
+  },
+  "bones": [
+    {"name": "root", "parent": null, "pivot": [0, 0, 0]},
+    {"name": "pelvis", "parent": "root", "pivot": [0, 7, -2]},
+    {"name": "body", "parent": "pelvis", "pivot": [0, 9, 0]},
+    {"name": "chest", "parent": "body", "pivot": [0, 11, 1]},
+    {"name": "neck", "parent": "chest", "pivot": [0, 13, 2]},
+    {"name": "head", "parent": "neck", "pivot": [0, 14, 3]},
+    {"name": "left_ear", "parent": "head", "pivot": [3.2, 14.5, 3]},
+    {"name": "right_ear", "parent": "head", "pivot": [-3.2, 14.5, 3]},
+    {"name": "left_upper_arm", "parent": "chest", "pivot": [4.2, 11.5, 1.5]},
+    {"name": "left_forearm", "parent": "left_upper_arm", "pivot": [4.8, 7, 2.8]},
+    {"name": "left_hand", "parent": "left_forearm", "pivot": [5, 2.3, 4]},
+    {"name": "right_upper_arm", "parent": "chest", "pivot": [-4.2, 11.5, 1.5]},
+    {"name": "right_forearm", "parent": "right_upper_arm", "pivot": [-4.8, 7, 2.8]},
+    {"name": "right_hand", "parent": "right_forearm", "pivot": [-5, 2.3, 4]},
+    {"name": "left_thigh", "parent": "pelvis", "pivot": [2.5, 7, -2]},
+    {"name": "left_shin", "parent": "left_thigh", "pivot": [2.5, 4, -1.2]},
+    {"name": "left_foot", "parent": "left_shin", "pivot": [2.5, 1.4, 0]},
+    {"name": "right_thigh", "parent": "pelvis", "pivot": [-2.5, 7, -2]},
+    {"name": "right_shin", "parent": "right_thigh", "pivot": [-2.5, 4, -1.2]},
+    {"name": "right_foot", "parent": "right_shin", "pivot": [-2.5, 1.4, 0]}
+  ],
+  "cubes": [
+    {
+      "name": "pelvis",
+      "bone": "pelvis",
+      "center": [0, 7.7, -1.8],
+      "size": [6.5, 5, 5],
+      "rotation": [-8, 0, 0],
+      "origin": [0, 7, -2],
+      "role": "compact rear pelvis",
+      "material": "black_fur",
+      "faces": {}
+    },
+    {
+      "name": "lower_torso",
+      "bone": "body",
+      "center": [0, 9, 0],
+      "size": [7, 5, 5.5],
+      "rotation": [-10, 0, 0],
+      "origin": [0, 9, 0],
+      "role": "compact lower torso",
+      "material": "black_fur",
+      "faces": {}
+    },
+    {
+      "name": "chest",
+      "bone": "chest",
+      "center": [0, 11.2, 1.3],
+      "size": [9, 6, 6],
+      "rotation": [-13, 0, 0],
+      "origin": [0, 11, 1],
+      "role": "broad chimpanzee chest",
+      "material": "dark_fur",
+      "faces": {}
+    },
+    {
+      "name": "neck",
+      "bone": "neck",
+      "center": [0, 13, 2.3],
+      "size": [5, 4, 3.5],
+      "rotation": [-5, 0, 0],
+      "origin": [0, 13, 2],
+      "role": "short thick neck",
+      "material": "black_fur",
+      "faces": {}
+    },
+    {
+      "name": "head",
+      "bone": "head",
+      "center": [0, 14.6, 3.6],
+      "size": [7, 7, 6],
+      "rotation": [0, 0, 0],
+      "origin": [0, 14, 3],
+      "role": "large rounded-square head",
+      "material": "black_fur",
+      "faces": {}
+    },
+    {
+      "name": "face_plate",
+      "bone": "head",
+      "center": [0, 14.2, 6.3],
+      "size": [6, 5.5, 1],
+      "rotation": [0, 0, 0],
+      "origin": [0, 14, 3],
+      "role": "tan brow and face mask",
+      "material": "face_tan",
+      "faces": {}
+    },
+    {
+      "name": "muzzle",
+      "bone": "head",
+      "center": [0, 12.9, 7.4],
+      "size": [4.8, 3.4, 3],
+      "rotation": [0, 0, 0],
+      "origin": [0, 14, 3],
+      "role": "projecting chimpanzee muzzle",
+      "material": "muzzle_tan",
+      "faces": {}
+    },
+    {
+      "name": "lower_muzzle",
+      "bone": "head",
+      "center": [0, 11.9, 7.2],
+      "size": [4.6, 1.4, 2.7],
+      "rotation": [0, 0, 0],
+      "origin": [0, 14, 3],
+      "role": "lower lip and chin",
+      "material": "muzzle_tan",
+      "faces": {}
+    },
+    {
+      "name": "left_ear",
+      "bone": "left_ear",
+      "center": [3.7, 14.5, 3.8],
+      "size": [1.4, 4.2, 3.6],
+      "rotation": [0, 0, 0],
+      "origin": [3.2, 14.5, 3],
+      "role": "large left ear",
+      "material": "face_tan",
+      "faces": {}
+    },
+    {
+      "name": "right_ear",
+      "bone": "right_ear",
+      "center": [-3.7, 14.5, 3.8],
+      "size": [1.4, 4.2, 3.6],
+      "rotation": [0, 0, 0],
+      "origin": [-3.2, 14.5, 3],
+      "role": "large right ear",
+      "material": "face_tan",
+      "faces": {}
+    },
+    {
+      "name": "left_upper_arm",
+      "bone": "left_upper_arm",
+      "center": [4.5, 9.2, 2.1],
+      "size": [3, 6.2, 3.4],
+      "rotation": [-7, 0, 7],
+      "origin": [4.2, 11.5, 1.5],
+      "role": "long left upper arm",
+      "material": "black_fur",
+      "faces": {}
+    },
+    {
+      "name": "left_forearm",
+      "bone": "left_forearm",
+      "center": [4.9, 5, 3.4],
+      "size": [2.8, 6.2, 3],
+      "rotation": [-9, 0, 3],
+      "origin": [4.8, 7, 2.8],
+      "role": "very long left forearm",
+      "material": "black_fur",
+      "faces": {}
+    },
+    {
+      "name": "left_hand",
+      "bone": "left_hand",
+      "center": [5, 1.2, 4.8],
+      "size": [3.8, 2.2, 4.2],
+      "rotation": [0, 0, 0],
+      "origin": [5, 2.3, 4],
+      "role": "broad left knuckle hand",
+      "material": "palm_tan",
+      "faces": {}
+    },
+    {
+      "name": "right_upper_arm",
+      "bone": "right_upper_arm",
+      "center": [-4.5, 9.2, 2.1],
+      "size": [3, 6.2, 3.4],
+      "rotation": [-7, 0, -7],
+      "origin": [-4.2, 11.5, 1.5],
+      "role": "long right upper arm",
+      "material": "black_fur",
+      "faces": {}
+    },
+    {
+      "name": "right_forearm",
+      "bone": "right_forearm",
+      "center": [-4.9, 5, 3.4],
+      "size": [2.8, 6.2, 3],
+      "rotation": [-9, 0, -3],
+      "origin": [-4.8, 7, 2.8],
+      "role": "very long right forearm",
+      "material": "black_fur",
+      "faces": {}
+    },
+    {
+      "name": "right_hand",
+      "bone": "right_hand",
+      "center": [-5, 1.2, 4.8],
+      "size": [3.8, 2.2, 4.2],
+      "rotation": [0, 0, 0],
+      "origin": [-5, 2.3, 4],
+      "role": "broad right knuckle hand",
+      "material": "palm_tan",
+      "faces": {}
+    },
+    {
+      "name": "left_thigh",
+      "bone": "left_thigh",
+      "center": [2.5, 5.6, -1.5],
+      "size": [3.2, 4.5, 3.8],
+      "rotation": [12, 0, 0],
+      "origin": [2.5, 7, -2],
+      "role": "compact bent left thigh",
+      "material": "black_fur",
+      "faces": {}
+    },
+    {
+      "name": "left_shin",
+      "bone": "left_shin",
+      "center": [2.5, 3, -0.3],
+      "size": [2.8, 3.8, 3],
+      "rotation": [-15, 0, 0],
+      "origin": [2.5, 4, -1.2],
+      "role": "short left lower leg",
+      "material": "black_fur",
+      "faces": {}
+    },
+    {
+      "name": "left_foot",
+      "bone": "left_foot",
+      "center": [2.5, 0.8, 1.2],
+      "size": [3.8, 1.6, 4.8],
+      "rotation": [0, 0, 0],
+      "origin": [2.5, 1.4, 0],
+      "role": "forward left chimpanzee foot",
+      "material": "palm_tan",
+      "faces": {}
+    },
+    {
+      "name": "right_thigh",
+      "bone": "right_thigh",
+      "center": [-2.5, 5.6, -1.5],
+      "size": [3.2, 4.5, 3.8],
+      "rotation": [12, 0, 0],
+      "origin": [-2.5, 7, -2],
+      "role": "compact bent right thigh",
+      "material": "black_fur",
+      "faces": {}
+    },
+    {
+      "name": "right_shin",
+      "bone": "right_shin",
+      "center": [-2.5, 3, -0.3],
+      "size": [2.8, 3.8, 3],
+      "rotation": [-15, 0, 0],
+      "origin": [-2.5, 4, -1.2],
+      "role": "short right lower leg",
+      "material": "black_fur",
+      "faces": {}
+    },
+    {
+      "name": "right_foot",
+      "bone": "right_foot",
+      "center": [-2.5, 0.8, 1.2],
+      "size": [3.8, 1.6, 4.8],
+      "rotation": [0, 0, 0],
+      "origin": [-2.5, 1.4, 0],
+      "role": "forward right chimpanzee foot",
+      "material": "palm_tan",
+      "faces": {}
+    }
+  ],
+  "landmarks": [
+    {
+      "name": "left_eye",
+      "cube": "face_plate",
+      "face": "south",
+      "center_uv": [0.32, 0.34],
+      "size": [2, 2],
+      "color": "#080808",
+      "center_color": "#f5f3ea"
+    },
+    {
+      "name": "right_eye",
+      "cube": "face_plate",
+      "face": "south",
+      "center_uv": [0.68, 0.34],
+      "size": [2, 2],
+      "color": "#080808",
+      "center_color": "#f5f3ea"
+    },
+    {
+      "name": "left_eye_side",
+      "cube": "head",
+      "face": "east",
+      "center_uv": [0.78, 0.4],
+      "size": [2, 2],
+      "color": "#080808",
+      "center_color": "#f5f3ea"
+    },
+    {
+      "name": "right_eye_side",
+      "cube": "head",
+      "face": "west",
+      "center_uv": [0.78, 0.4],
+      "size": [2, 2],
+      "color": "#080808",
+      "center_color": "#f5f3ea"
+    },
+    {
+      "name": "left_nostril",
+      "cube": "muzzle",
+      "face": "south",
+      "center_uv": [0.38, 0.4],
+      "size": [1, 1],
+      "color": "#24150f",
+      "center_color": "#24150f"
+    },
+    {
+      "name": "right_nostril",
+      "cube": "muzzle",
+      "face": "south",
+      "center_uv": [0.62, 0.4],
+      "size": [1, 1],
+      "color": "#24150f",
+      "center_color": "#24150f"
+    },
+    {
+      "name": "mouth_line",
+      "cube": "lower_muzzle",
+      "face": "south",
+      "center_uv": [0.5, 0.42],
+      "size": [5, 1],
+      "color": "#3b2017",
+      "center_color": "#3b2017"
+    }
+  ],
+  "collision": {
+    "width": 0.95,
+    "height": 1.9,
+    "eye_height": 1.55
+  }
+}

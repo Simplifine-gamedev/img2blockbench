@@ -1,0 +1,43 @@
+{
+  "aspect_ratio": 1.5,
+  "dominant_colors": [
+    {
+      "hex": "#fbf6f1",
+      "pixels": 4878
+    },
+    {
+      "hex": "#414041",
+      "pixels": 2559
+    },
+    {
+      "hex": "#626162",
+      "pixels": 1864
+    },
+    {
+      "hex": "#eed6b8",
+      "pixels": 1004
+    },
+    {
+      "hex": "#957d61",
+      "pixels": 209
+    },
+    {
+      "hex": "#bbb7b4",
+      "pixels": 158
+    },
+    {
+      "hex": "#9b9792",
+      "pixels": 132
+    },
+    {
+      "hex": "#010203",
+      "pixels": 76
+    }
+  ],
+  "has_alpha": false,
+  "height": 1024,
+  "mode": "RGBA",
+  "path": "examples/elephant/reference.png",
+  "sha256": "585e2ba91e87b7035ee2d69ed95edd463da5a8f9478c3155ec1773f9ccc60ad7",
+  "width": 1536
+}

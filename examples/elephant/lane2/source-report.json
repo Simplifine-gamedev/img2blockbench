@@ -1,0 +1,40 @@
+{
+  "path": "examples/elephant/lane2/source.glb",
+  "geometry_count": 1,
+  "vertices": 6052,
+  "faces": 8736,
+  "bounds": [
+    [
+      -0.338479608297348,
+      -0.32065945863723755,
+      -0.5004056096076965
+    ],
+    [
+      0.3334554433822632,
+      0.32810208201408386,
+      0.49884629249572754
+    ]
+  ],
+  "extents": [
+    0.6719350516796112,
+    0.6487615406513214,
+    0.9992519021034241
+  ],
+  "longest_axis": "z",
+  "geometries": [
+    {
+      "name": "geometry_0",
+      "vertices": 6052,
+      "faces": 8736,
+      "watertight": false,
+      "visual_kind": "texture",
+      "has_uv": true,
+      "texture_size": null
+    }
+  ],
+  "texture_sizes": [],
+  "warnings": [
+    "No embedded base-color texture detected.",
+    "One or more meshes are open/non-watertight; prefer surface fitting over filled voxelization."
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "pipeline": "image -> Trellis GLB -> anatomy reasoning -> production finalize_model -> Blockbench",
+  "generation_id": "img2blockbench-coyote-lane2-20260723-v2",
+  "job_id": "6d11c9c4-a3ae-4c92-877e-aa7fc0f2bfee",
+  "visual_qa_approved": true,
+  "cuboids": 23,
+  "groups": 13,
+  "texture_size": 256
+}

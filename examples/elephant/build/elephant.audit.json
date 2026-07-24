@@ -1,0 +1,15 @@
+{
+  "animations": 0,
+  "cuboids": 24,
+  "errors": [],
+  "estimated_triangles": 288,
+  "groups": 18,
+  "ok": true,
+  "texture_size": [
+    256,
+    256
+  ],
+  "uv_density": 2.0,
+  "uv_density_outliers": [],
+  "warnings": []
+}

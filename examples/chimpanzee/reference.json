@@ -1,0 +1,43 @@
+{
+  "aspect_ratio": 1.5,
+  "dominant_colors": [
+    {
+      "hex": "#f6f6f6",
+      "pixels": 7321
+    },
+    {
+      "hex": "#000000",
+      "pixels": 1533
+    },
+    {
+      "hex": "#444342",
+      "pixels": 1199
+    },
+    {
+      "hex": "#a97751",
+      "pixels": 348
+    },
+    {
+      "hex": "#b4b4b4",
+      "pixels": 153
+    },
+    {
+      "hex": "#6b6866",
+      "pixels": 145
+    },
+    {
+      "hex": "#ce9f79",
+      "pixels": 107
+    },
+    {
+      "hex": "#8e8d8d",
+      "pixels": 74
+    }
+  ],
+  "has_alpha": false,
+  "height": 1024,
+  "mode": "RGBA",
+  "path": "examples/chimpanzee/reference.png",
+  "sha256": "b7222c453e41eca310ea7f4b4ebea723af5e2b9aba40a0a60508b058713e1047",
+  "width": 1536
+}

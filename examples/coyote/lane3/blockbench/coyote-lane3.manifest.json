@@ -1,0 +1,52 @@
+{
+  "artifacts": [
+    {
+      "bytes": 373128,
+      "path": "coyote-lane3.model-spec.json",
+      "sha256": "a752b81d589ab126d6ac831e9d6915b45c67fa18ecd342ec25d910d32a221401"
+    },
+    {
+      "bytes": 6092,
+      "path": "coyote-lane3.png",
+      "sha256": "d89c7a5f9b051b139f91a50c5fec5d857da9289701a543813dfd7076231273e3"
+    },
+    {
+      "bytes": 54812,
+      "path": "coyote-lane3.bbmodel",
+      "sha256": "c846de6059f3b9b36ceda26df256e15a5e3822b63299e2b8d8c7533c57d7d9ae"
+    },
+    {
+      "bytes": 50774,
+      "path": "coyote-lane3.geo.json",
+      "sha256": "b3571712059da5b80222c64274929ae9124bbbd34ade90d961d099e67be03060"
+    },
+    {
+      "bytes": 155,
+      "path": "coyote-lane3.audit.json",
+      "sha256": "79f6c90bc77d8c6cd76c1e491c140b53ae1721ea5c59930c9a9eb601bf2cf7cc"
+    },
+    {
+      "bytes": 1327422,
+      "path": "coyote-lane3.reference.png",
+      "sha256": "de7020c7b91bdb824b76b65c4f04dd72e927d48735597a27a254f7a12b41e520"
+    }
+  ],
+  "collision": {
+    "eye_height": 0.817,
+    "height": 1.047,
+    "width": 0.469
+  },
+  "generator": {
+    "lane": "threejs",
+    "name": "img2blockbench",
+    "version": "0.1.0"
+  },
+  "model_id": "coyote-lane3",
+  "reference": {
+    "height": 1024,
+    "image": "coyote-lane3.reference.png",
+    "sha256": "de7020c7b91bdb824b76b65c4f04dd72e927d48735597a27a254f7a12b41e520",
+    "width": 1536
+  },
+  "schema_version": 1
+}

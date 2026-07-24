@@ -1,0 +1,4 @@
+interface:
+  display_name: "img2blockbench"
+  short_description: "Turn Minecraft-style images into Blockbench mobs"
+  default_prompt: "Use $img2blockbench to reconstruct this Minecraft-style image as a native Blockbench model."

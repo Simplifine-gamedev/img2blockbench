@@ -1,0 +1,19 @@
+Create a clean full-body concept image of one red fox designed explicitly as a
+Minecraft mob, matching the visual language of a polished custom Blockbench
+creature.
+
+Use a plain warm light-gray studio background and one compact quadruped fox
+with a rust-orange body, cream blocky cheeks, cream chest and tail tip, dark
+brown lower legs, large pointed ears, amber square-pixel eyes, and a thick
+segmented tail.
+
+Render authentic Minecraft-style blocky 3D anatomy from a restrained set of
+cuboids and angled rectangular segments. Use crisp low-resolution square-pixel
+materials, a strong silhouette, a centered full-body neutral three-quarter
+modeling pose, separated visible legs, an unobstructed tail, weak perspective,
+and even studio lighting.
+
+The creature itself must look Minecraft-native before conversion. No smooth
+fur, rounded organic surfaces, high-poly sculpting, realistic hair, voxel soup,
+tiny cubes, accessories, scenery, text, logo, watermark, extra animals, or
+cropped body parts.

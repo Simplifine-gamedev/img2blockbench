@@ -1,0 +1,40 @@
+{
+  "path": "examples/platypus/lane2/source.glb",
+  "geometry_count": 1,
+  "vertices": 3818,
+  "faces": 5158,
+  "bounds": [
+    [
+      -0.22010593116283417,
+      -0.1556842029094696,
+      -0.5000389814376831
+    ],
+    [
+      0.21935652196407318,
+      0.15079385042190552,
+      0.5005295276641846
+    ]
+  ],
+  "extents": [
+    0.43946245312690735,
+    0.3064780533313751,
+    1.0005685091018677
+  ],
+  "longest_axis": "z",
+  "geometries": [
+    {
+      "name": "geometry_0",
+      "vertices": 3818,
+      "faces": 5158,
+      "watertight": false,
+      "visual_kind": "texture",
+      "has_uv": true,
+      "texture_size": null
+    }
+  ],
+  "texture_sizes": [],
+  "warnings": [
+    "No embedded base-color texture detected.",
+    "One or more meshes are open/non-watertight; prefer surface fitting over filled voxelization."
+  ]
+}

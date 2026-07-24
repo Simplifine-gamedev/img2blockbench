@@ -1,0 +1,18 @@
+{
+  "collision": {
+    "eye_height": 20.0,
+    "height": 26.5,
+    "width": 12.0
+  },
+  "converter_version": "1.0.0",
+  "files": {
+    "elephant_lane2.bbmodel": "286b34f897aa283cae97c6c38d82a3e863e80b6461ff39d0c14b4ee54211ec26",
+    "elephant_lane2.geo.json": "d6a7214c7ffc6b0d5205631f409db65a413edf40a16e3431157ddd854ca42447",
+    "elephant_lane2.png": "e2e637ee186527e2023c1d6018950be61aa133840d4cf85351fb9ade9259b626",
+    "model-audit.json": "313b554ec78943a359a0b015348a5a5f24e4c54108f967381ab40880ff5c62d0",
+    "source-audit.json": "b3d0c7334a6a81bd4f21579405b15dc44b142a9f44ce38dd45aabb9ef73ee46b"
+  },
+  "source_sha256": "93eb1b253066b0cd5261f55a5ea4ed1cf92f968af6451d840f53c479c082b7b0",
+  "spec_schema_version": 1,
+  "spec_sha256": "26e807438554cfaf62640b0bb77dc926037fb0c89156bcae724ce84132d97f6b"
+}

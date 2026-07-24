@@ -1,0 +1,373 @@
+{
+  "schema_version": 1,
+  "id": "coyote",
+  "reference": {
+    "image": "reference.png",
+    "sha256": "de7020c7b91bdb824b76b65c4f04dd72e927d48735597a27a254f7a12b41e520",
+    "width": 1536,
+    "height": 1024
+  },
+  "subject": {
+    "type": "mob",
+    "description": "A lean Minecraft-style coyote with oversized upright ears, a narrow muzzle, long legs, gray-brown saddle fur, and a dark-tipped tail",
+    "symmetry": "bilateral",
+    "uncertainties": [
+      "The far-side face and limbs are inferred by bilateral symmetry",
+      "The hidden underside of the tail is inferred from the visible silhouette"
+    ]
+  },
+  "quality_contract": {
+    "complexity": "moderate",
+    "target_cuboids": [15, 35],
+    "identity_features": [
+      "oversized upright pointed ears",
+      "long narrow canine muzzle",
+      "lean gray-brown torso on long tan legs",
+      "low bushy tail with a dark tip"
+    ],
+    "required_views": ["front", "back", "left", "right", "isometric"],
+    "review_targets": ["silhouette", "face", "joints", "texture"]
+  },
+  "texture": {
+    "density": 2,
+    "palette_size": 24,
+    "gutter": 2,
+    "atlas_size": 128
+  },
+  "materials": {
+    "tan_fur": {
+      "base": "#a77e50",
+      "shade": "#704c2d",
+      "highlight": "#c69d6c",
+      "pattern": "dither",
+      "pattern_scale": 4
+    },
+    "gray_brown": {
+      "base": "#706960",
+      "shade": "#49443d",
+      "highlight": "#918980",
+      "pattern": "dither",
+      "pattern_scale": 4
+    },
+    "dark_saddle": {
+      "base": "#504a43",
+      "shade": "#322f2b",
+      "highlight": "#716a61",
+      "pattern": "dither",
+      "pattern_scale": 4
+    },
+    "cream_fur": {
+      "base": "#c6b49c",
+      "shade": "#95836c",
+      "highlight": "#e2d2bd",
+      "pattern": "dither",
+      "pattern_scale": 5
+    },
+    "dark_fur": {
+      "base": "#39352f",
+      "shade": "#201e1b",
+      "highlight": "#5b554d",
+      "pattern": "dither",
+      "pattern_scale": 4
+    },
+    "black": {
+      "base": "#151311",
+      "shade": "#080706",
+      "highlight": "#302c27",
+      "pattern": "dither",
+      "pattern_scale": 4
+    }
+  },
+  "bones": [
+    {"name": "root", "parent": null, "pivot": [0, 0, 0]},
+    {"name": "body", "parent": "root", "pivot": [0, 7, 0]},
+    {"name": "head", "parent": "body", "pivot": [0, 9, 5]},
+    {"name": "left_ear", "parent": "head", "pivot": [1.9, 12, 8]},
+    {"name": "right_ear", "parent": "head", "pivot": [-1.9, 12, 8]},
+    {"name": "front_left_leg", "parent": "body", "pivot": [2.1, 6, 3.8]},
+    {"name": "front_left_foot", "parent": "front_left_leg", "pivot": [2.1, 1.2, 4.3]},
+    {"name": "front_right_leg", "parent": "body", "pivot": [-2.1, 6, 3.8]},
+    {"name": "front_right_foot", "parent": "front_right_leg", "pivot": [-2.1, 1.2, 4.3]},
+    {"name": "rear_left_leg", "parent": "body", "pivot": [2.1, 6, -3.6]},
+    {"name": "rear_left_foot", "parent": "rear_left_leg", "pivot": [2.1, 1.2, -3]},
+    {"name": "rear_right_leg", "parent": "body", "pivot": [-2.1, 6, -3.6]},
+    {"name": "rear_right_foot", "parent": "rear_right_leg", "pivot": [-2.1, 1.2, -3]},
+    {"name": "tail_base", "parent": "body", "pivot": [0, 7, -5.5]},
+    {"name": "tail_mid", "parent": "tail_base", "pivot": [0, 6.3, -8.5]},
+    {"name": "tail_tip", "parent": "tail_mid", "pivot": [0.4, 5.3, -11]}
+  ],
+  "cubes": [
+    {
+      "name": "body",
+      "bone": "body",
+      "center": [0, 7.2, 0],
+      "size": [6.2, 5, 11],
+      "rotation": [0, 0, 0],
+      "origin": [0, 7, 0],
+      "role": "lean coyote torso",
+      "material": "gray_brown",
+      "faces": {"down": {"material": "cream_fur"}}
+    },
+    {
+      "name": "saddle",
+      "bone": "body",
+      "center": [0, 9, -0.5],
+      "size": [6.4, 2.2, 7.5],
+      "rotation": [0, 0, 0],
+      "origin": [0, 7, 0],
+      "role": "dark dorsal saddle",
+      "material": "dark_saddle",
+      "faces": {}
+    },
+    {
+      "name": "chest",
+      "bone": "body",
+      "center": [0, 7.6, 4],
+      "size": [6.5, 5.8, 4.2],
+      "rotation": [0, 0, 0],
+      "origin": [0, 7, 0],
+      "role": "narrow tan shoulder chest",
+      "material": "tan_fur",
+      "faces": {"south": {"material": "cream_fur"}, "down": {"material": "cream_fur"}}
+    },
+    {
+      "name": "neck",
+      "bone": "head",
+      "center": [0, 8.8, 5.7],
+      "size": [4.5, 5, 3],
+      "rotation": [0, 0, 0],
+      "origin": [0, 9, 5],
+      "role": "slender coyote neck",
+      "material": "tan_fur",
+      "faces": {"south": {"material": "cream_fur"}}
+    },
+    {
+      "name": "head",
+      "bone": "head",
+      "center": [0, 10.2, 8.1],
+      "size": [5.2, 5, 5.5],
+      "rotation": [0, 0, 0],
+      "origin": [0, 9, 5],
+      "role": "narrow angular coyote head",
+      "material": "gray_brown",
+      "faces": {"down": {"material": "cream_fur"}}
+    },
+    {
+      "name": "muzzle",
+      "bone": "head",
+      "center": [0, 9.3, 11.4],
+      "size": [3.3, 2.4, 4],
+      "rotation": [0, 0, 0],
+      "origin": [0, 9, 5],
+      "role": "long narrow cream muzzle",
+      "material": "cream_fur",
+      "faces": {}
+    },
+    {
+      "name": "nose",
+      "bone": "head",
+      "center": [0, 9.4, 13.3],
+      "size": [2.4, 1.6, 1.6],
+      "rotation": [0, 0, 0],
+      "origin": [0, 9, 5],
+      "role": "black coyote nose block",
+      "material": "black",
+      "faces": {}
+    },
+    {
+      "name": "left_ear",
+      "bone": "left_ear",
+      "center": [1.9, 13.7, 7.8],
+      "size": [2.1, 5.2, 2],
+      "rotation": [0, 0, -7],
+      "origin": [1.9, 12, 8],
+      "role": "oversized upright left ear",
+      "material": "tan_fur",
+      "faces": {"south": {"material": "dark_fur"}}
+    },
+    {
+      "name": "right_ear",
+      "bone": "right_ear",
+      "center": [-1.9, 13.7, 7.8],
+      "size": [2.1, 5.2, 2],
+      "rotation": [0, 0, 7],
+      "origin": [-1.9, 12, 8],
+      "role": "oversized upright right ear",
+      "material": "tan_fur",
+      "faces": {"south": {"material": "dark_fur"}}
+    },
+    {
+      "name": "front_left_leg",
+      "bone": "front_left_leg",
+      "center": [2.1, 3.6, 3.8],
+      "size": [2.2, 6, 2.5],
+      "rotation": [0, 0, 0],
+      "origin": [2.1, 6, 3.8],
+      "role": "long front left leg",
+      "material": "tan_fur",
+      "faces": {}
+    },
+    {
+      "name": "front_left_foot",
+      "bone": "front_left_foot",
+      "center": [2.1, 0.7, 4.5],
+      "size": [2.9, 1.4, 3.6],
+      "rotation": [0, 0, 0],
+      "origin": [2.1, 1.2, 4.3],
+      "role": "front left compact paw",
+      "material": "dark_fur",
+      "faces": {}
+    },
+    {
+      "name": "front_right_leg",
+      "bone": "front_right_leg",
+      "center": [-2.1, 3.6, 3.8],
+      "size": [2.2, 6, 2.5],
+      "rotation": [0, 0, 0],
+      "origin": [-2.1, 6, 3.8],
+      "role": "long front right leg",
+      "material": "tan_fur",
+      "faces": {}
+    },
+    {
+      "name": "front_right_foot",
+      "bone": "front_right_foot",
+      "center": [-2.1, 0.7, 4.5],
+      "size": [2.9, 1.4, 3.6],
+      "rotation": [0, 0, 0],
+      "origin": [-2.1, 1.2, 4.3],
+      "role": "front right compact paw",
+      "material": "dark_fur",
+      "faces": {}
+    },
+    {
+      "name": "rear_left_leg",
+      "bone": "rear_left_leg",
+      "center": [2.1, 3.6, -3.6],
+      "size": [2.4, 6, 2.8],
+      "rotation": [0, 0, 0],
+      "origin": [2.1, 6, -3.6],
+      "role": "long rear left leg",
+      "material": "tan_fur",
+      "faces": {}
+    },
+    {
+      "name": "rear_left_foot",
+      "bone": "rear_left_foot",
+      "center": [2.1, 0.7, -2.8],
+      "size": [3, 1.4, 3.7],
+      "rotation": [0, 0, 0],
+      "origin": [2.1, 1.2, -3],
+      "role": "rear left compact paw",
+      "material": "dark_fur",
+      "faces": {}
+    },
+    {
+      "name": "rear_right_leg",
+      "bone": "rear_right_leg",
+      "center": [-2.1, 3.6, -3.6],
+      "size": [2.4, 6, 2.8],
+      "rotation": [0, 0, 0],
+      "origin": [-2.1, 6, -3.6],
+      "role": "long rear right leg",
+      "material": "tan_fur",
+      "faces": {}
+    },
+    {
+      "name": "rear_right_foot",
+      "bone": "rear_right_foot",
+      "center": [-2.1, 0.7, -2.8],
+      "size": [3, 1.4, 3.7],
+      "rotation": [0, 0, 0],
+      "origin": [-2.1, 1.2, -3],
+      "role": "rear right compact paw",
+      "material": "dark_fur",
+      "faces": {}
+    },
+    {
+      "name": "tail_base",
+      "bone": "tail_base",
+      "center": [0, 6.7, -7.5],
+      "size": [3, 3, 5],
+      "rotation": [-12, 0, 0],
+      "origin": [0, 7, -5.5],
+      "role": "bushy descending tail base",
+      "material": "gray_brown",
+      "faces": {}
+    },
+    {
+      "name": "tail_mid",
+      "bone": "tail_mid",
+      "center": [0.2, 5.8, -10.1],
+      "size": [3.5, 3.5, 4],
+      "rotation": [-18, -8, 0],
+      "origin": [0, 6.3, -8.5],
+      "role": "low bushy tail middle",
+      "material": "gray_brown",
+      "faces": {}
+    },
+    {
+      "name": "tail_tip",
+      "bone": "tail_tip",
+      "center": [0.6, 4.8, -12.5],
+      "size": [3.2, 3.2, 3.5],
+      "rotation": [-24, -14, 0],
+      "origin": [0.4, 5.3, -11],
+      "role": "dark coyote tail tip",
+      "material": "dark_fur",
+      "faces": {}
+    }
+  ],
+  "landmarks": [
+    {
+      "name": "left_eye",
+      "cube": "head",
+      "face": "south",
+      "center_uv": [0.3, 0.4],
+      "size": [2, 2],
+      "color": "#090806",
+      "center_color": "#ad7a28"
+    },
+    {
+      "name": "right_eye",
+      "cube": "head",
+      "face": "south",
+      "center_uv": [0.7, 0.4],
+      "size": [2, 2],
+      "color": "#090806",
+      "center_color": "#ad7a28"
+    },
+    {
+      "name": "left_eye_side",
+      "cube": "head",
+      "face": "east",
+      "center_uv": [0.76, 0.4],
+      "size": [2, 2],
+      "color": "#090806",
+      "center_color": "#ad7a28"
+    },
+    {
+      "name": "right_eye_side",
+      "cube": "head",
+      "face": "west",
+      "center_uv": [0.76, 0.4],
+      "size": [2, 2],
+      "color": "#090806",
+      "center_color": "#ad7a28"
+    },
+    {
+      "name": "mouth",
+      "cube": "muzzle",
+      "face": "south",
+      "center_uv": [0.5, 0.72],
+      "size": [2, 1],
+      "color": "#3d261b",
+      "center_color": "#3d261b"
+    }
+  ],
+  "collision": {
+    "width": 0.75,
+    "height": 1.2,
+    "eye_height": 1.02
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "path": "examples/chimpanzee/lane2/source.glb",
+  "geometry_count": 1,
+  "vertices": 6272,
+  "faces": 7942,
+  "bounds": [
+    [
+      -0.25607314705848694,
+      -0.3385162353515625,
+      -0.5011515021324158
+    ],
+    [
+      0.2517906427383423,
+      0.3407972455024719,
+      0.4996435046195984
+    ]
+  ],
+  "extents": [
+    0.5078637897968292,
+    0.6793134808540344,
+    1.0007950067520142
+  ],
+  "longest_axis": "z",
+  "geometries": [
+    {
+      "name": "geometry_0",
+      "vertices": 6272,
+      "faces": 7942,
+      "watertight": false,
+      "visual_kind": "texture",
+      "has_uv": true,
+      "texture_size": null
+    }
+  ],
+  "texture_sizes": [],
+  "warnings": [
+    "No embedded base-color texture detected.",
+    "One or more meshes are open/non-watertight; prefer surface fitting over filled voxelization."
+  ]
+}

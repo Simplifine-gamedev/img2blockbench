@@ -1,0 +1,18 @@
+{
+  "collision": {
+    "eye_height": 8.0,
+    "height": 12.0,
+    "width": 12.0
+  },
+  "converter_version": "1.0.0",
+  "files": {
+    "model-audit.json": "c52198b28a250d96821d090d0255145642f2c21609372e6c992250acfb0e56a4",
+    "platypus_lane2.bbmodel": "72bc4cec710583407b0fed72d2558794291d646aa4520b6bd712a5cc2ac0a874",
+    "platypus_lane2.geo.json": "7e2acdd5265b3ad8cf5b8674deed1d754b6a0a5ae70eae8be2e809c02bd6523e",
+    "platypus_lane2.png": "f4a1232347125811c57adca47724d17dacdcb33ce94f5ddf5f1486df25811862",
+    "source-audit.json": "1310e5b9db5f4cda5e6dd1f3c366a23e8da586d035ad304cdddaca3a9803565e"
+  },
+  "source_sha256": "19b8c06db87c55ea7ab0e82df2193256448f2a535521f1457444203a3498a5e3",
+  "spec_schema_version": 1,
+  "spec_sha256": "6c343f488cce2f5ef53ca41f69f21d8e5c0b9a6fd0e98df8e3195543e275bb86"
+}

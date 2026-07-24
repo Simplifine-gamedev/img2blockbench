@@ -1,0 +1,33 @@
+{
+  "agent_blueprint": "../../../tools/img2threejs/blueprints/chimpanzee.json",
+  "blockbench_atlas": {
+    "bytes": 6308,
+    "path": "blockbench/chimpanzee-lane3.png",
+    "sha256": "f6642df2421b35de5c5d517bcee2e294b50cb67b6345b2d9f6bffa0e6fbc3306",
+    "source": "6 embedded Three.js albedo maps, sampled nearest-neighbor"
+  },
+  "blockbench_model": {
+    "bytes": 57012,
+    "path": "blockbench/chimpanzee-lane3.bbmodel",
+    "sha256": "8714b10ceccb00f970e84196477ac048bdc80c22a5dbba3a83865c97c1d534c7"
+  },
+  "generated_factory": {
+    "bytes": 210553,
+    "path": "createMinecraftChimpanzeeModel.generated.ts",
+    "sha256": "0b5236740a9a56d7b83bc55f8111cc68cf049b8accdf2c6c52b8d892bc84ac4b"
+  },
+  "reference": "../reference.png",
+  "spec": "img2threejs-spec.json",
+  "threejs_scene": {
+    "bytes": 1065816,
+    "path": "chimpanzee.img2threejs.three.json",
+    "sha256": "9c9678e6718e3dfe0f4ce35b45fca2836a8ba5cd4db8b7a64a8e1233210a9d64"
+  },
+  "upstream": {
+    "commit": "c9077d5ecce834f6802d6742b4a5b2c682d6279d",
+    "generated_pass": "blockout",
+    "generator": "forge/stage3_build/generate_threejs_factory.py",
+    "license": "Apache-2.0",
+    "repository": "https://github.com/hoainho/img2threejs"
+  }
+}

@@ -1,0 +1,318 @@
+{
+  "schema_version": 1,
+  "id": "platypus",
+  "reference": {
+    "image": "reference.png",
+    "sha256": "31d3cbaf477bb1d5dcb36321c09fcf7fdcf781a732bffd64bab52050ca6e8bd1",
+    "width": 1536,
+    "height": 1024
+  },
+  "subject": {
+    "type": "mob",
+    "description": "A low Minecraft-style brown platypus with a broad blue-gray bill, four webbed feet, and a flat dark tail",
+    "symmetry": "bilateral",
+    "uncertainties": [
+      "The far-side eye and exact rear webbing are inferred by bilateral symmetry",
+      "The reference hides the underside of the broad tail"
+    ]
+  },
+  "quality_contract": {
+    "complexity": "moderate",
+    "target_cuboids": [15, 35],
+    "identity_features": [
+      "wide duck-like blue-gray bill",
+      "four blue-gray webbed feet",
+      "broad flat dark tail",
+      "low rectangular brown body"
+    ],
+    "required_views": ["front", "back", "left", "right", "isometric"],
+    "review_targets": ["silhouette", "face", "joints", "texture"]
+  },
+  "texture": {
+    "density": 2,
+    "palette_size": 24,
+    "gutter": 2,
+    "atlas_size": 128
+  },
+  "materials": {
+    "brown_fur": {
+      "base": "#70451f",
+      "shade": "#3e240e",
+      "highlight": "#9a6837",
+      "pattern": "dither",
+      "pattern_scale": 4
+    },
+    "dark_fur": {
+      "base": "#4d2e15",
+      "shade": "#28170c",
+      "highlight": "#76502d",
+      "pattern": "dither",
+      "pattern_scale": 4
+    },
+    "underfur": {
+      "base": "#a08059",
+      "shade": "#73583a",
+      "highlight": "#c5a77d",
+      "pattern": "dither",
+      "pattern_scale": 5
+    },
+    "bill_gray": {
+      "base": "#3a4450",
+      "shade": "#232b34",
+      "highlight": "#66717d",
+      "pattern": "gradient",
+      "pattern_scale": 4
+    },
+    "web_gray": {
+      "base": "#46515d",
+      "shade": "#29313a",
+      "highlight": "#78818a",
+      "pattern": "dither",
+      "pattern_scale": 3
+    },
+    "tail_dark": {
+      "base": "#35271d",
+      "shade": "#1d1712",
+      "highlight": "#5b4634",
+      "pattern": "dither",
+      "pattern_scale": 4
+    }
+  },
+  "bones": [
+    {"name": "root", "parent": null, "pivot": [0, 0, 0]},
+    {"name": "body", "parent": "root", "pivot": [0, 6, 0]},
+    {"name": "head", "parent": "body", "pivot": [0, 7, 5]},
+    {"name": "bill", "parent": "head", "pivot": [0, 6, 9]},
+    {"name": "tail_base", "parent": "body", "pivot": [0, 5, -5]},
+    {"name": "tail_tip", "parent": "tail_base", "pivot": [0, 4.7, -9]},
+    {"name": "front_left_leg", "parent": "body", "pivot": [2.8, 5, 3.6]},
+    {"name": "front_left_foot", "parent": "front_left_leg", "pivot": [2.8, 1.4, 3.8]},
+    {"name": "front_right_leg", "parent": "body", "pivot": [-2.8, 5, 3.6]},
+    {"name": "front_right_foot", "parent": "front_right_leg", "pivot": [-2.8, 1.4, 3.8]},
+    {"name": "rear_left_leg", "parent": "body", "pivot": [2.8, 5, -3.5]},
+    {"name": "rear_left_foot", "parent": "rear_left_leg", "pivot": [2.8, 1.4, -3.2]},
+    {"name": "rear_right_leg", "parent": "body", "pivot": [-2.8, 5, -3.5]},
+    {"name": "rear_right_foot", "parent": "rear_right_leg", "pivot": [-2.8, 1.4, -3.2]}
+  ],
+  "cubes": [
+    {
+      "name": "body",
+      "bone": "body",
+      "center": [0, 6, 0],
+      "size": [8, 5, 12],
+      "rotation": [0, 0, 0],
+      "origin": [0, 6, 0],
+      "role": "main low torso",
+      "material": "brown_fur",
+      "faces": {"down": {"material": "underfur"}}
+    },
+    {
+      "name": "chest",
+      "bone": "body",
+      "center": [0, 6.4, 4.2],
+      "size": [8.5, 5.5, 4.5],
+      "rotation": [0, 0, 0],
+      "origin": [0, 6, 0],
+      "role": "broad shoulder chest",
+      "material": "brown_fur",
+      "faces": {"down": {"material": "underfur"}}
+    },
+    {
+      "name": "neck",
+      "bone": "head",
+      "center": [0, 6.8, 5.8],
+      "size": [5.5, 4.5, 3],
+      "rotation": [0, 0, 0],
+      "origin": [0, 7, 5],
+      "role": "short neck bridge",
+      "material": "brown_fur",
+      "faces": {}
+    },
+    {
+      "name": "head",
+      "bone": "head",
+      "center": [0, 7, 7.8],
+      "size": [7, 6, 6],
+      "rotation": [0, 0, 0],
+      "origin": [0, 7, 5],
+      "role": "broad platypus head",
+      "material": "brown_fur",
+      "faces": {"down": {"material": "underfur"}}
+    },
+    {
+      "name": "bill_base",
+      "bone": "bill",
+      "center": [0, 6.1, 11],
+      "size": [8, 3, 4],
+      "rotation": [0, 0, 0],
+      "origin": [0, 6, 9],
+      "role": "wide bill base",
+      "material": "bill_gray",
+      "faces": {}
+    },
+    {
+      "name": "bill_tip",
+      "bone": "bill",
+      "center": [0, 5.9, 13.4],
+      "size": [8.5, 2.5, 3],
+      "rotation": [0, 0, 0],
+      "origin": [0, 6, 9],
+      "role": "broad flat bill tip",
+      "material": "bill_gray",
+      "faces": {}
+    },
+    {
+      "name": "tail_base",
+      "bone": "tail_base",
+      "center": [0, 4.9, -7.7],
+      "size": [7.5, 1.8, 6],
+      "rotation": [-4, 0, 0],
+      "origin": [0, 5, -5],
+      "role": "broad tail base",
+      "material": "tail_dark",
+      "faces": {}
+    },
+    {
+      "name": "tail_tip",
+      "bone": "tail_tip",
+      "center": [0, 4.5, -11.1],
+      "size": [7, 1.5, 4],
+      "rotation": [-6, 0, 0],
+      "origin": [0, 4.7, -9],
+      "role": "flat beaver-like tail tip",
+      "material": "tail_dark",
+      "faces": {}
+    },
+    {
+      "name": "front_left_leg",
+      "bone": "front_left_leg",
+      "center": [2.8, 3, 3.6],
+      "size": [2.2, 4.5, 2.4],
+      "rotation": [0, 0, 0],
+      "origin": [2.8, 5, 3.6],
+      "role": "front left short leg",
+      "material": "dark_fur",
+      "faces": {}
+    },
+    {
+      "name": "front_left_foot",
+      "bone": "front_left_foot",
+      "center": [2.8, 0.8, 4.2],
+      "size": [3.8, 1.4, 3.7],
+      "rotation": [0, 0, 0],
+      "origin": [2.8, 1.4, 3.8],
+      "role": "front left webbed foot",
+      "material": "web_gray",
+      "faces": {}
+    },
+    {
+      "name": "front_right_leg",
+      "bone": "front_right_leg",
+      "center": [-2.8, 3, 3.6],
+      "size": [2.2, 4.5, 2.4],
+      "rotation": [0, 0, 0],
+      "origin": [-2.8, 5, 3.6],
+      "role": "front right short leg",
+      "material": "dark_fur",
+      "faces": {}
+    },
+    {
+      "name": "front_right_foot",
+      "bone": "front_right_foot",
+      "center": [-2.8, 0.8, 4.2],
+      "size": [3.8, 1.4, 3.7],
+      "rotation": [0, 0, 0],
+      "origin": [-2.8, 1.4, 3.8],
+      "role": "front right webbed foot",
+      "material": "web_gray",
+      "faces": {}
+    },
+    {
+      "name": "rear_left_leg",
+      "bone": "rear_left_leg",
+      "center": [2.8, 3, -3.5],
+      "size": [2.4, 4.5, 2.5],
+      "rotation": [0, 0, 0],
+      "origin": [2.8, 5, -3.5],
+      "role": "rear left short leg",
+      "material": "dark_fur",
+      "faces": {}
+    },
+    {
+      "name": "rear_left_foot",
+      "bone": "rear_left_foot",
+      "center": [2.8, 0.8, -2.8],
+      "size": [3.8, 1.4, 3.7],
+      "rotation": [0, 0, 0],
+      "origin": [2.8, 1.4, -3.2],
+      "role": "rear left webbed foot",
+      "material": "web_gray",
+      "faces": {}
+    },
+    {
+      "name": "rear_right_leg",
+      "bone": "rear_right_leg",
+      "center": [-2.8, 3, -3.5],
+      "size": [2.4, 4.5, 2.5],
+      "rotation": [0, 0, 0],
+      "origin": [-2.8, 5, -3.5],
+      "role": "rear right short leg",
+      "material": "dark_fur",
+      "faces": {}
+    },
+    {
+      "name": "rear_right_foot",
+      "bone": "rear_right_foot",
+      "center": [-2.8, 0.8, -2.8],
+      "size": [3.8, 1.4, 3.7],
+      "rotation": [0, 0, 0],
+      "origin": [-2.8, 1.4, -3.2],
+      "role": "rear right webbed foot",
+      "material": "web_gray",
+      "faces": {}
+    }
+  ],
+  "landmarks": [
+    {
+      "name": "left_eye",
+      "cube": "head",
+      "face": "east",
+      "center_uv": [0.7, 0.38],
+      "size": [2, 3],
+      "color": "#090909",
+      "center_color": "#f5f5f2"
+    },
+    {
+      "name": "right_eye",
+      "cube": "head",
+      "face": "west",
+      "center_uv": [0.7, 0.38],
+      "size": [2, 3],
+      "color": "#090909",
+      "center_color": "#f5f5f2"
+    },
+    {
+      "name": "left_nostril",
+      "cube": "bill_tip",
+      "face": "south",
+      "center_uv": [0.35, 0.46],
+      "size": [1, 1],
+      "color": "#15191e",
+      "center_color": "#15191e"
+    },
+    {
+      "name": "right_nostril",
+      "cube": "bill_tip",
+      "face": "south",
+      "center_uv": [0.65, 0.46],
+      "size": [1, 1],
+      "color": "#15191e",
+      "center_color": "#15191e"
+    }
+  ],
+  "collision": {
+    "width": 1.0,
+    "height": 1.15,
+    "eye_height": 0.86
+  }
+}

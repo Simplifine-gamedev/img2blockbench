@@ -1,0 +1,11 @@
+{
+  "name": "img2blockbench-threejs-scene",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "export": "node export-scene.mjs"
+  },
+  "dependencies": {
+    "three": "^0.179.1"
+  }
+}

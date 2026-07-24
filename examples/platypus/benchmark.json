@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "reference": "reference.png",
+  "scope": "structural benchmark; generation latency, provider price, and LLM tokens were not captured",
+  "lanes": {
+    "lane1": {
+      "route": "image -> native cuboid reasoning -> bbmodel",
+      "external_3d_gpu": false,
+      "intermediate": "model-spec.json",
+      "cuboids": 16,
+      "bone_groups": 14,
+      "bbmodel": "lane1/platypus.bbmodel",
+      "bbmodel_bytes": 35613,
+      "bbmodel_sha256": "6ed28d8d4f12da9525f693b1c4b2c9ad7b6a25fa38f28908e0e49a3b1772a30a"
+    },
+    "lane2": {
+      "route": "image -> Trellis GLB -> cuboid reconstruction -> bbmodel",
+      "external_3d_gpu": true,
+      "intermediate": "lane2/source.glb",
+      "intermediate_bytes": 1243788,
+      "cuboids": 22,
+      "bone_groups": 9,
+      "bbmodel": "lane2/platypus.bbmodel",
+      "bbmodel_bytes": 47392,
+      "bbmodel_sha256": "72bc4cec710583407b0fed72d2558794291d646aa4520b6bd712a5cc2ac0a874"
+    },
+    "lane3": {
+      "route": "image -> official img2threejs generated factory -> visible Three.js scene -> scene adapter -> bbmodel",
+      "external_3d_gpu": false,
+      "upstream_repository": "https://github.com/hoainho/img2threejs",
+      "upstream_commit": "c9077d5ecce834f6802d6742b4a5b2c682d6279d",
+      "intermediate": "lane3/platypus.img2threejs.three.json",
+      "intermediate_bytes": 1320031,
+      "intermediate_sha256": "5281c7237909d207309944ce2b77a3dc8a0cac85949c13a4a645fb14f60b4e14",
+      "cuboids": 34,
+      "bone_groups": 35,
+      "bbmodel": "lane3/blockbench/platypus-lane3.bbmodel",
+      "bbmodel_bytes": 77116,
+      "bbmodel_sha256": "5de2fe488fcfed2b2b2d6ca70c8282ea9198fa7566bec3f62182b9c1375a639e"
+    }
+  }
+}

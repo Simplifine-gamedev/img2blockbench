@@ -1,0 +1,17 @@
+{
+  "path": "examples/coyote/lane3/blockbench/coyote-lane3.bbmodel",
+  "cuboids": 24,
+  "estimated_triangles": 288,
+  "groups": 25,
+  "animations": 0,
+  "texture_size": [
+    256,
+    256
+  ],
+  "uv_density_median": 2.0,
+  "uv_density_outliers": [],
+  "bilateral": {},
+  "errors": [],
+  "warnings": [],
+  "ok": true
+}

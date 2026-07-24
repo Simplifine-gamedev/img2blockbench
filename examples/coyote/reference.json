@@ -1,0 +1,43 @@
+{
+  "aspect_ratio": 1.5,
+  "dominant_colors": [
+    {
+      "hex": "#feffff",
+      "pixels": 8069
+    },
+    {
+      "hex": "#726c63",
+      "pixels": 836
+    },
+    {
+      "hex": "#4d4841",
+      "pixels": 604
+    },
+    {
+      "hex": "#aa855a",
+      "pixels": 549
+    },
+    {
+      "hex": "#c0bdbb",
+      "pixels": 408
+    },
+    {
+      "hex": "#9d9994",
+      "pixels": 365
+    },
+    {
+      "hex": "#0a0702",
+      "pixels": 36
+    },
+    {
+      "hex": "#562a00",
+      "pixels": 13
+    }
+  ],
+  "has_alpha": false,
+  "height": 1024,
+  "mode": "RGBA",
+  "path": "examples/coyote/reference.png",
+  "sha256": "de7020c7b91bdb824b76b65c4f04dd72e927d48735597a27a254f7a12b41e520",
+  "width": 1536
+}

@@ -1,0 +1,366 @@
+{
+  "schema_version": 1,
+  "id": "elephant",
+  "reference": {
+    "image": "reference.png",
+    "sha256": "585e2ba91e87b7035ee2d69ed95edd463da5a8f9478c3155ec1773f9ccc60ad7",
+    "width": 1536,
+    "height": 1024
+  },
+  "subject": {
+    "type": "mob",
+    "description": "A Minecraft-style gray elephant with broad ears, a segmented trunk, ivory tusks, pillar legs, and a tufted tail",
+    "symmetry": "bilateral",
+    "uncertainties": [
+      "The far-side eye, tusk, and legs are inferred by bilateral symmetry",
+      "The rear tail attachment is partially hidden"
+    ]
+  },
+  "quality_contract": {
+    "complexity": "moderate",
+    "target_cuboids": [15, 35],
+    "identity_features": [
+      "large square ears with warm inner panels",
+      "long three-segment trunk",
+      "paired ivory tusks",
+      "massive gray body on four pillar legs"
+    ],
+    "required_views": ["front", "back", "left", "right", "isometric"],
+    "review_targets": ["silhouette", "face", "joints", "texture"]
+  },
+  "texture": {
+    "density": 2,
+    "palette_size": 24,
+    "gutter": 2,
+    "atlas_size": 128
+  },
+  "materials": {
+    "gray_hide": {
+      "base": "#666565",
+      "shade": "#414142",
+      "highlight": "#858382",
+      "pattern": "dither",
+      "pattern_scale": 4
+    },
+    "dark_gray": {
+      "base": "#4b4a4b",
+      "shade": "#303033",
+      "highlight": "#696769",
+      "pattern": "dither",
+      "pattern_scale": 4
+    },
+    "ear_inner": {
+      "base": "#8f765f",
+      "shade": "#67513f",
+      "highlight": "#ad9278",
+      "pattern": "dither",
+      "pattern_scale": 5
+    },
+    "ivory": {
+      "base": "#ead4b6",
+      "shade": "#bda78c",
+      "highlight": "#fff0d3",
+      "pattern": "gradient",
+      "pattern_scale": 4
+    },
+    "feet_gray": {
+      "base": "#555455",
+      "shade": "#353538",
+      "highlight": "#777577",
+      "pattern": "dither",
+      "pattern_scale": 3
+    },
+    "tail_dark": {
+      "base": "#39383a",
+      "shade": "#222225",
+      "highlight": "#575659",
+      "pattern": "dither",
+      "pattern_scale": 4
+    }
+  },
+  "bones": [
+    {"name": "root", "parent": null, "pivot": [0, 0, 0]},
+    {"name": "body", "parent": "root", "pivot": [0, 9, 0]},
+    {"name": "head", "parent": "body", "pivot": [0, 12, 6]},
+    {"name": "left_ear", "parent": "head", "pivot": [4, 13, 8]},
+    {"name": "right_ear", "parent": "head", "pivot": [-4, 13, 8]},
+    {"name": "trunk_base", "parent": "head", "pivot": [0, 10, 12]},
+    {"name": "trunk_mid", "parent": "trunk_base", "pivot": [0, 7, 14]},
+    {"name": "trunk_tip", "parent": "trunk_mid", "pivot": [0, 4, 14.5]},
+    {"name": "left_tusk", "parent": "head", "pivot": [2.6, 9.5, 12]},
+    {"name": "right_tusk", "parent": "head", "pivot": [-2.6, 9.5, 12]},
+    {"name": "front_left_leg", "parent": "body", "pivot": [4, 8, 4.5]},
+    {"name": "front_right_leg", "parent": "body", "pivot": [-4, 8, 4.5]},
+    {"name": "rear_left_leg", "parent": "body", "pivot": [4, 8, -4.5]},
+    {"name": "rear_right_leg", "parent": "body", "pivot": [-4, 8, -4.5]},
+    {"name": "tail_base", "parent": "body", "pivot": [0, 10, -7]},
+    {"name": "tail_tip", "parent": "tail_base", "pivot": [0, 7.5, -10]}
+  ],
+  "cubes": [
+    {
+      "name": "body",
+      "bone": "body",
+      "center": [0, 10, 0],
+      "size": [12, 9, 14],
+      "rotation": [0, 0, 0],
+      "origin": [0, 9, 0],
+      "role": "massive elephant torso",
+      "material": "gray_hide",
+      "faces": {"down": {"material": "dark_gray"}}
+    },
+    {
+      "name": "shoulders",
+      "bone": "body",
+      "center": [0, 10.4, 4.7],
+      "size": [12.5, 9.5, 5],
+      "rotation": [0, 0, 0],
+      "origin": [0, 9, 0],
+      "role": "broad shoulder mass",
+      "material": "gray_hide",
+      "faces": {}
+    },
+    {
+      "name": "neck",
+      "bone": "head",
+      "center": [0, 11.5, 6.3],
+      "size": [8, 8, 4],
+      "rotation": [0, 0, 0],
+      "origin": [0, 12, 6],
+      "role": "short elephant neck",
+      "material": "dark_gray",
+      "faces": {}
+    },
+    {
+      "name": "head",
+      "bone": "head",
+      "center": [0, 12, 9.5],
+      "size": [9, 9, 8],
+      "rotation": [0, 0, 0],
+      "origin": [0, 12, 6],
+      "role": "large square elephant head",
+      "material": "gray_hide",
+      "faces": {}
+    },
+    {
+      "name": "left_ear",
+      "bone": "left_ear",
+      "center": [5, 12.5, 8.2],
+      "size": [6, 10, 2],
+      "rotation": [0, -4, -3],
+      "origin": [4, 13, 8],
+      "role": "broad left elephant ear",
+      "material": "gray_hide",
+      "faces": {"south": {"material": "ear_inner"}}
+    },
+    {
+      "name": "right_ear",
+      "bone": "right_ear",
+      "center": [-5, 12.5, 8.2],
+      "size": [6, 10, 2],
+      "rotation": [0, 4, 3],
+      "origin": [-4, 13, 8],
+      "role": "broad right elephant ear",
+      "material": "gray_hide",
+      "faces": {"south": {"material": "ear_inner"}}
+    },
+    {
+      "name": "trunk_base",
+      "bone": "trunk_base",
+      "center": [0, 9.4, 13],
+      "size": [4.2, 6, 4],
+      "rotation": [5, 0, 0],
+      "origin": [0, 10, 12],
+      "role": "upper trunk attached below eyes",
+      "material": "dark_gray",
+      "faces": {}
+    },
+    {
+      "name": "trunk_mid",
+      "bone": "trunk_mid",
+      "center": [0, 5.8, 14],
+      "size": [3.6, 5, 3.5],
+      "rotation": [8, 0, 0],
+      "origin": [0, 7, 14],
+      "role": "middle descending trunk",
+      "material": "gray_hide",
+      "faces": {}
+    },
+    {
+      "name": "trunk_tip",
+      "bone": "trunk_tip",
+      "center": [0, 2.8, 14.7],
+      "size": [3.2, 3.5, 3],
+      "rotation": [12, 0, 0],
+      "origin": [0, 4, 14.5],
+      "role": "raised trunk tip",
+      "material": "dark_gray",
+      "faces": {}
+    },
+    {
+      "name": "left_tusk",
+      "bone": "left_tusk",
+      "center": [2.7, 8.2, 14],
+      "size": [1.2, 1.2, 5],
+      "rotation": [-16, -5, 0],
+      "origin": [2.6, 9.5, 12],
+      "role": "left ivory tusk",
+      "material": "ivory",
+      "faces": {}
+    },
+    {
+      "name": "right_tusk",
+      "bone": "right_tusk",
+      "center": [-2.7, 8.2, 14],
+      "size": [1.2, 1.2, 5],
+      "rotation": [-16, 5, 0],
+      "origin": [-2.6, 9.5, 12],
+      "role": "right ivory tusk",
+      "material": "ivory",
+      "faces": {}
+    },
+    {
+      "name": "front_left_leg",
+      "bone": "front_left_leg",
+      "center": [4, 4.4, 4.6],
+      "size": [4, 8, 4],
+      "rotation": [0, 0, 0],
+      "origin": [4, 8, 4.5],
+      "role": "front left pillar leg",
+      "material": "gray_hide",
+      "faces": {}
+    },
+    {
+      "name": "front_left_foot",
+      "bone": "front_left_leg",
+      "center": [4, 0.8, 5],
+      "size": [4.5, 1.6, 4.8],
+      "rotation": [0, 0, 0],
+      "origin": [4, 8, 4.5],
+      "role": "front left broad foot",
+      "material": "feet_gray",
+      "faces": {}
+    },
+    {
+      "name": "front_right_leg",
+      "bone": "front_right_leg",
+      "center": [-4, 4.4, 4.6],
+      "size": [4, 8, 4],
+      "rotation": [0, 0, 0],
+      "origin": [-4, 8, 4.5],
+      "role": "front right pillar leg",
+      "material": "gray_hide",
+      "faces": {}
+    },
+    {
+      "name": "front_right_foot",
+      "bone": "front_right_leg",
+      "center": [-4, 0.8, 5],
+      "size": [4.5, 1.6, 4.8],
+      "rotation": [0, 0, 0],
+      "origin": [-4, 8, 4.5],
+      "role": "front right broad foot",
+      "material": "feet_gray",
+      "faces": {}
+    },
+    {
+      "name": "rear_left_leg",
+      "bone": "rear_left_leg",
+      "center": [4, 4.4, -4.5],
+      "size": [4, 8, 4],
+      "rotation": [0, 0, 0],
+      "origin": [4, 8, -4.5],
+      "role": "rear left pillar leg",
+      "material": "gray_hide",
+      "faces": {}
+    },
+    {
+      "name": "rear_left_foot",
+      "bone": "rear_left_leg",
+      "center": [4, 0.8, -4.1],
+      "size": [4.5, 1.6, 4.8],
+      "rotation": [0, 0, 0],
+      "origin": [4, 8, -4.5],
+      "role": "rear left broad foot",
+      "material": "feet_gray",
+      "faces": {}
+    },
+    {
+      "name": "rear_right_leg",
+      "bone": "rear_right_leg",
+      "center": [-4, 4.4, -4.5],
+      "size": [4, 8, 4],
+      "rotation": [0, 0, 0],
+      "origin": [-4, 8, -4.5],
+      "role": "rear right pillar leg",
+      "material": "gray_hide",
+      "faces": {}
+    },
+    {
+      "name": "rear_right_foot",
+      "bone": "rear_right_leg",
+      "center": [-4, 0.8, -4.1],
+      "size": [4.5, 1.6, 4.8],
+      "rotation": [0, 0, 0],
+      "origin": [-4, 8, -4.5],
+      "role": "rear right broad foot",
+      "material": "feet_gray",
+      "faces": {}
+    },
+    {
+      "name": "tail_base",
+      "bone": "tail_base",
+      "center": [0, 8.7, -8.7],
+      "size": [1.4, 1.4, 4.5],
+      "rotation": [-28, 0, 0],
+      "origin": [0, 10, -7],
+      "role": "short descending tail",
+      "material": "dark_gray",
+      "faces": {}
+    },
+    {
+      "name": "tail_tuft",
+      "bone": "tail_tip",
+      "center": [0, 6.7, -10.4],
+      "size": [2.2, 2.5, 2.8],
+      "rotation": [-18, 0, 0],
+      "origin": [0, 7.5, -10],
+      "role": "dark tail tuft",
+      "material": "tail_dark",
+      "faces": {}
+    }
+  ],
+  "landmarks": [
+    {
+      "name": "left_eye",
+      "cube": "head",
+      "face": "east",
+      "center_uv": [0.72, 0.38],
+      "size": [2, 2],
+      "color": "#080808",
+      "center_color": "#f5f3ea"
+    },
+    {
+      "name": "right_eye",
+      "cube": "head",
+      "face": "west",
+      "center_uv": [0.72, 0.38],
+      "size": [2, 2],
+      "color": "#080808",
+      "center_color": "#f5f3ea"
+    },
+    {
+      "name": "trunk_tip_opening",
+      "cube": "trunk_tip",
+      "face": "south",
+      "center_uv": [0.5, 0.5],
+      "size": [1, 1],
+      "color": "#202024",
+      "center_color": "#202024"
+    }
+  ],
+  "collision": {
+    "width": 1.45,
+    "height": 1.75,
+    "eye_height": 1.42
+  }
+}

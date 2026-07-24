@@ -1,0 +1,18 @@
+{
+  "collision": {
+    "eye_height": 23.0,
+    "height": 31.0,
+    "width": 10.0
+  },
+  "converter_version": "1.0.0",
+  "files": {
+    "coyote_lane2.bbmodel": "350f4776e1f0f0fb5410a13c509a3076ae01d16d49ab444cad425c0d99399f65",
+    "coyote_lane2.geo.json": "ca026fc5506f858b90eaa2adc4118dc58df668eacfc909e8d288dfeab2c31914",
+    "coyote_lane2.png": "d50f213aac5aef023ecbe4b4f33799e5af412486a3b503acb2442e331f831018",
+    "model-audit.json": "cd7e65d09a8ffff4e723424d91a93df34820d81441b0cc984b11a00c7aaf65de",
+    "source-audit.json": "2f114bbdbf3782887a204fe4b03fc2b5d18ac0dc152115e146589eb286defe51"
+  },
+  "source_sha256": "bb95cf4b28eb41e9e04ff75f3976ce293fb40f18cda847fa16e47430bbe0a52d",
+  "spec_schema_version": 1,
+  "spec_sha256": "1de517fda45db38b6fcaf23aa30bdb3571ed2af5ee0fa37dabdc80b6cbf25c12"
+}

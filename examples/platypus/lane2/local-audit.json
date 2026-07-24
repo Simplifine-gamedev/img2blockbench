@@ -1,0 +1,17 @@
+{
+  "path": "examples/platypus/lane2/platypus.bbmodel",
+  "cuboids": 22,
+  "estimated_triangles": 264,
+  "groups": 9,
+  "animations": 0,
+  "texture_size": [
+    256,
+    256
+  ],
+  "uv_density_median": 2.0,
+  "uv_density_outliers": [],
+  "bilateral": {},
+  "errors": [],
+  "warnings": [],
+  "ok": true
+}

@@ -1,0 +1,43 @@
+{
+  "aspect_ratio": 1.5,
+  "dominant_colors": [
+    {
+      "hex": "#fffdfa",
+      "pixels": 7289
+    },
+    {
+      "hex": "#3e240e",
+      "pixels": 1581
+    },
+    {
+      "hex": "#774b26",
+      "pixels": 1007
+    },
+    {
+      "hex": "#3a4450",
+      "pixels": 496
+    },
+    {
+      "hex": "#bbbbb9",
+      "pixels": 181
+    },
+    {
+      "hex": "#666b71",
+      "pixels": 174
+    },
+    {
+      "hex": "#a08059",
+      "pixels": 109
+    },
+    {
+      "hex": "#000000",
+      "pixels": 43
+    }
+  ],
+  "has_alpha": false,
+  "height": 1024,
+  "mode": "RGBA",
+  "path": "examples/platypus/reference.png",
+  "sha256": "31d3cbaf477bb1d5dcb36321c09fcf7fdcf781a732bffd64bab52050ca6e8bd1",
+  "width": 1536
+}

@@ -1,0 +1,17 @@
+{
+  "path": "examples/elephant/lane2/elephant.bbmodel",
+  "cuboids": 24,
+  "estimated_triangles": 288,
+  "groups": 18,
+  "animations": 0,
+  "texture_size": [
+    256,
+    256
+  ],
+  "uv_density_median": 2.0,
+  "uv_density_outliers": [],
+  "bilateral": {},
+  "errors": [],
+  "warnings": [],
+  "ok": true
+}

@@ -1,0 +1,9 @@
+{
+  "pipeline": "Lane 2: reference image -> Trellis GLB -> anatomy reasoning -> Orca finalize_model -> Blockbench",
+  "generation_id": "img2blockbench-elephant-lane2-20260723-v5",
+  "job_id": "403666ba-06b5-4153-9f7d-92137a552ac3",
+  "visual_qa_approved": true,
+  "cuboids": 24,
+  "groups": 18,
+  "texture_size": 256
+}
