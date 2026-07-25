@@ -330,7 +330,7 @@ async function compareAnimal(animal) {
 }
 
 const results = await Promise.all(animals.map(compareAnimal));
-console.log("Current Lane 1 vs Lane 3 blockout structural baseline\n");
+console.log("Lane 1 vs final Lane 3 structural comparison\n");
 console.table(results);
 console.log(
   "\nMethod: uniformly normalized geometry; 42³ occupancy IoU; optimal cuboid matching; matched adjacency F1. Textures excluded.",

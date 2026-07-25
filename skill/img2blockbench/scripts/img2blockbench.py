@@ -165,6 +165,12 @@ def validate_spec(spec: Any, *, strict: bool = False) -> list[str]:
         require(isinstance(texture.get("palette_size"), int) and 4 <= texture["palette_size"] <= 64, "texture.palette_size must be 4..64", errors)
         require(isinstance(texture.get("gutter"), int) and 1 <= texture["gutter"] <= 4, "texture.gutter must be 1..4", errors)
         require(texture.get("atlas_size") in {16, 32, 64, 128, 256, 512}, "texture.atlas_size must be a power of two from 16..512", errors)
+        require(
+            "quantize_source" not in texture
+            or isinstance(texture["quantize_source"], bool),
+            "texture.quantize_source must be boolean",
+            errors,
+        )
 
     materials = spec.get("materials")
     material_names: set[str] = set()
@@ -300,6 +306,60 @@ def validate_spec(spec: Any, *, strict: bool = False) -> list[str]:
                 require(override.get("material", cube.get("material")) in material_names, f"{label}.faces.{face}.material is missing", errors)
                 for flip in ("flip_x", "flip_y"):
                     require(flip not in override or isinstance(override[flip], bool), f"{label}.faces.{face}.{flip} must be boolean", errors)
+                source_texture = override.get("source_texture")
+                if source_texture is not None:
+                    if not isinstance(source_texture, dict):
+                        errors.append(
+                            f"{label}.faces.{face}.source_texture must be an object"
+                        )
+                    else:
+                        data_uri = source_texture.get("data_uri")
+                        require(
+                            isinstance(data_uri, str)
+                            and data_uri.startswith("data:image/png;base64,"),
+                            f"{label}.faces.{face}.source_texture.data_uri must be an embedded PNG",
+                            errors,
+                        )
+                        valid_vector(
+                            source_texture.get("repeat"),
+                            2,
+                            f"{label}.faces.{face}.source_texture.repeat",
+                            errors,
+                            positive=True,
+                        )
+                        valid_vector(
+                            source_texture.get("offset"),
+                            2,
+                            f"{label}.faces.{face}.source_texture.offset",
+                            errors,
+                        )
+                        valid_vector(
+                            source_texture.get("center"),
+                            2,
+                            f"{label}.faces.{face}.source_texture.center",
+                            errors,
+                        )
+                        require(
+                            finite_number(source_texture.get("rotation")),
+                            f"{label}.faces.{face}.source_texture.rotation must be finite",
+                            errors,
+                        )
+                        wrap = source_texture.get("wrap")
+                        require(
+                            isinstance(wrap, list)
+                            and len(wrap) == 2
+                            and all(
+                                value in {1000, 1001, 1002}
+                                for value in wrap
+                            ),
+                            f"{label}.faces.{face}.source_texture.wrap is invalid",
+                            errors,
+                        )
+                        require(
+                            isinstance(source_texture.get("flip_y"), bool),
+                            f"{label}.faces.{face}.source_texture.flip_y must be boolean",
+                            errors,
+                        )
 
     landmarks = spec.get("landmarks")
     if not isinstance(landmarks, list):
@@ -640,6 +700,27 @@ def import_threejs_scene(
             "pattern": "dither",
             "pattern_scale": 4,
         }
+        if isinstance(sculpt_material, dict):
+            source_material_id = sculpt_material.get("id")
+            if isinstance(source_material_id, str) and source_material_id:
+                imported_material["source_material_id"] = source_material_id
+                if "strip" in source_material_id.lower():
+                    imported_material["pattern"] = "stripes"
+            color_variation = sculpt_material.get("colorVariation")
+            source_palette = (
+                color_variation.get("palette")
+                if isinstance(color_variation, dict)
+                else None
+            )
+            if isinstance(source_palette, list):
+                reference_palette = [
+                    color.lower()
+                    for color in source_palette
+                    if isinstance(color, str)
+                    and re.fullmatch(r"#[0-9A-Fa-f]{6}", color)
+                ]
+                if reference_palette:
+                    imported_material["reference_palette"] = reference_palette
         texture_uuid = material.get("map")
         texture = source_textures.get(texture_uuid)
         if texture is not None:
@@ -1079,9 +1160,19 @@ def build_texture(
     for (cube_name, face), (left, top, width, height) in placements.items():
         cube = cube_by_name[cube_name]
         material = material_for_face(spec, cube, face)
-        source_image = source_images[
-            cube.get("faces", {}).get(face, {}).get("material", cube["material"])
-        ]
+        face_override = cube.get("faces", {}).get(face, {})
+        face_source = (
+            face_override.get("source_texture")
+            if isinstance(face_override, dict)
+            else None
+        )
+        if isinstance(face_source, dict):
+            material = {**material, "source_texture": face_source}
+            source_image = decode_source_texture(material)
+        else:
+            source_image = source_images[
+                face_override.get("material", cube["material"])
+            ]
         seed = int(hashlib.sha256(f"{cube_name}/{face}/{cube['material']}".encode()).hexdigest()[:8], 16)
         for y in range(height):
             for x in range(width):
@@ -1097,7 +1188,7 @@ def build_texture(
 
     apply_landmarks(atlas, spec, placements)
 
-    if used_source_texture:
+    if used_source_texture and not spec["texture"].get("quantize_source", False):
         quantized = atlas
     else:
         alpha = atlas.getchannel("A")

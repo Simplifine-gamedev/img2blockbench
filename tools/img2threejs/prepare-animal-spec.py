@@ -130,6 +130,45 @@ def prepare(
             ],
         }
     )
+    spec["lookDevTargets"]["qualityPriority"] = "reference-fidelity"
+    spec["lookDevTargets"]["materialPass"].update(
+        {
+            "minimumTextureResolution": 256,
+            "preferredTextureResolution": 256,
+            "referencePbrExtraction": {
+                "requiredWhenSourceImagePresent": False,
+                "targetThreshold": 0.7,
+                "stopOnLowConfidence": False,
+                "acceptedLimitation": (
+                    "The Minecraft BBModel target preserves albedo only. "
+                    "Reference pixels are baked into cuboid faces by the "
+                    "img2blockbench adapter; Three.js PBR maps remain preview-only."
+                ),
+            },
+        }
+    )
+    for material in spec["materials"]:
+        material["textureResolution"] = 256
+    spec["performanceBudget"]["textureSize"] = 256
+
+    components_by_level = {
+        level: [
+            component["id"]
+            for component in spec["componentTree"]
+            if component["level"] == level
+        ]
+        for level in ("macro", "meso", "micro")
+    }
+    pass_components = {
+        "blockout": components_by_level["macro"],
+        "structural-pass": components_by_level["meso"],
+        "form-refinement": components_by_level["micro"],
+    }
+    for build_pass in spec["buildPasses"]:
+        build_pass["componentRefs"] = pass_components.get(
+            build_pass["id"],
+            [],
+        )
 
     assessment = spec["preSpecAssessment"]
     assessment["objectClass"].update(
@@ -211,8 +250,6 @@ def prepare(
         blueprint["definitionOfDone"],
         "Every generated geometry node remains a BoxGeometry compatible with deterministic Blockbench conversion.",
     ]
-    for build_pass in spec["buildPasses"]:
-        build_pass["componentRefs"] = component_ids
     return spec
 
 

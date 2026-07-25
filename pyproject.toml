@@ -24,6 +24,7 @@ classifiers = [
 
 [project.optional-dependencies]
 overlap-audit = ["numpy>=1.26,<3", "trimesh>=4.10,<5"]
+reference-projection = ["numpy>=1.26,<3", "scipy>=1.12,<2"]
 
 [project.scripts]
 img2blockbench = "img2blockbench:main"

@@ -177,6 +177,13 @@ class Img2BlockbenchTests(unittest.TestCase):
                             "sculptMaterial": {
                                 "id": "fur",
                                 "baseColor": "#6f4525",
+                                "colorVariation": {
+                                    "palette": [
+                                        "#6f4525",
+                                        "#4c2d1c",
+                                        "#946039",
+                                    ]
+                                },
                             }
                         },
                     }
@@ -218,6 +225,11 @@ class Img2BlockbenchTests(unittest.TestCase):
             self.assertEqual([0, 7, 0], spec["cubes"][0]["center"])
             material = spec["materials"][spec["cubes"][0]["material"]]
             self.assertEqual("#6f4525", material["base"])
+            self.assertEqual("fur", material["source_material_id"])
+            self.assertEqual(
+                ["#6f4525", "#4c2d1c", "#946039"],
+                material["reference_palette"],
+            )
             self.assertEqual("threejs", spec["generation"]["lane"])
 
     def test_imports_and_bakes_img2threejs_albedo_map(self):
@@ -322,6 +334,51 @@ class Img2BlockbenchTests(unittest.TestCase):
                     (255, 255, 0, 255),
                 }.issubset(colors)
             )
+
+    def test_face_texture_overrides_procedural_material_and_quantizes(self):
+        patch = Image.new("RGBA", (2, 2))
+        patch.putdata(
+            [
+                (255, 0, 0, 255),
+                (0, 255, 0, 255),
+                (0, 0, 255, 255),
+                (255, 255, 0, 255),
+            ]
+        )
+        buffer = io.BytesIO()
+        patch.save(buffer, format="PNG")
+        data_uri = "data:image/png;base64," + base64.b64encode(
+            buffer.getvalue()
+        ).decode("ascii")
+
+        spec = copy.deepcopy(img2blockbench.read_json(EXAMPLE))
+        spec["texture"]["palette_size"] = 4
+        spec["texture"]["quantize_source"] = True
+        spec["landmarks"] = []
+        spec["cubes"][0]["faces"]["north"] = {
+            "source_texture": {
+                "data_uri": data_uri,
+                "repeat": [1, 1],
+                "offset": [0, 0],
+                "center": [0, 0],
+                "rotation": 0,
+                "wrap": [1001, 1001],
+                "flip_y": False,
+            }
+        }
+
+        self.assertEqual([], img2blockbench.validate_spec(spec, strict=True))
+        atlas, placements = img2blockbench.build_texture(spec)
+        left, top, width, height = placements[
+            (spec["cubes"][0]["name"], "north")
+        ]
+        colors = set(
+            atlas.crop(
+                (left, top, left + width, top + height)
+            ).get_flattened_data()
+        )
+        self.assertGreaterEqual(len(colors), 2)
+        self.assertLessEqual(len(set(atlas.get_flattened_data())), 5)
 
     def test_strict_validation_checks_reference_provenance(self):
         with tempfile.TemporaryDirectory() as temp:

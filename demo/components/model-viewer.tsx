@@ -242,14 +242,12 @@ export function ModelViewer({
   animal,
   modelFile,
   format,
-  ready,
   captureMode,
   onLoaded,
 }: {
   animal: Animal;
   modelFile: string;
   format: "bbmodel" | "threejs";
-  ready: boolean;
   captureMode: boolean;
   onLoaded: () => void;
 }) {
@@ -260,7 +258,6 @@ export function ModelViewer({
   const cameraRef = useRef<THREE.PerspectiveCamera | null>(null);
   const controlsRef = useRef<OrbitControls | null>(null);
   const rimLightRef = useRef<THREE.DirectionalLight | null>(null);
-  const revealFrameRef = useRef<number | null>(null);
 
   const resetCamera = useCallback(() => {
     controlsRef.current?.reset();
@@ -425,11 +422,11 @@ export function ModelViewer({
       const center = bounds.getCenter(new THREE.Vector3());
       const size = bounds.getSize(new THREE.Vector3());
       modelRoot.position.set(-center.x, -bounds.min.y, -center.z);
-      modelRoot.visible = captureMode;
-      modelRoot.scale.setScalar(captureMode ? 1 : 0.94);
+      modelRoot.visible = true;
+      modelRoot.scale.setScalar(1);
       modelMaterials.forEach((material) => {
-        material.transparent = !captureMode;
-        material.opacity = captureMode ? 1 : 0;
+        material.transparent = false;
+        material.opacity = 1;
       });
 
       const previousRoot = rootRef.current;
@@ -443,10 +440,12 @@ export function ModelViewer({
       }
 
       const span = Math.max(size.x, size.y, size.z);
+      const captureFit =
+        captureMode && size.y >= Math.max(size.x, size.z) * 0.9 ? 1.18 : 1;
       camera.position.set(
-        span * (captureMode ? 1.35 : 1.15),
-        span * (captureMode ? 0.86 : 0.72),
-        span * (captureMode ? 2.05 : -1.38),
+        span * (captureMode ? 1.05 * captureFit : 1.15),
+        span * (captureMode ? 0.72 * captureFit : 0.72),
+        span * (captureMode ? 1.55 * captureFit : -1.38),
       );
       controls.target.set(0, size.y * (captureMode ? 0.5 : 0.42), 0);
       controls.minDistance = span * 0.68;
@@ -464,60 +463,6 @@ export function ModelViewer({
       cancelled = true;
     };
   }, [captureMode, format, modelFile, onLoaded]);
-
-  useEffect(() => {
-    const root = rootRef.current;
-    if (!root) return;
-
-    if (captureMode) {
-      root.visible = true;
-      root.scale.setScalar(1);
-      materialsRef.current.forEach((material) => {
-        material.transparent = false;
-        material.opacity = 1;
-      });
-      return;
-    }
-
-    if (revealFrameRef.current) {
-      window.cancelAnimationFrame(revealFrameRef.current);
-    }
-
-    if (!ready) {
-      root.visible = false;
-      root.scale.setScalar(0.82);
-      materialsRef.current.forEach((material) => {
-        material.transparent = true;
-        material.opacity = 0;
-      });
-      return;
-    }
-
-    root.visible = true;
-    const startedAt = performance.now();
-
-    const reveal = (now: number) => {
-      const progress = Math.min((now - startedAt) / 180, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      root.scale.setScalar(0.94 + eased * 0.06);
-      materialsRef.current.forEach((material) => {
-        material.opacity = eased;
-        material.transparent = progress < 1;
-      });
-
-      if (progress < 1) {
-        revealFrameRef.current = window.requestAnimationFrame(reveal);
-      }
-    };
-
-    revealFrameRef.current = window.requestAnimationFrame(reveal);
-
-    return () => {
-      if (revealFrameRef.current) {
-        window.cancelAnimationFrame(revealFrameRef.current);
-      }
-    };
-  }, [captureMode, ready]);
 
   return (
     <>

@@ -1,0 +1,25 @@
+{
+  "algorithm": "orthographic-cuboid-face-projection",
+  "camera": {
+    "azimuth_degrees": 36.0,
+    "elevation_degrees": 16.0
+  },
+  "camera_silhouette_iou": 0.757917,
+  "faces": {
+    "mirrored": 84,
+    "procedural_fallback": 36,
+    "projected": 84,
+    "total": 204
+  },
+  "foreground_threshold": 58.0,
+  "palette_size": 32,
+  "reference_foreground_bounds": [
+    96,
+    163,
+    1375,
+    879
+  ],
+  "reference_sha256": "31d3cbaf477bb1d5dcb36321c09fcf7fdcf781a732bffd64bab52050ca6e8bd1",
+  "unseen_face_policy": "mirror-opposite-visible-face",
+  "version": 1
+}

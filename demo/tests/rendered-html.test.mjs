@@ -34,7 +34,7 @@ test("server-renders the img2blockbench demo", async () => {
   assert.match(html, /<title>img2blockbench/);
   assert.match(html, /Image → Minecraft Model/);
   assert.match(html, /REFERENCE \/ MODEL PAIR/);
-  assert.match(html, /Three\.js beta/);
+  assert.match(html, /Three\.js/);
   assert.match(html, /<select/);
   assert.match(html, /WHEEL/);
   assert.doesNotMatch(html, /<button/);
@@ -99,7 +99,13 @@ test("ships every official img2threejs Lane 3 intermediate", async () => {
       scene.object.userData.img2threejs.generator,
       "forge/stage3_build/generate_threejs_factory.py",
     );
-    assert.equal(scene.geometries.length, geometryCount);
+    assert.equal(
+      scene.object.userData.img2threejs.generatedPass,
+      "optimization-pass",
+    );
+    // The official final pass adds one InstancedMesh repetition helper. The
+    // box adapter intentionally compiles only the named component meshes.
+    assert.equal(scene.geometries.length, geometryCount + 1);
     assert.ok(
       scene.materials.every(
         (material) => material.type === "MeshPhysicalMaterial",

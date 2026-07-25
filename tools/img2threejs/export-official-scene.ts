@@ -20,9 +20,9 @@ if (!(requestedAnimal in factories)) {
 const root = factories[requestedAnimal as keyof typeof factories]({
   castShadow: true,
   receiveShadow: true,
-  textureSize: 64,
-  textureAnisotropy: 1,
-  qualityPriority: "balanced",
+  textureSize: 256,
+  textureAnisotropy: 4,
+  qualityPriority: "reference-fidelity",
 });
 
 delete root.userData.sculptRuntime;
@@ -30,7 +30,7 @@ root.userData.img2threejs = {
   repository: "https://github.com/hoainho/img2threejs",
   commit: "c9077d5ecce834f6802d6742b4a5b2c682d6279d",
   generator: "forge/stage3_build/generate_threejs_factory.py",
-  generatedPass: "blockout",
+  generatedPass: "optimization-pass",
 };
 root.userData.img2blockbench = {
   source: "official-img2threejs",

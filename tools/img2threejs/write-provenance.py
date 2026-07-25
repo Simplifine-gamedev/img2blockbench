@@ -37,6 +37,8 @@ def main() -> None:
     bbmodel = blockbench / f"{args.animal}-lane3.bbmodel"
     atlas = blockbench / f"{args.animal}-lane3.png"
     scene_payload = json.loads(scene.read_text(encoding="utf-8"))
+    projection_path = lane_dir / "projection-audit.json"
+    projection = json.loads(projection_path.read_text(encoding="utf-8"))
     relative_to = lane_dir
 
     payload = {
@@ -45,19 +47,30 @@ def main() -> None:
             "commit": UPSTREAM_COMMIT,
             "license": "Apache-2.0",
             "generator": "forge/stage3_build/generate_threejs_factory.py",
-            "generated_pass": "blockout",
+            "generated_pass": "optimization-pass",
         },
         "reference": "../reference.png",
         "spec": "img2threejs-spec.json",
         "generated_factory": record(factories[0], relative_to),
         "threejs_scene": record(scene, relative_to),
+        "reference_projection": {
+            **record(projection_path, relative_to),
+            "algorithm": projection["algorithm"],
+            "camera_silhouette_iou": projection["camera_silhouette_iou"],
+            "foreground_threshold": projection["foreground_threshold"],
+            "faces": projection["faces"],
+            "unseen_face_policy": projection["unseen_face_policy"],
+        },
         "blockbench_model": record(bbmodel, relative_to),
         "blockbench_atlas": {
             **record(atlas, relative_to),
             "source": (
-                f"{len(scene_payload.get('materials', []))} embedded Three.js "
-                "albedo maps, sampled nearest-neighbor"
+                f"{projection['faces']['projected']} reference-projected faces, "
+                f"{projection['faces']['mirrored']} mirrored hidden faces, and "
+                f"{projection['faces']['procedural_fallback']} palette-matched "
+                "fallback faces"
             ),
+            "threejs_materials": len(scene_payload.get("materials", [])),
         },
     }
     blueprint = root / "tools" / "img2threejs" / "blueprints" / f"{args.animal}.json"

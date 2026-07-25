@@ -228,7 +228,13 @@ def component_spec(part: tuple[Any, ...]) -> dict[str, Any]:
         },
         "evidenceRefs": ["full-object"],
         "details": local_features,
-        "fidelityTier": "blockout",
+        "fidelityTier": (
+            "blockout"
+            if level == "macro"
+            else "structural-pass"
+            if level == "meso"
+            else "form-refinement"
+        ),
     }
 
 
@@ -446,31 +452,53 @@ def prepare(template: dict[str, Any]) -> dict[str, Any]:
         "The procedural result preserves the reference silhouette, broad bill, paddle tail, four webbed feet, facial landmarks, and Minecraft palette.",
         "Every generated geometry node remains a BoxGeometry compatible with deterministic Blockbench conversion.",
     ]
-    spec["lookDevTargets"]["qualityPriority"] = "balanced"
+    spec["lookDevTargets"]["qualityPriority"] = "reference-fidelity"
     spec["lookDevTargets"]["materialPass"].update(
         {
-            "minimumTextureResolution": 64,
-            "preferredTextureResolution": 128,
+            "minimumTextureResolution": 256,
+            "preferredTextureResolution": 256,
             "referencePbrExtraction": {
                 "requiredWhenSourceImagePresent": False,
                 "targetThreshold": 0.7,
                 "stopOnLowConfidence": False,
-                "acceptedLimitation": "This benchmark tests procedural geometry cost, not single-view PBR recovery.",
+                "acceptedLimitation": (
+                    "The Minecraft BBModel target preserves albedo only. "
+                    "Reference pixels are baked into cuboid faces by the "
+                    "img2blockbench adapter; Three.js PBR maps remain preview-only."
+                ),
             },
         }
     )
+    for material in spec["materials"]:
+        material["textureResolution"] = 256
     spec["performanceBudget"].update(
         {
             "targetTriangles": 20_000,
             "maxDrawCalls": 48,
-            "textureSize": 128,
+            "textureSize": 256,
             "fpsTarget": 60,
             "optimizationPolicy": "Keep all identity-defining cuboids; reduce procedural texture resolution first.",
         }
     )
 
+    components_by_level = {
+        level: [
+            component["id"]
+            for component in spec["componentTree"]
+            if component["level"] == level
+        ]
+        for level in ("macro", "meso", "micro")
+    }
+    pass_components = {
+        "blockout": components_by_level["macro"],
+        "structural-pass": components_by_level["meso"],
+        "form-refinement": components_by_level["micro"],
+    }
     for build_pass in spec["buildPasses"]:
-        build_pass["componentRefs"] = component_ids
+        build_pass["componentRefs"] = pass_components.get(
+            build_pass["id"],
+            [],
+        )
     spec["sculptPipeline"]["currentPass"] = "blockout"
     spec["sculptPipeline"]["completedPasses"] = []
     spec["sculptPipeline"]["lastCompletedPass"] = ""

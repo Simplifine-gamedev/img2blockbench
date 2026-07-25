@@ -1,19 +1,19 @@
 {
   "artifacts": [
     {
-      "bytes": 278153,
+      "bytes": 174695,
       "path": "platypus-lane3.model-spec.json",
-      "sha256": "7ae19a8b45ff424354985d2bddae04240fb639a4399118da8b793615fd1baa69"
+      "sha256": "09398a5b45ec29e5c56113ca463d8fd807aae09e0b6688caf3f56604acc53912"
     },
     {
-      "bytes": 8202,
+      "bytes": 15344,
       "path": "platypus-lane3.png",
-      "sha256": "340ff530ba3b3765b0a2b721983b6ab0afcc9a59d9e53f3cd6401925441f447b"
+      "sha256": "a2e78cc70b01ab4663fd8aa0acc623bdb3012b0b2bf61e45f02fed2688fc462d"
     },
     {
-      "bytes": 77116,
+      "bytes": 86640,
       "path": "platypus-lane3.bbmodel",
-      "sha256": "5de2fe488fcfed2b2b2d6ca70c8282ea9198fa7566bec3f62182b9c1375a639e"
+      "sha256": "0ef9b6eb5ae8c234e20a5ffe1bccc51091026d33f11f0a8c2c14ca520d514862"
     },
     {
       "bytes": 71967,

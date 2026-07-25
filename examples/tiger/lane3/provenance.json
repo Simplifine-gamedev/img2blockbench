@@ -1,31 +1,47 @@
 {
   "agent_blueprint": "../../../tools/img2threejs/blueprints/tiger.json",
   "blockbench_atlas": {
-    "bytes": 7240,
+    "bytes": 12814,
     "path": "blockbench/tiger-lane3.png",
-    "sha256": "b57aeeb6e6436101b563de4d62cb2278358ab38d3e1c9fa4b07263cf54558f62",
-    "source": "7 embedded Three.js albedo maps, sampled nearest-neighbor"
+    "sha256": "10ad123593693ca5c74d7a1e89a5e2296167585d880e8bc50c0161500de3d9fc",
+    "source": "66 reference-projected faces, 66 mirrored hidden faces, and 24 palette-matched fallback faces",
+    "threejs_materials": 7
   },
   "blockbench_model": {
-    "bytes": 60176,
+    "bytes": 67608,
     "path": "blockbench/tiger-lane3.bbmodel",
-    "sha256": "b7e9781bccefed5a6657707e0bb10e9344e204f2c7ac15dd736525beccd0f3bf"
+    "sha256": "a3f14051a98656802978143d788aeb92fa7480955ab9623f0eb35569c21cee26"
   },
   "generated_factory": {
-    "bytes": 219679,
+    "bytes": 221763,
     "path": "createMinecraftTigerModel.generated.ts",
-    "sha256": "e4c0361e8b8a70da26afbc8958f4c571507545928e0d693147b5dd4d728b3241"
+    "sha256": "4134480579d5f34b79d4347e6d86bee32c8eaee4c539ea2227e5f9355b5b57b8"
   },
   "reference": "../reference.png",
+  "reference_projection": {
+    "algorithm": "orthographic-cuboid-face-projection",
+    "bytes": 570,
+    "camera_silhouette_iou": 0.617513,
+    "faces": {
+      "mirrored": 66,
+      "procedural_fallback": 24,
+      "projected": 66,
+      "total": 156
+    },
+    "foreground_threshold": 58.0,
+    "path": "projection-audit.json",
+    "sha256": "bb2b37d5098c92ebca109632d13d106a7fcac68c6b92daa253db9f784e0b4c26",
+    "unseen_face_policy": "mirror-opposite-visible-face"
+  },
   "spec": "img2threejs-spec.json",
   "threejs_scene": {
-    "bytes": 1230868,
+    "bytes": 1236317,
     "path": "tiger.img2threejs.three.json",
-    "sha256": "3ad237fc9772c12561b288a67e3344536c7bbd2753d3a111444b71ac4458a625"
+    "sha256": "c972c12fa0e9405a2434f2847d191d81fc297f416907d4d77fa19427d911d406"
   },
   "upstream": {
     "commit": "c9077d5ecce834f6802d6742b4a5b2c682d6279d",
-    "generated_pass": "blockout",
+    "generated_pass": "optimization-pass",
     "generator": "forge/stage3_build/generate_threejs_factory.py",
     "license": "Apache-2.0",
     "repository": "https://github.com/hoainho/img2threejs"

@@ -6,7 +6,7 @@ agent vision, optional mesh guidance, and deterministic compilation.
 ```text
 Lane 1: image → native cuboid reasoning → .bbmodel
 Lane 2: image → Trellis mesh → cuboid reconstruction → .bbmodel
-Lane 3: image → img2threejs scene → scene adapter → .bbmodel
+Lane 3: image → img2threejs scene → reference face projection → .bbmodel
 ```
 
 ### Lane 1: direct
@@ -25,9 +25,8 @@ Lane 3: image → img2threejs scene → scene adapter → .bbmodel
 
 The [`demo`](demo) app presents every reference beside an interactive,
 auto-rotating render of its native `.bbmodel`. Every animal has the same
-three-lane switcher. Lane 3 defaults to the final `.bbmodel` and can also reveal
-its img2threejs intermediate. The demo includes a replayable build sequence,
-focus mode, orbit controls, and downloads.
+three-lane switcher. Models are prefetched for immediate switching; drag to
+rotate, scroll to zoom, and double-click to reset.
 
 ```bash
 cd demo
@@ -92,7 +91,8 @@ Three.js scene.
 </table>
 
 Every output includes its embedded texture and a structural audit. Lane 2 also
-preserves the source GLB; Lane 3 preserves the procedural scene and provenance.
+preserves the source GLB; Lane 3 preserves the procedural scene, reference-face
+projection audit, and provenance.
 
 The reusable image prompts are recorded in
 [`examples/lane1-five-animals-prompts.md`](examples/lane1-five-animals-prompts.md).
@@ -113,7 +113,8 @@ Minecraft-style image
   → official img2threejs TypeScript factory
   → browser-executed THREE.Group
   → visible Object3D scene
-  → geometry + albedo-map adapter
+  → box geometry adapter
+  → source-image cuboid-face projection
   → nearest-neighbor Blockbench atlas
   → .bbmodel
 ```
@@ -122,28 +123,20 @@ The five-animal benchmark pins upstream commit
 `c9077d5ecce834f6802d6742b4a5b2c682d6279d` and preserves the
 spec, generated source, scene JSON, provenance, and converted model for every
 animal. Each source uses boxes, so dimensions and rotations transfer directly.
-The adapter bakes each scene's embedded Three.js albedo maps into the
-`.bbmodel` atlas. Three.js roughness, normal, and AO maps remain preview-only
-because Blockbench's Minecraft texture format has no equivalent PBR channels.
+The five factories are generated at `optimization-pass` after the ordered
+blockout, structural, form, material, surface, lighting, interaction, and
+optimization reviews. The adapter then solves an orthographic camera against
+the source silhouette, projects source pixels onto visible cuboid faces,
+mirrors visible faces onto hidden opposites, and uses palette-matched
+procedural pixels only when projection has no valid evidence.
 
-> **Current Lane 3 status:** the five-animal set is a structural prototype, not
-> the quality ceiling of img2threejs. Every preserved factory was generated at
-> `blockout`; its spec has no completed visual-review passes and no
-> reference-derived PBR maps. The current atlases therefore contain procedural
-> palette noise, not a reference-texture projection. Treat Lane 3 geometry as a
-> baseline and its texture quality as provisional.
+Three.js roughness, normal, and AO maps remain preview-only because
+Blockbench's Minecraft texture format has no equivalent PBR channels.
 
-The production Lane 3 target is the complete upstream intake, strict-quality,
-multi-pass render/review loop, followed by a Minecraft-specific reference
-albedo bake. The upstream projected-texture helper records a bake descriptor;
-the Blockbench adapter must still implement the actual per-face projection and
-unseen-face policy.
+### Geometry comparison
 
-### Current structural baseline
-
-These scores compare Lane 1 `.bbmodel` geometry with the current Lane 3
-blockout after uniform normalization. They do not measure texture quality or
-validate the upstream img2threejs workflow.
+These scores compare Lane 1 and final Lane 3 `.bbmodel` geometry after uniform
+normalization. They do not measure texture similarity.
 
 | Animal | Boxes L1/L3 | Shape IoU | Topology F1 | Box count | Dimensions | Rotations | Weighted |
 |---|---:|---:|---:|---:|---:|---:|---:|
@@ -234,6 +227,14 @@ img2blockbench from-threejs \
   --id red-panda-threejs \
   --description "A Minecraft-style red panda" \
   --output ./red-panda-threejs.json
+
+# Project source pixels onto the imported cuboid faces.
+pip install -e '.[reference-projection]'
+python tools/img2threejs/bake-reference-faces.py \
+  ./red-panda-threejs.json \
+  --reference ./reference.png \
+  --output-spec ./red-panda-projected.json \
+  --audit ./red-panda-projection-audit.json
 
 # Re-audit an existing Blockbench file.
 img2blockbench audit ./dist/red-panda.bbmodel

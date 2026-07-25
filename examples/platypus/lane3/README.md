@@ -3,14 +3,15 @@
 This lane runs the official
 [`hoainho/img2threejs`](https://github.com/hoainho/img2threejs) code generator,
 uses its procedural Three.js scene as the intermediate, then converts that
-scene and its albedo maps into a native Blockbench model.
+scene and projects source-image pixels onto a native Blockbench model.
 
 ```text
 Minecraft-style image
   → official img2threejs ObjectSculptSpec
   → official generated TypeScript THREE.Group factory
   → Object3D.toJSON scene
-  → img2blockbench geometry + albedo-map adapter
+  → img2blockbench box geometry adapter
+  → reference-image cuboid-face projection
   → shared nearest-neighbor texture atlas
   → .bbmodel
 ```
@@ -30,9 +31,11 @@ under Apache-2.0; its license is preserved in
 - [`platypus.img2threejs.three.json`](platypus.img2threejs.three.json):
   browser-executed `Object3D.toJSON` result, including procedural materials.
 - [`model-spec.json`](model-spec.json): box-compatible scene adapted into the
-  shared Minecraft model contract, including the embedded Three.js albedo maps.
+  shared Minecraft model contract with per-face source-image patches.
+- [`projection-audit.json`](projection-audit.json): solved reference camera,
+  silhouette IoU, and projected/mirrored/fallback face counts.
 - [`blockbench/platypus-lane3.bbmodel`](blockbench/platypus-lane3.bbmodel):
-  converted native Blockbench model with the Three.js textures baked into its
+  converted native Blockbench model with projected source pixels baked into its
   embedded atlas.
 - [`blockbench/platypus-lane3.skill-audit.json`](blockbench/platypus-lane3.skill-audit.json):
   structural and UV-density audit.
@@ -71,8 +74,9 @@ python3 /tmp/img2threejs/forge/stage3_build/generate_threejs_factory.py \
   --out examples/platypus/lane3/createMinecraftPlatypusModel.generated.ts
 ```
 
-The browser exporter runs the generated factory because img2threejs procedural
-materials use browser canvas textures. The resulting scene is then converted:
+Repeat generation and visual review through `optimization-pass`. The browser
+exporter runs the final factory because img2threejs procedural materials use
+browser canvas textures. The resulting scene is then converted and projected:
 
 ```bash
 img2blockbench from-threejs \
@@ -80,7 +84,14 @@ img2blockbench from-threejs \
   --reference examples/platypus/reference.png \
   --id platypus-lane3 \
   --description "Official img2threejs procedural platypus converted to native Minecraft cuboids" \
-  --output examples/platypus/lane3/model-spec.json
+  --output /tmp/platypus-imported.json
+
+pip install -e '.[reference-projection]'
+python3 tools/img2threejs/bake-reference-faces.py \
+  /tmp/platypus-imported.json \
+  --reference examples/platypus/reference.png \
+  --output-spec examples/platypus/lane3/model-spec.json \
+  --audit examples/platypus/lane3/projection-audit.json
 
 img2blockbench build \
   examples/platypus/lane3/model-spec.json \

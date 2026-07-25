@@ -99,7 +99,6 @@ export function DemoShell({
           animal={animal}
           modelFile={model.modelFile}
           format="bbmodel"
-          ready={modelLoaded}
           captureMode={captureMode}
           onLoaded={handleModelLoaded}
         />

@@ -1,17 +1,17 @@
 {
-  "path": "examples/elephant/lane3/blockbench/elephant-lane3.bbmodel",
+  "animations": 0,
+  "bilateral": {},
   "cuboids": 25,
+  "errors": [],
   "estimated_triangles": 300,
   "groups": 26,
-  "animations": 0,
+  "ok": true,
+  "path": "elephant-lane3.bbmodel",
   "texture_size": [
     256,
     256
   ],
   "uv_density_median": 2.0,
   "uv_density_outliers": [],
-  "bilateral": {},
-  "errors": [],
-  "warnings": [],
-  "ok": true
+  "warnings": []
 }
