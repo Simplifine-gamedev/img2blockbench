@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import type { Animal } from "@/lib/animals";
@@ -36,12 +36,44 @@ const materialOrder: FaceName[] = [
   "north",
 ];
 
+type LoadedModel = {
+  modelRoot: THREE.Object3D;
+  modelMaterials: THREE.Material[];
+};
+
+const jsonCache = new Map<string, Promise<unknown>>();
+const imageCache = new Map<string, Promise<HTMLImageElement>>();
+
+function fetchJson<T>(url: string): Promise<T> {
+  let request = jsonCache.get(url);
+  if (!request) {
+    request = fetch(url).then((response) => {
+      if (!response.ok) throw new Error(`Could not load ${url}`);
+      return response.json();
+    });
+    jsonCache.set(url, request);
+  }
+  return request as Promise<T>;
+}
+
 function loadImage(source: string) {
-  return new Promise<HTMLImageElement>((resolve, reject) => {
+  let request = imageCache.get(source);
+  if (request) return request;
+
+  request = new Promise<HTMLImageElement>((resolve, reject) => {
     const image = new Image();
     image.onload = () => resolve(image);
     image.onerror = () => reject(new Error("Could not decode model texture"));
     image.src = source;
+  });
+  imageCache.set(source, request);
+  return request;
+}
+
+export function prefetchModel(modelFile: string) {
+  void fetchJson<Partial<BbModel>>(`/models/${modelFile}`).then((model) => {
+    const textureSource = model.textures?.[0]?.source;
+    if (textureSource) void loadImage(textureSource);
   });
 }
 
@@ -131,6 +163,81 @@ function disposeObject(object: THREE.Object3D) {
   });
 }
 
+async function loadBbmodel(modelFile: string): Promise<LoadedModel> {
+  const model = await fetchJson<BbModel>(`/models/${modelFile}`);
+  const atlas = await loadImage(model.textures[0].source);
+  const modelRoot = new THREE.Group();
+  const modelMaterials: THREE.Material[] = [];
+
+  for (const element of model.elements) {
+    if (element.type !== "cube") continue;
+
+    const size = new THREE.Vector3(
+      element.to[0] - element.from[0],
+      element.to[1] - element.from[1],
+      element.to[2] - element.from[2],
+    );
+    const center = new THREE.Vector3(
+      (element.from[0] + element.to[0]) / 2,
+      (element.from[1] + element.to[1]) / 2,
+      (element.from[2] + element.to[2]) / 2,
+    );
+    const originValues = element.origin ?? [center.x, center.y, center.z];
+    const origin = new THREE.Vector3(
+      originValues[0],
+      originValues[1],
+      originValues[2],
+    );
+    const rotation = element.rotation ?? [0, 0, 0];
+    const geometry = new THREE.BoxGeometry(size.x, size.y, size.z);
+    const materials = materialOrder.map((faceName) =>
+      faceMaterial(atlas, element.faces[faceName], faceName),
+    );
+    modelMaterials.push(...materials);
+
+    const mesh = new THREE.Mesh(geometry, materials);
+    mesh.position.copy(center).sub(origin);
+    mesh.castShadow = true;
+    mesh.receiveShadow = true;
+
+    const pivot = new THREE.Group();
+    pivot.position.copy(origin);
+    pivot.rotation.order = "ZYX";
+    pivot.rotation.set(
+      THREE.MathUtils.degToRad(rotation[0]),
+      THREE.MathUtils.degToRad(rotation[1]),
+      THREE.MathUtils.degToRad(rotation[2]),
+    );
+    pivot.add(mesh);
+    modelRoot.add(pivot);
+  }
+
+  return { modelRoot, modelMaterials };
+}
+
+async function loadThreejsScene(modelFile: string): Promise<LoadedModel> {
+  const sceneJson = await fetchJson<Record<string, unknown>>(
+    `/models/${modelFile}`,
+  );
+  const loader = new THREE.ObjectLoader();
+  const modelRoot = await new Promise<THREE.Object3D>((resolve) => {
+    loader.parse(sceneJson, resolve);
+  });
+  const modelMaterials: THREE.Material[] = [];
+
+  modelRoot.traverse((child) => {
+    if (!(child instanceof THREE.Mesh)) return;
+    child.castShadow = true;
+    child.receiveShadow = true;
+    const materials = Array.isArray(child.material)
+      ? child.material
+      : [child.material];
+    modelMaterials.push(...materials);
+  });
+
+  return { modelRoot, modelMaterials };
+}
+
 export function ModelViewer({
   animal,
   modelFile,
@@ -149,17 +256,45 @@ export function ModelViewer({
   onLoaded: () => void;
 }) {
   const mountRef = useRef<HTMLDivElement>(null);
+  const sceneRef = useRef<THREE.Scene | null>(null);
   const rootRef = useRef<THREE.Object3D | null>(null);
   const materialsRef = useRef<THREE.Material[]>([]);
   const cameraRef = useRef<THREE.PerspectiveCamera | null>(null);
   const controlsRef = useRef<OrbitControls | null>(null);
+  const rimLightRef = useRef<THREE.DirectionalLight | null>(null);
   const revealFrameRef = useRef<number | null>(null);
+  const [autoRotate, setAutoRotate] = useState(true);
+
+  const resetCamera = useCallback(() => {
+    controlsRef.current?.reset();
+    controlsRef.current?.update();
+    setAutoRotate(false);
+  }, []);
+
+  const zoomCamera = useCallback((factor: number) => {
+    const camera = cameraRef.current;
+    const controls = controlsRef.current;
+    if (!camera || !controls) return;
+
+    const offset = camera.position.clone().sub(controls.target);
+    const nextDistance = THREE.MathUtils.clamp(
+      offset.length() * factor,
+      controls.minDistance,
+      controls.maxDistance,
+    );
+    camera.position.copy(
+      controls.target.clone().add(offset.setLength(nextDistance)),
+    );
+    controls.update();
+    setAutoRotate(false);
+  }, []);
 
   useEffect(() => {
     const mount = mountRef.current;
     if (!mount) return;
 
     const scene = new THREE.Scene();
+    sceneRef.current = scene;
     const camera = new THREE.PerspectiveCamera(34, 1, 0.1, 600);
     cameraRef.current = camera;
 
@@ -172,7 +307,7 @@ export function ModelViewer({
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.toneMapping = THREE.NoToneMapping;
     renderer.shadowMap.enabled = true;
-    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.shadowMap.type = THREE.PCFShadowMap;
     if (captureMode) renderer.setClearColor(0xf5f5f4, 1);
     mount.appendChild(renderer.domElement);
 
@@ -182,9 +317,18 @@ export function ModelViewer({
     controls.enablePan = false;
     controls.autoRotate = !captureMode;
     controls.autoRotateSpeed = 0.65;
+    controls.enableZoom = true;
+    controls.zoomToCursor = true;
+    controls.rotateSpeed = 0.72;
+    controls.zoomSpeed = 1.15;
     controls.minDistance = 18;
     controls.maxDistance = 110;
     controlsRef.current = controls;
+
+    const stopAutoRotate = () => setAutoRotate(false);
+    const resetFromCanvas = () => resetCamera();
+    controls.addEventListener("start", stopAutoRotate);
+    renderer.domElement.addEventListener("dblclick", resetFromCanvas);
 
     scene.add(new THREE.HemisphereLight(0xd8efff, 0x15202a, 2.4));
 
@@ -194,12 +338,10 @@ export function ModelViewer({
     keyLight.shadow.mapSize.set(2048, 2048);
     scene.add(keyLight);
 
-    const rimLight = new THREE.DirectionalLight(
-      new THREE.Color(animal.accent),
-      3.2,
-    );
+    const rimLight = new THREE.DirectionalLight(0xffffff, 3.2);
     rimLight.position.set(30, 16, 24);
     scene.add(rimLight);
+    rimLightRef.current = rimLight;
 
     const floor = new THREE.Mesh(
       new THREE.PlaneGeometry(180, 180),
@@ -232,7 +374,6 @@ export function ModelViewer({
     });
     scene.add(grid);
 
-    let stopped = false;
     let animationFrame = 0;
 
     const resize = () => {
@@ -248,108 +389,54 @@ export function ModelViewer({
 
     const animate = () => {
       controls.update();
+      mount.dataset.cameraDistance = camera.position
+        .distanceTo(controls.target)
+        .toFixed(3);
+      mount.dataset.cameraAzimuth = controls.getAzimuthalAngle().toFixed(3);
       renderer.render(scene, camera);
       animationFrame = window.requestAnimationFrame(animate);
     };
     animate();
 
-    const loadBbmodel = async () => {
-      const response = await fetch(`/models/${modelFile}`);
-      if (!response.ok) {
-        throw new Error(`Could not load ${modelFile}`);
+    return () => {
+      resizeObserver.disconnect();
+      window.cancelAnimationFrame(animationFrame);
+      controls.removeEventListener("start", stopAutoRotate);
+      renderer.domElement.removeEventListener("dblclick", resetFromCanvas);
+      controls.dispose();
+      renderer.dispose();
+      if (rootRef.current) {
+        scene.remove(rootRef.current);
+        disposeObject(rootRef.current);
       }
-      const model = (await response.json()) as BbModel;
-      const atlas = await loadImage(model.textures[0].source);
-
-      const modelRoot = new THREE.Group();
-      const modelMaterials: THREE.Material[] = [];
-
-      for (const element of model.elements) {
-        if (element.type !== "cube") continue;
-
-        const size = new THREE.Vector3(
-          element.to[0] - element.from[0],
-          element.to[1] - element.from[1],
-          element.to[2] - element.from[2],
-        );
-        const center = new THREE.Vector3(
-          (element.from[0] + element.to[0]) / 2,
-          (element.from[1] + element.to[1]) / 2,
-          (element.from[2] + element.to[2]) / 2,
-        );
-        const originValues = element.origin ?? [
-          center.x,
-          center.y,
-          center.z,
-        ];
-        const origin = new THREE.Vector3(
-          originValues[0],
-          originValues[1],
-          originValues[2],
-        );
-        const rotation = element.rotation ?? [0, 0, 0];
-        const geometry = new THREE.BoxGeometry(size.x, size.y, size.z);
-        const materials = materialOrder.map((faceName) =>
-          faceMaterial(
-            atlas,
-            element.faces[faceName],
-            faceName,
-          ),
-        );
-        modelMaterials.push(...materials);
-
-        const mesh = new THREE.Mesh(geometry, materials);
-        mesh.position.copy(center).sub(origin);
-        mesh.castShadow = true;
-        mesh.receiveShadow = true;
-
-        const pivot = new THREE.Group();
-        pivot.position.copy(origin);
-        pivot.rotation.order = "ZYX";
-        pivot.rotation.set(
-          THREE.MathUtils.degToRad(rotation[0]),
-          THREE.MathUtils.degToRad(rotation[1]),
-          THREE.MathUtils.degToRad(rotation[2]),
-        );
-        pivot.add(mesh);
-        modelRoot.add(pivot);
-      }
-
-      return { modelRoot, modelMaterials };
+      renderer.domElement.remove();
+      rootRef.current = null;
+      materialsRef.current = [];
+      sceneRef.current = null;
+      cameraRef.current = null;
+      controlsRef.current = null;
+      rimLightRef.current = null;
     };
+  }, [captureMode, resetCamera]);
 
-    const loadThreejsScene = async () => {
-      const response = await fetch(`/models/${modelFile}`);
-      if (!response.ok) {
-        throw new Error(`Could not load ${modelFile}`);
-      }
-      const sceneJson = await response.json();
-      const loader = new THREE.ObjectLoader();
-      const modelRoot = await new Promise<THREE.Object3D>((resolve) => {
-        loader.parse(sceneJson, resolve);
-      });
-      const modelMaterials: THREE.Material[] = [];
+  useEffect(() => {
+    rimLightRef.current?.color.set(animal.accent);
+  }, [animal.accent]);
 
-      modelRoot.traverse((child) => {
-        if (!(child instanceof THREE.Mesh)) return;
-        child.castShadow = true;
-        child.receiveShadow = true;
-        const materials = Array.isArray(child.material)
-          ? child.material
-          : [child.material];
-        modelMaterials.push(...materials);
-      });
+  useEffect(() => {
+    const scene = sceneRef.current;
+    const camera = cameraRef.current;
+    const controls = controlsRef.current;
+    if (!scene || !camera || !controls) return;
 
-      return { modelRoot, modelMaterials };
-    };
-
+    let cancelled = false;
     const buildModel = async () => {
       const { modelRoot, modelMaterials } =
         format === "threejs"
-          ? await loadThreejsScene()
-          : await loadBbmodel();
+          ? await loadThreejsScene(modelFile)
+          : await loadBbmodel(modelFile);
 
-      if (stopped) {
+      if (cancelled) {
         disposeObject(modelRoot);
         return;
       }
@@ -359,17 +446,21 @@ export function ModelViewer({
       const size = bounds.getSize(new THREE.Vector3());
       modelRoot.position.set(-center.x, -bounds.min.y, -center.z);
       modelRoot.visible = captureMode;
-      modelRoot.scale.setScalar(captureMode ? 1 : 0.82);
-      if (captureMode) {
-        modelMaterials.forEach((material) => {
-          material.transparent = false;
-          material.opacity = 1;
-        });
-      }
+      modelRoot.scale.setScalar(captureMode ? 1 : 0.94);
+      modelMaterials.forEach((material) => {
+        material.transparent = !captureMode;
+        material.opacity = captureMode ? 1 : 0;
+      });
 
+      const previousRoot = rootRef.current;
       rootRef.current = modelRoot;
       materialsRef.current = modelMaterials;
       scene.add(modelRoot);
+
+      if (previousRoot) {
+        scene.remove(previousRoot);
+        disposeObject(previousRoot);
+      }
 
       const span = Math.max(size.x, size.y, size.z);
       camera.position.set(
@@ -381,6 +472,7 @@ export function ModelViewer({
       controls.minDistance = span * 0.68;
       controls.maxDistance = span * 3.2;
       controls.update();
+      controls.saveState();
       onLoaded();
     };
 
@@ -389,22 +481,15 @@ export function ModelViewer({
     });
 
     return () => {
-      stopped = true;
-      resizeObserver.disconnect();
-      window.cancelAnimationFrame(animationFrame);
-      controls.dispose();
-      renderer.dispose();
-      if (rootRef.current) {
-        scene.remove(rootRef.current);
-        disposeObject(rootRef.current);
-      }
-      renderer.domElement.remove();
-      rootRef.current = null;
-      materialsRef.current = [];
-      cameraRef.current = null;
-      controlsRef.current = null;
+      cancelled = true;
     };
-  }, [animal, captureMode, format, modelFile, onLoaded]);
+  }, [captureMode, format, modelFile, onLoaded]);
+
+  useEffect(() => {
+    const controls = controlsRef.current;
+    if (!controls) return;
+    controls.autoRotate = autoRotate && !captureMode;
+  }, [autoRotate, captureMode]);
 
   useEffect(() => {
     const root = rootRef.current;
@@ -438,9 +523,9 @@ export function ModelViewer({
     const startedAt = performance.now();
 
     const reveal = (now: number) => {
-      const progress = Math.min((now - startedAt) / 900, 1);
+      const progress = Math.min((now - startedAt) / 180, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
-      root.scale.setScalar(0.82 + eased * 0.18);
+      root.scale.setScalar(0.94 + eased * 0.06);
       materialsRef.current.forEach((material) => {
         material.opacity = eased;
         material.transparent = progress < 1;
@@ -460,5 +545,61 @@ export function ModelViewer({
     };
   }, [captureMode, ready, replayKey]);
 
-  return <div className="model-canvas" ref={mountRef} />;
+  return (
+    <>
+      <div
+        className="model-canvas"
+        ref={mountRef}
+        role="img"
+        aria-label={`Interactive 3D preview of ${animal.name}`}
+      />
+      {!captureMode && (
+        <>
+          <div className="orbit-toolbar" aria-label="3D view controls">
+            <button
+              type="button"
+              onClick={() => zoomCamera(0.78)}
+              aria-label="Zoom in"
+              title="Zoom in"
+            >
+              +
+            </button>
+            <button
+              type="button"
+              onClick={() => zoomCamera(1.28)}
+              aria-label="Zoom out"
+              title="Zoom out"
+            >
+              −
+            </button>
+            <button
+              type="button"
+              onClick={resetCamera}
+              aria-label="Reset camera"
+              title="Reset camera"
+            >
+              ↺
+            </button>
+            <button
+              type="button"
+              className={autoRotate ? "active" : ""}
+              onClick={() => setAutoRotate((value) => !value)}
+              aria-label={autoRotate ? "Pause automatic rotation" : "Start automatic rotation"}
+              aria-pressed={autoRotate}
+              title={autoRotate ? "Pause automatic rotation" : "Start automatic rotation"}
+            >
+              AUTO
+            </button>
+          </div>
+          <div className="orbit-hint">
+            <b>DRAG</b> ROTATE
+            <span />
+            <b>WHEEL</b> ZOOM
+            <span />
+            <b>DOUBLE-CLICK</b> RESET
+          </div>
+        </>
+      )}
+    </>
+  );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { ModelViewer } from "@/components/model-viewer";
+import { ModelViewer, prefetchModel } from "@/components/model-viewer";
 import {
   animalOrder,
   animals,
@@ -26,15 +26,17 @@ export function DemoShell({
 }: {
   initialAnimal: AnimalSlug;
 }) {
-  const animal = animals[initialAnimal];
+  const [animalSlug, setAnimalSlug] = useState<AnimalSlug>(initialAnimal);
   const [laneSlug, setLaneSlug] = useState<LaneSlug>("lane2");
-  const [phase, setPhase] = useState(0);
+  const [phase, setPhase] = useState(phases.length - 1);
   const [modelLoaded, setModelLoaded] = useState(false);
   const [replayKey, setReplayKey] = useState(0);
+  const [isReplaying, setIsReplaying] = useState(false);
   const [focusMode, setFocusMode] = useState(false);
   const [captureMode, setCaptureMode] = useState(false);
   const [lane3Artifact, setLane3Artifact] =
     useState<Lane3Artifact>("bbmodel");
+  const animal = animals[animalSlug];
   const lane = lanes[laneSlug];
   const model = animal.models[laneSlug] ?? animal.models.lane2!;
   const showingLane3Source =
@@ -47,46 +49,52 @@ export function DemoShell({
   const isReady = phase === phases.length - 1 && modelLoaded;
 
   useEffect(() => {
-    const searchParams = new URLSearchParams(window.location.search);
-    const requestedLane = searchParams.get("lane");
-    if (
-      requestedLane &&
-      isLaneSlug(requestedLane) &&
-      animal.models[requestedLane]
-    ) {
-      setLaneSlug(requestedLane);
-    }
-    const requestedArtifact = searchParams.get("view");
-    if (requestedArtifact === "bbmodel" || requestedArtifact === "threejs") {
-      setLane3Artifact(requestedArtifact);
-    }
-    setCaptureMode(searchParams.get("capture") === "1");
-  }, [animal]);
+    const syncUrlState = window.setTimeout(() => {
+      const searchParams = new URLSearchParams(window.location.search);
+      const requestedLane = searchParams.get("lane");
+      if (
+        requestedLane &&
+        isLaneSlug(requestedLane) &&
+        animals[initialAnimal].models[requestedLane]
+      ) {
+        setLaneSlug(requestedLane);
+      }
+      const requestedArtifact = searchParams.get("view");
+      if (requestedArtifact === "bbmodel" || requestedArtifact === "threejs") {
+        setLane3Artifact(requestedArtifact);
+      }
+      setCaptureMode(searchParams.get("capture") === "1");
+    }, 0);
+
+    return () => window.clearTimeout(syncUrlState);
+  }, [initialAnimal]);
 
   useEffect(() => {
-    if (!animal.models[laneSlug]) {
-      setLaneSlug("lane2");
-    }
-  }, [animal, laneSlug]);
-
-  useEffect(() => {
-    setModelLoaded(false);
-    setPhase(0);
+    if (!isReplaying) return;
 
     const timers = [
-      window.setTimeout(() => setPhase(1), 720),
-      window.setTimeout(() => setPhase(2), 1_480),
-      window.setTimeout(() => setPhase(3), 2_300),
+      window.setTimeout(() => setPhase(1), 420),
+      window.setTimeout(() => setPhase(2), 840),
+      window.setTimeout(() => {
+        setPhase(3);
+        setIsReplaying(false);
+      }, 1_260),
     ];
 
     return () => timers.forEach(window.clearTimeout);
-  }, [initialAnimal, laneSlug, lane3Artifact, replayKey]);
+  }, [isReplaying, replayKey]);
+
+  const startReplay = useCallback(() => {
+    setPhase(0);
+    setIsReplaying(true);
+    setReplayKey((value) => value + 1);
+  }, []);
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.code === "Space") {
         event.preventDefault();
-        setReplayKey((value) => value + 1);
+        startReplay();
       }
 
       if (event.key.toLowerCase() === "f") {
@@ -96,17 +104,50 @@ export function DemoShell({
 
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
+  }, [startReplay]);
+
+  const prefetchAnimal = useCallback((slug: AnimalSlug) => {
+    const target = animals[slug];
+    Object.values(target.models).forEach((targetModel) => {
+      if (targetModel) {
+        prefetchModel(targetModel.modelFile);
+        if (targetModel.threeSceneFile) {
+          prefetchModel(targetModel.threeSceneFile);
+        }
+      }
+    });
+
+    const reference = new Image();
+    reference.src = `/references/${slug}.png`;
   }, []);
 
+  useEffect(() => {
+    prefetchAnimal(animalSlug);
+  }, [animalSlug, prefetchAnimal]);
+
   const statusText = useMemo(
-    () => (modelLoaded ? phases[phase] : "Loading model"),
+    () => (modelLoaded ? phases[phase] : "Switching model"),
     [modelLoaded, phase],
   );
   const handleModelLoaded = useCallback(() => setModelLoaded(true), []);
+  const prepareInstantSwitch = () => {
+    setModelLoaded(false);
+    setPhase(phases.length - 1);
+    setIsReplaying(false);
+  };
+  const handleAnimalChange = (nextAnimal: AnimalSlug) => {
+    if (nextAnimal === animalSlug) return;
+    prepareInstantSwitch();
+    setAnimalSlug(nextAnimal);
+    const url = new URL(window.location.href);
+    url.pathname = `/${nextAnimal}`;
+    window.history.replaceState({}, "", url);
+  };
   const handleLaneChange = (nextLane: LaneSlug) => {
     if (!animal.models[nextLane] || nextLane === laneSlug) return;
+    prepareInstantSwitch();
+    prefetchModel(animal.models[nextLane]!.modelFile);
     setLaneSlug(nextLane);
-    setReplayKey((value) => value + 1);
     const url = new URL(window.location.href);
     url.searchParams.set("lane", nextLane);
     if (nextLane === "lane3") {
@@ -119,8 +160,8 @@ export function DemoShell({
   };
   const handleLane3ArtifactChange = (artifact: Lane3Artifact) => {
     if (artifact === lane3Artifact) return;
+    prepareInstantSwitch();
     setLane3Artifact(artifact);
-    setReplayKey((value) => value + 1);
     const url = new URL(window.location.href);
     url.searchParams.set("view", artifact);
     window.history.replaceState({}, "", url);
@@ -138,28 +179,36 @@ export function DemoShell({
     >
       <aside className="source-panel" aria-label="Reference and model details">
         <header className="brand-row">
-          <a className="brand" href="/" aria-label="img2blockbench home">
+          <button
+            className="brand"
+            type="button"
+            onClick={() => handleAnimalChange("platypus")}
+            aria-label="img2blockbench home"
+          >
             <span className="brand-mark" aria-hidden="true">
               <i />
               <i />
               <i />
             </span>
             <span>img2blockbench</span>
-          </a>
+          </button>
           <span className="version-pill">LANE {lane.number}</span>
         </header>
 
         <nav className="animal-tabs" aria-label="Choose an animal">
           {animalOrder.map((slug, index) => (
-            <a
+            <button
               key={slug}
-              href={`/${slug}`}
-              className={slug === initialAnimal ? "active" : ""}
-              aria-current={slug === initialAnimal ? "page" : undefined}
+              type="button"
+              className={slug === animalSlug ? "active" : ""}
+              aria-current={slug === animalSlug ? "page" : undefined}
               title={`${index + 1}. ${animals[slug].name}`}
+              onPointerEnter={() => prefetchAnimal(slug)}
+              onFocus={() => prefetchAnimal(slug)}
+              onClick={() => handleAnimalChange(slug)}
             >
               {animals[slug].name}
-            </a>
+            </button>
           ))}
         </nav>
 
@@ -243,7 +292,7 @@ export function DemoShell({
           <button
             className="primary-button"
             type="button"
-            onClick={() => setReplayKey((value) => value + 1)}
+            onClick={startReplay}
           >
             <span className="replay-icon" aria-hidden="true">↻</span>
             Replay build

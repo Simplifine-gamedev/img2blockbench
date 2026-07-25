@@ -76,14 +76,18 @@ button {
 }
 
 .brand {
+  padding: 0;
+  border: 0;
   display: inline-flex;
   align-items: center;
   gap: 11px;
   color: #f4f9fc;
+  background: transparent;
   text-decoration: none;
   font-size: 16px;
   font-weight: 690;
   letter-spacing: -0.025em;
+  cursor: pointer;
 }
 
 .brand-mark {
@@ -154,24 +158,25 @@ button {
   display: none;
 }
 
-.animal-tabs a {
+.animal-tabs button {
   flex: 0 0 auto;
-  padding: 7px 9px;
+  padding: 7px 6px;
   color: #617585;
   border: 1px solid transparent;
   border-radius: 5px;
-  font-size: 10px;
+  background: transparent;
+  font-size: 9px;
   font-weight: 700;
-  text-decoration: none;
+  cursor: pointer;
   transition: 160ms ease;
 }
 
-.animal-tabs a:hover {
+.animal-tabs button:hover {
   color: #b9c8d1;
   background: rgba(255, 255, 255, 0.035);
 }
 
-.animal-tabs a.active {
+.animal-tabs button.active {
   color: var(--animal-accent);
   border-color: color-mix(in srgb, var(--animal-accent), transparent 72%);
   background: color-mix(in srgb, var(--animal-accent-soft), transparent 40%);
@@ -637,10 +642,86 @@ button {
   display: block;
   cursor: grab;
   outline: none;
+  touch-action: none;
 }
 
 .model-canvas canvas:active {
   cursor: grabbing;
+}
+
+.orbit-toolbar {
+  position: absolute;
+  z-index: 5;
+  top: 18px;
+  right: 18px;
+  display: flex;
+  gap: 5px;
+  padding: 5px;
+  border: 1px solid rgba(126, 162, 184, 0.18);
+  border-radius: 6px;
+  background: rgba(4, 10, 15, 0.72);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.24);
+  backdrop-filter: blur(12px);
+}
+
+.orbit-toolbar button {
+  min-width: 34px;
+  height: 32px;
+  padding: 0 9px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: #8aa0ae;
+  background: rgba(255, 255, 255, 0.035);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 140ms ease;
+}
+
+.orbit-toolbar button:last-child {
+  font-size: 8px;
+  letter-spacing: 0.08em;
+}
+
+.orbit-toolbar button:hover,
+.orbit-toolbar button.active {
+  color: var(--animal-accent);
+  border-color: color-mix(in srgb, var(--animal-accent), transparent 58%);
+  background: color-mix(in srgb, var(--animal-accent-soft), transparent 28%);
+}
+
+.orbit-hint {
+  position: absolute;
+  z-index: 4;
+  left: 50%;
+  bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  border: 1px solid rgba(126, 162, 184, 0.13);
+  border-radius: 4px;
+  color: #58707f;
+  background: rgba(4, 10, 15, 0.64);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 7px;
+  letter-spacing: 0.07em;
+  pointer-events: none;
+  transform: translateX(-50%);
+  backdrop-filter: blur(10px);
+}
+
+.orbit-hint b {
+  color: #91a6b2;
+  font-size: inherit;
+}
+
+.orbit-hint span {
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: #39505e;
 }
 
 .build-overlay {
@@ -912,6 +993,15 @@ kbd {
   .keyboard-hints {
     flex-wrap: wrap;
     gap: 9px;
+  }
+
+  .orbit-toolbar {
+    top: 12px;
+    right: 12px;
+  }
+
+  .orbit-hint {
+    bottom: 12px;
   }
 }
 

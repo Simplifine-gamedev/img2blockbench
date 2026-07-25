@@ -37,8 +37,22 @@ test("server-renders the img2blockbench demo", async () => {
   assert.match(html, /Three\.js/);
   assert.match(html, /MESH-ASSISTED OUTPUT/);
   assert.match(html, /Replay build/);
+  assert.match(html, /aria-label="Zoom in"/);
+  assert.match(html, /DOUBLE-CLICK/);
   assert.doesNotMatch(html, /codex-preview/);
   assert.doesNotMatch(html, /react-loading-skeleton/);
+});
+
+test("switches models client-side without replaying the artificial build", async () => {
+  const source = await readFile(
+    new URL("components/demo-shell.tsx", templateRoot),
+    "utf8",
+  );
+
+  assert.match(source, /window\.history\.replaceState/);
+  assert.match(source, /onPointerEnter=\{\(\) => prefetchAnimal\(slug\)\}/);
+  assert.doesNotMatch(source, /href=\{`\/\$\{slug\}`\}/);
+  assert.doesNotMatch(source, /2_300/);
 });
 
 test("ships every reference and all three BBModel outputs", async () => {
