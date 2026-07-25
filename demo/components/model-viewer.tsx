@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import type { Animal } from "@/lib/animals";
@@ -243,7 +243,6 @@ export function ModelViewer({
   modelFile,
   format,
   ready,
-  replayKey,
   captureMode,
   onLoaded,
 }: {
@@ -251,7 +250,6 @@ export function ModelViewer({
   modelFile: string;
   format: "bbmodel" | "threejs";
   ready: boolean;
-  replayKey: number;
   captureMode: boolean;
   onLoaded: () => void;
 }) {
@@ -263,30 +261,10 @@ export function ModelViewer({
   const controlsRef = useRef<OrbitControls | null>(null);
   const rimLightRef = useRef<THREE.DirectionalLight | null>(null);
   const revealFrameRef = useRef<number | null>(null);
-  const [autoRotate, setAutoRotate] = useState(true);
 
   const resetCamera = useCallback(() => {
     controlsRef.current?.reset();
     controlsRef.current?.update();
-    setAutoRotate(false);
-  }, []);
-
-  const zoomCamera = useCallback((factor: number) => {
-    const camera = cameraRef.current;
-    const controls = controlsRef.current;
-    if (!camera || !controls) return;
-
-    const offset = camera.position.clone().sub(controls.target);
-    const nextDistance = THREE.MathUtils.clamp(
-      offset.length() * factor,
-      controls.minDistance,
-      controls.maxDistance,
-    );
-    camera.position.copy(
-      controls.target.clone().add(offset.setLength(nextDistance)),
-    );
-    controls.update();
-    setAutoRotate(false);
   }, []);
 
   useEffect(() => {
@@ -325,7 +303,9 @@ export function ModelViewer({
     controls.maxDistance = 110;
     controlsRef.current = controls;
 
-    const stopAutoRotate = () => setAutoRotate(false);
+    const stopAutoRotate = () => {
+      controls.autoRotate = false;
+    };
     const resetFromCanvas = () => resetCamera();
     controls.addEventListener("start", stopAutoRotate);
     renderer.domElement.addEventListener("dblclick", resetFromCanvas);
@@ -486,12 +466,6 @@ export function ModelViewer({
   }, [captureMode, format, modelFile, onLoaded]);
 
   useEffect(() => {
-    const controls = controlsRef.current;
-    if (!controls) return;
-    controls.autoRotate = autoRotate && !captureMode;
-  }, [autoRotate, captureMode]);
-
-  useEffect(() => {
     const root = rootRef.current;
     if (!root) return;
 
@@ -543,7 +517,7 @@ export function ModelViewer({
         window.cancelAnimationFrame(revealFrameRef.current);
       }
     };
-  }, [captureMode, ready, replayKey]);
+  }, [captureMode, ready]);
 
   return (
     <>
@@ -554,51 +528,11 @@ export function ModelViewer({
         aria-label={`Interactive 3D preview of ${animal.name}`}
       />
       {!captureMode && (
-        <>
-          <div className="orbit-toolbar" aria-label="3D view controls">
-            <button
-              type="button"
-              onClick={() => zoomCamera(0.78)}
-              aria-label="Zoom in"
-              title="Zoom in"
-            >
-              +
-            </button>
-            <button
-              type="button"
-              onClick={() => zoomCamera(1.28)}
-              aria-label="Zoom out"
-              title="Zoom out"
-            >
-              −
-            </button>
-            <button
-              type="button"
-              onClick={resetCamera}
-              aria-label="Reset camera"
-              title="Reset camera"
-            >
-              ↺
-            </button>
-            <button
-              type="button"
-              className={autoRotate ? "active" : ""}
-              onClick={() => setAutoRotate((value) => !value)}
-              aria-label={autoRotate ? "Pause automatic rotation" : "Start automatic rotation"}
-              aria-pressed={autoRotate}
-              title={autoRotate ? "Pause automatic rotation" : "Start automatic rotation"}
-            >
-              AUTO
-            </button>
-          </div>
-          <div className="orbit-hint">
-            <b>DRAG</b> ROTATE
-            <span />
-            <b>WHEEL</b> ZOOM
-            <span />
-            <b>DOUBLE-CLICK</b> RESET
-          </div>
-        </>
+        <div className="orbit-hint">
+          <b>DRAG</b> ROTATE
+          <span />
+          <b>WHEEL</b> ZOOM
+        </div>
       )}
     </>
   );

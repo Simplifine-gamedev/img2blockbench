@@ -126,6 +126,36 @@ The adapter bakes each scene's embedded Three.js albedo maps into the
 `.bbmodel` atlas. Three.js roughness, normal, and AO maps remain preview-only
 because Blockbench's Minecraft texture format has no equivalent PBR channels.
 
+> **Current Lane 3 status:** the five-animal set is a structural prototype, not
+> the quality ceiling of img2threejs. Every preserved factory was generated at
+> `blockout`; its spec has no completed visual-review passes and no
+> reference-derived PBR maps. The current atlases therefore contain procedural
+> palette noise, not a reference-texture projection. Treat Lane 3 geometry as a
+> baseline and its texture quality as provisional.
+
+The production Lane 3 target is the complete upstream intake, strict-quality,
+multi-pass render/review loop, followed by a Minecraft-specific reference
+albedo bake. The upstream projected-texture helper records a bake descriptor;
+the Blockbench adapter must still implement the actual per-face projection and
+unseen-face policy.
+
+### Current structural baseline
+
+These scores compare Lane 1 `.bbmodel` geometry with the current Lane 3
+blockout after uniform normalization. They do not measure texture quality or
+validate the upstream img2threejs workflow.
+
+| Animal | Boxes L1/L3 | Shape IoU | Topology F1 | Box count | Dimensions | Rotations | Weighted |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Platypus | 16 / 34 | 67.0% | 96.0% | 47.1% | 85.6% | 99.9% | 76.8% |
+| Chimpanzee | 22 / 25 | 83.5% | 92.1% | 88.0% | 96.2% | 99.7% | 90.1% |
+| Elephant | 21 / 25 | 90.5% | 100.0% | 84.0% | 97.5% | 99.7% | 93.7% |
+| Tiger | 20 / 26 | 81.7% | 95.8% | 76.9% | 93.1% | 99.2% | 87.8% |
+| Coyote | 20 / 24 | 82.9% | 100.0% | 83.3% | 94.1% | 99.7% | 90.3% |
+
+Run `cd demo && npm run benchmark:geometry` to reproduce the comparison.
+Rotation scores are high because both baselines are predominantly axis-aligned.
+
 ## Why
 
 General image-to-3D tools produce triangle meshes. Minecraft mobs need something

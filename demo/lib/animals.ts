@@ -75,11 +75,11 @@ export const lanes: Record<LaneSlug, Lane> = {
   lane3: {
     slug: "lane3",
     number: 3,
-    name: "Three.js",
-    eyebrow: "THREE.JS-ASSISTED OUTPUT",
-    pipeline: "IMAGE → IMG2THREEJS → BBMODEL",
+    name: "Three.js beta",
+    eyebrow: "IMG2THREEJS BLOCKOUT OUTPUT",
+    pipeline: "IMAGE → IMG2THREEJS BLOCKOUT → BBMODEL",
     gpu: "None",
-    intermediate: "Generated TS + scene",
+    intermediate: "Unreviewed blockout scene",
     stages: [
       { label: "Image evidence", value: "REFERENCE" },
       { label: "Official procedural factory", value: "IMG2THREEJS" },
