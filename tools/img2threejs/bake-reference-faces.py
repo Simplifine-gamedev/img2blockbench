@@ -48,6 +48,7 @@ CAMERA_GRID = {
     "elevation": list(range(10, 46, 5)),
 }
 PROJECTION_VERSION = 1
+TEXTURE_TRANSFER_VERSION = 2
 
 
 def load_compiler(root: Path) -> Any:
@@ -462,6 +463,69 @@ def source_texture(patch: np.ndarray) -> dict[str, Any]:
     }
 
 
+def preserve_threejs_albedo(
+    spec: dict[str, Any],
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    """Keep the base-color maps imported from img2threejs materials.
+
+    ``from-threejs`` already extracts each MeshPhysicalMaterial ``map`` into
+    ``material.source_texture``. Re-projecting the single reference image over
+    those maps loses depth/occlusion information and creates texture smearing.
+    """
+
+    output = json.loads(json.dumps(spec))
+    materials = output["materials"]
+    mapped_materials = []
+    missing_materials = []
+
+    for material_name, material in materials.items():
+        source = material.get("source_texture", {})
+        uri = source.get("data_uri") if isinstance(source, dict) else None
+        if isinstance(uri, str) and uri.startswith("data:image/png;base64,"):
+            mapped_materials.append(material_name)
+        else:
+            missing_materials.append(material_name)
+
+    if missing_materials:
+        raise RuntimeError(
+            "The imported Three.js spec is missing base-color maps for: "
+            + ", ".join(missing_materials)
+            + ". Use --reference-projection only as an explicit fallback."
+        )
+
+    output["texture"]["quantize_source"] = True
+    output["texture"]["palette_size"] = max(
+        32,
+        int(output["texture"]["palette_size"]),
+    )
+    output.setdefault("generation", {}).update(
+        {
+            "lane": "threejs",
+            "intermediate": "Object3D.toJSON",
+            "texture_transfer": {
+                "algorithm": "img2threejs-material-albedo-transfer",
+                "version": TEXTURE_TRANSFER_VERSION,
+                "source": "MeshPhysicalMaterial.map",
+                "mapped_materials": len(mapped_materials),
+                "reference_projection": False,
+                "palette_quantization": output["texture"]["palette_size"],
+            },
+        }
+    )
+    output["generation"].pop("reference_texture_projection", None)
+
+    audit = {
+        "algorithm": "img2threejs-material-albedo-transfer",
+        "version": TEXTURE_TRANSFER_VERSION,
+        "source": "MeshPhysicalMaterial.map",
+        "mapped_materials": mapped_materials,
+        "mapped_material_count": len(mapped_materials),
+        "reference_projection": False,
+        "palette_size": output["texture"]["palette_size"],
+    }
+    return output, audit
+
+
 def bake(
     spec: dict[str, Any],
     reference: Image.Image,
@@ -665,6 +729,14 @@ def main() -> None:
     parser.add_argument("--foreground-threshold", type=float, default=58.0)
     parser.add_argument("--azimuth", type=float)
     parser.add_argument("--elevation", type=float)
+    parser.add_argument(
+        "--reference-projection",
+        action="store_true",
+        help=(
+            "Replace imported img2threejs albedo maps with experimental "
+            "single-view reference projection."
+        ),
+    )
     args = parser.parse_args()
 
     root = Path(__file__).resolve().parents[2]
@@ -672,46 +744,50 @@ def main() -> None:
     spec = json.loads(args.spec.read_text(encoding="utf-8"))
     with Image.open(args.reference) as source:
         reference = source.convert("RGB")
-    foreground_mask, foreground_bounds = segment_reference(
-        reference,
-        args.foreground_threshold,
-    )
-    target_mask = normalized_reference_mask(
-        foreground_mask,
-        foreground_bounds,
-    )
-    if args.azimuth is None or args.elevation is None:
-        camera_score, azimuth, elevation = solve_camera(
-            spec["cubes"],
-            target_mask,
+    if args.reference_projection:
+        foreground_mask, foreground_bounds = segment_reference(
+            reference,
+            args.foreground_threshold,
         )
-    else:
-        azimuth = args.azimuth
-        elevation = args.elevation
-        camera_score = mask_iou(
-            target_mask,
-            normalized_mask(
-                projected_polygons(spec["cubes"], azimuth, elevation)
-            ),
+        target_mask = normalized_reference_mask(
+            foreground_mask,
+            foreground_bounds,
         )
+        if args.azimuth is None or args.elevation is None:
+            camera_score, azimuth, elevation = solve_camera(
+                spec["cubes"],
+                target_mask,
+            )
+        else:
+            azimuth = args.azimuth
+            elevation = args.elevation
+            camera_score = mask_iou(
+                target_mask,
+                normalized_mask(
+                    projected_polygons(spec["cubes"], azimuth, elevation)
+                ),
+            )
 
-    output, audit = bake(
-        spec,
-        reference,
-        foreground_mask,
-        foreground_bounds,
-        compiler,
-        azimuth,
-        elevation,
-    )
+        output, audit = bake(
+            spec,
+            reference,
+            foreground_mask,
+            foreground_bounds,
+            compiler,
+            azimuth,
+            elevation,
+        )
+        audit["camera_silhouette_iou"] = round(camera_score, 6)
+        audit["foreground_threshold"] = args.foreground_threshold
+    else:
+        output, audit = preserve_threejs_albedo(spec)
+
     output["reference"]["image"] = Path(
         os.path.relpath(
             args.reference.resolve(),
             args.output_spec.parent.resolve(),
         )
     ).as_posix()
-    audit["camera_silhouette_iou"] = round(camera_score, 6)
-    audit["foreground_threshold"] = args.foreground_threshold
     audit["reference_sha256"] = hashlib.sha256(
         args.reference.read_bytes()
     ).hexdigest()

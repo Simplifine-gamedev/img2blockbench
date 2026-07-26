@@ -37,8 +37,8 @@ def main() -> None:
     bbmodel = blockbench / f"{args.animal}-lane3.bbmodel"
     atlas = blockbench / f"{args.animal}-lane3.png"
     scene_payload = json.loads(scene.read_text(encoding="utf-8"))
-    projection_path = lane_dir / "projection-audit.json"
-    projection = json.loads(projection_path.read_text(encoding="utf-8"))
+    transfer_path = lane_dir / "projection-audit.json"
+    transfer = json.loads(transfer_path.read_text(encoding="utf-8"))
     relative_to = lane_dir
 
     payload = {
@@ -53,22 +53,19 @@ def main() -> None:
         "spec": "img2threejs-spec.json",
         "generated_factory": record(factories[0], relative_to),
         "threejs_scene": record(scene, relative_to),
-        "reference_projection": {
-            **record(projection_path, relative_to),
-            "algorithm": projection["algorithm"],
-            "camera_silhouette_iou": projection["camera_silhouette_iou"],
-            "foreground_threshold": projection["foreground_threshold"],
-            "faces": projection["faces"],
-            "unseen_face_policy": projection["unseen_face_policy"],
+        "texture_transfer": {
+            **record(transfer_path, relative_to),
+            "algorithm": transfer["algorithm"],
+            "source": transfer["source"],
+            "mapped_material_count": transfer["mapped_material_count"],
+            "reference_projection": transfer["reference_projection"],
         },
         "blockbench_model": record(bbmodel, relative_to),
         "blockbench_atlas": {
             **record(atlas, relative_to),
             "source": (
-                f"{projection['faces']['projected']} reference-projected faces, "
-                f"{projection['faces']['mirrored']} mirrored hidden faces, and "
-                f"{projection['faces']['procedural_fallback']} palette-matched "
-                "fallback faces"
+                f"{transfer['mapped_material_count']} img2threejs "
+                "MeshPhysicalMaterial base-color maps"
             ),
             "threejs_materials": len(scene_payload.get("materials", [])),
         },

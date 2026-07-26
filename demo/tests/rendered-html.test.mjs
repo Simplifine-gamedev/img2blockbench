@@ -32,12 +32,14 @@ test("server-renders the img2blockbench demo", async () => {
 
   const html = await response.text();
   assert.match(html, /<title>img2blockbench/);
-  assert.match(html, /Image → Minecraft Model/);
-  assert.match(html, /REFERENCE \/ MODEL PAIR/);
+  assert.match(html, /SAME IMAGE · THREE ROUTES · BBMODEL OUTPUT/);
+  assert.match(html, /Platypus/);
+  assert.match(html, /Trellis/);
   assert.match(html, /Three\.js/);
-  assert.match(html, /<select/);
+  assert.match(html, /Direct/);
   assert.match(html, /WHEEL/);
-  assert.doesNotMatch(html, /<button/);
+  assert.doesNotMatch(html, /<select/);
+  assert.match(html, /<button/);
   assert.doesNotMatch(html, /codex-preview/);
   assert.doesNotMatch(html, /react-loading-skeleton/);
 });
@@ -50,6 +52,7 @@ test("switches models client-side without replaying the artificial build", async
 
   assert.match(source, /window\.history\.replaceState/);
   assert.match(source, /animalOrder\.forEach\(prefetchAnimal\)/);
+  assert.match(source, /laneOrder\.map/);
   assert.doesNotMatch(source, /href=\{`\/\$\{slug\}`\}/);
   assert.doesNotMatch(source, /2_300/);
 });

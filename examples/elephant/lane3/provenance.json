@@ -1,16 +1,16 @@
 {
   "agent_blueprint": "../../../tools/img2threejs/blueprints/elephant.json",
   "blockbench_atlas": {
-    "bytes": 19008,
+    "bytes": 7299,
     "path": "blockbench/elephant-lane3.png",
-    "sha256": "c1217a82c6b28ba1c026d4047433281d9da138285bbe9019a819d5c751b0a9ff",
-    "source": "69 reference-projected faces, 69 mirrored hidden faces, and 12 palette-matched fallback faces",
+    "sha256": "2d83e7598abe5e6f710834815878d185f7001602218fce16ecf041152df774a8",
+    "source": "7 img2threejs MeshPhysicalMaterial base-color maps",
     "threejs_materials": 7
   },
   "blockbench_model": {
-    "bytes": 74261,
+    "bytes": 58649,
     "path": "blockbench/elephant-lane3.bbmodel",
-    "sha256": "a88f5d236eac60c129ce95a7822c47374524ef4bf2c867b4189209a7946a45b4"
+    "sha256": "f4a3eff9e220ddb2ed946e0744770036f79ea527abe3a903b740982fdc91c3c4"
   },
   "generated_factory": {
     "bytes": 216732,
@@ -18,22 +18,16 @@
     "sha256": "2746f5e9668623303ba9c413d73d207f117ac2afc57a1cc41d426a083015c827"
   },
   "reference": "../reference.png",
-  "reference_projection": {
-    "algorithm": "orthographic-cuboid-face-projection",
-    "bytes": 570,
-    "camera_silhouette_iou": 0.76724,
-    "faces": {
-      "mirrored": 69,
-      "procedural_fallback": 12,
-      "projected": 69,
-      "total": 150
-    },
-    "foreground_threshold": 58.0,
-    "path": "projection-audit.json",
-    "sha256": "7ed8fc0970c39a6cbe34ae1ff359fa0f966899064caf79d16d0ecb967e99e66e",
-    "unseen_face_policy": "mirror-opposite-visible-face"
-  },
   "spec": "img2threejs-spec.json",
+  "texture_transfer": {
+    "algorithm": "img2threejs-material-albedo-transfer",
+    "bytes": 443,
+    "mapped_material_count": 7,
+    "path": "projection-audit.json",
+    "reference_projection": false,
+    "sha256": "a33ec37182f2edb54e21a31db7c32ecd92b26e813b310f609372e6bdd5834a0b",
+    "source": "MeshPhysicalMaterial.map"
+  },
   "threejs_scene": {
     "bytes": 1151464,
     "path": "elephant.img2threejs.three.json",

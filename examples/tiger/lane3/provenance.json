@@ -1,16 +1,16 @@
 {
   "agent_blueprint": "../../../tools/img2threejs/blueprints/tiger.json",
   "blockbench_atlas": {
-    "bytes": 12814,
+    "bytes": 5122,
     "path": "blockbench/tiger-lane3.png",
-    "sha256": "10ad123593693ca5c74d7a1e89a5e2296167585d880e8bc50c0161500de3d9fc",
-    "source": "66 reference-projected faces, 66 mirrored hidden faces, and 24 palette-matched fallback faces",
+    "sha256": "76929d7df7cabfab24a13e7b2985c63921daaf0fad8591300663a1965980b1c7",
+    "source": "7 img2threejs MeshPhysicalMaterial base-color maps",
     "threejs_materials": 7
   },
   "blockbench_model": {
-    "bytes": 67608,
+    "bytes": 57352,
     "path": "blockbench/tiger-lane3.bbmodel",
-    "sha256": "a3f14051a98656802978143d788aeb92fa7480955ab9623f0eb35569c21cee26"
+    "sha256": "463234db253c6092e9ac4c36acc94b3a2dba59d4ae17fb0cd2fa434143dd58e0"
   },
   "generated_factory": {
     "bytes": 221763,
@@ -18,22 +18,16 @@
     "sha256": "4134480579d5f34b79d4347e6d86bee32c8eaee4c539ea2227e5f9355b5b57b8"
   },
   "reference": "../reference.png",
-  "reference_projection": {
-    "algorithm": "orthographic-cuboid-face-projection",
-    "bytes": 570,
-    "camera_silhouette_iou": 0.617513,
-    "faces": {
-      "mirrored": 66,
-      "procedural_fallback": 24,
-      "projected": 66,
-      "total": 156
-    },
-    "foreground_threshold": 58.0,
-    "path": "projection-audit.json",
-    "sha256": "bb2b37d5098c92ebca109632d13d106a7fcac68c6b92daa253db9f784e0b4c26",
-    "unseen_face_policy": "mirror-opposite-visible-face"
-  },
   "spec": "img2threejs-spec.json",
+  "texture_transfer": {
+    "algorithm": "img2threejs-material-albedo-transfer",
+    "bytes": 443,
+    "mapped_material_count": 7,
+    "path": "projection-audit.json",
+    "reference_projection": false,
+    "sha256": "041ba96bca259757a0cdf2037b9ffa3fe69ab91e8cea1d4ec1a69844e49ddc80",
+    "source": "MeshPhysicalMaterial.map"
+  },
   "threejs_scene": {
     "bytes": 1236317,
     "path": "tiger.img2threejs.three.json",

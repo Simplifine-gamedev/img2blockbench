@@ -244,12 +244,14 @@ export function ModelViewer({
   format,
   captureMode,
   onLoaded,
+  showHint = true,
 }: {
   animal: Animal;
   modelFile: string;
   format: "bbmodel" | "threejs";
   captureMode: boolean;
-  onLoaded: () => void;
+  onLoaded?: () => void;
+  showHint?: boolean;
 }) {
   const mountRef = useRef<HTMLDivElement>(null);
   const sceneRef = useRef<THREE.Scene | null>(null);
@@ -439,20 +441,28 @@ export function ModelViewer({
         disposeObject(previousRoot);
       }
 
-      const span = Math.max(size.x, size.y, size.z);
-      const captureFit =
-        captureMode && size.y >= Math.max(size.x, size.z) * 0.9 ? 1.18 : 1;
-      camera.position.set(
-        span * (captureMode ? 1.05 * captureFit : 1.15),
-        span * (captureMode ? 0.72 * captureFit : 0.72),
-        span * (captureMode ? 1.55 * captureFit : -1.38),
-      );
-      controls.target.set(0, size.y * (captureMode ? 0.5 : 0.42), 0);
-      controls.minDistance = span * 0.68;
-      controls.maxDistance = span * 3.2;
+      const radius = Math.max(size.length() / 2, 1);
+      const verticalFov = THREE.MathUtils.degToRad(camera.fov);
+      const horizontalFov =
+        2 * Math.atan(Math.tan(verticalFov / 2) * camera.aspect);
+      const limitingFov = Math.min(verticalFov, horizontalFov);
+      const fitDistance =
+        (radius / Math.max(Math.sin(limitingFov / 2), 0.08)) *
+        (captureMode ? 1.08 : 0.88);
+      const cameraDirection = new THREE.Vector3(
+        captureMode ? 1.05 : 1.15,
+        captureMode ? 0.72 : 0.72,
+        captureMode ? 1.55 : -1.38,
+      ).normalize();
+      controls.target.set(0, size.y * (captureMode ? 0.5 : 0.44), 0);
+      camera.position
+        .copy(controls.target)
+        .addScaledVector(cameraDirection, fitDistance);
+      controls.minDistance = fitDistance * 0.48;
+      controls.maxDistance = fitDistance * 2.5;
       controls.update();
       controls.saveState();
-      onLoaded();
+      onLoaded?.();
     };
 
     buildModel().catch((error) => {
@@ -472,7 +482,7 @@ export function ModelViewer({
         role="img"
         aria-label={`Interactive 3D preview of ${animal.name}`}
       />
-      {!captureMode && (
+      {!captureMode && showHint && (
         <div className="orbit-hint">
           <b>DRAG</b> ROTATE
           <span />

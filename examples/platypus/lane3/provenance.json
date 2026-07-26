@@ -1,15 +1,15 @@
 {
   "blockbench_atlas": {
-    "bytes": 15344,
+    "bytes": 6554,
     "path": "blockbench/platypus-lane3.png",
-    "sha256": "a2e78cc70b01ab4663fd8aa0acc623bdb3012b0b2bf61e45f02fed2688fc462d",
-    "source": "84 reference-projected faces, 84 mirrored hidden faces, and 36 palette-matched fallback faces",
+    "sha256": "578b22492b930d73341d272b095efe6e6e3ed043c0f114e9b156ee9c1f86cefa",
+    "source": "8 img2threejs MeshPhysicalMaterial base-color maps",
     "threejs_materials": 8
   },
   "blockbench_model": {
-    "bytes": 86640,
+    "bytes": 74920,
     "path": "blockbench/platypus-lane3.bbmodel",
-    "sha256": "0ef9b6eb5ae8c234e20a5ffe1bccc51091026d33f11f0a8c2c14ca520d514862"
+    "sha256": "f5eb7ddedd45cb52100dcdabae481d7daaa2eff4179250391b9e7c44cbed50e9"
   },
   "generated_factory": {
     "bytes": 281963,
@@ -17,22 +17,16 @@
     "sha256": "6417fa62c4408380e548bda1aee4bda7ff77d9a082a1c37ec732e18ef7ab6253"
   },
   "reference": "../reference.png",
-  "reference_projection": {
-    "algorithm": "orthographic-cuboid-face-projection",
-    "bytes": 570,
-    "camera_silhouette_iou": 0.757917,
-    "faces": {
-      "mirrored": 84,
-      "procedural_fallback": 36,
-      "projected": 84,
-      "total": 204
-    },
-    "foreground_threshold": 58.0,
-    "path": "projection-audit.json",
-    "sha256": "1d09a2e932eaa64c92ba8f0d37d3225b389b5f3c2db5f0032d3f387c00f75e56",
-    "unseen_face_policy": "mirror-opposite-visible-face"
-  },
   "spec": "img2threejs-spec.json",
+  "texture_transfer": {
+    "algorithm": "img2threejs-material-albedo-transfer",
+    "bytes": 461,
+    "mapped_material_count": 8,
+    "path": "projection-audit.json",
+    "reference_projection": false,
+    "sha256": "26abc39e4be780ffa149dd5374f1fe4e14b9f3c4e2d1b46d3ea85405eefae160",
+    "source": "MeshPhysicalMaterial.map"
+  },
   "threejs_scene": {
     "bytes": 1328357,
     "path": "platypus.img2threejs.three.json",

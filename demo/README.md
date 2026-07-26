@@ -2,10 +2,9 @@
 
 A record-ready interactive viewer for all three five-animal conversion lanes.
 
-Each animal has a dedicated route with its Minecraft-style source image,
-replayable reconstruction sequence, native `.bbmodel` renderer, orbit controls,
-focus mode, metrics, and model download. Lane 3 can switch between the official
-img2threejs scene and its converted `.bbmodel`.
+Choose an animal from the thumbnail rail. Its Direct, Trellis, and img2threejs
+native `.bbmodel` outputs appear together as independent orbitable 3D views.
+All models and textures are prefetched for fast switching.
 
 ## Run locally
 
@@ -22,4 +21,4 @@ Open one of:
 - `/tiger`
 - `/coyote`
 
-Press `Space` to replay the build and `F` to toggle focus mode.
+Drag any model to rotate it, scroll to zoom, and double-click to reset.

@@ -6,7 +6,7 @@ agent vision, optional mesh guidance, and deterministic compilation.
 ```text
 Lane 1: image → native cuboid reasoning → .bbmodel
 Lane 2: image → Trellis mesh → cuboid reconstruction → .bbmodel
-Lane 3: image → img2threejs scene → reference face projection → .bbmodel
+Lane 3: image → img2threejs scene → Three.js albedo transfer → .bbmodel
 ```
 
 ### Lane 1: direct
@@ -23,10 +23,10 @@ Lane 3: image → img2threejs scene → reference face projection → .bbmodel
 
 ## Interactive recording demo
 
-The [`demo`](demo) app presents every reference beside an interactive,
-auto-rotating render of its native `.bbmodel`. Every animal has the same
-three-lane switcher. Models are prefetched for immediate switching; drag to
-rotate, scroll to zoom, and double-click to reset.
+The [`demo`](demo) app shows all three interactive `.bbmodel` outputs together.
+Choose an animal once, then compare Direct, Trellis, and img2threejs side by
+side. All 15 models are prefetched; drag to rotate, scroll to zoom, and
+double-click to reset.
 
 ```bash
 cd demo
@@ -91,8 +91,8 @@ Three.js scene.
 </table>
 
 Every output includes its embedded texture and a structural audit. Lane 2 also
-preserves the source GLB; Lane 3 preserves the procedural scene, reference-face
-projection audit, and provenance.
+preserves the source GLB; Lane 3 preserves the procedural scene, direct
+base-color transfer audit, and provenance.
 
 The reusable image prompts are recorded in
 [`examples/lane1-five-animals-prompts.md`](examples/lane1-five-animals-prompts.md).
@@ -114,7 +114,7 @@ Minecraft-style image
   → browser-executed THREE.Group
   → visible Object3D scene
   → box geometry adapter
-  → source-image cuboid-face projection
+  → MeshPhysicalMaterial base-color map transfer
   → nearest-neighbor Blockbench atlas
   → .bbmodel
 ```
@@ -125,10 +125,11 @@ spec, generated source, scene JSON, provenance, and converted model for every
 animal. Each source uses boxes, so dimensions and rotations transfer directly.
 The five factories are generated at `optimization-pass` after the ordered
 blockout, structural, form, material, surface, lighting, interaction, and
-optimization reviews. The adapter then solves an orthographic camera against
-the source silhouette, projects source pixels onto visible cuboid faces,
-mirrors visible faces onto hidden opposites, and uses palette-matched
-procedural pixels only when projection has no valid evidence.
+optimization reviews. The adapter preserves each generated
+`MeshPhysicalMaterial.map`, transfers it to the corresponding cuboids, packs
+the face patches into one nearest-neighbor atlas, and quantizes only after
+transfer. This avoids the smearing and false colors caused by projecting a
+single perspective reference across overlapping cuboids.
 
 Three.js roughness, normal, and AO maps remain preview-only because
 Blockbench's Minecraft texture format has no equivalent PBR channels.
@@ -228,13 +229,13 @@ img2blockbench from-threejs \
   --description "A Minecraft-style red panda" \
   --output ./red-panda-threejs.json
 
-# Project source pixels onto the imported cuboid faces.
+# Preserve and audit the img2threejs base-color maps.
 pip install -e '.[reference-projection]'
 python tools/img2threejs/bake-reference-faces.py \
   ./red-panda-threejs.json \
   --reference ./reference.png \
-  --output-spec ./red-panda-projected.json \
-  --audit ./red-panda-projection-audit.json
+  --output-spec ./red-panda-textured.json \
+  --audit ./red-panda-texture-transfer-audit.json
 
 # Re-audit an existing Blockbench file.
 img2blockbench audit ./dist/red-panda.bbmodel

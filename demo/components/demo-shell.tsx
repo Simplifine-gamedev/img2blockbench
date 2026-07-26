@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { ModelViewer, prefetchModel } from "@/components/model-viewer";
 import {
   animalOrder,
@@ -18,75 +18,68 @@ export function DemoShell({
   initialAnimal: AnimalSlug;
 }) {
   const [animalSlug, setAnimalSlug] = useState<AnimalSlug>(initialAnimal);
-  const [laneSlug, setLaneSlug] = useState<LaneSlug>("lane2");
-  const [modelLoaded, setModelLoaded] = useState(false);
   const [captureMode, setCaptureMode] = useState(false);
+  const [captureLane, setCaptureLane] = useState<LaneSlug>("lane2");
   const animal = animals[animalSlug];
-  const lane = lanes[laneSlug];
-  const model = animal.models[laneSlug] ?? animal.models.lane2!;
 
   useEffect(() => {
     const syncUrlState = window.setTimeout(() => {
       const searchParams = new URLSearchParams(window.location.search);
       const requestedLane = searchParams.get("lane");
-      if (
-        requestedLane &&
-        isLaneSlug(requestedLane) &&
-        animals[initialAnimal].models[requestedLane]
-      ) {
-        setLaneSlug(requestedLane);
-      }
       setCaptureMode(searchParams.get("capture") === "1");
+      if (requestedLane && isLaneSlug(requestedLane)) {
+        setCaptureLane(requestedLane);
+      }
     }, 0);
 
     return () => window.clearTimeout(syncUrlState);
-  }, [initialAnimal]);
+  }, []);
 
   const prefetchAnimal = useCallback((slug: AnimalSlug) => {
     const target = animals[slug];
-    Object.values(target.models).forEach((targetModel) => {
+    laneOrder.forEach((laneSlug) => {
+      const targetModel = target.models[laneSlug];
       if (targetModel) prefetchModel(targetModel.modelFile);
     });
 
     const reference = new Image();
+    reference.decoding = "async";
     reference.src = `/references/${slug}.png`;
   }, []);
 
   useEffect(() => {
-    prefetchAnimal(animalSlug);
-    const warmCache = window.setTimeout(() => {
-      animalOrder.forEach(prefetchAnimal);
-    }, 250);
-
-    return () => window.clearTimeout(warmCache);
-  }, [animalSlug, prefetchAnimal]);
-
-  const handleModelLoaded = useCallback(() => setModelLoaded(true), []);
-  const prepareSwitch = () => setModelLoaded(false);
+    animalOrder.forEach(prefetchAnimal);
+  }, [prefetchAnimal]);
 
   const handleAnimalChange = (nextAnimal: AnimalSlug) => {
     if (nextAnimal === animalSlug) return;
-    prepareSwitch();
     setAnimalSlug(nextAnimal);
     const url = new URL(window.location.href);
     url.pathname = `/${nextAnimal}`;
     window.history.replaceState({}, "", url);
   };
 
-  const handleLaneChange = (nextLane: LaneSlug) => {
-    if (!animal.models[nextLane] || nextLane === laneSlug) return;
-    prepareSwitch();
-    prefetchModel(animal.models[nextLane]!.modelFile);
-    setLaneSlug(nextLane);
-    const url = new URL(window.location.href);
-    url.searchParams.set("lane", nextLane);
-    url.searchParams.delete("view");
-    window.history.replaceState({}, "", url);
-  };
+  const captureModel = useMemo(
+    () => animal.models[captureLane] ?? animal.models.lane2!,
+    [animal, captureLane],
+  );
+
+  if (captureMode) {
+    return (
+      <main className="capture-mode">
+        <ModelViewer
+          animal={animal}
+          modelFile={captureModel.modelFile}
+          format="bbmodel"
+          captureMode
+        />
+      </main>
+    );
+  }
 
   return (
     <main
-      className={`compact-demo${captureMode ? " capture-mode" : ""}`}
+      className="benchmark-demo"
       style={
         {
           "--animal-accent": animal.accent,
@@ -94,91 +87,80 @@ export function DemoShell({
         } as React.CSSProperties
       }
     >
-      <section className="compact-viewer" aria-label={`${animal.name} 3D model`}>
-        <ModelViewer
-          animal={animal}
-          modelFile={model.modelFile}
-          format="bbmodel"
-          captureMode={captureMode}
-          onLoaded={handleModelLoaded}
-        />
+      <aside className="animal-rail" aria-label="Choose an animal">
+        <header className="brand">
+          <span className="brand-mark" aria-hidden="true" />
+          <div>
+            <strong>img2blockbench</strong>
+            <small>THREE-LANE BENCHMARK</small>
+          </div>
+        </header>
+
+        <nav className="animal-list">
+          {animalOrder.map((slug) => {
+            const option = animals[slug];
+            const selected = slug === animalSlug;
+            return (
+              <button
+                key={slug}
+                type="button"
+                className={`animal-option${selected ? " selected" : ""}`}
+                aria-current={selected ? "true" : undefined}
+                onClick={() => handleAnimalChange(slug)}
+              >
+                <img
+                  src={`/references/${slug}.png`}
+                  alt=""
+                  width={160}
+                  height={112}
+                />
+                <span>{option.name}</span>
+              </button>
+            );
+          })}
+        </nav>
+      </aside>
+
+      <section className="comparison-stage" aria-label={`${animal.name} models`}>
+        <header className="comparison-heading">
+          <div>
+            <span>SAME IMAGE · THREE ROUTES · BBMODEL OUTPUT</span>
+            <h1>{animal.name}</h1>
+          </div>
+          <p>
+            <b>DRAG</b> rotate <i /> <b>WHEEL</b> zoom
+          </p>
+        </header>
+
+        <div className="lane-grid">
+          {laneOrder.map((laneSlug) => {
+            const lane = lanes[laneSlug];
+            const model = animal.models[laneSlug]!;
+            return (
+              <article
+                className="lane-view"
+                key={laneSlug}
+                aria-label={`${lane.name} ${animal.name} model`}
+              >
+                <header className="lane-label">
+                  <div>
+                    <span>{lane.number}</span>
+                    <strong>{lane.name}</strong>
+                  </div>
+                  <small>{model.cuboids} CUBOIDS</small>
+                </header>
+                <ModelViewer
+                  animal={animal}
+                  modelFile={model.modelFile}
+                  format="bbmodel"
+                  captureMode={false}
+                  showHint={false}
+                />
+              </article>
+            );
+          })}
+        </div>
       </section>
-
-      {!captureMode && (
-        <>
-          <header className="compact-title">
-            <span>img2blockbench</span>
-            <h1>Image → Minecraft Model</h1>
-          </header>
-
-          <aside className="pair-card" aria-label="Choose reference and output">
-            <div className="pair-card-heading">
-              <div>
-                <span>REFERENCE / MODEL PAIR</span>
-                <strong>{animal.name}</strong>
-              </div>
-              <i className={modelLoaded ? "ready" : ""} aria-hidden="true" />
-            </div>
-
-            <div className="pair-selectors">
-              <label>
-                <span>Animal</span>
-                <select
-                  value={animalSlug}
-                  onChange={(event) =>
-                    handleAnimalChange(event.target.value as AnimalSlug)
-                  }
-                >
-                  {animalOrder.map((slug) => (
-                    <option key={slug} value={slug}>
-                      {animals[slug].name}
-                    </option>
-                  ))}
-                </select>
-              </label>
-
-              <label>
-                <span>Pipeline</span>
-                <select
-                  value={laneSlug}
-                  onChange={(event) =>
-                    handleLaneChange(event.target.value as LaneSlug)
-                  }
-                >
-                  {laneOrder.map((slug) => (
-                    <option
-                      key={slug}
-                      value={slug}
-                      disabled={!animal.models[slug]}
-                    >
-                      Lane {lanes[slug].number} · {lanes[slug].name}
-                    </option>
-                  ))}
-                </select>
-              </label>
-            </div>
-
-            <div className="pair-reference">
-              {/* Native img preserves static exported asset paths. */}
-              <img
-                src={`/references/${animal.slug}.png`}
-                alt={`Minecraft-style ${animal.name} reference`}
-              />
-              <span>INPUT IMAGE</span>
-            </div>
-
-            <div className="pair-output">
-              <div>
-                <span>{lane.pipeline}</span>
-                <b>{model.cuboids} cuboids · {model.texture} texture</b>
-              </div>
-              <small aria-live="polite">
-                {modelLoaded ? "MODEL READY" : "SWITCHING…"}
-              </small>
-            </div>
-          </aside>
-        </>
-      )}
     </main>
   );
 }

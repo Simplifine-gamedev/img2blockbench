@@ -1,19 +1,19 @@
 {
   "artifacts": [
     {
-      "bytes": 124648,
+      "bytes": 374482,
       "path": "coyote-lane3.model-spec.json",
-      "sha256": "2b29798ce9f1e7413f62f2815e868c434d37fe2441a8e0e93600066a13a62d0d"
+      "sha256": "aa54e4aa3f6bbb92701ef5301c5ef14f1792896f0cbdd97a85b926c5945d02c3"
     },
     {
-      "bytes": 13081,
+      "bytes": 4289,
       "path": "coyote-lane3.png",
-      "sha256": "8b60e0324dd2a8fbdcc3a18f8d4c43afe9da40fe459c1dd1b195c33669016067"
+      "sha256": "58abcbfef6598554ac2b8b24a8b7877a7dac27de81ebe49de45ca42f76d67b17"
     },
     {
-      "bytes": 64132,
+      "bytes": 52408,
       "path": "coyote-lane3.bbmodel",
-      "sha256": "98ad7e6dcb13c5811eceda75b308816c9b7e7fea310118e4bb9c91f2ba89f125"
+      "sha256": "51222ba09b65a243e59a69da14b103bdb2767beddbf9c580255ca7c9965a5e0f"
     },
     {
       "bytes": 50774,

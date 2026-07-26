@@ -1,17 +1,17 @@
 {
-  "animations": 0,
-  "bilateral": {},
+  "path": "platypus-lane3.bbmodel",
   "cuboids": 34,
-  "errors": [],
   "estimated_triangles": 408,
   "groups": 35,
-  "ok": true,
-  "path": "platypus-lane3.bbmodel",
+  "animations": 0,
   "texture_size": [
     256,
     256
   ],
   "uv_density_median": 2.0,
   "uv_density_outliers": [],
-  "warnings": []
+  "bilateral": {},
+  "errors": [],
+  "warnings": [],
+  "ok": true
 }

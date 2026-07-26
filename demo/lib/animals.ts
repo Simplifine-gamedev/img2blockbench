@@ -77,13 +77,13 @@ export const lanes: Record<LaneSlug, Lane> = {
     number: 3,
     name: "Three.js",
     eyebrow: "IMG2THREEJS FINAL OUTPUT",
-    pipeline: "IMAGE → IMG2THREEJS → PROJECTED BBMODEL",
+    pipeline: "IMAGE → IMG2THREEJS → TEXTURED BBMODEL",
     gpu: "None",
     intermediate: "Reviewed procedural scene",
     stages: [
       { label: "Image evidence", value: "REFERENCE" },
       { label: "Official procedural factory", value: "IMG2THREEJS" },
-      { label: "Reference face projection", value: "NO GPU" },
+      { label: "Three.js albedo transfer", value: "NO GPU" },
     ],
   },
 };
