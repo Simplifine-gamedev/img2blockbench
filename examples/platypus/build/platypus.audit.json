@@ -1,15 +1,12 @@
 {
-  "animations": 0,
+  "bones": 9,
   "cuboids": 22,
   "errors": [],
   "estimated_triangles": 264,
-  "groups": 9,
   "ok": true,
   "texture_size": [
     256,
     256
   ],
-  "uv_density": 2.0,
-  "uv_density_outliers": [],
   "warnings": []
 }

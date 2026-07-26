@@ -21,8 +21,8 @@
   "cubes": [
     {"name": "body_main", "bone": "body", "center": [0, 8, 1], "size": [12, 8, 16], "rotation": [0, 0, 0], "origin": [0, 8, 1], "role": "body"},
     {"name": "head_main", "bone": "head", "center": [0, 7.5, -9], "size": [10, 7, 7], "rotation": [0, 0, 0], "origin": [0, 8, -6], "role": "head"},
-    {"name": "bill_upper", "bone": "bill", "center": [0, 6.2, -14.3], "size": [11, 3, 6.5], "rotation": [-2, 0, 0], "origin": [0, 6.5, -11], "role": "bill"},
-    {"name": "bill_lower", "bone": "bill", "center": [0, 5.1, -14], "size": [10, 1.7, 5.8], "rotation": [2, 0, 0], "origin": [0, 5.8, -11], "role": "bill"},
+    {"name": "bill_upper", "bone": "bill", "center": [0, 6.2, -14.3], "size": [8.5, 3, 6.5], "rotation": [-2, 0, 0], "origin": [0, 6.5, -11], "role": "bill"},
+    {"name": "bill_lower", "bone": "bill", "center": [0, 5.1, -14], "size": [8, 1.7, 5.8], "rotation": [2, 0, 0], "origin": [0, 5.8, -11], "role": "bill"},
     {"name": "front_left_leg_block", "bone": "front_left_leg", "center": [-4, 3.8, -4], "size": [3.5, 5, 4], "rotation": [0, 0, 0], "origin": [-4, 6, -4], "role": "leg"},
     {"name": "front_right_leg_block", "bone": "front_right_leg", "center": [4, 3.8, -4], "size": [3.5, 5, 4], "rotation": [0, 0, 0], "origin": [4, 6, -4], "role": "leg"},
     {"name": "back_left_leg_block", "bone": "back_left_leg", "center": [-4, 3.8, 6], "size": [3.5, 5, 4], "rotation": [0, 0, 0], "origin": [-4, 6, 6], "role": "leg"},

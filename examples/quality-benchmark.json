@@ -3,7 +3,7 @@
     "lane1": {
       "average_cuboids": 19.8,
       "flat_detail_cuboids": 0,
-      "mean_edge_change_percent": 15.36,
+      "mean_edge_change_percent": 15.37,
       "mean_flat_faces_percent": 96.81,
       "mean_texture_entropy": 0.5482,
       "texture_landmarks": 25,
@@ -12,18 +12,18 @@
     "lane2": {
       "average_cuboids": 23.2,
       "flat_detail_cuboids": 0,
-      "mean_edge_change_percent": 36.19,
-      "mean_flat_faces_percent": 10.26,
-      "mean_texture_entropy": 2.3592,
+      "mean_edge_change_percent": 36.2,
+      "mean_flat_faces_percent": 10.41,
+      "mean_texture_entropy": 2.3584,
       "texture_landmarks": 16,
       "uv_density_outlier_faces": 0
     },
     "lane3": {
       "average_cuboids": 22.2,
       "flat_detail_cuboids": 0,
-      "mean_edge_change_percent": 83.04,
+      "mean_edge_change_percent": 83.01,
       "mean_flat_faces_percent": 8.16,
-      "mean_texture_entropy": 2.999,
+      "mean_texture_entropy": 2.997,
       "texture_landmarks": 36,
       "uv_density_outlier_faces": 0
     }
@@ -226,8 +226,8 @@
         "groups": 1,
         "texture": {
           "flat_faces_percent": 96.88,
-          "mean_edge_change_percent": 16.12,
-          "mean_entropy": 0.5984,
+          "mean_edge_change_percent": 16.15,
+          "mean_entropy": 0.5986,
           "median_unique_colors": 3
         },
         "texture_landmarks": 4,
@@ -244,9 +244,9 @@
         "front_axis": "negative_z",
         "groups": 1,
         "texture": {
-          "flat_faces_percent": 7.58,
-          "mean_edge_change_percent": 41.84,
-          "mean_entropy": 2.3087,
+          "flat_faces_percent": 8.33,
+          "mean_edge_change_percent": 41.89,
+          "mean_entropy": 2.3048,
           "median_unique_colors": 7
         },
         "texture_landmarks": 4,
@@ -264,8 +264,8 @@
         "groups": 1,
         "texture": {
           "flat_faces_percent": 0.0,
-          "mean_edge_change_percent": 85.99,
-          "mean_entropy": 2.8785,
+          "mean_edge_change_percent": 85.83,
+          "mean_entropy": 2.8681,
           "median_unique_colors": 7
         },
         "texture_landmarks": 4,

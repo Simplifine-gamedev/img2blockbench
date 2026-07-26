@@ -2705,7 +2705,7 @@
                       0
                     ],
                     "scale": [
-                      9.5,
+                      7.0,
                       3,
                       4
                     ],
@@ -2761,7 +2761,7 @@
                   "depth": 4,
                   "height": 3,
                   "units": "Blockbench units",
-                  "width": 9.5
+                  "width": 7.0
                 },
                 "evidenceRefs": [
                   "full-object"
@@ -2816,7 +2816,7 @@
                     0
                   ],
                   "scale": [
-                    9.5,
+                    7.0,
                     3,
                     4
                   ]
@@ -2828,7 +2828,7 @@
         ],
         "layers": 1,
         "matrix": [
-          9.5,
+          7.0,
           0,
           0,
           0,
@@ -2863,7 +2863,7 @@
                 0
               ],
               "scale": [
-                9.5,
+                7.0,
                 3,
                 4
               ],
@@ -2915,7 +2915,7 @@
                   0
                 ],
                 "scale": [
-                  9.5,
+                  7.0,
                   3,
                   4
                 ],
@@ -2971,7 +2971,7 @@
               "depth": 4,
               "height": 3,
               "units": "Blockbench units",
-              "width": 9.5
+              "width": 7.0
             },
             "evidenceRefs": [
               "full-object"
@@ -3026,7 +3026,7 @@
                 0
               ],
               "scale": [
-                9.5,
+                7.0,
                 3,
                 4
               ]
@@ -3080,7 +3080,7 @@
                       0
                     ],
                     "scale": [
-                      10.5,
+                      7.5,
                       2.5,
                       4.5
                     ],
@@ -3138,7 +3138,7 @@
                   "depth": 4.5,
                   "height": 2.5,
                   "units": "Blockbench units",
-                  "width": 10.5
+                  "width": 7.5
                 },
                 "evidenceRefs": [
                   "full-object"
@@ -3195,7 +3195,7 @@
                     0
                   ],
                   "scale": [
-                    10.5,
+                    7.5,
                     2.5,
                     4.5
                   ]
@@ -3207,7 +3207,7 @@
         ],
         "layers": 1,
         "matrix": [
-          10.5,
+          7.5,
           0,
           0,
           0,
@@ -3242,7 +3242,7 @@
                 0
               ],
               "scale": [
-                10.5,
+                7.5,
                 2.5,
                 4.5
               ],
@@ -3294,7 +3294,7 @@
                   0
                 ],
                 "scale": [
-                  10.5,
+                  7.5,
                   2.5,
                   4.5
                 ],
@@ -3352,7 +3352,7 @@
               "depth": 4.5,
               "height": 2.5,
               "units": "Blockbench units",
-              "width": 10.5
+              "width": 7.5
             },
             "evidenceRefs": [
               "full-object"
@@ -3409,7 +3409,7 @@
                 0
               ],
               "scale": [
-                10.5,
+                7.5,
                 2.5,
                 4.5
               ]
