@@ -34,7 +34,7 @@ test("server-renders the img2blockbench demo", async () => {
   assert.match(html, /<title>img2blockbench/);
   assert.match(html, /SAME IMAGE · THREE ROUTES · BBMODEL OUTPUT/);
   assert.match(html, /Platypus/);
-  assert.match(html, /Trellis/);
+  assert.match(html, /Mesh-guided/);
   assert.match(html, /Three\.js/);
   assert.match(html, /Direct/);
   assert.match(html, /WHEEL/);
@@ -55,6 +55,17 @@ test("switches models client-side without replaying the artificial build", async
   assert.match(source, /laneOrder\.map/);
   assert.doesNotMatch(source, /href=\{`\/\$\{slug\}`\}/);
   assert.doesNotMatch(source, /2_300/);
+});
+
+test("presents mesh-guided output as Route 1", async () => {
+  const source = await readFile(
+    new URL("lib/animals.ts", templateRoot),
+    "utf8",
+  );
+
+  assert.match(source, /laneOrder = \["lane2", "lane1", "lane3"\]/);
+  assert.match(source, /name: "Mesh-guided"/);
+  assert.match(source, /value: "USER CHOICE"/);
 });
 
 test("ships every reference and all three BBModel outputs", async () => {

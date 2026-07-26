@@ -8,7 +8,9 @@ export const animalOrder = [
 
 export type AnimalSlug = (typeof animalOrder)[number];
 
-export const laneOrder = ["lane1", "lane2", "lane3"] as const;
+// Keep the historical asset slugs stable while presenting the mesh-guided
+// route first in the public benchmark.
+export const laneOrder = ["lane2", "lane1", "lane3"] as const;
 export type LaneSlug = (typeof laneOrder)[number];
 
 export type ModelStats = {
@@ -47,7 +49,7 @@ export type Lane = {
 export const lanes: Record<LaneSlug, Lane> = {
   lane1: {
     slug: "lane1",
-    number: 1,
+    number: 2,
     name: "Direct",
     eyebrow: "DIRECT REASONING OUTPUT",
     pipeline: "IMAGE → CUBOID SPEC → BBMODEL",
@@ -61,15 +63,15 @@ export const lanes: Record<LaneSlug, Lane> = {
   },
   lane2: {
     slug: "lane2",
-    number: 2,
-    name: "Trellis",
-    eyebrow: "MESH-ASSISTED OUTPUT",
-    pipeline: "IMAGE → TRELLIS → CUBOIDS",
-    gpu: "Required",
-    intermediate: "Textured GLB",
+    number: 1,
+    name: "Mesh-guided",
+    eyebrow: "PROVIDER-AGNOSTIC MESH OUTPUT",
+    pipeline: "IMAGE → 3D MESH → CUBOIDS",
+    gpu: "Provider-dependent",
+    intermediate: "Textured GLB or GLTF",
     stages: [
       { label: "Image evidence", value: "REFERENCE" },
-      { label: "Textured 3D guide", value: "TRELLIS" },
+      { label: "3D model generator", value: "USER CHOICE" },
       { label: "Cuboid reconstruction", value: "LLM" },
     ],
   },

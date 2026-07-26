@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const title = "img2blockbench · Three-lane image-to-model benchmark";
+const title = "img2blockbench · Three-route image-to-model benchmark";
 const description =
-  "Compare direct reasoning, Trellis-assisted, and img2threejs-assisted routes to a native Blockbench model.";
+  "Compare provider-agnostic mesh guidance, direct reasoning, and img2threejs routes to a native Blockbench model.";
 
 export async function generateMetadata(): Promise<Metadata> {
   const requestHeaders = await headers();

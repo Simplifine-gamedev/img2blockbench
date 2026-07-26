@@ -1,5 +1,13 @@
 {
-  "pipeline": "Lane 2: reference image -> Trellis GLB -> anatomy reasoning -> Orca finalize_model -> Blockbench",
+  "pipeline": "Route 1: reference image -> provider-selected mesh -> anatomy reasoning -> Blockbench",
+  "mesh_source": {
+    "provider": "Trellis",
+    "model": "unrecorded",
+    "version": "unrecorded",
+    "license": "unrecorded",
+    "format": "glb",
+    "sha256": "19b8c06db87c55ea7ab0e82df2193256448f2a535521f1457444203a3498a5e3"
+  },
   "generation_id": "img2blockbench-platypus-lane2-20260723-v3",
   "job_id": "cb568089-2c38-4dec-9665-45b9648a0027",
   "visual_qa_approved": true,

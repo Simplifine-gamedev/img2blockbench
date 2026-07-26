@@ -1,5 +1,13 @@
 {
-  "pipeline": "Lane 2: reference image -> Trellis GLB -> anatomy reasoning -> Orca finalize_model -> Blockbench",
+  "pipeline": "Route 1: reference image -> provider-selected mesh -> anatomy reasoning -> Blockbench",
+  "mesh_source": {
+    "provider": "Trellis",
+    "model": "unrecorded",
+    "version": "unrecorded",
+    "license": "unrecorded",
+    "format": "glb",
+    "sha256": "5f4f30207e68102ac83585eac940ff1acaf1d45c2c3d5446cabbb34a9b256d90"
+  },
   "generation_id": "img2blockbench-chimpanzee-lane2-20260723-v2",
   "job_id": "45f1c7b8-a756-4bfd-a25e-8d5f02abb41e",
   "visual_qa_approved": true,

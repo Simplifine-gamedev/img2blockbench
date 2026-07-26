@@ -1,5 +1,13 @@
 {
-  "pipeline": "image -> Trellis GLB -> anatomy reasoning -> production finalize_model -> Blockbench",
+  "pipeline": "Route 1: reference image -> provider-selected mesh -> anatomy reasoning -> Blockbench",
+  "mesh_source": {
+    "provider": "Trellis",
+    "model": "unrecorded",
+    "version": "unrecorded",
+    "license": "unrecorded",
+    "format": "glb",
+    "sha256": "bb95cf4b28eb41e9e04ff75f3976ce293fb40f18cda847fa16e47430bbe0a52d"
+  },
   "generation_id": "img2blockbench-coyote-lane2-20260723-v2",
   "job_id": "6d11c9c4-a3ae-4c92-877e-aa7fc0f2bfee",
   "visual_qa_approved": true,

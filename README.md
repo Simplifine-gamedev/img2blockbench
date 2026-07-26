@@ -10,29 +10,29 @@ through the [Orca CLI](https://orcaclient.com/minecraft-cli),
 [orcaclient.com](https://orcaclient.com).
 
 ```text
-Lane 1: image → cuboid + texture reasoning → density-locked .bbmodel
-Lane 2: image → Trellis mesh → cuboid reconstruction → palette-repaired .bbmodel
-Lane 3: image → img2threejs scene → semantic texture pass → .bbmodel
+Route 1: image → provider-selected 3D mesh → cuboid reconstruction → .bbmodel
+Route 2: image → cuboid + texture reasoning → density-locked .bbmodel
+Route 3: image → img2threejs scene → semantic texture pass → .bbmodel
 ```
 
-### Lane 1: direct
+### Route 1: mesh-guided
 
-![Five Minecraft-style references above their direct Lane 1 Blockbench reconstructions](examples/five-animals-lane1.png)
+![Five Minecraft-style references above their mesh-guided Blockbench reconstructions](examples/five-animals-lane2.png)
 
-### Lane 2: Trellis
+### Route 2: direct
 
-![Five Minecraft-style references above their Trellis-assisted Lane 2 Blockbench reconstructions](examples/five-animals-lane2.png)
+![Five Minecraft-style references above their direct Blockbench reconstructions](examples/five-animals-lane1.png)
 
-### Lane 3: img2threejs
+### Route 3: img2threejs
 
-![Five Minecraft-style references above their img2threejs-assisted Lane 3 Blockbench reconstructions](examples/five-animals-lane3.png)
+![Five Minecraft-style references above their img2threejs-assisted Blockbench reconstructions](examples/five-animals-lane3.png)
 
 ## Interactive recording demo
 
 The [`demo`](demo) app shows all three interactive `.bbmodel` outputs together.
-Choose an animal once, then compare Direct, Trellis, and img2threejs side by
-side. All 15 models are prefetched; drag to rotate, scroll to zoom, and
-double-click to reset.
+Choose an animal once, then compare mesh-guided, Direct, and img2threejs routes
+side by side. All 15 models are prefetched; drag to rotate, scroll to zoom,
+and double-click to reset.
 
 ```bash
 cd demo
@@ -42,9 +42,9 @@ npm run dev
 
 ## Five-animal conversion test
 
-Every cell below is a deterministic render of the linked `.bbmodel`. Lane 2
-also retains its Trellis source, anatomy specification, and eight-view QA.
-Lane 3 retains the official generated TypeScript factory and executable
+Every cell below is a deterministic render of the linked `.bbmodel`. Route 1
+also retains its benchmark source mesh, anatomy specification, and eight-view
+QA. Route 3 retains the official generated TypeScript factory and executable
 Three.js scene.
 
 <table>
@@ -52,66 +52,87 @@ Three.js scene.
     <tr>
       <th>Animal</th>
       <th>Minecraft-style reference</th>
-      <th>Lane 1 · Direct</th>
-      <th>Lane 2 · Trellis</th>
-      <th>Lane 3 · img2threejs</th>
+      <th>Route 1 · Mesh-guided</th>
+      <th>Route 2 · Direct</th>
+      <th>Route 3 · img2threejs</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td><strong>Platypus</strong></td>
       <td><img src="examples/platypus/reference.png" width="190" alt="Minecraft-style platypus reference"></td>
+      <td><img src="examples/platypus/lane2/render.png" width="190" alt="Mesh-guided platypus Blockbench model"><br><a href="examples/platypus/lane2/platypus.bbmodel">22-cuboid .bbmodel</a> · <a href="examples/platypus/lane2/source.glb">GLB</a></td>
       <td><img src="examples/platypus/lane1/render.png" width="190" alt="Direct platypus Blockbench model"><br><a href="examples/platypus/lane1/platypus.bbmodel">16-cuboid .bbmodel</a></td>
-      <td><img src="examples/platypus/lane2/render.png" width="190" alt="Trellis-assisted platypus Blockbench model"><br><a href="examples/platypus/lane2/platypus.bbmodel">22-cuboid .bbmodel</a> · <a href="examples/platypus/lane2/source.glb">GLB</a></td>
       <td><img src="examples/platypus/lane3/render.png" width="190" alt="img2threejs platypus Blockbench model"><br><a href="examples/platypus/lane3/blockbench/platypus-lane3.bbmodel">28-cuboid .bbmodel</a> · <a href="examples/platypus/lane3/platypus.img2threejs.three.json">scene</a></td>
     </tr>
     <tr>
       <td><strong>Chimpanzee</strong></td>
       <td><img src="examples/chimpanzee/reference.png" width="190" alt="Minecraft-style chimpanzee reference"></td>
+      <td><img src="examples/chimpanzee/lane2/render.png" width="190" alt="Mesh-guided chimpanzee Blockbench model"><br><a href="examples/chimpanzee/lane2/chimpanzee.bbmodel">24-cuboid .bbmodel</a> · <a href="examples/chimpanzee/lane2/source.glb">GLB</a></td>
       <td><img src="examples/chimpanzee/lane1/render.png" width="190" alt="Direct chimpanzee Blockbench model"><br><a href="examples/chimpanzee/lane1/chimpanzee.bbmodel">22-cuboid .bbmodel</a></td>
-      <td><img src="examples/chimpanzee/lane2/render.png" width="190" alt="Trellis-assisted chimpanzee Blockbench model"><br><a href="examples/chimpanzee/lane2/chimpanzee.bbmodel">24-cuboid .bbmodel</a> · <a href="examples/chimpanzee/lane2/source.glb">GLB</a></td>
       <td><img src="examples/chimpanzee/lane3/render.png" width="190" alt="img2threejs chimpanzee Blockbench model"><br><a href="examples/chimpanzee/lane3/blockbench/chimpanzee-lane3.bbmodel">22-cuboid .bbmodel</a> · <a href="examples/chimpanzee/lane3/chimpanzee.img2threejs.three.json">scene</a></td>
     </tr>
     <tr>
       <td><strong>Elephant</strong></td>
       <td><img src="examples/elephant/reference.png" width="190" alt="Minecraft-style elephant reference"></td>
+      <td><img src="examples/elephant/lane2/render.png" width="190" alt="Mesh-guided elephant Blockbench model"><br><a href="examples/elephant/lane2/elephant.bbmodel">24-cuboid .bbmodel</a> · <a href="examples/elephant/lane2/source.glb">GLB</a></td>
       <td><img src="examples/elephant/lane1/render.png" width="190" alt="Direct elephant Blockbench model"><br><a href="examples/elephant/lane1/elephant.bbmodel">21-cuboid .bbmodel</a></td>
-      <td><img src="examples/elephant/lane2/render.png" width="190" alt="Trellis-assisted elephant Blockbench model"><br><a href="examples/elephant/lane2/elephant.bbmodel">24-cuboid .bbmodel</a> · <a href="examples/elephant/lane2/source.glb">GLB</a></td>
       <td><img src="examples/elephant/lane3/render.png" width="190" alt="img2threejs elephant Blockbench model"><br><a href="examples/elephant/lane3/blockbench/elephant-lane3.bbmodel">21-cuboid .bbmodel</a> · <a href="examples/elephant/lane3/elephant.img2threejs.three.json">scene</a></td>
     </tr>
     <tr>
       <td><strong>Tiger</strong></td>
       <td><img src="examples/tiger/reference.png" width="190" alt="Minecraft-style tiger reference"></td>
+      <td><img src="examples/tiger/lane2/render.png" width="190" alt="Mesh-guided tiger Blockbench model"><br><a href="examples/tiger/lane2/tiger.bbmodel">23-cuboid .bbmodel</a> · <a href="examples/tiger/lane2/source.glb">GLB</a></td>
       <td><img src="examples/tiger/lane1/render.png" width="190" alt="Direct tiger Blockbench model"><br><a href="examples/tiger/lane1/tiger.bbmodel">20-cuboid .bbmodel</a></td>
-      <td><img src="examples/tiger/lane2/render.png" width="190" alt="Trellis-assisted tiger Blockbench model"><br><a href="examples/tiger/lane2/tiger.bbmodel">23-cuboid .bbmodel</a> · <a href="examples/tiger/lane2/source.glb">GLB</a></td>
       <td><img src="examples/tiger/lane3/render.png" width="190" alt="img2threejs tiger Blockbench model"><br><a href="examples/tiger/lane3/blockbench/tiger-lane3.bbmodel">20-cuboid .bbmodel</a> · <a href="examples/tiger/lane3/tiger.img2threejs.three.json">scene</a></td>
     </tr>
     <tr>
       <td><strong>Coyote</strong></td>
       <td><img src="examples/coyote/reference.png" width="190" alt="Minecraft-style coyote reference"></td>
+      <td><img src="examples/coyote/lane2/render.png" width="190" alt="Mesh-guided coyote Blockbench model"><br><a href="examples/coyote/lane2/coyote.bbmodel">23-cuboid .bbmodel</a> · <a href="examples/coyote/lane2/source.glb">GLB</a></td>
       <td><img src="examples/coyote/lane1/render.png" width="190" alt="Direct coyote Blockbench model"><br><a href="examples/coyote/lane1/coyote.bbmodel">20-cuboid .bbmodel</a></td>
-      <td><img src="examples/coyote/lane2/render.png" width="190" alt="Trellis-assisted coyote Blockbench model"><br><a href="examples/coyote/lane2/coyote.bbmodel">23-cuboid .bbmodel</a> · <a href="examples/coyote/lane2/source.glb">GLB</a></td>
       <td><img src="examples/coyote/lane3/render.png" width="190" alt="img2threejs coyote Blockbench model"><br><a href="examples/coyote/lane3/blockbench/coyote-lane3.bbmodel">20-cuboid .bbmodel</a> · <a href="examples/coyote/lane3/coyote.img2threejs.three.json">scene</a></td>
     </tr>
   </tbody>
 </table>
 
-Every output includes its embedded texture and a structural audit. Lane 2 also
-preserves the source GLB and records its source-palette facial repair. Lane 3
+Every output includes its embedded texture and a structural audit. Route 1 also
+preserves the source GLB and records its source-palette facial repair. Route 3
 preserves the procedural scene, clustered albedo audit, semantic texture
 landmarks, and provenance.
 
 The reusable image prompts are recorded in
 [`examples/lane1-five-animals-prompts.md`](examples/lane1-five-animals-prompts.md).
 
-Lanes 1 and 3 require no neural image-to-3D mesh. Lane 2 uses the mesh as
+Routes 2 and 3 require no neural image-to-3D mesh. Route 1 uses the mesh as
 measured shape and texture evidence, then rebuilds it as native Minecraft
 cuboids. The compiler handles file structure, UV packing, texture transfer,
 auditing, Bedrock geometry, and reproducible manifests.
 
-## Lane 3: Three.js to Blockbench
+## Route 1: provider-agnostic mesh guidance
 
-Lane 3 runs the official
+Route 1 does not require or call a particular image-to-3D service. The user
+chooses the generator and supplies its exported mesh. The included benchmark
+uses Trellis, but Trellis is an example provider rather than a dependency or
+default.
+
+The provider boundary is intentionally small:
+
+- accept a textured `.glb` or `.gltf` containing one or more triangle meshes;
+- prefer UVs and a base-color texture, but retain geometry when textures are
+  unavailable;
+- normalize the source with the anatomy spec's `canonical_transform`;
+- record the provider, model/version, source hash, and applicable license in
+  provenance; and
+- reconstruct and validate native cuboids independently of the source
+  generator.
+
+This lets contributors use hosted, local, commercial, or open-source 3D
+generators without changing the Blockbench compiler.
+
+## Route 3: Three.js to Blockbench
+
+Route 3 runs the official
 [`img2threejs/img2threejs`](https://github.com/img2threejs/img2threejs) generator:
 
 Its explicit implementation dependencies are:
@@ -157,10 +178,10 @@ Blockbench's Minecraft texture format has no equivalent PBR channels.
 
 ### Geometry comparison
 
-These scores compare Lane 1 and final Lane 3 `.bbmodel` geometry after uniform
-normalization. They do not measure texture similarity.
+These scores compare the direct Route 2 and final Route 3 `.bbmodel` geometry
+after uniform normalization. They do not measure texture similarity.
 
-| Animal | Boxes L1/L3 | Shape IoU | Topology F1 | Box count | Dimensions | Rotations | Weighted |
+| Animal | Boxes R2/R3 | Shape IoU | Topology F1 | Box count | Dimensions | Rotations | Weighted |
 |---|---:|---:|---:|---:|---:|---:|---:|
 | Platypus | 16 / 28 | 67.0% | 96.0% | 57.1% | 85.6% | 99.9% | 78.3% |
 | Chimpanzee | 22 / 22 | 83.5% | 92.1% | 100.0% | 96.2% | 99.7% | 91.9% |
@@ -177,12 +198,12 @@ These measurements cover all five animals. A UV-density outlier is a face
 whose texel density is outside the accepted range; a detail cuboid is geometry
 misused for a flat eye, nostril, marking, or stripe.
 
-| Metric | Lane 1 | Lane 2 | Lane 3 |
+| Metric | Route 1 · Mesh | Route 2 · Direct | Route 3 · img2threejs |
 |---|---:|---:|---:|
-| Average cuboids | 19.8 | 23.2 | 22.2 |
+| Average cuboids | 23.2 | 19.8 | 22.2 |
 | UV-density outlier faces | 0 | 0 | 0 |
 | Flat detail cuboids | 0 | 0 | 0 |
-| Texture landmarks | 25 | 16 | 42 |
+| Texture landmarks | 16 | 25 | 42 |
 | Explicit front axis | Yes | Yes | Yes |
 
 Run `python3 tools/benchmark-quality.py` to reproduce
@@ -201,12 +222,13 @@ different:
 
 ## Input contract
 
-Lane 1 intentionally starts with images that already look Minecraft-native:
+Direct Route 2 intentionally starts with images that already look
+Minecraft-native:
 clear cuboid anatomy, crisp square-pixel materials, a full-body neutral pose,
 and separated appendages.
 
-A photograph or smooth character illustration is not a valid Lane 1 demo
-input. Restyle it into a Minecraft concept first, or use Lane 2 when organic
+A photograph or smooth character illustration is not a valid direct-route demo
+input. Restyle it into a Minecraft concept first, or use Route 1 when organic
 depth is the important signal.
 
 ## Install
@@ -254,12 +276,12 @@ img2blockbench validate ./red-panda.json --strict
 # Compile the accepted spec.
 img2blockbench build ./red-panda.json --output ./dist
 
-# Optional Lane 1 preview generated from the cuboid spec.
+# Optional Route 2 preview generated from the cuboid spec.
 img2blockbench preview-threejs \
   ./red-panda.json \
   --output ./createRedPandaModel.ts
 
-# Lane 3: import standard Three.js Object3D.toJSON output.
+# Route 3: import standard Three.js Object3D.toJSON output.
 img2blockbench from-threejs \
   ./red-panda.three.json \
   --reference ./reference.png \
@@ -303,23 +325,27 @@ red-panda.zip
 
 See the original fox example in [`examples/fox`](examples/fox).
 
-## Three-lane architecture
+## Three-route architecture
 
-All three lanes converge on the same validated Minecraft model specification
+All three routes converge on the same validated Minecraft model specification
 and delivery bundle, but their upstream reasoning is separate.
 
-| | Lane 1 | Lane 2 | Lane 3 |
+| | Route 1 | Route 2 | Route 3 |
 |---|---|---|---|
-| Route | Image → cuboid spec | Image → Trellis mesh → cuboid spec | Image → img2threejs → cuboid spec |
-| Intermediate | Native cuboid JSON | Textured GLB | Generated TypeScript + Object3D JSON |
-| External 3D GPU | None | Required | None |
-| Best fit | Minecraft-native references | Ambiguous organic depth | Cheaper procedural 3D reconstruction |
-| Platypus cuboids | 16 | 22 | 28 |
+| Route | Image → selected 3D generator → cuboid spec | Image → cuboid spec | Image → img2threejs → cuboid spec |
+| Intermediate | Textured GLB or GLTF | Native cuboid JSON | Generated TypeScript + Object3D JSON |
+| External 3D GPU | Provider-dependent | None | None |
+| Best fit | Ambiguous organic depth | Minecraft-native references | Cheaper procedural 3D reconstruction |
+| Platypus cuboids | 22 | 16 | 28 |
 | Shared output | `.bbmodel`, texture, `geo.json`, audit, bundle | Same | Same |
 
-Lane 1 may optionally render its cuboid spec through Three.js for review. That
-preview does not make it Lane 3. Lane 3 begins with the official img2threejs
+Route 2 may optionally render its cuboid spec through Three.js for review. That
+preview does not make it Route 3. Route 3 begins with the official img2threejs
 spec and generated Three.js scene, then ends as a native `.bbmodel`.
+
+The repository retains its original `lane1` and `lane2` artifact paths so
+existing links remain valid. The demo and documentation define their public
+route order independently.
 
 The current [platypus benchmark](examples/platypus/benchmark.json) records
 artifact sizes, hashes, cuboid counts, bone counts, and external GPU
@@ -327,12 +353,12 @@ requirements. Generation latency, provider price, and LLM token usage were not
 captured for the existing runs, so the repository does not fabricate those
 cost numbers.
 
-## Measured Trellis overlap
+## Measured source-mesh overlap
 
-The old source audit only proved that the source and cuboid bounds intersected.
-The new audit rasterizes both as front, side, top, and isometric silhouettes,
-then records intersection-over-union (IoU), source coverage, and model
-precision.
+The benchmark meshes below were generated with Trellis. The provider-neutral
+audit rasterizes any supported source mesh and the reconstructed cuboids as
+front, side, top, and isometric silhouettes, then records
+intersection-over-union (IoU), source coverage, and model precision.
 
 | Model | Mean IoU | Source coverage | Evidence |
 |---|---:|---:|---|
@@ -343,8 +369,9 @@ precision.
 | Coyote | 0.570 | 0.883 | [audit](examples/coyote/lane2/overlap-audit.json) · [sheet](examples/coyote/lane2/overlap-sheet.png) |
 
 White pixels are overlap, cyan is source-only, and orange is cuboid-only.
-These results prove Trellis is genuinely used, but also show that the current
-reconstruction is approximate rather than an optimized silhouette fit.
+These results prove the source meshes are genuinely used, but also show that
+the current reconstruction is approximate rather than an optimized silhouette
+fit.
 
 ```bash
 pip install -e '.[overlap-audit]'

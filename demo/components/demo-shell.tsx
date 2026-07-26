@@ -93,7 +93,7 @@ export function DemoShell({
           <span className="brand-mark" aria-hidden="true" />
           <div>
             <strong>img2blockbench</strong>
-            <small>THREE-LANE BENCHMARK</small>
+            <small>THREE-ROUTE BENCHMARK</small>
           </div>
         </header>
 

@@ -1,5 +1,13 @@
 {
-  "pipeline": "Lane 2: reference image -> Trellis GLB -> anatomy reasoning -> Orca finalize_model -> Blockbench",
+  "pipeline": "Route 1: reference image -> provider-selected mesh -> anatomy reasoning -> Blockbench",
+  "mesh_source": {
+    "provider": "Trellis",
+    "model": "unrecorded",
+    "version": "unrecorded",
+    "license": "unrecorded",
+    "format": "glb",
+    "sha256": "93eb1b253066b0cd5261f55a5ea4ed1cf92f968af6451d840f53c479c082b7b0"
+  },
   "generation_id": "img2blockbench-elephant-lane2-20260723-v5",
   "job_id": "403666ba-06b5-4153-9f7d-92137a552ac3",
   "visual_qa_approved": true,

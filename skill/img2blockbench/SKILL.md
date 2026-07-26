@@ -1,13 +1,25 @@
 ---
 name: img2blockbench
-description: Reconstruct a Minecraft-style creature, character, prop, or vehicle concept as a native Blockbench model using agent vision and deterministic compilation. Use when Codex should turn blocky, square-pixel PNG, JPEG, or WebP artwork into an anatomy-driven `.bbmodel`, pixel texture atlas, Bedrock `geo.json`, bones, pivots, collision metadata, and audit bundle without first generating a neural triangle mesh.
+description: Reconstruct a Minecraft-style creature, character, prop, or vehicle concept as a native Blockbench model using an optional provider-selected 3D mesh, agent vision, and deterministic compilation. Use when Codex should turn PNG, JPEG, or WebP artwork, optionally accompanied by a textured GLB or GLTF from any image-to-3D generator, into an anatomy-driven `.bbmodel`, pixel texture atlas, Bedrock `geo.json`, bones, pivots, collision metadata, and audit bundle.
 ---
 
 # img2blockbench
 
-Build Minecraft geometry directly from a Minecraft-style reference image. Treat
-the agent as the 3D reasoner and the bundled compiler as the file-format
-authority.
+Build Minecraft geometry from a reference image, optionally using a
+provider-selected source mesh as measured shape and texture evidence. Treat the
+agent as the 3D reasoner and the bundled compiler as the file-format authority.
+
+## Route selection
+
+- Prefer Route 1 when a source mesh is supplied or organic depth is ambiguous.
+  Accept a textured GLB or GLTF from any generator; do not require Trellis.
+- Prefer Route 2 when the image already has clear Minecraft-native cuboid
+  anatomy and no source mesh is needed.
+- Use Route 3 only for an official img2threejs procedural scene.
+
+For Route 1, record the generator name, model/version, source hash, and
+applicable license in provenance. The generator is user-selected and remains
+outside the deterministic compiler.
 
 ## Required references
 
@@ -35,8 +47,8 @@ authority.
 7. Run `img2blockbench preview-threejs WORKSPACE/model-spec.json --output
    WORKSPACE/createModel.ts`. Render the procedural group beside the reference
    and correct silhouette, proportions, attachments, and identity features.
-   This is a Lane 1 preview generated from the cuboid spec, not a Three.js-first
-   Lane 3 source.
+   This is a Route 2 preview generated from the cuboid spec, not a
+   Three.js-first Route 3 source.
 8. Run `img2blockbench build WORKSPACE/model-spec.json --output WORKSPACE/build`
    only after the shared cuboid scene passes the Three.js geometry review.
 9. Open the emitted `.bbmodel` in Blockbench when available. Capture left,
@@ -59,11 +71,11 @@ authority.
   depends on hidden geometry.
 - Treat static-model and animation approval as separate decisions.
 
-## Direct-lane boundary
+## Direct Route 2 boundary
 
 Do not call Meshy, Modly, Trellis, Tripo, Hunyuan, or another image-to-mesh
-provider in this lane. If a textured GLB is intentionally supplied, route to a
-source-mesh workflow instead.
+provider in this route. If a textured GLB or GLTF is intentionally supplied,
+use Route 1 instead.
 
 ## Compiler boundary
 

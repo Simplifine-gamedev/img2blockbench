@@ -1,5 +1,6 @@
 import base64
 import copy
+import hashlib
 import io
 import json
 import tempfile
@@ -22,6 +23,26 @@ class Img2BlockbenchTests(unittest.TestCase):
             self.assertNotIn("/Users/", contents, str(path))
             self.assertNotIn("/home/", contents, str(path))
             self.assertNotIn(":\\Users\\", contents, str(path))
+
+    def test_mesh_guided_examples_record_provider_and_source_hash(self):
+        for animal in (
+            "platypus",
+            "chimpanzee",
+            "elephant",
+            "tiger",
+            "coyote",
+        ):
+            lane = ROOT / "examples" / animal / "lane2"
+            provenance = img2blockbench.read_json(lane / "provenance.json")
+            source = lane / "source.glb"
+            mesh_source = provenance["mesh_source"]
+
+            self.assertEqual("glb", mesh_source["format"])
+            self.assertTrue(mesh_source["provider"])
+            self.assertEqual(
+                hashlib.sha256(source.read_bytes()).hexdigest(),
+                mesh_source["sha256"],
+            )
 
     def test_lane3_preserves_native_threejs_texture_transforms(self):
         for animal in (
