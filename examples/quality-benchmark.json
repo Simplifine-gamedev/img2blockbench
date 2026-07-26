@@ -21,10 +21,10 @@
     "lane3": {
       "average_cuboids": 22.2,
       "flat_detail_cuboids": 0,
-      "mean_edge_change_percent": 46.71,
-      "mean_flat_faces_percent": 95.59,
-      "mean_texture_entropy": 1.5002,
-      "texture_landmarks": 42,
+      "mean_edge_change_percent": 83.04,
+      "mean_flat_faces_percent": 8.16,
+      "mean_texture_entropy": 2.999,
+      "texture_landmarks": 36,
       "uv_density_outlier_faces": 0
     }
   },
@@ -86,12 +86,12 @@
         "front_axis": "positive_z",
         "groups": 1,
         "texture": {
-          "flat_faces_percent": 96.21,
-          "mean_edge_change_percent": 48.52,
-          "mean_entropy": 1.5295,
-          "median_unique_colors": 3
+          "flat_faces_percent": 11.36,
+          "mean_edge_change_percent": 81.08,
+          "mean_entropy": 2.8932,
+          "median_unique_colors": 11
         },
-        "texture_landmarks": 8,
+        "texture_landmarks": 6,
         "texture_size": [
           256,
           256
@@ -145,12 +145,12 @@
         "front_axis": "positive_z",
         "groups": 1,
         "texture": {
-          "flat_faces_percent": 95.0,
-          "mean_edge_change_percent": 49.48,
-          "mean_entropy": 1.5367,
-          "median_unique_colors": 3
+          "flat_faces_percent": 10.0,
+          "mean_edge_change_percent": 79.95,
+          "mean_entropy": 2.8033,
+          "median_unique_colors": 12
         },
-        "texture_landmarks": 7,
+        "texture_landmarks": 5,
         "texture_size": [
           256,
           256
@@ -204,10 +204,10 @@
         "front_axis": "positive_z",
         "groups": 1,
         "texture": {
-          "flat_faces_percent": 96.03,
-          "mean_edge_change_percent": 38.26,
-          "mean_entropy": 1.5043,
-          "median_unique_colors": 3
+          "flat_faces_percent": 11.11,
+          "mean_edge_change_percent": 81.2,
+          "mean_entropy": 2.9349,
+          "median_unique_colors": 13
         },
         "texture_landmarks": 5,
         "texture_size": [
@@ -263,10 +263,10 @@
         "front_axis": "positive_z",
         "groups": 1,
         "texture": {
-          "flat_faces_percent": 98.21,
-          "mean_edge_change_percent": 50.08,
-          "mean_entropy": 1.3882,
-          "median_unique_colors": 3
+          "flat_faces_percent": 0.0,
+          "mean_edge_change_percent": 85.99,
+          "mean_entropy": 2.8785,
+          "median_unique_colors": 7
         },
         "texture_landmarks": 4,
         "texture_size": [
@@ -322,12 +322,12 @@
         "front_axis": "positive_z",
         "groups": 1,
         "texture": {
-          "flat_faces_percent": 92.5,
-          "mean_edge_change_percent": 47.19,
-          "mean_entropy": 1.5421,
-          "median_unique_colors": 3
+          "flat_faces_percent": 8.33,
+          "mean_edge_change_percent": 87.0,
+          "mean_entropy": 3.4853,
+          "median_unique_colors": 16
         },
-        "texture_landmarks": 18,
+        "texture_landmarks": 16,
         "texture_size": [
           256,
           256

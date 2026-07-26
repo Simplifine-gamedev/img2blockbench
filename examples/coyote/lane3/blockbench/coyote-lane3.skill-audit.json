@@ -1,5 +1,5 @@
 {
-  "path": "examples/coyote/lane3/blockbench/coyote-lane3.bbmodel",
+  "path": "coyote-lane3.bbmodel",
   "cuboids": 20,
   "estimated_triangles": 240,
   "groups": 21,

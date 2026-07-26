@@ -1,7 +1,7 @@
 # Lane 3: Three.js to Blockbench
 
 This lane runs the official
-[`hoainho/img2threejs`](https://github.com/hoainho/img2threejs) code generator,
+[`img2threejs/img2threejs`](https://github.com/img2threejs/img2threejs) code generator,
 uses its procedural Three.js scene as the intermediate, then converts its box
 geometry and generated base-color maps into a native Blockbench model. Flat
 facial details are removed from geometry and restored as texture pixels.
@@ -12,14 +12,14 @@ Minecraft-style image
   → official generated TypeScript THREE.Group factory
   → Object3D.toJSON scene
   → img2blockbench box geometry adapter
-  → Minecraft-clustered base-color map transfer
+  → native base-color map and UV-transform transfer
   → semantic texture landmarks
   → shared nearest-neighbor texture atlas
   → .bbmodel
 ```
 
 The benchmark pins upstream commit
-`c9077d5ecce834f6802d6742b4a5b2c682d6279d`. The upstream project is licensed
+`f1ade81d45252ede20323d74a5b269c819f75245`. The upstream project is licensed
 under Apache-2.0; its license is preserved in
 [`UPSTREAM_LICENSE`](UPSTREAM_LICENSE). The generated factory is preserved unmodified as
 [`createMinecraftPlatypusModel.generated.ts`](createMinecraftPlatypusModel.generated.ts).
@@ -33,9 +33,9 @@ under Apache-2.0; its license is preserved in
 - [`platypus.img2threejs.three.json`](platypus.img2threejs.three.json):
   browser-executed `Object3D.toJSON` result, including procedural materials.
 - [`model-spec.json`](model-spec.json): box-compatible scene adapted into the
-  shared Minecraft model contract with clustered img2threejs material maps and
+  shared Minecraft model contract with native img2threejs material maps and
   semantic texture landmarks.
-- [`projection-audit.json`](projection-audit.json): clustered base-color
+- [`projection-audit.json`](projection-audit.json): native base-color
   transfer audit retained under its historical filename.
 - [`blockbench/platypus-lane3.bbmodel`](blockbench/platypus-lane3.bbmodel):
   converted native Blockbench model with img2threejs albedo baked into its
@@ -49,8 +49,8 @@ Clone the pinned upstream repository, then run its intake and starter-spec
 commands:
 
 ```bash
-git clone https://github.com/hoainho/img2threejs.git /tmp/img2threejs
-git -C /tmp/img2threejs checkout c9077d5ecce834f6802d6742b4a5b2c682d6279d
+git clone https://github.com/img2threejs/img2threejs.git /tmp/img2threejs
+git -C /tmp/img2threejs checkout f1ade81d45252ede20323d74a5b269c819f75245
 
 python3 /tmp/img2threejs/forge/stage2_spec/new_pre_spec_assessment.py \
   "Minecraft Platypus" \

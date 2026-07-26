@@ -1,19 +1,19 @@
 {
   "artifacts": [
     {
-      "bytes": 24795,
+      "bytes": 259779,
       "path": "chimpanzee-lane3.model-spec.json",
-      "sha256": "0e01759e6fd2a612a95647403c1505047d8c12c8d3a04ccb2b9094100daf7490"
+      "sha256": "071e2b008d75b5968f3dc27679f451acbf92c68df9050fa2bc26edb52e66e79e"
     },
     {
-      "bytes": 3672,
+      "bytes": 6130,
       "path": "chimpanzee-lane3.png",
-      "sha256": "2dfce9e81ce4fd398ed5a3e969e3eec8b89ffb5ebdb429355d7323c0421f277a"
+      "sha256": "4c3869b9eb5efc5a96c45f6a36e0578bc285ef6446abc13f0b7aa170f6972eab"
     },
     {
-      "bytes": 47886,
+      "bytes": 51166,
       "path": "chimpanzee-lane3.bbmodel",
-      "sha256": "1cc9579d415b4bf136257f72a839ee7e87ab87369399d17d284f636b81373f58"
+      "sha256": "3ea655a9d24319d5c1af0a40da4fa49121053aa1b8ae8f80d09ba52d562cdd7e"
     },
     {
       "bytes": 46634,

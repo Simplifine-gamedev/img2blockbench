@@ -9,7 +9,7 @@ import json
 from pathlib import Path
 
 
-UPSTREAM_COMMIT = "c9077d5ecce834f6802d6742b4a5b2c682d6279d"
+UPSTREAM_COMMIT = "f1ade81d45252ede20323d74a5b269c819f75245"
 
 
 def record(path: Path, relative_to: Path) -> dict[str, object]:
@@ -43,7 +43,7 @@ def main() -> None:
 
     payload = {
         "upstream": {
-            "repository": "https://github.com/hoainho/img2threejs",
+            "repository": "https://github.com/img2threejs/img2threejs",
             "commit": UPSTREAM_COMMIT,
             "license": "Apache-2.0",
             "generator": "forge/stage3_build/generate_threejs_factory.py",

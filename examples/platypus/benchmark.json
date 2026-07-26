@@ -27,16 +27,16 @@
     "lane3": {
       "route": "image -> official img2threejs generated factory -> visible Three.js scene -> scene adapter -> bbmodel",
       "external_3d_gpu": false,
-      "upstream_repository": "https://github.com/hoainho/img2threejs",
-      "upstream_commit": "c9077d5ecce834f6802d6742b4a5b2c682d6279d",
+      "upstream_repository": "https://github.com/img2threejs/img2threejs",
+      "upstream_commit": "f1ade81d45252ede20323d74a5b269c819f75245",
       "intermediate": "lane3/platypus.img2threejs.three.json",
-      "intermediate_bytes": 948296,
-      "intermediate_sha256": "6c2861ae8a016072f79662542bd6b98e6d3b7ce58ec98cb9e1265aa93865e66a",
+      "intermediate_bytes": 949133,
+      "intermediate_sha256": "d8ed8cc6eefeabb506f2e837579121e976a223f887b9915a15be98732cf78855",
       "cuboids": 28,
       "bone_groups": 29,
       "bbmodel": "lane3/blockbench/platypus-lane3.bbmodel",
-      "bbmodel_bytes": 58661,
-      "bbmodel_sha256": "d0f6f55e1dd802c07105f29d680149422aa45700753eec7f4a524a9007eb2018"
+      "bbmodel_bytes": 65637,
+      "bbmodel_sha256": "5bc270e8cb931f791acf5d28980d0d24f1cd69f949670e246943e6c6c1a3f609"
     }
   }
 }

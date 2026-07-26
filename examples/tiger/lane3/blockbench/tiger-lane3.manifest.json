@@ -1,19 +1,19 @@
 {
   "artifacts": [
     {
-      "bytes": 26273,
+      "bytes": 263229,
       "path": "tiger-lane3.model-spec.json",
-      "sha256": "9a04bae91dba4464bc286d23c4fe548b12085ef8b0abd33ddb6ef187094cc4f4"
+      "sha256": "422c36d5c3274d767c48689565367fd8892c33f6c2ffeb670615249c73094bf1"
     },
     {
-      "bytes": 3670,
+      "bytes": 7377,
       "path": "tiger-lane3.png",
-      "sha256": "8bf4db0e34102288fe818b531e7b37d40407517895555bb5657d36d0ccfd7b10"
+      "sha256": "72da8b756a1fa0cacc5b41206d9f09b9ec961f12a16889946f1d2c68577b6d8a"
     },
     {
-      "bytes": 44098,
+      "bytes": 49038,
       "path": "tiger-lane3.bbmodel",
-      "sha256": "3fbbe221503aa7738c4fb695c5d9e877cfb55e2adb0960e0e0ea6538e527c455"
+      "sha256": "cf2c184176b114dac2ebd8da6248191d9a3c3fc100f3fe5b060f0e015d8ef4ca"
     },
     {
       "bytes": 42432,

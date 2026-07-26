@@ -1,5 +1,5 @@
 {
-  "path": "examples/platypus/lane3/blockbench/platypus-lane3.bbmodel",
+  "path": "platypus-lane3.bbmodel",
   "cuboids": 28,
   "estimated_triangles": 336,
   "groups": 29,

@@ -27,8 +27,8 @@ const root = factories[requestedAnimal as keyof typeof factories]({
 
 delete root.userData.sculptRuntime;
 root.userData.img2threejs = {
-  repository: "https://github.com/hoainho/img2threejs",
-  commit: "c9077d5ecce834f6802d6742b4a5b2c682d6279d",
+  repository: "https://github.com/img2threejs/img2threejs",
+  commit: "f1ade81d45252ede20323d74a5b269c819f75245",
   generator: "forge/stage3_build/generate_threejs_factory.py",
   generatedPass: "optimization-pass",
 };

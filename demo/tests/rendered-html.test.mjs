@@ -111,6 +111,14 @@ test("ships every official img2threejs Lane 3 intermediate", async () => {
       scene.object.userData.img2threejs.generatedPass,
       "optimization-pass",
     );
+    assert.equal(
+      scene.object.userData.img2threejs.commit,
+      "f1ade81d45252ede20323d74a5b269c819f75245",
+    );
+    assert.equal(
+      scene.object.userData.img2threejs.repository,
+      "https://github.com/img2threejs/img2threejs",
+    );
     // The official final pass adds one InstancedMesh repetition helper. The
     // box adapter intentionally compiles only the named component meshes.
     assert.equal(scene.geometries.length, geometryCount + 1);

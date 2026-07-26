@@ -23,6 +23,51 @@ class Img2BlockbenchTests(unittest.TestCase):
             self.assertNotIn("/home/", contents, str(path))
             self.assertNotIn(":\\Users\\", contents, str(path))
 
+    def test_lane3_preserves_native_threejs_texture_transforms(self):
+        for animal in (
+            "platypus",
+            "chimpanzee",
+            "elephant",
+            "tiger",
+            "coyote",
+        ):
+            lane = ROOT / "examples" / animal / "lane3"
+            spec = img2blockbench.read_json(lane / "model-spec.json")
+            audit = img2blockbench.read_json(lane / "projection-audit.json")
+            self.assertEqual(
+                "img2threejs-native-albedo-transfer",
+                audit["algorithm"],
+            )
+            self.assertTrue(audit["preserved_texture_transforms"])
+            self.assertFalse(audit["palette_quantization"])
+            self.assertFalse(spec["texture"]["quantize_source"])
+            for material_name, material in spec["materials"].items():
+                source = material["source_texture"]
+                self.assertEqual(
+                    audit["texture_transforms"][material_name]["repeat"],
+                    source["repeat"],
+                )
+                self.assertEqual([1000, 1000], source["wrap"])
+                self.assertEqual([3, 3], source["repeat"])
+                self.assertTrue(source["flip_y"])
+
+    def test_lane3_recipes_never_paint_front_and_side_eyes(self):
+        recipes = img2blockbench.read_json(
+            ROOT / "tools" / "img2threejs" / "semantic-recipes.json"
+        )
+        for animal, recipe in recipes.items():
+            eye_faces = {
+                landmark["face"]
+                for landmark in recipe["landmarks"]
+                if "eye" in landmark["name"]
+                and "glint" not in landmark["name"]
+            }
+            self.assertFalse(
+                eye_faces.intersection({"south", "north"})
+                and eye_faces.intersection({"east", "west"}),
+                animal,
+            )
+
     def test_example_is_strictly_valid(self):
         spec = img2blockbench.read_json(EXAMPLE)
         self.assertEqual([], img2blockbench.validate_spec(spec, strict=True))

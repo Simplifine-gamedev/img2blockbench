@@ -1,5 +1,5 @@
 {
-  "path": "examples/elephant/lane3/blockbench/elephant-lane3.bbmodel",
+  "path": "elephant-lane3.bbmodel",
   "cuboids": 21,
   "estimated_triangles": 252,
   "groups": 22,

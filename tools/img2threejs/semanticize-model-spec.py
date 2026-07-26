@@ -28,6 +28,20 @@ def semanticize(
     spec: dict[str, Any],
     recipe: dict[str, Any],
 ) -> dict[str, Any]:
+    eye_faces = {
+        landmark["face"]
+        for landmark in recipe["landmarks"]
+        if "eye" in landmark["name"] and "glint" not in landmark["name"]
+    }
+    if (
+        eye_faces.intersection({"south", "north"})
+        and eye_faces.intersection({"east", "west"})
+    ):
+        raise RuntimeError(
+            "Eye landmarks must use either the front/back pair or the "
+            "lateral pair, not both."
+        )
+
     removed_names = set(recipe["remove_cubes"])
     output = json.loads(json.dumps(spec))
     output["cubes"] = [

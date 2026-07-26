@@ -106,7 +106,7 @@ auditing, Bedrock geometry, and reproducible manifests.
 ## Lane 3: Three.js to Blockbench
 
 Lane 3 runs the official
-[`hoainho/img2threejs`](https://github.com/hoainho/img2threejs) generator:
+[`img2threejs/img2threejs`](https://github.com/img2threejs/img2threejs) generator:
 
 ```text
 Minecraft-style image
@@ -115,14 +115,14 @@ Minecraft-style image
   → browser-executed THREE.Group
   → visible Object3D scene
   → box geometry adapter
-  → Minecraft-clustered material map transfer
+  → native material map and UV-transform transfer
   → texture-only semantic landmarks
   → nearest-neighbor Blockbench atlas
   → .bbmodel
 ```
 
 The five-animal benchmark pins upstream commit
-`c9077d5ecce834f6802d6742b4a5b2c682d6279d` and preserves the
+`f1ade81d45252ede20323d74a5b269c819f75245` and preserves the
 spec, generated source, scene JSON, provenance, and converted model for every
 animal. Eyes, nostrils, inner ears, and markings are declared texture-only
 before factory generation, rather than surviving as decorative boxes. Each
@@ -131,10 +131,10 @@ directly.
 The five factories are generated at `optimization-pass` after the ordered
 blockout, structural, form, material, surface, lighting, interaction, and
 optimization reviews. The adapter preserves each generated
-`MeshPhysicalMaterial.map`, clusters it to Minecraft-scale texels, transfers it
-to the corresponding cuboids, and paints semantic landmarks into one
-nearest-neighbor atlas. This avoids both perspective-projection smearing and
-geometry being misused for eyes or stripes.
+`MeshPhysicalMaterial.map` plus repeat, wrap, offset, rotation, and flip state
+without recoloring or palette reduction. The adapter samples those native maps
+into one nearest-neighbor atlas, then paints each eye on exactly one face pair.
+This avoids texture crushing, projection smearing, and duplicate facial marks.
 
 Three.js roughness, normal, and AO maps remain preview-only because
 Blockbench's Minecraft texture format has no equivalent PBR channels.
@@ -251,7 +251,7 @@ img2blockbench from-threejs \
   --description "A Minecraft-style red panda" \
   --output ./red-panda-threejs.json
 
-# Minecraftize and audit the img2threejs base-color maps.
+# Preserve and audit the native img2threejs base-color maps.
 pip install -e '.[reference-projection]'
 python tools/img2threejs/bake-reference-faces.py \
   ./red-panda-threejs.json \

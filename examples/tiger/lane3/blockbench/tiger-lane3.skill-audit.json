@@ -1,5 +1,5 @@
 {
-  "path": "examples/tiger/lane3/blockbench/tiger-lane3.bbmodel",
+  "path": "tiger-lane3.bbmodel",
   "cuboids": 20,
   "estimated_triangles": 240,
   "groups": 21,

@@ -39,24 +39,6 @@
         "center_color": "#f4ead2"
       },
       {
-        "name": "left_eye_side",
-        "cube": "head",
-        "face": "east",
-        "center_uv": [0.78, 0.42],
-        "size": [2, 2],
-        "color": "#080808",
-        "center_color": "#f4ead2"
-      },
-      {
-        "name": "right_eye_side",
-        "cube": "head",
-        "face": "west",
-        "center_uv": [0.78, 0.42],
-        "size": [2, 2],
-        "color": "#080808",
-        "center_color": "#f4ead2"
-      },
-      {
         "name": "left_nostril",
         "cube": "muzzle",
         "face": "south",
@@ -131,24 +113,6 @@
         "cube": "head",
         "face": "south",
         "center_uv": [0.7, 0.39],
-        "size": [2, 2],
-        "color": "#090806",
-        "center_color": "#d4a241"
-      },
-      {
-        "name": "left_eye_side",
-        "cube": "head",
-        "face": "east",
-        "center_uv": [0.76, 0.4],
-        "size": [2, 2],
-        "color": "#090806",
-        "center_color": "#d4a241"
-      },
-      {
-        "name": "right_eye_side",
-        "cube": "head",
-        "face": "west",
-        "center_uv": [0.76, 0.4],
         "size": [2, 2],
         "color": "#090806",
         "center_color": "#d4a241"
@@ -314,24 +278,6 @@
         "face": "south",
         "center_uv": [0.7, 0.37],
         "size": [3, 3],
-        "color": "#11100e",
-        "center_color": "#e4b634"
-      },
-      {
-        "name": "left_eye_side",
-        "cube": "head",
-        "face": "east",
-        "center_uv": [0.78, 0.38],
-        "size": [2, 2],
-        "color": "#11100e",
-        "center_color": "#e4b634"
-      },
-      {
-        "name": "right_eye_side",
-        "cube": "head",
-        "face": "west",
-        "center_uv": [0.78, 0.38],
-        "size": [2, 2],
         "color": "#11100e",
         "center_color": "#e4b634"
       },

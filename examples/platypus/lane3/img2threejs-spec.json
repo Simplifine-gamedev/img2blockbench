@@ -391,7 +391,8 @@
       "joints": [],
       "level": "macro",
       "localFeatures": [
-        "pixel-fur"
+        "pixel-fur",
+        "square-side-eye-placement"
       ],
       "material": "fur",
       "materialLayers": [

@@ -1,5 +1,5 @@
 {
-  "algorithm": "img2threejs-material-albedo-transfer",
+  "algorithm": "img2threejs-native-albedo-transfer",
   "mapped_material_count": 5,
   "mapped_materials": [
     "material_1",
@@ -8,20 +8,119 @@
     "material_4",
     "material_5"
   ],
-  "minecraft_albedo": {
-    "material_palette_sizes": {
-      "material_1": 3,
-      "material_2": 3,
-      "material_3": 3,
-      "material_4": 3,
-      "material_5": 3
-    },
-    "method": "block-clustered-nearest-material-palette",
-    "version": 1
+  "material_color_counts": {
+    "material_1": 63,
+    "material_2": 92,
+    "material_3": 56,
+    "material_4": 20,
+    "material_5": 58
   },
-  "palette_size": 24,
+  "palette_quantization": false,
+  "preserved_texture_transforms": true,
   "reference_projection": false,
   "reference_sha256": "853b644227280aa46826a40cae21a36c311074f5e3bf90c91f5773d8f6205341",
   "source": "MeshPhysicalMaterial.map",
-  "version": 3
+  "texture_transforms": {
+    "material_1": {
+      "center": [
+        0,
+        0
+      ],
+      "flip_y": true,
+      "offset": [
+        0,
+        0
+      ],
+      "repeat": [
+        3,
+        3
+      ],
+      "rotation": 0,
+      "wrap": [
+        1000,
+        1000
+      ]
+    },
+    "material_2": {
+      "center": [
+        0,
+        0
+      ],
+      "flip_y": true,
+      "offset": [
+        0,
+        0
+      ],
+      "repeat": [
+        3,
+        3
+      ],
+      "rotation": 0,
+      "wrap": [
+        1000,
+        1000
+      ]
+    },
+    "material_3": {
+      "center": [
+        0,
+        0
+      ],
+      "flip_y": true,
+      "offset": [
+        0,
+        0
+      ],
+      "repeat": [
+        3,
+        3
+      ],
+      "rotation": 0,
+      "wrap": [
+        1000,
+        1000
+      ]
+    },
+    "material_4": {
+      "center": [
+        0,
+        0
+      ],
+      "flip_y": true,
+      "offset": [
+        0,
+        0
+      ],
+      "repeat": [
+        3,
+        3
+      ],
+      "rotation": 0,
+      "wrap": [
+        1000,
+        1000
+      ]
+    },
+    "material_5": {
+      "center": [
+        0,
+        0
+      ],
+      "flip_y": true,
+      "offset": [
+        0,
+        0
+      ],
+      "repeat": [
+        3,
+        3
+      ],
+      "rotation": 0,
+      "wrap": [
+        1000,
+        1000
+      ]
+    }
+  },
+  "version": 4
 }

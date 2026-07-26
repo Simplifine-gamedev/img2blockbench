@@ -1,5 +1,5 @@
 {
-  "path": "examples/chimpanzee/lane3/blockbench/chimpanzee-lane3.bbmodel",
+  "path": "chimpanzee-lane3.bbmodel",
   "cuboids": 22,
   "estimated_triangles": 264,
   "groups": 23,

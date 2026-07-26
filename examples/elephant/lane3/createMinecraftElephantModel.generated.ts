@@ -4,6 +4,7 @@ import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
 import { BokehPass } from 'three/examples/jsm/postprocessing/BokehPass.js';
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 export type ProceduralModelOptions = {
   wireframe?: boolean;
@@ -525,6 +526,7 @@ function makeAttachmentEndpoint(attachment: unknown): AttachmentEndpoint | null 
 export function createMinecraftElephantModel(options: ProceduralModelOptions = {}): THREE.Group {
   const root = new THREE.Group();
   root.name = "Minecraft Elephant";
+  root.userData.reconstructionEvidence = {"itemFamily": null, "subtype": null, "componentAdapter": null, "route": null, "exactnessTier": null, "referenceCamera": {"aspect": 1.0, "fovDegrees": 40.0, "note": "For likeness work, solve the reference camera (forge/stage1_intake/solve_camera_pose.py) so the review render aligns with the photo and the reference can be projected. Confirm by overlay review.", "orientation": {"pitch": 0.0, "roll": 0.0, "yaw": 0.0}, "positionHint": [0.0, 0.0, 3.0], "solved": false}, "approximationNotes": []};
 
   const materialMap: Record<string, THREE.Material> = {};
   materialMap["gray_hide"] = createSculptMaterial(
@@ -1521,4 +1523,25 @@ export function createMinecraftElephantPresentationComposer(
     composer.addPass(new UnrealBloomPass(size, options.bloomStrength ?? 0.4, 0.4, 0.85));
   }
   return composer;
+}
+
+export function configureMinecraftElephantRenderer(renderer: THREE.WebGLRenderer): void {
+  // Load-bearing for view-dependent finishes (anodized / Doppler): without ACES + sRGB
+  // the environment reflection reads flat/washed instead of a believable metal response.
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+}
+
+export function createMinecraftElephantInspectControls(
+  camera: THREE.Camera,
+  domElement: HTMLElement,
+): OrbitControls {
+  // View-dependent finishes only read correctly once the user orbits — their color
+  // comes from the environment reflection, not albedo, so free rotation matters here.
+  const controls = new OrbitControls(camera, domElement);
+  controls.enableDamping = true;
+  controls.minDistance = 1.0;
+  controls.maxDistance = 8.0;
+  controls.autoRotate = false;
+  return controls;
 }

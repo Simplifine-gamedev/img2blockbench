@@ -1,19 +1,19 @@
 {
   "artifacts": [
     {
-      "bytes": 23448,
+      "bytes": 208323,
       "path": "elephant-lane3.model-spec.json",
-      "sha256": "e401a6566e8af77e5e62ec2f0f1c26817f5620ce3bec88a8d446c13d0bb2c30e"
+      "sha256": "04a7d3ebce77e82c719c61f5eba80ebb5568a68dbbf8029a5147ee1501fc15f4"
     },
     {
-      "bytes": 3685,
+      "bytes": 8889,
       "path": "elephant-lane3.png",
-      "sha256": "07b30e35e79983305d06f9ff326b5d3732dd61ab5cd39d2ec2a537faa67a3625"
+      "sha256": "8e9eee6197ba351901e07bf85cd061b11ee63b86cf442c220b4e28890853b4fe"
     },
     {
-      "bytes": 46202,
+      "bytes": 53138,
       "path": "elephant-lane3.bbmodel",
-      "sha256": "2f025eb8fe2cb5c01101a6d02dd95a5abdb98ca80182645720e9142944fa0255"
+      "sha256": "672ca680103662435584a77279037ba8015157556f7ca7a6b4b8524d52054e53"
     },
     {
       "bytes": 44668,
