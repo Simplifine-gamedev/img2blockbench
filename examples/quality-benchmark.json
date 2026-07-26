@@ -1,0 +1,341 @@
+{
+  "aggregate": {
+    "lane1": {
+      "average_cuboids": 19.8,
+      "flat_detail_cuboids": 0,
+      "mean_edge_change_percent": 15.36,
+      "mean_flat_faces_percent": 96.81,
+      "mean_texture_entropy": 0.5482,
+      "texture_landmarks": 25,
+      "uv_density_outlier_faces": 0
+    },
+    "lane2": {
+      "average_cuboids": 23.2,
+      "flat_detail_cuboids": 0,
+      "mean_edge_change_percent": 36.19,
+      "mean_flat_faces_percent": 10.26,
+      "mean_texture_entropy": 2.3592,
+      "texture_landmarks": 16,
+      "uv_density_outlier_faces": 0
+    },
+    "lane3": {
+      "average_cuboids": 22.2,
+      "flat_detail_cuboids": 0,
+      "mean_edge_change_percent": 46.71,
+      "mean_flat_faces_percent": 95.59,
+      "mean_texture_entropy": 1.5002,
+      "texture_landmarks": 42,
+      "uv_density_outlier_faces": 0
+    }
+  },
+  "animals": [
+    "platypus",
+    "chimpanzee",
+    "elephant",
+    "tiger",
+    "coyote"
+  ],
+  "lanes": [
+    "lane1",
+    "lane2",
+    "lane3"
+  ],
+  "models": {
+    "chimpanzee": {
+      "lane1": {
+        "cuboids": 22,
+        "flat_detail_cuboids": [],
+        "front_axis": "positive_z",
+        "groups": 1,
+        "texture": {
+          "flat_faces_percent": 96.21,
+          "mean_edge_change_percent": 16.18,
+          "mean_entropy": 0.6061,
+          "median_unique_colors": 3
+        },
+        "texture_landmarks": 7,
+        "texture_size": [
+          256,
+          256
+        ],
+        "uv_density_median": 2.0,
+        "uv_density_outliers": []
+      },
+      "lane2": {
+        "cuboids": 24,
+        "flat_detail_cuboids": [],
+        "front_axis": "negative_z",
+        "groups": 1,
+        "texture": {
+          "flat_faces_percent": 17.36,
+          "mean_edge_change_percent": 32.45,
+          "mean_entropy": 2.08,
+          "median_unique_colors": 8
+        },
+        "texture_landmarks": 4,
+        "texture_size": [
+          256,
+          256
+        ],
+        "uv_density_median": 2.0,
+        "uv_density_outliers": []
+      },
+      "lane3": {
+        "cuboids": 22,
+        "flat_detail_cuboids": [],
+        "front_axis": "positive_z",
+        "groups": 1,
+        "texture": {
+          "flat_faces_percent": 96.21,
+          "mean_edge_change_percent": 48.52,
+          "mean_entropy": 1.5295,
+          "median_unique_colors": 3
+        },
+        "texture_landmarks": 8,
+        "texture_size": [
+          256,
+          256
+        ],
+        "uv_density_median": 2.0,
+        "uv_density_outliers": []
+      }
+    },
+    "coyote": {
+      "lane1": {
+        "cuboids": 20,
+        "flat_detail_cuboids": [],
+        "front_axis": "positive_z",
+        "groups": 1,
+        "texture": {
+          "flat_faces_percent": 96.67,
+          "mean_edge_change_percent": 16.4,
+          "mean_entropy": 0.4761,
+          "median_unique_colors": 3
+        },
+        "texture_landmarks": 5,
+        "texture_size": [
+          256,
+          256
+        ],
+        "uv_density_median": 2.0,
+        "uv_density_outliers": []
+      },
+      "lane2": {
+        "cuboids": 23,
+        "flat_detail_cuboids": [],
+        "front_axis": "negative_z",
+        "groups": 1,
+        "texture": {
+          "flat_faces_percent": 10.14,
+          "mean_edge_change_percent": 35.49,
+          "mean_entropy": 2.508,
+          "median_unique_colors": 8
+        },
+        "texture_landmarks": 3,
+        "texture_size": [
+          256,
+          256
+        ],
+        "uv_density_median": 2.0,
+        "uv_density_outliers": []
+      },
+      "lane3": {
+        "cuboids": 20,
+        "flat_detail_cuboids": [],
+        "front_axis": "positive_z",
+        "groups": 1,
+        "texture": {
+          "flat_faces_percent": 95.0,
+          "mean_edge_change_percent": 49.48,
+          "mean_entropy": 1.5367,
+          "median_unique_colors": 3
+        },
+        "texture_landmarks": 7,
+        "texture_size": [
+          256,
+          256
+        ],
+        "uv_density_median": 2.0,
+        "uv_density_outliers": []
+      }
+    },
+    "elephant": {
+      "lane1": {
+        "cuboids": 21,
+        "flat_detail_cuboids": [],
+        "front_axis": "positive_z",
+        "groups": 1,
+        "texture": {
+          "flat_faces_percent": 97.62,
+          "mean_edge_change_percent": 17.16,
+          "mean_entropy": 0.5328,
+          "median_unique_colors": 3
+        },
+        "texture_landmarks": 3,
+        "texture_size": [
+          256,
+          256
+        ],
+        "uv_density_median": 2.0,
+        "uv_density_outliers": []
+      },
+      "lane2": {
+        "cuboids": 24,
+        "flat_detail_cuboids": [],
+        "front_axis": "negative_z",
+        "groups": 1,
+        "texture": {
+          "flat_faces_percent": 10.42,
+          "mean_edge_change_percent": 37.41,
+          "mean_entropy": 2.3981,
+          "median_unique_colors": 9
+        },
+        "texture_landmarks": 2,
+        "texture_size": [
+          256,
+          256
+        ],
+        "uv_density_median": 2.0,
+        "uv_density_outliers": []
+      },
+      "lane3": {
+        "cuboids": 21,
+        "flat_detail_cuboids": [],
+        "front_axis": "positive_z",
+        "groups": 1,
+        "texture": {
+          "flat_faces_percent": 96.03,
+          "mean_edge_change_percent": 38.26,
+          "mean_entropy": 1.5043,
+          "median_unique_colors": 3
+        },
+        "texture_landmarks": 5,
+        "texture_size": [
+          256,
+          256
+        ],
+        "uv_density_median": 2.0,
+        "uv_density_outliers": []
+      }
+    },
+    "platypus": {
+      "lane1": {
+        "cuboids": 16,
+        "flat_detail_cuboids": [],
+        "front_axis": "positive_z",
+        "groups": 1,
+        "texture": {
+          "flat_faces_percent": 96.88,
+          "mean_edge_change_percent": 16.12,
+          "mean_entropy": 0.5984,
+          "median_unique_colors": 3
+        },
+        "texture_landmarks": 4,
+        "texture_size": [
+          256,
+          256
+        ],
+        "uv_density_median": 2.0,
+        "uv_density_outliers": []
+      },
+      "lane2": {
+        "cuboids": 22,
+        "flat_detail_cuboids": [],
+        "front_axis": "negative_z",
+        "groups": 1,
+        "texture": {
+          "flat_faces_percent": 7.58,
+          "mean_edge_change_percent": 41.84,
+          "mean_entropy": 2.3087,
+          "median_unique_colors": 7
+        },
+        "texture_landmarks": 4,
+        "texture_size": [
+          256,
+          256
+        ],
+        "uv_density_median": 2.0,
+        "uv_density_outliers": []
+      },
+      "lane3": {
+        "cuboids": 28,
+        "flat_detail_cuboids": [],
+        "front_axis": "positive_z",
+        "groups": 1,
+        "texture": {
+          "flat_faces_percent": 98.21,
+          "mean_edge_change_percent": 50.08,
+          "mean_entropy": 1.3882,
+          "median_unique_colors": 3
+        },
+        "texture_landmarks": 4,
+        "texture_size": [
+          256,
+          256
+        ],
+        "uv_density_median": 2.0,
+        "uv_density_outliers": []
+      }
+    },
+    "tiger": {
+      "lane1": {
+        "cuboids": 20,
+        "flat_detail_cuboids": [],
+        "front_axis": "positive_z",
+        "groups": 1,
+        "texture": {
+          "flat_faces_percent": 96.67,
+          "mean_edge_change_percent": 10.96,
+          "mean_entropy": 0.5274,
+          "median_unique_colors": 2
+        },
+        "texture_landmarks": 6,
+        "texture_size": [
+          256,
+          256
+        ],
+        "uv_density_median": 2.0,
+        "uv_density_outliers": []
+      },
+      "lane2": {
+        "cuboids": 23,
+        "flat_detail_cuboids": [],
+        "front_axis": "negative_z",
+        "groups": 1,
+        "texture": {
+          "flat_faces_percent": 5.8,
+          "mean_edge_change_percent": 33.75,
+          "mean_entropy": 2.5013,
+          "median_unique_colors": 9
+        },
+        "texture_landmarks": 3,
+        "texture_size": [
+          256,
+          256
+        ],
+        "uv_density_median": 2.0,
+        "uv_density_outliers": []
+      },
+      "lane3": {
+        "cuboids": 20,
+        "flat_detail_cuboids": [],
+        "front_axis": "positive_z",
+        "groups": 1,
+        "texture": {
+          "flat_faces_percent": 92.5,
+          "mean_edge_change_percent": 47.19,
+          "mean_entropy": 1.5421,
+          "median_unique_colors": 3
+        },
+        "texture_landmarks": 18,
+        "texture_size": [
+          256,
+          256
+        ],
+        "uv_density_median": 2.0,
+        "uv_density_outliers": []
+      }
+    }
+  },
+  "schema_version": 1
+}

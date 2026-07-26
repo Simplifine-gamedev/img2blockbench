@@ -75,7 +75,6 @@
       "componentRefs": [
         "neck",
         "face_plate",
-        "brow",
         "lower_muzzle",
         "ear_left",
         "ear_right",
@@ -97,10 +96,7 @@
         "Endpoint-based child parts are rooted at their attachment sockets and do not visibly float away from parents.",
         "AI vision comparison score meets selfCorrectLoop.visualAcceptance.threshold."
       ],
-      "componentRefs": [
-        "eye_left",
-        "eye_right"
-      ],
+      "componentRefs": [],
       "goal": "Refine shape, deformation, bevels, tapers, curves, asymmetry, and visible local geometry.",
       "id": "form-refinement"
     },
@@ -955,134 +951,6 @@
     },
     {
       "actionProfile": {
-        "animationRole": "brow",
-        "collider": {
-          "isTrigger": false,
-          "offset": [
-            0,
-            0,
-            0
-          ],
-          "scale": [
-            5.6,
-            1.2,
-            1.2
-          ],
-          "type": "box"
-        },
-        "constraints": [],
-        "destruction": {
-          "breakImpulse": 0.0,
-          "breakable": false,
-          "debrisMaterial": "face_tan",
-          "detachableFragments": [],
-          "fractureGroup": "brow",
-          "seamRefs": []
-        },
-        "pivot": {
-          "axis": [
-            0,
-            1,
-            0
-          ],
-          "confidence": 0.85,
-          "localPosition": [
-            0,
-            0,
-            0
-          ],
-          "mode": "component-center"
-        },
-        "sockets": [],
-        "transformChannels": {
-          "bend": false,
-          "detach": false,
-          "materialState": true,
-          "rotate": true,
-          "scale": true,
-          "translate": true,
-          "twist": false,
-          "visibility": true
-        }
-      },
-      "attachment": null,
-      "colorMaterialRecipe": {
-        "dominantAlbedo": "rgba(169, 119, 81, 1.0)",
-        "materialClass": "rubber",
-        "materialClassConfidence": 0.82,
-        "secondaryAlbedo": "rgba(116, 74, 49, 1.0)"
-      },
-      "confidence": 0.88,
-      "deformations": [],
-      "details": [],
-      "dimensions": {
-        "confidence": 0.9,
-        "depth": 1.2,
-        "height": 1.2,
-        "units": "Blockbench units",
-        "width": 5.6
-      },
-      "evidenceRefs": [
-        "full-object"
-      ],
-      "fidelityTier": "structural-pass",
-      "geometryDescriptor": {
-        "deformationStack": [],
-        "edgeTreatment": {
-          "bevelRadius": 0.0,
-          "segments": 1,
-          "type": "none"
-        },
-        "normalStrategy": "flat cuboid normals",
-        "topologyIntent": "native Minecraft cuboid with hard square edges",
-        "uvStrategy": "generated procedural coordinates"
-      },
-      "id": "brow",
-      "importance": 0.78,
-      "joints": [],
-      "level": "meso",
-      "localFeatures": [],
-      "material": "face_tan",
-      "materialLayers": [
-        "face_tan"
-      ],
-      "name": "Brow",
-      "parent": null,
-      "primitive": "box",
-      "role": "heavy horizontal brow",
-      "seams": [],
-      "surfaceDetail": {
-        "bumpAmplitude": 0.02,
-        "displacementPattern": "",
-        "edgeWearPattern": "minimal",
-        "macroRoughness": 0.12,
-        "microRoughness": 0.04,
-        "normalPattern": "square-pixel mottling",
-        "notes": "Preserve the Minecraft block silhouette.",
-        "occlusionPattern": "contact darkening"
-      },
-      "topologyClass": "assembled-solid",
-      "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.",
-      "transform": {
-        "position": [
-          0,
-          15.3,
-          7.25
-        ],
-        "rotation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "scale": [
-          5.6,
-          1.2,
-          1.2
-        ]
-      }
-    },
-    {
-      "actionProfile": {
         "animationRole": "muzzle",
         "collider": {
           "isTrigger": false,
@@ -1598,266 +1466,6 @@
           1.5,
           4.4,
           3.8
-        ]
-      }
-    },
-    {
-      "actionProfile": {
-        "animationRole": "eye_left",
-        "collider": {
-          "isTrigger": false,
-          "offset": [
-            0,
-            0,
-            0
-          ],
-          "scale": [
-            1.0,
-            1.0,
-            0.7
-          ],
-          "type": "box"
-        },
-        "constraints": [],
-        "destruction": {
-          "breakImpulse": 0.0,
-          "breakable": false,
-          "debrisMaterial": "eye",
-          "detachableFragments": [],
-          "fractureGroup": "eye_left",
-          "seamRefs": []
-        },
-        "pivot": {
-          "axis": [
-            0,
-            1,
-            0
-          ],
-          "confidence": 0.85,
-          "localPosition": [
-            0,
-            0,
-            0
-          ],
-          "mode": "component-center"
-        },
-        "sockets": [],
-        "transformChannels": {
-          "bend": false,
-          "detach": false,
-          "materialState": true,
-          "rotate": true,
-          "scale": true,
-          "translate": true,
-          "twist": false,
-          "visibility": true
-        }
-      },
-      "attachment": null,
-      "colorMaterialRecipe": {
-        "dominantAlbedo": "rgba(9, 8, 7, 1.0)",
-        "materialClass": "rubber",
-        "materialClassConfidence": 0.82,
-        "secondaryAlbedo": "rgba(2, 2, 2, 1.0)"
-      },
-      "confidence": 0.88,
-      "deformations": [],
-      "details": [
-        "square-eyes"
-      ],
-      "dimensions": {
-        "confidence": 0.9,
-        "depth": 0.7,
-        "height": 1.0,
-        "units": "Blockbench units",
-        "width": 1.0
-      },
-      "evidenceRefs": [
-        "full-object"
-      ],
-      "fidelityTier": "form-refinement",
-      "geometryDescriptor": {
-        "deformationStack": [],
-        "edgeTreatment": {
-          "bevelRadius": 0.0,
-          "segments": 1,
-          "type": "none"
-        },
-        "normalStrategy": "flat cuboid normals",
-        "topologyIntent": "native Minecraft cuboid with hard square edges",
-        "uvStrategy": "generated procedural coordinates"
-      },
-      "id": "eye_left",
-      "importance": 0.58,
-      "joints": [],
-      "level": "micro",
-      "localFeatures": [
-        "square-eyes"
-      ],
-      "material": "eye",
-      "materialLayers": [
-        "eye"
-      ],
-      "name": "Left eye",
-      "parent": null,
-      "primitive": "box",
-      "role": "square left eye",
-      "seams": [],
-      "surfaceDetail": {
-        "bumpAmplitude": 0.02,
-        "displacementPattern": "",
-        "edgeWearPattern": "minimal",
-        "macroRoughness": 0.12,
-        "microRoughness": 0.04,
-        "normalPattern": "square-pixel mottling",
-        "notes": "Preserve the Minecraft block silhouette.",
-        "occlusionPattern": "contact darkening"
-      },
-      "topologyClass": "assembled-solid",
-      "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.",
-      "transform": {
-        "position": [
-          1.55,
-          14.65,
-          7.4
-        ],
-        "rotation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "scale": [
-          1.0,
-          1.0,
-          0.7
-        ]
-      }
-    },
-    {
-      "actionProfile": {
-        "animationRole": "eye_right",
-        "collider": {
-          "isTrigger": false,
-          "offset": [
-            0,
-            0,
-            0
-          ],
-          "scale": [
-            1.0,
-            1.0,
-            0.7
-          ],
-          "type": "box"
-        },
-        "constraints": [],
-        "destruction": {
-          "breakImpulse": 0.0,
-          "breakable": false,
-          "debrisMaterial": "eye",
-          "detachableFragments": [],
-          "fractureGroup": "eye_right",
-          "seamRefs": []
-        },
-        "pivot": {
-          "axis": [
-            0,
-            1,
-            0
-          ],
-          "confidence": 0.85,
-          "localPosition": [
-            0,
-            0,
-            0
-          ],
-          "mode": "component-center"
-        },
-        "sockets": [],
-        "transformChannels": {
-          "bend": false,
-          "detach": false,
-          "materialState": true,
-          "rotate": true,
-          "scale": true,
-          "translate": true,
-          "twist": false,
-          "visibility": true
-        }
-      },
-      "attachment": null,
-      "colorMaterialRecipe": {
-        "dominantAlbedo": "rgba(9, 8, 7, 1.0)",
-        "materialClass": "rubber",
-        "materialClassConfidence": 0.82,
-        "secondaryAlbedo": "rgba(2, 2, 2, 1.0)"
-      },
-      "confidence": 0.88,
-      "deformations": [],
-      "details": [],
-      "dimensions": {
-        "confidence": 0.9,
-        "depth": 0.7,
-        "height": 1.0,
-        "units": "Blockbench units",
-        "width": 1.0
-      },
-      "evidenceRefs": [
-        "full-object"
-      ],
-      "fidelityTier": "form-refinement",
-      "geometryDescriptor": {
-        "deformationStack": [],
-        "edgeTreatment": {
-          "bevelRadius": 0.0,
-          "segments": 1,
-          "type": "none"
-        },
-        "normalStrategy": "flat cuboid normals",
-        "topologyIntent": "native Minecraft cuboid with hard square edges",
-        "uvStrategy": "generated procedural coordinates"
-      },
-      "id": "eye_right",
-      "importance": 0.58,
-      "joints": [],
-      "level": "micro",
-      "localFeatures": [],
-      "material": "eye",
-      "materialLayers": [
-        "eye"
-      ],
-      "name": "Right eye",
-      "parent": null,
-      "primitive": "box",
-      "role": "square right eye",
-      "seams": [],
-      "surfaceDetail": {
-        "bumpAmplitude": 0.02,
-        "displacementPattern": "",
-        "edgeWearPattern": "minimal",
-        "macroRoughness": 0.12,
-        "microRoughness": 0.04,
-        "normalPattern": "square-pixel mottling",
-        "notes": "Preserve the Minecraft block silhouette.",
-        "occlusionPattern": "contact darkening"
-      },
-      "topologyClass": "assembled-solid",
-      "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.",
-      "transform": {
-        "position": [
-          -1.55,
-          14.65,
-          7.4
-        ],
-        "rotation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "scale": [
-          1.0,
-          1.0,
-          0.7
         ]
       }
     },
@@ -3471,10 +3079,7 @@
     {
       "componentRefs": [
         "face_plate",
-        "brow",
-        "muzzle",
-        "eye_left",
-        "eye_right"
+        "muzzle"
       ],
       "evidenceRefs": [
         "full-object"
@@ -4244,8 +3849,8 @@
       "estimatedCounts": {
         "macroComponents": 9,
         "materialLayers": 6,
-        "mesoComponents": 14,
-        "microFeatureGroups": 2,
+        "mesoComponents": 13,
+        "microFeatureGroups": 0,
         "repetitionSystems": 1
       },
       "reasoning": [
@@ -4348,22 +3953,6 @@
         {
           "affects": "identity",
           "confidence": 0.88,
-          "description": "Paired dark square eyes",
-          "evidenceRef": "full-object",
-          "id": "square-eyes",
-          "kind": "decal",
-          "mapsTo": {
-            "ref": "eye_left",
-            "type": "component-or-material"
-          },
-          "region": {
-            "units": "normalized"
-          },
-          "scale": "micro"
-        },
-        {
-          "affects": "identity",
-          "confidence": 0.88,
           "description": "Rear silhouette has no tail",
           "evidenceRef": "full-object",
           "id": "no-tail",
@@ -4396,7 +3985,7 @@
       ],
       "note": "Details were inventoried from face, torso, limbs, and tail zones.",
       "scanMethod": "component-zones",
-      "targetMinDetails": 8
+      "targetMinDetails": 7
     },
     "objectClass": {
       "formLanguage": [
@@ -4461,7 +4050,8 @@
     ],
     "definitionOfDone": [
       "The result preserves the forward lean, long grounded arms, compact legs, tan facial landmarks, and black-fur palette.",
-      "Every generated geometry node remains a BoxGeometry compatible with deterministic Blockbench conversion."
+      "Every generated geometry node remains a BoxGeometry compatible with deterministic Blockbench conversion.",
+      "Flat eyes, nostrils, inner-ear paint, brows, and markings are texture features rather than geometry."
     ],
     "featureGroups": [
       {
@@ -4550,8 +4140,8 @@
     "minimumSpecDepth": {
       "macroComponents": 8,
       "materialLayers": 5,
-      "mesoComponents": 12,
-      "microFeatureGroups": 2,
+      "mesoComponents": 11,
+      "microFeatureGroups": 0,
       "repetitionSystems": 1,
       "reviewViewpoints": 5
     },
@@ -4606,8 +4196,6 @@
       "componentRefs": [
         "ear_left",
         "ear_right",
-        "eye_left",
-        "eye_right",
         "upper_arm_left",
         "forearm_left",
         "hand_left",

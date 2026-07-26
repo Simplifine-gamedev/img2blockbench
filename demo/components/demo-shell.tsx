@@ -71,6 +71,7 @@ export function DemoShell({
           animal={animal}
           modelFile={captureModel.modelFile}
           format="bbmodel"
+          frontAxis={captureModel.frontAxis}
           captureMode
         />
       </main>
@@ -153,6 +154,7 @@ export function DemoShell({
                   animal={animal}
                   modelFile={model.modelFile}
                   format="bbmodel"
+                  frontAxis={model.frontAxis}
                   captureMode={false}
                   showHint={false}
                 />

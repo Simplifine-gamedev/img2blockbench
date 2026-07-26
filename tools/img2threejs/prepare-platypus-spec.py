@@ -75,6 +75,15 @@ DETAILS = [
     ("pixel-fur", "stain", "Mottled brown square-pixel fur", "fur"),
 ]
 
+TEXTURE_ONLY_COMPONENTS = {
+    "eye_left",
+    "eye_right",
+    "glint_left",
+    "glint_right",
+    "nostril_left",
+    "nostril_right",
+}
+
 
 def material_spec(
     material_id: str,
@@ -240,7 +249,11 @@ def component_spec(part: tuple[Any, ...]) -> dict[str, Any]:
 
 def prepare(template: dict[str, Any]) -> dict[str, Any]:
     spec = copy.deepcopy(template)
-    component_ids = [part[0] for part in PARTS]
+    parts = [part for part in PARTS if part[0] not in TEXTURE_ONLY_COMPONENTS]
+    details = [
+        detail for detail in DETAILS if detail[3] not in TEXTURE_ONLY_COMPONENTS
+    ]
+    component_ids = [part[0] for part in parts]
     assessment = spec["preSpecAssessment"]
 
     spec.update(
@@ -262,7 +275,7 @@ def prepare(template: dict[str, Any]) -> dict[str, Any]:
                 material_spec(material_id, *values)
                 for material_id, values in MATERIALS.items()
             ],
-            "componentTree": [component_spec(part) for part in PARTS],
+            "componentTree": [component_spec(part) for part in parts],
             "lightingFromPhoto": [
                 "Warm key light from upper left with soft shadows.",
                 "Cool neutral fill light from camera right.",
@@ -308,7 +321,7 @@ def prepare(template: dict[str, Any]) -> dict[str, Any]:
                     "passIds": ["form-refinement", "material-pass"],
                     "minimumScore": 0.8,
                     "mustPass": True,
-                    "componentRefs": ["bill_tip", "eye_left", "eye_right", "nostril_left", "nostril_right"],
+                    "componentRefs": ["head_main", "bill_tip"],
                     "evidenceRefs": ["full-object"],
                 },
                 {
@@ -392,7 +405,7 @@ def prepare(template: dict[str, Any]) -> dict[str, Any]:
     )
     assessment["detailInventory"] = {
         "scanMethod": "component-zones",
-        "targetMinDetails": len(DETAILS),
+        "targetMinDetails": len(details),
         "note": "Details were inventoried from head, body, tail, and feet zones.",
         "details": [
             {
@@ -406,7 +419,7 @@ def prepare(template: dict[str, Any]) -> dict[str, Any]:
                 "evidenceRef": "full-object",
                 "confidence": 0.88,
             }
-            for detail_id, kind, description, ref in DETAILS
+            for detail_id, kind, description, ref in details
         ],
     }
     assessment["anatomy"] = {
@@ -443,7 +456,7 @@ def prepare(template: dict[str, Any]) -> dict[str, Any]:
     spec["qualityContract"]["minimumSpecDepth"] = {
         "macroComponents": 5,
         "mesoComponents": 10,
-        "microFeatureGroups": 10,
+        "microFeatureGroups": 8,
         "materialLayers": 6,
         "repetitionSystems": 1,
         "reviewViewpoints": 5,

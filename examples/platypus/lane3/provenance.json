@@ -1,36 +1,36 @@
 {
   "blockbench_atlas": {
-    "bytes": 6554,
+    "bytes": 2924,
     "path": "blockbench/platypus-lane3.png",
-    "sha256": "578b22492b930d73341d272b095efe6e6e3ed043c0f114e9b156ee9c1f86cefa",
-    "source": "8 img2threejs MeshPhysicalMaterial base-color maps",
-    "threejs_materials": 8
+    "sha256": "34fe519cea6106945b0eb218c5fbed4d1286757a3a0902c0d0e5f3548a0342e0",
+    "source": "5 img2threejs MeshPhysicalMaterial base-color maps",
+    "threejs_materials": 5
   },
   "blockbench_model": {
-    "bytes": 74920,
+    "bytes": 58661,
     "path": "blockbench/platypus-lane3.bbmodel",
-    "sha256": "f5eb7ddedd45cb52100dcdabae481d7daaa2eff4179250391b9e7c44cbed50e9"
+    "sha256": "d0f6f55e1dd802c07105f29d680149422aa45700753eec7f4a524a9007eb2018"
   },
   "generated_factory": {
-    "bytes": 281963,
+    "bytes": 241662,
     "path": "createMinecraftPlatypusModel.generated.ts",
-    "sha256": "6417fa62c4408380e548bda1aee4bda7ff77d9a082a1c37ec732e18ef7ab6253"
+    "sha256": "cccd8625035702001c4ef046c8a9ebf408ddcd1d05bbd652b8a9bafbf1575f6c"
   },
   "reference": "../reference.png",
   "spec": "img2threejs-spec.json",
   "texture_transfer": {
     "algorithm": "img2threejs-material-albedo-transfer",
-    "bytes": 461,
-    "mapped_material_count": 8,
+    "bytes": 664,
+    "mapped_material_count": 5,
     "path": "projection-audit.json",
     "reference_projection": false,
-    "sha256": "26abc39e4be780ffa149dd5374f1fe4e14b9f3c4e2d1b46d3ea85405eefae160",
+    "sha256": "c41b0a46c3740d245597cf23d12716a07ce490efddcdff06eff53ce88b185f1b",
     "source": "MeshPhysicalMaterial.map"
   },
   "threejs_scene": {
-    "bytes": 1328357,
+    "bytes": 948296,
     "path": "platypus.img2threejs.three.json",
-    "sha256": "6e12a95d408e77c9290ae1989412adf62b0ec07a07f7e6542d2d47359a9016a4"
+    "sha256": "6c2861ae8a016072f79662542bd6b98e6d3b7ce58ec98cb9e1265aa93865e66a"
   },
   "upstream": {
     "commit": "c9077d5ecce834f6802d6742b4a5b2c682d6279d",

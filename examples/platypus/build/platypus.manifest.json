@@ -7,9 +7,9 @@
   "converter_version": "1.0.0",
   "files": {
     "model-audit.json": "c52198b28a250d96821d090d0255145642f2c21609372e6c992250acfb0e56a4",
-    "platypus_lane2.bbmodel": "72bc4cec710583407b0fed72d2558794291d646aa4520b6bd712a5cc2ac0a874",
+    "platypus_lane2.bbmodel": "5c56c613c19abd608042bc976b635080dfd3587bf03a8f6e9dd9e1330c3f2c21",
     "platypus_lane2.geo.json": "7e2acdd5265b3ad8cf5b8674deed1d754b6a0a5ae70eae8be2e809c02bd6523e",
-    "platypus_lane2.png": "f4a1232347125811c57adca47724d17dacdcb33ce94f5ddf5f1486df25811862",
+    "platypus_lane2.png": "a84732240c227d144ebf58ed5f2f9a5094a202c2ce607a49d0fd560dbc7d535c",
     "source-audit.json": "1310e5b9db5f4cda5e6dd1f3c366a23e8da586d035ad304cdddaca3a9803565e"
   },
   "source_sha256": "19b8c06db87c55ea7ab0e82df2193256448f2a535521f1457444203a3498a5e3",

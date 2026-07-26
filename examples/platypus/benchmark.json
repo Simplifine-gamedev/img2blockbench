@@ -10,8 +10,8 @@
       "cuboids": 16,
       "bone_groups": 14,
       "bbmodel": "lane1/platypus.bbmodel",
-      "bbmodel_bytes": 35613,
-      "bbmodel_sha256": "6ed28d8d4f12da9525f693b1c4b2c9ad7b6a25fa38f28908e0e49a3b1772a30a"
+      "bbmodel_bytes": 35634,
+      "bbmodel_sha256": "0b6243fe0b82152f53907d8001da72818c80f98ddb5be4e91c8060b82f5130b6"
     },
     "lane2": {
       "route": "image -> Trellis GLB -> cuboid reconstruction -> bbmodel",
@@ -21,8 +21,8 @@
       "cuboids": 22,
       "bone_groups": 9,
       "bbmodel": "lane2/platypus.bbmodel",
-      "bbmodel_bytes": 47392,
-      "bbmodel_sha256": "72bc4cec710583407b0fed72d2558794291d646aa4520b6bd712a5cc2ac0a874"
+      "bbmodel_bytes": 48507,
+      "bbmodel_sha256": "5c56c613c19abd608042bc976b635080dfd3587bf03a8f6e9dd9e1330c3f2c21"
     },
     "lane3": {
       "route": "image -> official img2threejs generated factory -> visible Three.js scene -> scene adapter -> bbmodel",
@@ -30,13 +30,13 @@
       "upstream_repository": "https://github.com/hoainho/img2threejs",
       "upstream_commit": "c9077d5ecce834f6802d6742b4a5b2c682d6279d",
       "intermediate": "lane3/platypus.img2threejs.three.json",
-      "intermediate_bytes": 1320031,
-      "intermediate_sha256": "5281c7237909d207309944ce2b77a3dc8a0cac85949c13a4a645fb14f60b4e14",
-      "cuboids": 34,
-      "bone_groups": 35,
+      "intermediate_bytes": 948296,
+      "intermediate_sha256": "6c2861ae8a016072f79662542bd6b98e6d3b7ce58ec98cb9e1265aa93865e66a",
+      "cuboids": 28,
+      "bone_groups": 29,
       "bbmodel": "lane3/blockbench/platypus-lane3.bbmodel",
-      "bbmodel_bytes": 77116,
-      "bbmodel_sha256": "5de2fe488fcfed2b2b2d6ca70c8282ea9198fa7566bec3f62182b9c1375a639e"
+      "bbmodel_bytes": 58661,
+      "bbmodel_sha256": "d0f6f55e1dd802c07105f29d680149422aa45700753eec7f4a524a9007eb2018"
     }
   }
 }

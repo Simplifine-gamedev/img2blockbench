@@ -5,5 +5,7 @@
   "visual_qa_approved": true,
   "cuboids": 24,
   "groups": 18,
-  "texture_size": 256
+  "texture_size": 256,
+  "front_axis": "negative_z",
+  "texture_repair": "reference-palette harmonization plus semantic facial landmarks"
 }

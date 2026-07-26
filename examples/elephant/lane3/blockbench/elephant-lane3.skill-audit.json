@@ -1,8 +1,8 @@
 {
-  "path": "elephant-lane3.bbmodel",
-  "cuboids": 25,
-  "estimated_triangles": 300,
-  "groups": 26,
+  "path": "examples/elephant/lane3/blockbench/elephant-lane3.bbmodel",
+  "cuboids": 21,
+  "estimated_triangles": 252,
+  "groups": 22,
   "animations": 0,
   "texture_size": [
     256,

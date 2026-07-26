@@ -12,6 +12,7 @@
   "motionPotential": ["walk", "pounce", "tail sweep", "head pitch"],
   "materialFamilies": ["orange striped fur", "cream muzzle fur", "dark markings"],
   "repeatTokens": ["left", "right"],
+  "textureOnlyComponents": ["eye_left", "eye_right", "nose", "back_stripe_1", "back_stripe_2", "back_stripe_3"],
   "faceTarget": "Square feline head, small ears, white muzzle, dark nose, and square eyes",
   "faceRefs": ["head", "muzzle", "ear_left", "ear_right", "eye_left", "eye_right", "nose"],
   "anatomyTarget": "Powerful long torso with four sturdy feline legs",

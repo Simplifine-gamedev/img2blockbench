@@ -36,6 +36,7 @@ root.userData.img2blockbench = {
   source: "official-img2threejs",
   compatibility: "box-only",
   animal: requestedAnimal,
+  frontAxis: "positive_z",
 };
 root.updateMatrixWorld(true);
 

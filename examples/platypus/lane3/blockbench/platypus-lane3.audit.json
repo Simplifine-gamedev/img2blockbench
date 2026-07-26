@@ -1,8 +1,8 @@
 {
-  "bones": 35,
-  "cuboids": 34,
+  "bones": 29,
+  "cuboids": 28,
   "errors": [],
-  "estimated_triangles": 408,
+  "estimated_triangles": 336,
   "ok": true,
   "texture_size": [
     256,

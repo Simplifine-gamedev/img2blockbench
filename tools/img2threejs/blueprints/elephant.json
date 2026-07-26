@@ -12,6 +12,7 @@
   "motionPotential": ["walk", "trunk curl", "ear flap", "head pitch"],
   "materialFamilies": ["mottled gray hide", "warm inner ears", "matte ivory"],
   "repeatTokens": ["left", "right"],
+  "textureOnlyComponents": ["ear_inner_left", "ear_inner_right", "eye_left", "eye_right"],
   "faceTarget": "Broad ears, square eyes, segmented trunk, and paired tusks",
   "faceRefs": ["head", "ear_left", "ear_right", "trunk_base", "tusk_left", "tusk_right"],
   "anatomyTarget": "Massive torso supported by four pillar legs",

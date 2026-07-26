@@ -1,37 +1,37 @@
 {
   "agent_blueprint": "../../../tools/img2threejs/blueprints/chimpanzee.json",
   "blockbench_atlas": {
-    "bytes": 4934,
+    "bytes": 3672,
     "path": "blockbench/chimpanzee-lane3.png",
-    "sha256": "056bc2bb3837c006a1d78b93eb10a3006bcae0859bff237f6d17139bc116d6ab",
-    "source": "6 img2threejs MeshPhysicalMaterial base-color maps",
-    "threejs_materials": 6
+    "sha256": "2dfce9e81ce4fd398ed5a3e969e3eec8b89ffb5ebdb429355d7323c0421f277a",
+    "source": "5 img2threejs MeshPhysicalMaterial base-color maps",
+    "threejs_materials": 5
   },
   "blockbench_model": {
-    "bytes": 55180,
+    "bytes": 47886,
     "path": "blockbench/chimpanzee-lane3.bbmodel",
-    "sha256": "700c2ac0807247dab6e83f6d3aa69cdb8ae3a9fb689ea88b98083968086ec1fb"
+    "sha256": "1cc9579d415b4bf136257f72a839ee7e87ab87369399d17d284f636b81373f58"
   },
   "generated_factory": {
-    "bytes": 212618,
+    "bytes": 193153,
     "path": "createMinecraftChimpanzeeModel.generated.ts",
-    "sha256": "98175ecbb19fd21864ffe2b861af53718dabdbd52831979487ba173ec2516132"
+    "sha256": "1b6af97604e518d57a4d63690f419c587b0b913363fcaa6f038838037114fa9e"
   },
   "reference": "../reference.png",
   "spec": "img2threejs-spec.json",
   "texture_transfer": {
     "algorithm": "img2threejs-material-albedo-transfer",
-    "bytes": 425,
-    "mapped_material_count": 6,
+    "bytes": 664,
+    "mapped_material_count": 5,
     "path": "projection-audit.json",
     "reference_projection": false,
-    "sha256": "d470854a2c5dc24ef0054bae6f0ef99c2a003e00637afa4bce1ede1946c748f6",
+    "sha256": "41570063ace5553802d976dcb7e5899e9bdc04258e4062a4d748c4ad484a3133",
     "source": "MeshPhysicalMaterial.map"
   },
   "threejs_scene": {
-    "bytes": 1072563,
+    "bytes": 935586,
     "path": "chimpanzee.img2threejs.three.json",
-    "sha256": "9b28a327df3e49e3c604ca804d72a24013e352d0c4574eb05b1e12fb4aacffa1"
+    "sha256": "136bf012d1310c2544fa94cda3d620ac48298c4b84b5080b36a05d2f5b682506"
   },
   "upstream": {
     "commit": "c9077d5ecce834f6802d6742b4a5b2c682d6279d",

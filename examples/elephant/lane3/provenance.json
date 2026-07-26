@@ -1,37 +1,37 @@
 {
   "agent_blueprint": "../../../tools/img2threejs/blueprints/elephant.json",
   "blockbench_atlas": {
-    "bytes": 7299,
+    "bytes": 3685,
     "path": "blockbench/elephant-lane3.png",
-    "sha256": "2d83e7598abe5e6f710834815878d185f7001602218fce16ecf041152df774a8",
-    "source": "7 img2threejs MeshPhysicalMaterial base-color maps",
-    "threejs_materials": 7
+    "sha256": "07b30e35e79983305d06f9ff326b5d3732dd61ab5cd39d2ec2a537faa67a3625",
+    "source": "5 img2threejs MeshPhysicalMaterial base-color maps",
+    "threejs_materials": 5
   },
   "blockbench_model": {
-    "bytes": 58649,
+    "bytes": 46202,
     "path": "blockbench/elephant-lane3.bbmodel",
-    "sha256": "f4a3eff9e220ddb2ed946e0744770036f79ea527abe3a903b740982fdc91c3c4"
+    "sha256": "2f025eb8fe2cb5c01101a6d02dd95a5abdb98ca80182645720e9142944fa0255"
   },
   "generated_factory": {
-    "bytes": 216732,
+    "bytes": 189414,
     "path": "createMinecraftElephantModel.generated.ts",
-    "sha256": "2746f5e9668623303ba9c413d73d207f117ac2afc57a1cc41d426a083015c827"
+    "sha256": "ee77a49c102bfc242a3c635d8a16dc6803d92b550cea2d3e0decb521f4a7ea51"
   },
   "reference": "../reference.png",
   "spec": "img2threejs-spec.json",
   "texture_transfer": {
     "algorithm": "img2threejs-material-albedo-transfer",
-    "bytes": 443,
-    "mapped_material_count": 7,
+    "bytes": 664,
+    "mapped_material_count": 5,
     "path": "projection-audit.json",
     "reference_projection": false,
-    "sha256": "a33ec37182f2edb54e21a31db7c32ecd92b26e813b310f609372e6bdd5834a0b",
+    "sha256": "bf50e2b28869b959a1a0381abde7d7b4ed4a5b9a3ebc43da5b2c094ec5641b9c",
     "source": "MeshPhysicalMaterial.map"
   },
   "threejs_scene": {
-    "bytes": 1151464,
+    "bytes": 869545,
     "path": "elephant.img2threejs.three.json",
-    "sha256": "52900070c64f83979f7d8a501f4df56c5b65798ddce9557b1216e520caab052d"
+    "sha256": "6e8fe19cbfd89b89a1eb9aee1dc699586f66d8450b7a38e2960657421fc57ecc"
   },
   "upstream": {
     "commit": "c9077d5ecce834f6802d6742b4a5b2c682d6279d",

@@ -48,7 +48,8 @@ CAMERA_GRID = {
     "elevation": list(range(10, 46, 5)),
 }
 PROJECTION_VERSION = 1
-TEXTURE_TRANSFER_VERSION = 2
+TEXTURE_TRANSFER_VERSION = 3
+MINECRAFT_ALBEDO_VERSION = 1
 
 
 def load_compiler(root: Path) -> Any:
@@ -451,6 +452,79 @@ def data_uri(patch: np.ndarray) -> str:
     ).decode("ascii")
 
 
+def decode_data_uri(uri: str) -> Image.Image:
+    prefix = "data:image/png;base64,"
+    if not uri.startswith(prefix):
+        raise RuntimeError("Expected an embedded PNG data URI")
+    raw = base64.b64decode(uri[len(prefix) :], validate=True)
+    with Image.open(io.BytesIO(raw)) as image:
+        return image.convert("RGBA")
+
+
+def material_palette(material: dict[str, Any]) -> np.ndarray:
+    values = material.get("reference_palette")
+    if not isinstance(values, list) or not values:
+        values = [
+            material["base"],
+            material["shade"],
+            material["highlight"],
+        ]
+    colors = [
+        hex_color(value)
+        for value in values
+        if isinstance(value, str)
+        and value.startswith("#")
+        and len(value) == 7
+    ]
+    if not colors:
+        raise RuntimeError("Material has no usable Minecraft palette")
+    return np.stack(colors)
+
+
+def minecraftize_albedo(
+    image: Image.Image,
+    palette: np.ndarray,
+) -> tuple[np.ndarray, int]:
+    width, height = image.size
+    low_width = max(8, width // 32)
+    low_height = max(8, height // 32)
+    clustered = image.resize(
+        (low_width, low_height),
+        Image.Resampling.BOX,
+    ).resize(
+        (width, height),
+        Image.Resampling.NEAREST,
+    )
+    pixels = np.asarray(clustered, dtype=np.uint8)
+    rgb = pixels[:, :, :3].astype(np.float32)
+    luminance = (
+        rgb[:, :, 0] * 0.2126
+        + rgb[:, :, 1] * 0.7152
+        + rgb[:, :, 2] * 0.0722
+    )
+    palette_luminance = (
+        palette[:, 0] * 0.2126
+        + palette[:, 1] * 0.7152
+        + palette[:, 2] * 0.0722
+    )
+    palette = palette[np.argsort(palette_luminance)]
+    if len(palette) == 1 or float(luminance.max() - luminance.min()) < 1:
+        indices = np.zeros(luminance.shape, dtype=np.int64)
+    elif len(palette) == 2:
+        threshold = float(np.median(luminance))
+        indices = (luminance > threshold).astype(np.int64)
+    else:
+        lower, upper = np.percentile(luminance, [24, 76])
+        indices = np.ones(luminance.shape, dtype=np.int64)
+        indices[luminance <= lower] = 0
+        indices[luminance >= upper] = len(palette) - 1
+    output = np.empty_like(pixels)
+    output[:, :, :3] = palette[indices]
+    output[:, :, 3] = pixels[:, :, 3]
+    unique_colors = len(np.unique(output[:, :, :3].reshape(-1, 3), axis=0))
+    return output, unique_colors
+
+
 def source_texture(patch: np.ndarray) -> dict[str, Any]:
     return {
         "data_uri": data_uri(patch),
@@ -477,12 +551,26 @@ def preserve_threejs_albedo(
     materials = output["materials"]
     mapped_materials = []
     missing_materials = []
+    material_palettes: dict[str, int] = {}
 
     for material_name, material in materials.items():
         source = material.get("source_texture", {})
         uri = source.get("data_uri") if isinstance(source, dict) else None
         if isinstance(uri, str) and uri.startswith("data:image/png;base64,"):
             mapped_materials.append(material_name)
+            image = decode_data_uri(uri)
+            cleaned, color_count = minecraftize_albedo(
+                image,
+                material_palette(material),
+            )
+            source["data_uri"] = data_uri(cleaned)
+            source["repeat"] = [1, 1]
+            source["offset"] = [0, 0]
+            source["center"] = [0, 0]
+            source["rotation"] = 0
+            source["wrap"] = [1001, 1001]
+            source["flip_y"] = False
+            material_palettes[material_name] = color_count
         else:
             missing_materials.append(material_name)
 
@@ -493,9 +581,9 @@ def preserve_threejs_albedo(
             + ". Use --reference-projection only as an explicit fallback."
         )
 
-    output["texture"]["quantize_source"] = True
+    output["texture"]["quantize_source"] = False
     output["texture"]["palette_size"] = max(
-        32,
+        24,
         int(output["texture"]["palette_size"]),
     )
     output.setdefault("generation", {}).update(
@@ -509,6 +597,11 @@ def preserve_threejs_albedo(
                 "mapped_materials": len(mapped_materials),
                 "reference_projection": False,
                 "palette_quantization": output["texture"]["palette_size"],
+                "minecraft_albedo": {
+                    "version": MINECRAFT_ALBEDO_VERSION,
+                    "method": "block-clustered-nearest-material-palette",
+                    "material_palette_sizes": material_palettes,
+                },
             },
         }
     )
@@ -522,6 +615,11 @@ def preserve_threejs_albedo(
         "mapped_material_count": len(mapped_materials),
         "reference_projection": False,
         "palette_size": output["texture"]["palette_size"],
+        "minecraft_albedo": {
+            "version": MINECRAFT_ALBEDO_VERSION,
+            "method": "block-clustered-nearest-material-palette",
+            "material_palette_sizes": material_palettes,
+        },
     }
     return output, audit
 

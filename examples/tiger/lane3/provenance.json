@@ -1,37 +1,37 @@
 {
   "agent_blueprint": "../../../tools/img2threejs/blueprints/tiger.json",
   "blockbench_atlas": {
-    "bytes": 5122,
+    "bytes": 3670,
     "path": "blockbench/tiger-lane3.png",
-    "sha256": "76929d7df7cabfab24a13e7b2985c63921daaf0fad8591300663a1965980b1c7",
-    "source": "7 img2threejs MeshPhysicalMaterial base-color maps",
-    "threejs_materials": 7
+    "sha256": "8bf4db0e34102288fe818b531e7b37d40407517895555bb5657d36d0ccfd7b10",
+    "source": "5 img2threejs MeshPhysicalMaterial base-color maps",
+    "threejs_materials": 5
   },
   "blockbench_model": {
-    "bytes": 57352,
+    "bytes": 44098,
     "path": "blockbench/tiger-lane3.bbmodel",
-    "sha256": "463234db253c6092e9ac4c36acc94b3a2dba59d4ae17fb0cd2fa434143dd58e0"
+    "sha256": "3fbbe221503aa7738c4fb695c5d9e877cfb55e2adb0960e0e0ea6538e527c455"
   },
   "generated_factory": {
-    "bytes": 221763,
+    "bytes": 181587,
     "path": "createMinecraftTigerModel.generated.ts",
-    "sha256": "4134480579d5f34b79d4347e6d86bee32c8eaee4c539ea2227e5f9355b5b57b8"
+    "sha256": "002f9c12ed1dddb156bae504560d4872033af61c3bf6b063c27dd96e77612cff"
   },
   "reference": "../reference.png",
   "spec": "img2threejs-spec.json",
   "texture_transfer": {
     "algorithm": "img2threejs-material-albedo-transfer",
-    "bytes": 443,
-    "mapped_material_count": 7,
+    "bytes": 664,
+    "mapped_material_count": 5,
     "path": "projection-audit.json",
     "reference_projection": false,
-    "sha256": "041ba96bca259757a0cdf2037b9ffa3fe69ab91e8cea1d4ec1a69844e49ddc80",
+    "sha256": "37f7da348c820389a58da361ff0768c21877d6d907a8f248965945937a373971",
     "source": "MeshPhysicalMaterial.map"
   },
   "threejs_scene": {
-    "bytes": 1236317,
+    "bytes": 909504,
     "path": "tiger.img2threejs.three.json",
-    "sha256": "c972c12fa0e9405a2434f2847d191d81fc297f416907d4d77fa19427d911d406"
+    "sha256": "b4f6aa622293b139c36f598a1c1216135b5ce0e76ae3fc660f848dc71358dcfd"
   },
   "upstream": {
     "commit": "c9077d5ecce834f6802d6742b4a5b2c682d6279d",

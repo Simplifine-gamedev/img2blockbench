@@ -3,7 +3,8 @@
 This lane runs the official
 [`hoainho/img2threejs`](https://github.com/hoainho/img2threejs) code generator,
 uses its procedural Three.js scene as the intermediate, then converts its box
-geometry and generated base-color maps into a native Blockbench model.
+geometry and generated base-color maps into a native Blockbench model. Flat
+facial details are removed from geometry and restored as texture pixels.
 
 ```text
 Minecraft-style image
@@ -11,7 +12,8 @@ Minecraft-style image
   → official generated TypeScript THREE.Group factory
   → Object3D.toJSON scene
   → img2blockbench box geometry adapter
-  → MeshPhysicalMaterial base-color map transfer
+  → Minecraft-clustered base-color map transfer
+  → semantic texture landmarks
   → shared nearest-neighbor texture atlas
   → .bbmodel
 ```
@@ -31,9 +33,10 @@ under Apache-2.0; its license is preserved in
 - [`platypus.img2threejs.three.json`](platypus.img2threejs.three.json):
   browser-executed `Object3D.toJSON` result, including procedural materials.
 - [`model-spec.json`](model-spec.json): box-compatible scene adapted into the
-  shared Minecraft model contract with imported img2threejs material maps.
-- [`projection-audit.json`](projection-audit.json): direct base-color transfer
-  audit retained under its historical filename.
+  shared Minecraft model contract with clustered img2threejs material maps and
+  semantic texture landmarks.
+- [`projection-audit.json`](projection-audit.json): clustered base-color
+  transfer audit retained under its historical filename.
 - [`blockbench/platypus-lane3.bbmodel`](blockbench/platypus-lane3.bbmodel):
   converted native Blockbench model with img2threejs albedo baked into its
   embedded atlas.
@@ -91,8 +94,15 @@ pip install -e '.[reference-projection]'
 python3 tools/img2threejs/bake-reference-faces.py \
   /tmp/platypus-imported.json \
   --reference examples/platypus/reference.png \
-  --output-spec examples/platypus/lane3/model-spec.json \
+  --output-spec /tmp/platypus-textured.json \
   --audit examples/platypus/lane3/projection-audit.json
+
+python3 tools/img2threejs/semanticize-model-spec.py \
+  /tmp/platypus-textured.json \
+  --animal platypus \
+  --recipes tools/img2threejs/semantic-recipes.json \
+  --reference examples/platypus/reference.png \
+  --output examples/platypus/lane3/model-spec.json
 
 img2blockbench build \
   examples/platypus/lane3/model-spec.json \

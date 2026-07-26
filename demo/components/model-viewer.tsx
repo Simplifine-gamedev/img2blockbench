@@ -242,6 +242,7 @@ export function ModelViewer({
   animal,
   modelFile,
   format,
+  frontAxis,
   captureMode,
   onLoaded,
   showHint = true,
@@ -249,6 +250,7 @@ export function ModelViewer({
   animal: Animal;
   modelFile: string;
   format: "bbmodel" | "threejs";
+  frontAxis: "positive_z" | "negative_z";
   captureMode: boolean;
   onLoaded?: () => void;
   showHint?: boolean;
@@ -292,7 +294,7 @@ export function ModelViewer({
     controls.enableDamping = true;
     controls.dampingFactor = 0.065;
     controls.enablePan = false;
-    controls.autoRotate = !captureMode;
+    controls.autoRotate = false;
     controls.autoRotateSpeed = 0.65;
     controls.enableZoom = true;
     controls.zoomToCursor = true;
@@ -452,7 +454,7 @@ export function ModelViewer({
       const cameraDirection = new THREE.Vector3(
         captureMode ? 1.05 : 1.15,
         captureMode ? 0.72 : 0.72,
-        captureMode ? 1.55 : -1.38,
+        frontAxis === "positive_z" ? 1.55 : -1.55,
       ).normalize();
       controls.target.set(0, size.y * (captureMode ? 0.5 : 0.44), 0);
       camera.position
@@ -472,7 +474,7 @@ export function ModelViewer({
     return () => {
       cancelled = true;
     };
-  }, [captureMode, format, modelFile, onLoaded]);
+  }, [captureMode, format, frontAxis, modelFile, onLoaded]);
 
   return (
     <>

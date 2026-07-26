@@ -1,37 +1,37 @@
 {
   "agent_blueprint": "../../../tools/img2threejs/blueprints/coyote.json",
   "blockbench_atlas": {
-    "bytes": 4289,
+    "bytes": 3547,
     "path": "blockbench/coyote-lane3.png",
-    "sha256": "58abcbfef6598554ac2b8b24a8b7877a7dac27de81ebe49de45ca42f76d67b17",
-    "source": "8 img2threejs MeshPhysicalMaterial base-color maps",
-    "threejs_materials": 8
+    "sha256": "6239837395213b88557d41fca4e314d95a883cb199e2123296b97a899c6fa9be",
+    "source": "6 img2threejs MeshPhysicalMaterial base-color maps",
+    "threejs_materials": 6
   },
   "blockbench_model": {
-    "bytes": 52408,
+    "bytes": 43899,
     "path": "blockbench/coyote-lane3.bbmodel",
-    "sha256": "51222ba09b65a243e59a69da14b103bdb2767beddbf9c580255ca7c9965a5e0f"
+    "sha256": "49f82f1727033751ecdf495591ff8845cd8c1f6c9519920c03d5cb3b02f233f6"
   },
   "generated_factory": {
-    "bytes": 209639,
+    "bytes": 182426,
     "path": "createMinecraftCoyoteModel.generated.ts",
-    "sha256": "50ab87c1e8f6e244b2b6142f021265383e90f710eb003ac94c42490ede7a76ca"
+    "sha256": "4b9381bd43d003ddc7f1ebe0573fcfca6adaa1f54ee70f5e84536f1570f9b5ba"
   },
   "reference": "../reference.png",
   "spec": "img2threejs-spec.json",
   "texture_transfer": {
     "algorithm": "img2threejs-material-albedo-transfer",
-    "bytes": 461,
-    "mapped_material_count": 8,
+    "bytes": 705,
+    "mapped_material_count": 6,
     "path": "projection-audit.json",
     "reference_projection": false,
-    "sha256": "e7542366d6bce6f4ab877d343f10db6766402ef4ee4a5459d7fbe958994442ad",
+    "sha256": "f15e56d11cdfcc7798bb5f013aefe7c8fab29720a3be90492c826d353be2f34a",
     "source": "MeshPhysicalMaterial.map"
   },
   "threejs_scene": {
-    "bytes": 1305416,
+    "bytes": 976267,
     "path": "coyote.img2threejs.three.json",
-    "sha256": "4068e89c7074dad20082eb7f997ac17de0ee88792826f0e6084ceb5001340215"
+    "sha256": "d1da9ac64e002010b99208d31bf55b52013facf42fd53af6d6578c6d2ab89a46"
   },
   "upstream": {
     "commit": "c9077d5ecce834f6802d6742b4a5b2c682d6279d",

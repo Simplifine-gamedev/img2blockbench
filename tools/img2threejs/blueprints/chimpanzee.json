@@ -12,6 +12,7 @@
   "motionPotential": ["knuckle walk", "arm swing", "head pitch"],
   "materialFamilies": ["matte black fur", "warm tan facial skin", "dark eyes"],
   "repeatTokens": ["left", "right"],
+  "textureOnlyComponents": ["brow", "eye_left", "eye_right"],
   "faceTarget": "Tan face plate, muzzle, ears, and square eyes",
   "faceRefs": ["face_plate", "brow", "muzzle", "eye_left", "eye_right"],
   "anatomyTarget": "Long grounded arms and compact bent hind legs",

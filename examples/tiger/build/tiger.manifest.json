@@ -8,9 +8,9 @@
   "files": {
     "model-audit.json": "cd7e65d09a8ffff4e723424d91a93df34820d81441b0cc984b11a00c7aaf65de",
     "source-audit.json": "6564999678d4426f8a2401dbf12bd4076431758c46d85c7ee316acfd1f4dfc6c",
-    "tiger_lane2.bbmodel": "8f70d0edcf3f0ca76273677cfddf5954ddb7eb0058c0dbcc5096d751f5031415",
+    "tiger_lane2.bbmodel": "1b5a419bbee28e36c26d3a0560ce012e8a13f703288fdf9d5efe38856effc847",
     "tiger_lane2.geo.json": "8408438a3021a09919474be725345357d881c556de8c1c1050c2ac7bfabb3274",
-    "tiger_lane2.png": "f95454d8106ec114f76a1f7494639d08e9485a7385e0f51b8aa057fcb7d9da0b"
+    "tiger_lane2.png": "49eff10ba700ca073c6d08238019459c920367cf61d9147766f4e964a70c849f"
   },
   "source_sha256": "eded25e89c3413c9a13778043f3141dbcb3b78755110d1a8bcb0889e6f875c1d",
   "spec_schema_version": 1,

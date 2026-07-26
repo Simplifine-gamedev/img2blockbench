@@ -1,12 +1,17 @@
 {
-  "bones": 16,
+  "path": "examples/coyote/lane1/coyote.bbmodel",
   "cuboids": 20,
-  "errors": [],
   "estimated_triangles": 240,
-  "ok": true,
+  "groups": 16,
+  "animations": 0,
   "texture_size": [
     256,
     256
   ],
-  "warnings": []
+  "uv_density_median": 2.0,
+  "uv_density_outliers": [],
+  "bilateral": {},
+  "errors": [],
+  "warnings": [],
+  "ok": true
 }

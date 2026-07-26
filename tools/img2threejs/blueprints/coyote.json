@@ -12,6 +12,7 @@
   "motionPotential": ["trot", "ear swivel", "tail sweep", "head pitch"],
   "materialFamilies": ["gray-brown fur", "tan limbs", "cream muzzle", "dark saddle"],
   "repeatTokens": ["left", "right"],
+  "textureOnlyComponents": ["ear_inner_left", "ear_inner_right", "eye_left", "eye_right"],
   "faceTarget": "Oversized upright ears, narrow cream muzzle, black nose, and square eyes",
   "faceRefs": ["head", "muzzle", "nose", "ear_left", "ear_right", "eye_left", "eye_right"],
   "anatomyTarget": "Lean torso supported by four long slender legs",

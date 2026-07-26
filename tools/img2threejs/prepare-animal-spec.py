@@ -29,12 +29,21 @@ def prepare(
     blueprint: dict[str, Any],
 ) -> dict[str, Any]:
     helpers = load_platypus_helpers()
+    texture_only = set(blueprint.get("textureOnlyComponents", []))
     helpers.MATERIALS = {
         material_id: tuple(values)
         for material_id, values in blueprint["materials"].items()
     }
-    helpers.PARTS = [tuple(part) for part in blueprint["parts"]]
-    helpers.DETAILS = [tuple(detail) for detail in blueprint["details"]]
+    helpers.PARTS = [
+        tuple(part)
+        for part in blueprint["parts"]
+        if part[0] not in texture_only
+    ]
+    helpers.DETAILS = [
+        tuple(detail)
+        for detail in blueprint["details"]
+        if detail[3] not in texture_only
+    ]
 
     spec = helpers.prepare(copy.deepcopy(template))
     animal_id = blueprint["id"]
@@ -88,7 +97,11 @@ def prepare(
                     "passIds": ["form-refinement", "material-pass"],
                     "minimumScore": 0.8,
                     "mustPass": True,
-                    "componentRefs": blueprint["faceRefs"],
+                    "componentRefs": [
+                        ref
+                        for ref in blueprint["faceRefs"]
+                        if ref in component_ids
+                    ],
                     "evidenceRefs": ["full-object"],
                 },
                 {
@@ -98,7 +111,11 @@ def prepare(
                     "passIds": ["structural-pass", "form-refinement"],
                     "minimumScore": 0.72,
                     "mustPass": True,
-                    "componentRefs": blueprint["anatomyRefs"],
+                    "componentRefs": [
+                        ref
+                        for ref in blueprint["anatomyRefs"]
+                        if ref in component_ids
+                    ],
                     "evidenceRefs": ["full-object"],
                 },
                 {
@@ -108,7 +125,11 @@ def prepare(
                     "passIds": ["material-pass", "surface-pass"],
                     "minimumScore": 0.76,
                     "mustPass": True,
-                    "componentRefs": blueprint["paletteRefs"],
+                    "componentRefs": [
+                        ref
+                        for ref in blueprint["paletteRefs"]
+                        if ref in component_ids
+                    ],
                     "evidenceRefs": ["full-object"],
                 },
             ],
@@ -241,7 +262,7 @@ def prepare(
     spec["qualityContract"]["minimumSpecDepth"] = {
         "macroComponents": max(4, len(macro_refs) - 1),
         "mesoComponents": max(8, len(meso_refs) - 2),
-        "microFeatureGroups": max(2, len(micro_refs) - 1),
+        "microFeatureGroups": max(0, len(micro_refs) - 1),
         "materialLayers": max(4, len(helpers.MATERIALS) - 1),
         "repetitionSystems": 1,
         "reviewViewpoints": 5,

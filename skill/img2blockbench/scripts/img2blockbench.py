@@ -1312,6 +1312,10 @@ def make_bbmodel(
             "model_format": "free",
             "box_uv": False,
         },
+        "img2blockbench": {
+            "front_axis": "positive_z",
+            "texture_density": spec["texture"]["density"],
+        },
         "name": model_id,
         "model_identifier": "",
         "visible_box": [1, 1, 0],

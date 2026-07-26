@@ -1,29 +1,29 @@
 {
   "artifacts": [
     {
-      "bytes": 374482,
+      "bytes": 25103,
       "path": "coyote-lane3.model-spec.json",
-      "sha256": "aa54e4aa3f6bbb92701ef5301c5ef14f1792896f0cbdd97a85b926c5945d02c3"
+      "sha256": "b7e4f0dc9cb591bb61835c117c96ae8d7fdc4c1bd829bc5fb69fd968a34696c1"
     },
     {
-      "bytes": 4289,
+      "bytes": 3547,
       "path": "coyote-lane3.png",
-      "sha256": "58abcbfef6598554ac2b8b24a8b7877a7dac27de81ebe49de45ca42f76d67b17"
+      "sha256": "6239837395213b88557d41fca4e314d95a883cb199e2123296b97a899c6fa9be"
     },
     {
-      "bytes": 52408,
+      "bytes": 43899,
       "path": "coyote-lane3.bbmodel",
-      "sha256": "51222ba09b65a243e59a69da14b103bdb2767beddbf9c580255ca7c9965a5e0f"
+      "sha256": "49f82f1727033751ecdf495591ff8845cd8c1f6c9519920c03d5cb3b02f233f6"
     },
     {
-      "bytes": 50774,
+      "bytes": 42398,
       "path": "coyote-lane3.geo.json",
-      "sha256": "b3571712059da5b80222c64274929ae9124bbbd34ade90d961d099e67be03060"
+      "sha256": "0b151a4ebe8c745952cc565571c1cca26aa117e103ef9d64a28b9bb8bada0968"
     },
     {
       "bytes": 155,
       "path": "coyote-lane3.audit.json",
-      "sha256": "79f6c90bc77d8c6cd76c1e491c140b53ae1721ea5c59930c9a9eb601bf2cf7cc"
+      "sha256": "3708ec7e4d13efd96469b72d60c46ed244b3c3ff4ab04bd003cd3f3fd75410e1"
     },
     {
       "bytes": 1327422,

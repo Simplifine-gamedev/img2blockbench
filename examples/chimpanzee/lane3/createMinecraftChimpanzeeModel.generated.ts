@@ -792,727 +792,613 @@ export function createMinecraftChimpanzeeModel(options: ProceduralModelOptions =
   destructionGroups["face_plate"] ??= [];
   destructionGroups["face_plate"].push(node_face_plate_5);
 
-  const attachment_brow_6 = null;
-  const endpoint_brow_6 = makeAttachmentEndpoint(attachment_brow_6);
-  const node_brow_6 = new THREE.Group();
-  node_brow_6.name = "Brow__pivot";
-  if (endpoint_brow_6) {
-    node_brow_6.position.copy(endpoint_brow_6.start);
-    node_brow_6.rotation.set(0, 0, 0);
-    node_brow_6.scale.set(1, 1, 1);
+  const attachment_muzzle_6 = null;
+  const endpoint_muzzle_6 = makeAttachmentEndpoint(attachment_muzzle_6);
+  const node_muzzle_6 = new THREE.Group();
+  node_muzzle_6.name = "Muzzle__pivot";
+  if (endpoint_muzzle_6) {
+    node_muzzle_6.position.copy(endpoint_muzzle_6.start);
+    node_muzzle_6.rotation.set(0, 0, 0);
+    node_muzzle_6.scale.set(1, 1, 1);
   } else {
-    node_brow_6.position.set(0.0, 15.3, 7.25);
-    node_brow_6.rotation.set(0.0, 0.0, 0.0);
-    node_brow_6.scale.set(5.6, 1.2, 1.2);
+    node_muzzle_6.position.set(0.0, 13.0, 7.65);
+    node_muzzle_6.rotation.set(0.0, 0.0, 0.0);
+    node_muzzle_6.scale.set(5.0, 3.5, 3.1);
   }
-  node_brow_6.userData.sculptComponent = {"actionProfile": {"animationRole": "brow", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [5.6, 1.2, 1.2], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "face_tan", "detachableFragments": [], "fractureGroup": "brow", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(169, 119, 81, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(116, 74, 49, 1.0)"}, "confidence": 0.88, "deformations": [], "details": [], "dimensions": {"confidence": 0.9, "depth": 1.2, "height": 1.2, "units": "Blockbench units", "width": 5.6}, "evidenceRefs": ["full-object"], "fidelityTier": "structural-pass", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "brow", "importance": 0.78, "joints": [], "level": "meso", "localFeatures": [], "material": "face_tan", "materialLayers": ["face_tan"], "name": "Brow", "parent": null, "primitive": "box", "role": "heavy horizontal brow", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [0, 15.3, 7.25], "rotation": [0.0, 0.0, 0.0], "scale": [5.6, 1.2, 1.2]}};
-  node_brow_6.userData.actionProfile = {"animationRole": "brow", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [5.6, 1.2, 1.2], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "face_tan", "detachableFragments": [], "fractureGroup": "brow", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}};
-  (nodes["root"] ?? root).add(node_brow_6);
-  nodes["brow"] = node_brow_6;
-  const mesh_brow_6Geometry = endpoint_brow_6
-    ? new THREE.CylinderGeometry(endpoint_brow_6.endRadius, endpoint_brow_6.baseRadius, endpoint_brow_6.length, 32, 12)
+  node_muzzle_6.userData.sculptComponent = {"actionProfile": {"animationRole": "muzzle", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [5.0, 3.5, 3.1], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "muzzle_tan", "detachableFragments": [], "fractureGroup": "muzzle", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(189, 137, 99, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(129, 88, 62, 1.0)"}, "confidence": 0.88, "deformations": [], "details": ["projecting-muzzle"], "dimensions": {"confidence": 0.9, "depth": 3.1, "height": 3.5, "units": "Blockbench units", "width": 5.0}, "evidenceRefs": ["full-object"], "fidelityTier": "blockout", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "muzzle", "importance": 1.0, "joints": [], "level": "macro", "localFeatures": ["projecting-muzzle"], "material": "muzzle_tan", "materialLayers": ["muzzle_tan"], "name": "Muzzle", "parent": null, "primitive": "box", "role": "projecting chimp muzzle", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [0, 13.0, 7.65], "rotation": [0.0, 0.0, 0.0], "scale": [5.0, 3.5, 3.1]}};
+  node_muzzle_6.userData.actionProfile = {"animationRole": "muzzle", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [5.0, 3.5, 3.1], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "muzzle_tan", "detachableFragments": [], "fractureGroup": "muzzle", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}};
+  (nodes["root"] ?? root).add(node_muzzle_6);
+  nodes["muzzle"] = node_muzzle_6;
+  const mesh_muzzle_6Geometry = endpoint_muzzle_6
+    ? new THREE.CylinderGeometry(endpoint_muzzle_6.endRadius, endpoint_muzzle_6.baseRadius, endpoint_muzzle_6.length, 32, 12)
     : new THREE.BoxGeometry(1, 1, 1, 12, 12, 12);
-  const mesh_brow_6 = new THREE.Mesh(
-    mesh_brow_6Geometry,
-    materialMap["face_tan"] ?? new THREE.MeshStandardMaterial({ color: 0x888888 })
-  );
-  mesh_brow_6.name = "Brow";
-  if (endpoint_brow_6) {
-    mesh_brow_6.position.copy(endpoint_brow_6.midpoint);
-    mesh_brow_6.quaternion.copy(endpoint_brow_6.quaternion);
-  }
-  mesh_brow_6.castShadow = options.castShadow ?? true;
-  mesh_brow_6.receiveShadow = options.receiveShadow ?? true;
-  mesh_brow_6.userData.sculptComponent = {"actionProfile": {"animationRole": "brow", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [5.6, 1.2, 1.2], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "face_tan", "detachableFragments": [], "fractureGroup": "brow", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(169, 119, 81, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(116, 74, 49, 1.0)"}, "confidence": 0.88, "deformations": [], "details": [], "dimensions": {"confidence": 0.9, "depth": 1.2, "height": 1.2, "units": "Blockbench units", "width": 5.6}, "evidenceRefs": ["full-object"], "fidelityTier": "structural-pass", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "brow", "importance": 0.78, "joints": [], "level": "meso", "localFeatures": [], "material": "face_tan", "materialLayers": ["face_tan"], "name": "Brow", "parent": null, "primitive": "box", "role": "heavy horizontal brow", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [0, 15.3, 7.25], "rotation": [0.0, 0.0, 0.0], "scale": [5.6, 1.2, 1.2]}};
-  node_brow_6.add(mesh_brow_6);
-  meshes["brow"] = mesh_brow_6;
-  colliders["brow"] = {"isTrigger": false, "offset": [0, 0, 0], "scale": [5.6, 1.2, 1.2], "type": "box"};
-  destructionGroups["brow"] ??= [];
-  destructionGroups["brow"].push(node_brow_6);
-
-  const attachment_muzzle_7 = null;
-  const endpoint_muzzle_7 = makeAttachmentEndpoint(attachment_muzzle_7);
-  const node_muzzle_7 = new THREE.Group();
-  node_muzzle_7.name = "Muzzle__pivot";
-  if (endpoint_muzzle_7) {
-    node_muzzle_7.position.copy(endpoint_muzzle_7.start);
-    node_muzzle_7.rotation.set(0, 0, 0);
-    node_muzzle_7.scale.set(1, 1, 1);
-  } else {
-    node_muzzle_7.position.set(0.0, 13.0, 7.65);
-    node_muzzle_7.rotation.set(0.0, 0.0, 0.0);
-    node_muzzle_7.scale.set(5.0, 3.5, 3.1);
-  }
-  node_muzzle_7.userData.sculptComponent = {"actionProfile": {"animationRole": "muzzle", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [5.0, 3.5, 3.1], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "muzzle_tan", "detachableFragments": [], "fractureGroup": "muzzle", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(189, 137, 99, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(129, 88, 62, 1.0)"}, "confidence": 0.88, "deformations": [], "details": ["projecting-muzzle"], "dimensions": {"confidence": 0.9, "depth": 3.1, "height": 3.5, "units": "Blockbench units", "width": 5.0}, "evidenceRefs": ["full-object"], "fidelityTier": "blockout", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "muzzle", "importance": 1.0, "joints": [], "level": "macro", "localFeatures": ["projecting-muzzle"], "material": "muzzle_tan", "materialLayers": ["muzzle_tan"], "name": "Muzzle", "parent": null, "primitive": "box", "role": "projecting chimp muzzle", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [0, 13.0, 7.65], "rotation": [0.0, 0.0, 0.0], "scale": [5.0, 3.5, 3.1]}};
-  node_muzzle_7.userData.actionProfile = {"animationRole": "muzzle", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [5.0, 3.5, 3.1], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "muzzle_tan", "detachableFragments": [], "fractureGroup": "muzzle", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}};
-  (nodes["root"] ?? root).add(node_muzzle_7);
-  nodes["muzzle"] = node_muzzle_7;
-  const mesh_muzzle_7Geometry = endpoint_muzzle_7
-    ? new THREE.CylinderGeometry(endpoint_muzzle_7.endRadius, endpoint_muzzle_7.baseRadius, endpoint_muzzle_7.length, 32, 12)
-    : new THREE.BoxGeometry(1, 1, 1, 12, 12, 12);
-  const mesh_muzzle_7 = new THREE.Mesh(
-    mesh_muzzle_7Geometry,
+  const mesh_muzzle_6 = new THREE.Mesh(
+    mesh_muzzle_6Geometry,
     materialMap["muzzle_tan"] ?? new THREE.MeshStandardMaterial({ color: 0x888888 })
   );
-  mesh_muzzle_7.name = "Muzzle";
-  if (endpoint_muzzle_7) {
-    mesh_muzzle_7.position.copy(endpoint_muzzle_7.midpoint);
-    mesh_muzzle_7.quaternion.copy(endpoint_muzzle_7.quaternion);
+  mesh_muzzle_6.name = "Muzzle";
+  if (endpoint_muzzle_6) {
+    mesh_muzzle_6.position.copy(endpoint_muzzle_6.midpoint);
+    mesh_muzzle_6.quaternion.copy(endpoint_muzzle_6.quaternion);
   }
-  mesh_muzzle_7.castShadow = options.castShadow ?? true;
-  mesh_muzzle_7.receiveShadow = options.receiveShadow ?? true;
-  mesh_muzzle_7.userData.sculptComponent = {"actionProfile": {"animationRole": "muzzle", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [5.0, 3.5, 3.1], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "muzzle_tan", "detachableFragments": [], "fractureGroup": "muzzle", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(189, 137, 99, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(129, 88, 62, 1.0)"}, "confidence": 0.88, "deformations": [], "details": ["projecting-muzzle"], "dimensions": {"confidence": 0.9, "depth": 3.1, "height": 3.5, "units": "Blockbench units", "width": 5.0}, "evidenceRefs": ["full-object"], "fidelityTier": "blockout", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "muzzle", "importance": 1.0, "joints": [], "level": "macro", "localFeatures": ["projecting-muzzle"], "material": "muzzle_tan", "materialLayers": ["muzzle_tan"], "name": "Muzzle", "parent": null, "primitive": "box", "role": "projecting chimp muzzle", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [0, 13.0, 7.65], "rotation": [0.0, 0.0, 0.0], "scale": [5.0, 3.5, 3.1]}};
-  node_muzzle_7.add(mesh_muzzle_7);
-  meshes["muzzle"] = mesh_muzzle_7;
+  mesh_muzzle_6.castShadow = options.castShadow ?? true;
+  mesh_muzzle_6.receiveShadow = options.receiveShadow ?? true;
+  mesh_muzzle_6.userData.sculptComponent = {"actionProfile": {"animationRole": "muzzle", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [5.0, 3.5, 3.1], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "muzzle_tan", "detachableFragments": [], "fractureGroup": "muzzle", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(189, 137, 99, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(129, 88, 62, 1.0)"}, "confidence": 0.88, "deformations": [], "details": ["projecting-muzzle"], "dimensions": {"confidence": 0.9, "depth": 3.1, "height": 3.5, "units": "Blockbench units", "width": 5.0}, "evidenceRefs": ["full-object"], "fidelityTier": "blockout", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "muzzle", "importance": 1.0, "joints": [], "level": "macro", "localFeatures": ["projecting-muzzle"], "material": "muzzle_tan", "materialLayers": ["muzzle_tan"], "name": "Muzzle", "parent": null, "primitive": "box", "role": "projecting chimp muzzle", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [0, 13.0, 7.65], "rotation": [0.0, 0.0, 0.0], "scale": [5.0, 3.5, 3.1]}};
+  node_muzzle_6.add(mesh_muzzle_6);
+  meshes["muzzle"] = mesh_muzzle_6;
   colliders["muzzle"] = {"isTrigger": false, "offset": [0, 0, 0], "scale": [5.0, 3.5, 3.1], "type": "box"};
   destructionGroups["muzzle"] ??= [];
-  destructionGroups["muzzle"].push(node_muzzle_7);
+  destructionGroups["muzzle"].push(node_muzzle_6);
 
-  const attachment_lower_muzzle_8 = null;
-  const endpoint_lower_muzzle_8 = makeAttachmentEndpoint(attachment_lower_muzzle_8);
-  const node_lower_muzzle_8 = new THREE.Group();
-  node_lower_muzzle_8.name = "Lower muzzle__pivot";
-  if (endpoint_lower_muzzle_8) {
-    node_lower_muzzle_8.position.copy(endpoint_lower_muzzle_8.start);
-    node_lower_muzzle_8.rotation.set(0, 0, 0);
-    node_lower_muzzle_8.scale.set(1, 1, 1);
+  const attachment_lower_muzzle_7 = null;
+  const endpoint_lower_muzzle_7 = makeAttachmentEndpoint(attachment_lower_muzzle_7);
+  const node_lower_muzzle_7 = new THREE.Group();
+  node_lower_muzzle_7.name = "Lower muzzle__pivot";
+  if (endpoint_lower_muzzle_7) {
+    node_lower_muzzle_7.position.copy(endpoint_lower_muzzle_7.start);
+    node_lower_muzzle_7.rotation.set(0, 0, 0);
+    node_lower_muzzle_7.scale.set(1, 1, 1);
   } else {
-    node_lower_muzzle_8.position.set(0.0, 11.95, 7.45);
-    node_lower_muzzle_8.rotation.set(0.0, 0.0, 0.0);
-    node_lower_muzzle_8.scale.set(4.7, 1.35, 2.8);
+    node_lower_muzzle_7.position.set(0.0, 11.95, 7.45);
+    node_lower_muzzle_7.rotation.set(0.0, 0.0, 0.0);
+    node_lower_muzzle_7.scale.set(4.7, 1.35, 2.8);
   }
-  node_lower_muzzle_8.userData.sculptComponent = {"actionProfile": {"animationRole": "lower_muzzle", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [4.7, 1.35, 2.8], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "muzzle_tan", "detachableFragments": [], "fractureGroup": "lower_muzzle", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(189, 137, 99, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(129, 88, 62, 1.0)"}, "confidence": 0.88, "deformations": [], "details": [], "dimensions": {"confidence": 0.9, "depth": 2.8, "height": 1.35, "units": "Blockbench units", "width": 4.7}, "evidenceRefs": ["full-object"], "fidelityTier": "structural-pass", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "lower_muzzle", "importance": 0.78, "joints": [], "level": "meso", "localFeatures": [], "material": "muzzle_tan", "materialLayers": ["muzzle_tan"], "name": "Lower muzzle", "parent": null, "primitive": "box", "role": "lower lip block", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [0, 11.95, 7.45], "rotation": [0.0, 0.0, 0.0], "scale": [4.7, 1.35, 2.8]}};
-  node_lower_muzzle_8.userData.actionProfile = {"animationRole": "lower_muzzle", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [4.7, 1.35, 2.8], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "muzzle_tan", "detachableFragments": [], "fractureGroup": "lower_muzzle", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}};
-  (nodes["root"] ?? root).add(node_lower_muzzle_8);
-  nodes["lower_muzzle"] = node_lower_muzzle_8;
-  const mesh_lower_muzzle_8Geometry = endpoint_lower_muzzle_8
-    ? new THREE.CylinderGeometry(endpoint_lower_muzzle_8.endRadius, endpoint_lower_muzzle_8.baseRadius, endpoint_lower_muzzle_8.length, 32, 12)
+  node_lower_muzzle_7.userData.sculptComponent = {"actionProfile": {"animationRole": "lower_muzzle", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [4.7, 1.35, 2.8], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "muzzle_tan", "detachableFragments": [], "fractureGroup": "lower_muzzle", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(189, 137, 99, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(129, 88, 62, 1.0)"}, "confidence": 0.88, "deformations": [], "details": [], "dimensions": {"confidence": 0.9, "depth": 2.8, "height": 1.35, "units": "Blockbench units", "width": 4.7}, "evidenceRefs": ["full-object"], "fidelityTier": "structural-pass", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "lower_muzzle", "importance": 0.78, "joints": [], "level": "meso", "localFeatures": [], "material": "muzzle_tan", "materialLayers": ["muzzle_tan"], "name": "Lower muzzle", "parent": null, "primitive": "box", "role": "lower lip block", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [0, 11.95, 7.45], "rotation": [0.0, 0.0, 0.0], "scale": [4.7, 1.35, 2.8]}};
+  node_lower_muzzle_7.userData.actionProfile = {"animationRole": "lower_muzzle", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [4.7, 1.35, 2.8], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "muzzle_tan", "detachableFragments": [], "fractureGroup": "lower_muzzle", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}};
+  (nodes["root"] ?? root).add(node_lower_muzzle_7);
+  nodes["lower_muzzle"] = node_lower_muzzle_7;
+  const mesh_lower_muzzle_7Geometry = endpoint_lower_muzzle_7
+    ? new THREE.CylinderGeometry(endpoint_lower_muzzle_7.endRadius, endpoint_lower_muzzle_7.baseRadius, endpoint_lower_muzzle_7.length, 32, 12)
     : new THREE.BoxGeometry(1, 1, 1, 12, 12, 12);
-  const mesh_lower_muzzle_8 = new THREE.Mesh(
-    mesh_lower_muzzle_8Geometry,
+  const mesh_lower_muzzle_7 = new THREE.Mesh(
+    mesh_lower_muzzle_7Geometry,
     materialMap["muzzle_tan"] ?? new THREE.MeshStandardMaterial({ color: 0x888888 })
   );
-  mesh_lower_muzzle_8.name = "Lower muzzle";
-  if (endpoint_lower_muzzle_8) {
-    mesh_lower_muzzle_8.position.copy(endpoint_lower_muzzle_8.midpoint);
-    mesh_lower_muzzle_8.quaternion.copy(endpoint_lower_muzzle_8.quaternion);
+  mesh_lower_muzzle_7.name = "Lower muzzle";
+  if (endpoint_lower_muzzle_7) {
+    mesh_lower_muzzle_7.position.copy(endpoint_lower_muzzle_7.midpoint);
+    mesh_lower_muzzle_7.quaternion.copy(endpoint_lower_muzzle_7.quaternion);
   }
-  mesh_lower_muzzle_8.castShadow = options.castShadow ?? true;
-  mesh_lower_muzzle_8.receiveShadow = options.receiveShadow ?? true;
-  mesh_lower_muzzle_8.userData.sculptComponent = {"actionProfile": {"animationRole": "lower_muzzle", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [4.7, 1.35, 2.8], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "muzzle_tan", "detachableFragments": [], "fractureGroup": "lower_muzzle", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(189, 137, 99, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(129, 88, 62, 1.0)"}, "confidence": 0.88, "deformations": [], "details": [], "dimensions": {"confidence": 0.9, "depth": 2.8, "height": 1.35, "units": "Blockbench units", "width": 4.7}, "evidenceRefs": ["full-object"], "fidelityTier": "structural-pass", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "lower_muzzle", "importance": 0.78, "joints": [], "level": "meso", "localFeatures": [], "material": "muzzle_tan", "materialLayers": ["muzzle_tan"], "name": "Lower muzzle", "parent": null, "primitive": "box", "role": "lower lip block", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [0, 11.95, 7.45], "rotation": [0.0, 0.0, 0.0], "scale": [4.7, 1.35, 2.8]}};
-  node_lower_muzzle_8.add(mesh_lower_muzzle_8);
-  meshes["lower_muzzle"] = mesh_lower_muzzle_8;
+  mesh_lower_muzzle_7.castShadow = options.castShadow ?? true;
+  mesh_lower_muzzle_7.receiveShadow = options.receiveShadow ?? true;
+  mesh_lower_muzzle_7.userData.sculptComponent = {"actionProfile": {"animationRole": "lower_muzzle", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [4.7, 1.35, 2.8], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "muzzle_tan", "detachableFragments": [], "fractureGroup": "lower_muzzle", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(189, 137, 99, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(129, 88, 62, 1.0)"}, "confidence": 0.88, "deformations": [], "details": [], "dimensions": {"confidence": 0.9, "depth": 2.8, "height": 1.35, "units": "Blockbench units", "width": 4.7}, "evidenceRefs": ["full-object"], "fidelityTier": "structural-pass", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "lower_muzzle", "importance": 0.78, "joints": [], "level": "meso", "localFeatures": [], "material": "muzzle_tan", "materialLayers": ["muzzle_tan"], "name": "Lower muzzle", "parent": null, "primitive": "box", "role": "lower lip block", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [0, 11.95, 7.45], "rotation": [0.0, 0.0, 0.0], "scale": [4.7, 1.35, 2.8]}};
+  node_lower_muzzle_7.add(mesh_lower_muzzle_7);
+  meshes["lower_muzzle"] = mesh_lower_muzzle_7;
   colliders["lower_muzzle"] = {"isTrigger": false, "offset": [0, 0, 0], "scale": [4.7, 1.35, 2.8], "type": "box"};
   destructionGroups["lower_muzzle"] ??= [];
-  destructionGroups["lower_muzzle"].push(node_lower_muzzle_8);
+  destructionGroups["lower_muzzle"].push(node_lower_muzzle_7);
 
-  const attachment_ear_left_9 = null;
-  const endpoint_ear_left_9 = makeAttachmentEndpoint(attachment_ear_left_9);
-  const node_ear_left_9 = new THREE.Group();
-  node_ear_left_9.name = "Left ear__pivot";
-  if (endpoint_ear_left_9) {
-    node_ear_left_9.position.copy(endpoint_ear_left_9.start);
-    node_ear_left_9.rotation.set(0, 0, 0);
-    node_ear_left_9.scale.set(1, 1, 1);
+  const attachment_ear_left_8 = null;
+  const endpoint_ear_left_8 = makeAttachmentEndpoint(attachment_ear_left_8);
+  const node_ear_left_8 = new THREE.Group();
+  node_ear_left_8.name = "Left ear__pivot";
+  if (endpoint_ear_left_8) {
+    node_ear_left_8.position.copy(endpoint_ear_left_8.start);
+    node_ear_left_8.rotation.set(0, 0, 0);
+    node_ear_left_8.scale.set(1, 1, 1);
   } else {
-    node_ear_left_9.position.set(3.85, 14.6, 4.0);
-    node_ear_left_9.rotation.set(0.0, 0.0, 0.0);
-    node_ear_left_9.scale.set(1.5, 4.4, 3.8);
+    node_ear_left_8.position.set(3.85, 14.6, 4.0);
+    node_ear_left_8.rotation.set(0.0, 0.0, 0.0);
+    node_ear_left_8.scale.set(1.5, 4.4, 3.8);
   }
-  node_ear_left_9.userData.sculptComponent = {"actionProfile": {"animationRole": "ear_left", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [1.5, 4.4, 3.8], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "face_tan", "detachableFragments": [], "fractureGroup": "ear_left", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(169, 119, 81, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(116, 74, 49, 1.0)"}, "confidence": 0.88, "deformations": [], "details": ["large-ears"], "dimensions": {"confidence": 0.9, "depth": 3.8, "height": 4.4, "units": "Blockbench units", "width": 1.5}, "evidenceRefs": ["full-object"], "fidelityTier": "structural-pass", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "ear_left", "importance": 0.78, "joints": [], "level": "meso", "localFeatures": ["large-ears"], "material": "face_tan", "materialLayers": ["face_tan"], "name": "Left ear", "parent": null, "primitive": "box", "role": "large left ear", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [3.85, 14.6, 4.0], "rotation": [0.0, 0.0, 0.0], "scale": [1.5, 4.4, 3.8]}};
-  node_ear_left_9.userData.actionProfile = {"animationRole": "ear_left", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [1.5, 4.4, 3.8], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "face_tan", "detachableFragments": [], "fractureGroup": "ear_left", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}};
-  (nodes["root"] ?? root).add(node_ear_left_9);
-  nodes["ear_left"] = node_ear_left_9;
-  const mesh_ear_left_9Geometry = endpoint_ear_left_9
-    ? new THREE.CylinderGeometry(endpoint_ear_left_9.endRadius, endpoint_ear_left_9.baseRadius, endpoint_ear_left_9.length, 32, 12)
+  node_ear_left_8.userData.sculptComponent = {"actionProfile": {"animationRole": "ear_left", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [1.5, 4.4, 3.8], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "face_tan", "detachableFragments": [], "fractureGroup": "ear_left", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(169, 119, 81, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(116, 74, 49, 1.0)"}, "confidence": 0.88, "deformations": [], "details": ["large-ears"], "dimensions": {"confidence": 0.9, "depth": 3.8, "height": 4.4, "units": "Blockbench units", "width": 1.5}, "evidenceRefs": ["full-object"], "fidelityTier": "structural-pass", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "ear_left", "importance": 0.78, "joints": [], "level": "meso", "localFeatures": ["large-ears"], "material": "face_tan", "materialLayers": ["face_tan"], "name": "Left ear", "parent": null, "primitive": "box", "role": "large left ear", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [3.85, 14.6, 4.0], "rotation": [0.0, 0.0, 0.0], "scale": [1.5, 4.4, 3.8]}};
+  node_ear_left_8.userData.actionProfile = {"animationRole": "ear_left", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [1.5, 4.4, 3.8], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "face_tan", "detachableFragments": [], "fractureGroup": "ear_left", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}};
+  (nodes["root"] ?? root).add(node_ear_left_8);
+  nodes["ear_left"] = node_ear_left_8;
+  const mesh_ear_left_8Geometry = endpoint_ear_left_8
+    ? new THREE.CylinderGeometry(endpoint_ear_left_8.endRadius, endpoint_ear_left_8.baseRadius, endpoint_ear_left_8.length, 32, 12)
     : new THREE.BoxGeometry(1, 1, 1, 12, 12, 12);
-  const mesh_ear_left_9 = new THREE.Mesh(
-    mesh_ear_left_9Geometry,
+  const mesh_ear_left_8 = new THREE.Mesh(
+    mesh_ear_left_8Geometry,
     materialMap["face_tan"] ?? new THREE.MeshStandardMaterial({ color: 0x888888 })
   );
-  mesh_ear_left_9.name = "Left ear";
-  if (endpoint_ear_left_9) {
-    mesh_ear_left_9.position.copy(endpoint_ear_left_9.midpoint);
-    mesh_ear_left_9.quaternion.copy(endpoint_ear_left_9.quaternion);
+  mesh_ear_left_8.name = "Left ear";
+  if (endpoint_ear_left_8) {
+    mesh_ear_left_8.position.copy(endpoint_ear_left_8.midpoint);
+    mesh_ear_left_8.quaternion.copy(endpoint_ear_left_8.quaternion);
   }
-  mesh_ear_left_9.castShadow = options.castShadow ?? true;
-  mesh_ear_left_9.receiveShadow = options.receiveShadow ?? true;
-  mesh_ear_left_9.userData.sculptComponent = {"actionProfile": {"animationRole": "ear_left", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [1.5, 4.4, 3.8], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "face_tan", "detachableFragments": [], "fractureGroup": "ear_left", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(169, 119, 81, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(116, 74, 49, 1.0)"}, "confidence": 0.88, "deformations": [], "details": ["large-ears"], "dimensions": {"confidence": 0.9, "depth": 3.8, "height": 4.4, "units": "Blockbench units", "width": 1.5}, "evidenceRefs": ["full-object"], "fidelityTier": "structural-pass", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "ear_left", "importance": 0.78, "joints": [], "level": "meso", "localFeatures": ["large-ears"], "material": "face_tan", "materialLayers": ["face_tan"], "name": "Left ear", "parent": null, "primitive": "box", "role": "large left ear", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [3.85, 14.6, 4.0], "rotation": [0.0, 0.0, 0.0], "scale": [1.5, 4.4, 3.8]}};
-  node_ear_left_9.add(mesh_ear_left_9);
-  meshes["ear_left"] = mesh_ear_left_9;
+  mesh_ear_left_8.castShadow = options.castShadow ?? true;
+  mesh_ear_left_8.receiveShadow = options.receiveShadow ?? true;
+  mesh_ear_left_8.userData.sculptComponent = {"actionProfile": {"animationRole": "ear_left", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [1.5, 4.4, 3.8], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "face_tan", "detachableFragments": [], "fractureGroup": "ear_left", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(169, 119, 81, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(116, 74, 49, 1.0)"}, "confidence": 0.88, "deformations": [], "details": ["large-ears"], "dimensions": {"confidence": 0.9, "depth": 3.8, "height": 4.4, "units": "Blockbench units", "width": 1.5}, "evidenceRefs": ["full-object"], "fidelityTier": "structural-pass", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "ear_left", "importance": 0.78, "joints": [], "level": "meso", "localFeatures": ["large-ears"], "material": "face_tan", "materialLayers": ["face_tan"], "name": "Left ear", "parent": null, "primitive": "box", "role": "large left ear", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [3.85, 14.6, 4.0], "rotation": [0.0, 0.0, 0.0], "scale": [1.5, 4.4, 3.8]}};
+  node_ear_left_8.add(mesh_ear_left_8);
+  meshes["ear_left"] = mesh_ear_left_8;
   colliders["ear_left"] = {"isTrigger": false, "offset": [0, 0, 0], "scale": [1.5, 4.4, 3.8], "type": "box"};
   destructionGroups["ear_left"] ??= [];
-  destructionGroups["ear_left"].push(node_ear_left_9);
+  destructionGroups["ear_left"].push(node_ear_left_8);
 
-  const attachment_ear_right_10 = null;
-  const endpoint_ear_right_10 = makeAttachmentEndpoint(attachment_ear_right_10);
-  const node_ear_right_10 = new THREE.Group();
-  node_ear_right_10.name = "Right ear__pivot";
-  if (endpoint_ear_right_10) {
-    node_ear_right_10.position.copy(endpoint_ear_right_10.start);
-    node_ear_right_10.rotation.set(0, 0, 0);
-    node_ear_right_10.scale.set(1, 1, 1);
+  const attachment_ear_right_9 = null;
+  const endpoint_ear_right_9 = makeAttachmentEndpoint(attachment_ear_right_9);
+  const node_ear_right_9 = new THREE.Group();
+  node_ear_right_9.name = "Right ear__pivot";
+  if (endpoint_ear_right_9) {
+    node_ear_right_9.position.copy(endpoint_ear_right_9.start);
+    node_ear_right_9.rotation.set(0, 0, 0);
+    node_ear_right_9.scale.set(1, 1, 1);
   } else {
-    node_ear_right_10.position.set(-3.85, 14.6, 4.0);
-    node_ear_right_10.rotation.set(0.0, 0.0, 0.0);
-    node_ear_right_10.scale.set(1.5, 4.4, 3.8);
+    node_ear_right_9.position.set(-3.85, 14.6, 4.0);
+    node_ear_right_9.rotation.set(0.0, 0.0, 0.0);
+    node_ear_right_9.scale.set(1.5, 4.4, 3.8);
   }
-  node_ear_right_10.userData.sculptComponent = {"actionProfile": {"animationRole": "ear_right", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [1.5, 4.4, 3.8], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "face_tan", "detachableFragments": [], "fractureGroup": "ear_right", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(169, 119, 81, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(116, 74, 49, 1.0)"}, "confidence": 0.88, "deformations": [], "details": [], "dimensions": {"confidence": 0.9, "depth": 3.8, "height": 4.4, "units": "Blockbench units", "width": 1.5}, "evidenceRefs": ["full-object"], "fidelityTier": "structural-pass", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "ear_right", "importance": 0.78, "joints": [], "level": "meso", "localFeatures": [], "material": "face_tan", "materialLayers": ["face_tan"], "name": "Right ear", "parent": null, "primitive": "box", "role": "large right ear", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [-3.85, 14.6, 4.0], "rotation": [0.0, 0.0, 0.0], "scale": [1.5, 4.4, 3.8]}};
-  node_ear_right_10.userData.actionProfile = {"animationRole": "ear_right", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [1.5, 4.4, 3.8], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "face_tan", "detachableFragments": [], "fractureGroup": "ear_right", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}};
-  (nodes["root"] ?? root).add(node_ear_right_10);
-  nodes["ear_right"] = node_ear_right_10;
-  const mesh_ear_right_10Geometry = endpoint_ear_right_10
-    ? new THREE.CylinderGeometry(endpoint_ear_right_10.endRadius, endpoint_ear_right_10.baseRadius, endpoint_ear_right_10.length, 32, 12)
+  node_ear_right_9.userData.sculptComponent = {"actionProfile": {"animationRole": "ear_right", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [1.5, 4.4, 3.8], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "face_tan", "detachableFragments": [], "fractureGroup": "ear_right", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(169, 119, 81, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(116, 74, 49, 1.0)"}, "confidence": 0.88, "deformations": [], "details": [], "dimensions": {"confidence": 0.9, "depth": 3.8, "height": 4.4, "units": "Blockbench units", "width": 1.5}, "evidenceRefs": ["full-object"], "fidelityTier": "structural-pass", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "ear_right", "importance": 0.78, "joints": [], "level": "meso", "localFeatures": [], "material": "face_tan", "materialLayers": ["face_tan"], "name": "Right ear", "parent": null, "primitive": "box", "role": "large right ear", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [-3.85, 14.6, 4.0], "rotation": [0.0, 0.0, 0.0], "scale": [1.5, 4.4, 3.8]}};
+  node_ear_right_9.userData.actionProfile = {"animationRole": "ear_right", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [1.5, 4.4, 3.8], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "face_tan", "detachableFragments": [], "fractureGroup": "ear_right", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}};
+  (nodes["root"] ?? root).add(node_ear_right_9);
+  nodes["ear_right"] = node_ear_right_9;
+  const mesh_ear_right_9Geometry = endpoint_ear_right_9
+    ? new THREE.CylinderGeometry(endpoint_ear_right_9.endRadius, endpoint_ear_right_9.baseRadius, endpoint_ear_right_9.length, 32, 12)
     : new THREE.BoxGeometry(1, 1, 1, 12, 12, 12);
-  const mesh_ear_right_10 = new THREE.Mesh(
-    mesh_ear_right_10Geometry,
+  const mesh_ear_right_9 = new THREE.Mesh(
+    mesh_ear_right_9Geometry,
     materialMap["face_tan"] ?? new THREE.MeshStandardMaterial({ color: 0x888888 })
   );
-  mesh_ear_right_10.name = "Right ear";
-  if (endpoint_ear_right_10) {
-    mesh_ear_right_10.position.copy(endpoint_ear_right_10.midpoint);
-    mesh_ear_right_10.quaternion.copy(endpoint_ear_right_10.quaternion);
+  mesh_ear_right_9.name = "Right ear";
+  if (endpoint_ear_right_9) {
+    mesh_ear_right_9.position.copy(endpoint_ear_right_9.midpoint);
+    mesh_ear_right_9.quaternion.copy(endpoint_ear_right_9.quaternion);
   }
-  mesh_ear_right_10.castShadow = options.castShadow ?? true;
-  mesh_ear_right_10.receiveShadow = options.receiveShadow ?? true;
-  mesh_ear_right_10.userData.sculptComponent = {"actionProfile": {"animationRole": "ear_right", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [1.5, 4.4, 3.8], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "face_tan", "detachableFragments": [], "fractureGroup": "ear_right", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(169, 119, 81, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(116, 74, 49, 1.0)"}, "confidence": 0.88, "deformations": [], "details": [], "dimensions": {"confidence": 0.9, "depth": 3.8, "height": 4.4, "units": "Blockbench units", "width": 1.5}, "evidenceRefs": ["full-object"], "fidelityTier": "structural-pass", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "ear_right", "importance": 0.78, "joints": [], "level": "meso", "localFeatures": [], "material": "face_tan", "materialLayers": ["face_tan"], "name": "Right ear", "parent": null, "primitive": "box", "role": "large right ear", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [-3.85, 14.6, 4.0], "rotation": [0.0, 0.0, 0.0], "scale": [1.5, 4.4, 3.8]}};
-  node_ear_right_10.add(mesh_ear_right_10);
-  meshes["ear_right"] = mesh_ear_right_10;
+  mesh_ear_right_9.castShadow = options.castShadow ?? true;
+  mesh_ear_right_9.receiveShadow = options.receiveShadow ?? true;
+  mesh_ear_right_9.userData.sculptComponent = {"actionProfile": {"animationRole": "ear_right", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [1.5, 4.4, 3.8], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "face_tan", "detachableFragments": [], "fractureGroup": "ear_right", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(169, 119, 81, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(116, 74, 49, 1.0)"}, "confidence": 0.88, "deformations": [], "details": [], "dimensions": {"confidence": 0.9, "depth": 3.8, "height": 4.4, "units": "Blockbench units", "width": 1.5}, "evidenceRefs": ["full-object"], "fidelityTier": "structural-pass", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "ear_right", "importance": 0.78, "joints": [], "level": "meso", "localFeatures": [], "material": "face_tan", "materialLayers": ["face_tan"], "name": "Right ear", "parent": null, "primitive": "box", "role": "large right ear", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [-3.85, 14.6, 4.0], "rotation": [0.0, 0.0, 0.0], "scale": [1.5, 4.4, 3.8]}};
+  node_ear_right_9.add(mesh_ear_right_9);
+  meshes["ear_right"] = mesh_ear_right_9;
   colliders["ear_right"] = {"isTrigger": false, "offset": [0, 0, 0], "scale": [1.5, 4.4, 3.8], "type": "box"};
   destructionGroups["ear_right"] ??= [];
-  destructionGroups["ear_right"].push(node_ear_right_10);
+  destructionGroups["ear_right"].push(node_ear_right_9);
 
-  const attachment_eye_left_11 = null;
-  const endpoint_eye_left_11 = makeAttachmentEndpoint(attachment_eye_left_11);
-  const node_eye_left_11 = new THREE.Group();
-  node_eye_left_11.name = "Left eye__pivot";
-  if (endpoint_eye_left_11) {
-    node_eye_left_11.position.copy(endpoint_eye_left_11.start);
-    node_eye_left_11.rotation.set(0, 0, 0);
-    node_eye_left_11.scale.set(1, 1, 1);
+  const attachment_upper_arm_left_10 = null;
+  const endpoint_upper_arm_left_10 = makeAttachmentEndpoint(attachment_upper_arm_left_10);
+  const node_upper_arm_left_10 = new THREE.Group();
+  node_upper_arm_left_10.name = "Left upper arm__pivot";
+  if (endpoint_upper_arm_left_10) {
+    node_upper_arm_left_10.position.copy(endpoint_upper_arm_left_10.start);
+    node_upper_arm_left_10.rotation.set(0, 0, 0);
+    node_upper_arm_left_10.scale.set(1, 1, 1);
   } else {
-    node_eye_left_11.position.set(1.55, 14.65, 7.4);
-    node_eye_left_11.rotation.set(0.0, 0.0, 0.0);
-    node_eye_left_11.scale.set(1.0, 1.0, 0.7);
+    node_upper_arm_left_10.position.set(4.65, 9.5, 2.1);
+    node_upper_arm_left_10.rotation.set(-0.13962634015954636, 0.0, 0.13962634015954636);
+    node_upper_arm_left_10.scale.set(3.1, 6.4, 3.5);
   }
-  node_eye_left_11.userData.sculptComponent = {"actionProfile": {"animationRole": "eye_left", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [1.0, 1.0, 0.7], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "eye", "detachableFragments": [], "fractureGroup": "eye_left", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(9, 8, 7, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(2, 2, 2, 1.0)"}, "confidence": 0.88, "deformations": [], "details": ["square-eyes"], "dimensions": {"confidence": 0.9, "depth": 0.7, "height": 1.0, "units": "Blockbench units", "width": 1.0}, "evidenceRefs": ["full-object"], "fidelityTier": "form-refinement", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "eye_left", "importance": 0.58, "joints": [], "level": "micro", "localFeatures": ["square-eyes"], "material": "eye", "materialLayers": ["eye"], "name": "Left eye", "parent": null, "primitive": "box", "role": "square left eye", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [1.55, 14.65, 7.4], "rotation": [0.0, 0.0, 0.0], "scale": [1.0, 1.0, 0.7]}};
-  node_eye_left_11.userData.actionProfile = {"animationRole": "eye_left", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [1.0, 1.0, 0.7], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "eye", "detachableFragments": [], "fractureGroup": "eye_left", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}};
-  (nodes["root"] ?? root).add(node_eye_left_11);
-  nodes["eye_left"] = node_eye_left_11;
-  const mesh_eye_left_11Geometry = endpoint_eye_left_11
-    ? new THREE.CylinderGeometry(endpoint_eye_left_11.endRadius, endpoint_eye_left_11.baseRadius, endpoint_eye_left_11.length, 32, 12)
+  node_upper_arm_left_10.userData.sculptComponent = {"actionProfile": {"animationRole": "upper_arm_left", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [3.1, 6.4, 3.5], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "black_fur", "detachableFragments": [], "fractureGroup": "upper_arm_left", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(36, 35, 34, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(9, 9, 9, 1.0)"}, "confidence": 0.88, "deformations": [], "details": ["long-arms", "pixel-fur"], "dimensions": {"confidence": 0.9, "depth": 3.5, "height": 6.4, "units": "Blockbench units", "width": 3.1}, "evidenceRefs": ["full-object"], "fidelityTier": "blockout", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "upper_arm_left", "importance": 1.0, "joints": [], "level": "macro", "localFeatures": ["long-arms", "pixel-fur"], "material": "black_fur", "materialLayers": ["black_fur"], "name": "Left upper arm", "parent": null, "primitive": "box", "role": "long left upper arm", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [4.65, 9.5, 2.1], "rotation": [-0.13962634015954636, 0.0, 0.13962634015954636], "scale": [3.1, 6.4, 3.5]}};
+  node_upper_arm_left_10.userData.actionProfile = {"animationRole": "upper_arm_left", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [3.1, 6.4, 3.5], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "black_fur", "detachableFragments": [], "fractureGroup": "upper_arm_left", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}};
+  (nodes["root"] ?? root).add(node_upper_arm_left_10);
+  nodes["upper_arm_left"] = node_upper_arm_left_10;
+  const mesh_upper_arm_left_10Geometry = endpoint_upper_arm_left_10
+    ? new THREE.CylinderGeometry(endpoint_upper_arm_left_10.endRadius, endpoint_upper_arm_left_10.baseRadius, endpoint_upper_arm_left_10.length, 32, 12)
     : new THREE.BoxGeometry(1, 1, 1, 12, 12, 12);
-  const mesh_eye_left_11 = new THREE.Mesh(
-    mesh_eye_left_11Geometry,
-    materialMap["eye"] ?? new THREE.MeshStandardMaterial({ color: 0x888888 })
-  );
-  mesh_eye_left_11.name = "Left eye";
-  if (endpoint_eye_left_11) {
-    mesh_eye_left_11.position.copy(endpoint_eye_left_11.midpoint);
-    mesh_eye_left_11.quaternion.copy(endpoint_eye_left_11.quaternion);
-  }
-  mesh_eye_left_11.castShadow = options.castShadow ?? true;
-  mesh_eye_left_11.receiveShadow = options.receiveShadow ?? true;
-  mesh_eye_left_11.userData.sculptComponent = {"actionProfile": {"animationRole": "eye_left", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [1.0, 1.0, 0.7], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "eye", "detachableFragments": [], "fractureGroup": "eye_left", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(9, 8, 7, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(2, 2, 2, 1.0)"}, "confidence": 0.88, "deformations": [], "details": ["square-eyes"], "dimensions": {"confidence": 0.9, "depth": 0.7, "height": 1.0, "units": "Blockbench units", "width": 1.0}, "evidenceRefs": ["full-object"], "fidelityTier": "form-refinement", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "eye_left", "importance": 0.58, "joints": [], "level": "micro", "localFeatures": ["square-eyes"], "material": "eye", "materialLayers": ["eye"], "name": "Left eye", "parent": null, "primitive": "box", "role": "square left eye", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [1.55, 14.65, 7.4], "rotation": [0.0, 0.0, 0.0], "scale": [1.0, 1.0, 0.7]}};
-  node_eye_left_11.add(mesh_eye_left_11);
-  meshes["eye_left"] = mesh_eye_left_11;
-  colliders["eye_left"] = {"isTrigger": false, "offset": [0, 0, 0], "scale": [1.0, 1.0, 0.7], "type": "box"};
-  destructionGroups["eye_left"] ??= [];
-  destructionGroups["eye_left"].push(node_eye_left_11);
-
-  const attachment_eye_right_12 = null;
-  const endpoint_eye_right_12 = makeAttachmentEndpoint(attachment_eye_right_12);
-  const node_eye_right_12 = new THREE.Group();
-  node_eye_right_12.name = "Right eye__pivot";
-  if (endpoint_eye_right_12) {
-    node_eye_right_12.position.copy(endpoint_eye_right_12.start);
-    node_eye_right_12.rotation.set(0, 0, 0);
-    node_eye_right_12.scale.set(1, 1, 1);
-  } else {
-    node_eye_right_12.position.set(-1.55, 14.65, 7.4);
-    node_eye_right_12.rotation.set(0.0, 0.0, 0.0);
-    node_eye_right_12.scale.set(1.0, 1.0, 0.7);
-  }
-  node_eye_right_12.userData.sculptComponent = {"actionProfile": {"animationRole": "eye_right", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [1.0, 1.0, 0.7], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "eye", "detachableFragments": [], "fractureGroup": "eye_right", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(9, 8, 7, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(2, 2, 2, 1.0)"}, "confidence": 0.88, "deformations": [], "details": [], "dimensions": {"confidence": 0.9, "depth": 0.7, "height": 1.0, "units": "Blockbench units", "width": 1.0}, "evidenceRefs": ["full-object"], "fidelityTier": "form-refinement", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "eye_right", "importance": 0.58, "joints": [], "level": "micro", "localFeatures": [], "material": "eye", "materialLayers": ["eye"], "name": "Right eye", "parent": null, "primitive": "box", "role": "square right eye", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [-1.55, 14.65, 7.4], "rotation": [0.0, 0.0, 0.0], "scale": [1.0, 1.0, 0.7]}};
-  node_eye_right_12.userData.actionProfile = {"animationRole": "eye_right", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [1.0, 1.0, 0.7], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "eye", "detachableFragments": [], "fractureGroup": "eye_right", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}};
-  (nodes["root"] ?? root).add(node_eye_right_12);
-  nodes["eye_right"] = node_eye_right_12;
-  const mesh_eye_right_12Geometry = endpoint_eye_right_12
-    ? new THREE.CylinderGeometry(endpoint_eye_right_12.endRadius, endpoint_eye_right_12.baseRadius, endpoint_eye_right_12.length, 32, 12)
-    : new THREE.BoxGeometry(1, 1, 1, 12, 12, 12);
-  const mesh_eye_right_12 = new THREE.Mesh(
-    mesh_eye_right_12Geometry,
-    materialMap["eye"] ?? new THREE.MeshStandardMaterial({ color: 0x888888 })
-  );
-  mesh_eye_right_12.name = "Right eye";
-  if (endpoint_eye_right_12) {
-    mesh_eye_right_12.position.copy(endpoint_eye_right_12.midpoint);
-    mesh_eye_right_12.quaternion.copy(endpoint_eye_right_12.quaternion);
-  }
-  mesh_eye_right_12.castShadow = options.castShadow ?? true;
-  mesh_eye_right_12.receiveShadow = options.receiveShadow ?? true;
-  mesh_eye_right_12.userData.sculptComponent = {"actionProfile": {"animationRole": "eye_right", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [1.0, 1.0, 0.7], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "eye", "detachableFragments": [], "fractureGroup": "eye_right", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(9, 8, 7, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(2, 2, 2, 1.0)"}, "confidence": 0.88, "deformations": [], "details": [], "dimensions": {"confidence": 0.9, "depth": 0.7, "height": 1.0, "units": "Blockbench units", "width": 1.0}, "evidenceRefs": ["full-object"], "fidelityTier": "form-refinement", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "eye_right", "importance": 0.58, "joints": [], "level": "micro", "localFeatures": [], "material": "eye", "materialLayers": ["eye"], "name": "Right eye", "parent": null, "primitive": "box", "role": "square right eye", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [-1.55, 14.65, 7.4], "rotation": [0.0, 0.0, 0.0], "scale": [1.0, 1.0, 0.7]}};
-  node_eye_right_12.add(mesh_eye_right_12);
-  meshes["eye_right"] = mesh_eye_right_12;
-  colliders["eye_right"] = {"isTrigger": false, "offset": [0, 0, 0], "scale": [1.0, 1.0, 0.7], "type": "box"};
-  destructionGroups["eye_right"] ??= [];
-  destructionGroups["eye_right"].push(node_eye_right_12);
-
-  const attachment_upper_arm_left_13 = null;
-  const endpoint_upper_arm_left_13 = makeAttachmentEndpoint(attachment_upper_arm_left_13);
-  const node_upper_arm_left_13 = new THREE.Group();
-  node_upper_arm_left_13.name = "Left upper arm__pivot";
-  if (endpoint_upper_arm_left_13) {
-    node_upper_arm_left_13.position.copy(endpoint_upper_arm_left_13.start);
-    node_upper_arm_left_13.rotation.set(0, 0, 0);
-    node_upper_arm_left_13.scale.set(1, 1, 1);
-  } else {
-    node_upper_arm_left_13.position.set(4.65, 9.5, 2.1);
-    node_upper_arm_left_13.rotation.set(-0.13962634015954636, 0.0, 0.13962634015954636);
-    node_upper_arm_left_13.scale.set(3.1, 6.4, 3.5);
-  }
-  node_upper_arm_left_13.userData.sculptComponent = {"actionProfile": {"animationRole": "upper_arm_left", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [3.1, 6.4, 3.5], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "black_fur", "detachableFragments": [], "fractureGroup": "upper_arm_left", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(36, 35, 34, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(9, 9, 9, 1.0)"}, "confidence": 0.88, "deformations": [], "details": ["long-arms", "pixel-fur"], "dimensions": {"confidence": 0.9, "depth": 3.5, "height": 6.4, "units": "Blockbench units", "width": 3.1}, "evidenceRefs": ["full-object"], "fidelityTier": "blockout", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "upper_arm_left", "importance": 1.0, "joints": [], "level": "macro", "localFeatures": ["long-arms", "pixel-fur"], "material": "black_fur", "materialLayers": ["black_fur"], "name": "Left upper arm", "parent": null, "primitive": "box", "role": "long left upper arm", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [4.65, 9.5, 2.1], "rotation": [-0.13962634015954636, 0.0, 0.13962634015954636], "scale": [3.1, 6.4, 3.5]}};
-  node_upper_arm_left_13.userData.actionProfile = {"animationRole": "upper_arm_left", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [3.1, 6.4, 3.5], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "black_fur", "detachableFragments": [], "fractureGroup": "upper_arm_left", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}};
-  (nodes["root"] ?? root).add(node_upper_arm_left_13);
-  nodes["upper_arm_left"] = node_upper_arm_left_13;
-  const mesh_upper_arm_left_13Geometry = endpoint_upper_arm_left_13
-    ? new THREE.CylinderGeometry(endpoint_upper_arm_left_13.endRadius, endpoint_upper_arm_left_13.baseRadius, endpoint_upper_arm_left_13.length, 32, 12)
-    : new THREE.BoxGeometry(1, 1, 1, 12, 12, 12);
-  const mesh_upper_arm_left_13 = new THREE.Mesh(
-    mesh_upper_arm_left_13Geometry,
+  const mesh_upper_arm_left_10 = new THREE.Mesh(
+    mesh_upper_arm_left_10Geometry,
     materialMap["black_fur"] ?? new THREE.MeshStandardMaterial({ color: 0x888888 })
   );
-  mesh_upper_arm_left_13.name = "Left upper arm";
-  if (endpoint_upper_arm_left_13) {
-    mesh_upper_arm_left_13.position.copy(endpoint_upper_arm_left_13.midpoint);
-    mesh_upper_arm_left_13.quaternion.copy(endpoint_upper_arm_left_13.quaternion);
+  mesh_upper_arm_left_10.name = "Left upper arm";
+  if (endpoint_upper_arm_left_10) {
+    mesh_upper_arm_left_10.position.copy(endpoint_upper_arm_left_10.midpoint);
+    mesh_upper_arm_left_10.quaternion.copy(endpoint_upper_arm_left_10.quaternion);
   }
-  mesh_upper_arm_left_13.castShadow = options.castShadow ?? true;
-  mesh_upper_arm_left_13.receiveShadow = options.receiveShadow ?? true;
-  mesh_upper_arm_left_13.userData.sculptComponent = {"actionProfile": {"animationRole": "upper_arm_left", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [3.1, 6.4, 3.5], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "black_fur", "detachableFragments": [], "fractureGroup": "upper_arm_left", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(36, 35, 34, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(9, 9, 9, 1.0)"}, "confidence": 0.88, "deformations": [], "details": ["long-arms", "pixel-fur"], "dimensions": {"confidence": 0.9, "depth": 3.5, "height": 6.4, "units": "Blockbench units", "width": 3.1}, "evidenceRefs": ["full-object"], "fidelityTier": "blockout", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "upper_arm_left", "importance": 1.0, "joints": [], "level": "macro", "localFeatures": ["long-arms", "pixel-fur"], "material": "black_fur", "materialLayers": ["black_fur"], "name": "Left upper arm", "parent": null, "primitive": "box", "role": "long left upper arm", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [4.65, 9.5, 2.1], "rotation": [-0.13962634015954636, 0.0, 0.13962634015954636], "scale": [3.1, 6.4, 3.5]}};
-  node_upper_arm_left_13.add(mesh_upper_arm_left_13);
-  meshes["upper_arm_left"] = mesh_upper_arm_left_13;
+  mesh_upper_arm_left_10.castShadow = options.castShadow ?? true;
+  mesh_upper_arm_left_10.receiveShadow = options.receiveShadow ?? true;
+  mesh_upper_arm_left_10.userData.sculptComponent = {"actionProfile": {"animationRole": "upper_arm_left", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [3.1, 6.4, 3.5], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "black_fur", "detachableFragments": [], "fractureGroup": "upper_arm_left", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(36, 35, 34, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(9, 9, 9, 1.0)"}, "confidence": 0.88, "deformations": [], "details": ["long-arms", "pixel-fur"], "dimensions": {"confidence": 0.9, "depth": 3.5, "height": 6.4, "units": "Blockbench units", "width": 3.1}, "evidenceRefs": ["full-object"], "fidelityTier": "blockout", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "upper_arm_left", "importance": 1.0, "joints": [], "level": "macro", "localFeatures": ["long-arms", "pixel-fur"], "material": "black_fur", "materialLayers": ["black_fur"], "name": "Left upper arm", "parent": null, "primitive": "box", "role": "long left upper arm", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [4.65, 9.5, 2.1], "rotation": [-0.13962634015954636, 0.0, 0.13962634015954636], "scale": [3.1, 6.4, 3.5]}};
+  node_upper_arm_left_10.add(mesh_upper_arm_left_10);
+  meshes["upper_arm_left"] = mesh_upper_arm_left_10;
   colliders["upper_arm_left"] = {"isTrigger": false, "offset": [0, 0, 0], "scale": [3.1, 6.4, 3.5], "type": "box"};
   destructionGroups["upper_arm_left"] ??= [];
-  destructionGroups["upper_arm_left"].push(node_upper_arm_left_13);
+  destructionGroups["upper_arm_left"].push(node_upper_arm_left_10);
 
-  const attachment_forearm_left_14 = null;
-  const endpoint_forearm_left_14 = makeAttachmentEndpoint(attachment_forearm_left_14);
-  const node_forearm_left_14 = new THREE.Group();
-  node_forearm_left_14.name = "Left forearm__pivot";
-  if (endpoint_forearm_left_14) {
-    node_forearm_left_14.position.copy(endpoint_forearm_left_14.start);
-    node_forearm_left_14.rotation.set(0, 0, 0);
-    node_forearm_left_14.scale.set(1, 1, 1);
+  const attachment_forearm_left_11 = null;
+  const endpoint_forearm_left_11 = makeAttachmentEndpoint(attachment_forearm_left_11);
+  const node_forearm_left_11 = new THREE.Group();
+  node_forearm_left_11.name = "Left forearm__pivot";
+  if (endpoint_forearm_left_11) {
+    node_forearm_left_11.position.copy(endpoint_forearm_left_11.start);
+    node_forearm_left_11.rotation.set(0, 0, 0);
+    node_forearm_left_11.scale.set(1, 1, 1);
   } else {
-    node_forearm_left_14.position.set(5.05, 5.0, 3.5);
-    node_forearm_left_14.rotation.set(-0.17453292519943295, 0.0, 0.05235987755982989);
-    node_forearm_left_14.scale.set(2.9, 6.5, 3.1);
+    node_forearm_left_11.position.set(5.05, 5.0, 3.5);
+    node_forearm_left_11.rotation.set(-0.17453292519943295, 0.0, 0.05235987755982989);
+    node_forearm_left_11.scale.set(2.9, 6.5, 3.1);
   }
-  node_forearm_left_14.userData.sculptComponent = {"actionProfile": {"animationRole": "forearm_left", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [2.9, 6.5, 3.1], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "black_fur", "detachableFragments": [], "fractureGroup": "forearm_left", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(36, 35, 34, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(9, 9, 9, 1.0)"}, "confidence": 0.88, "deformations": [], "details": ["pixel-fur"], "dimensions": {"confidence": 0.9, "depth": 3.1, "height": 6.5, "units": "Blockbench units", "width": 2.9}, "evidenceRefs": ["full-object"], "fidelityTier": "blockout", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "forearm_left", "importance": 1.0, "joints": [], "level": "macro", "localFeatures": ["pixel-fur"], "material": "black_fur", "materialLayers": ["black_fur"], "name": "Left forearm", "parent": null, "primitive": "box", "role": "ground-reaching left forearm", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [5.05, 5.0, 3.5], "rotation": [-0.17453292519943295, 0.0, 0.05235987755982989], "scale": [2.9, 6.5, 3.1]}};
-  node_forearm_left_14.userData.actionProfile = {"animationRole": "forearm_left", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [2.9, 6.5, 3.1], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "black_fur", "detachableFragments": [], "fractureGroup": "forearm_left", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}};
-  (nodes["root"] ?? root).add(node_forearm_left_14);
-  nodes["forearm_left"] = node_forearm_left_14;
-  const mesh_forearm_left_14Geometry = endpoint_forearm_left_14
-    ? new THREE.CylinderGeometry(endpoint_forearm_left_14.endRadius, endpoint_forearm_left_14.baseRadius, endpoint_forearm_left_14.length, 32, 12)
+  node_forearm_left_11.userData.sculptComponent = {"actionProfile": {"animationRole": "forearm_left", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [2.9, 6.5, 3.1], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "black_fur", "detachableFragments": [], "fractureGroup": "forearm_left", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(36, 35, 34, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(9, 9, 9, 1.0)"}, "confidence": 0.88, "deformations": [], "details": ["pixel-fur"], "dimensions": {"confidence": 0.9, "depth": 3.1, "height": 6.5, "units": "Blockbench units", "width": 2.9}, "evidenceRefs": ["full-object"], "fidelityTier": "blockout", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "forearm_left", "importance": 1.0, "joints": [], "level": "macro", "localFeatures": ["pixel-fur"], "material": "black_fur", "materialLayers": ["black_fur"], "name": "Left forearm", "parent": null, "primitive": "box", "role": "ground-reaching left forearm", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [5.05, 5.0, 3.5], "rotation": [-0.17453292519943295, 0.0, 0.05235987755982989], "scale": [2.9, 6.5, 3.1]}};
+  node_forearm_left_11.userData.actionProfile = {"animationRole": "forearm_left", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [2.9, 6.5, 3.1], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "black_fur", "detachableFragments": [], "fractureGroup": "forearm_left", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}};
+  (nodes["root"] ?? root).add(node_forearm_left_11);
+  nodes["forearm_left"] = node_forearm_left_11;
+  const mesh_forearm_left_11Geometry = endpoint_forearm_left_11
+    ? new THREE.CylinderGeometry(endpoint_forearm_left_11.endRadius, endpoint_forearm_left_11.baseRadius, endpoint_forearm_left_11.length, 32, 12)
     : new THREE.BoxGeometry(1, 1, 1, 12, 12, 12);
-  const mesh_forearm_left_14 = new THREE.Mesh(
-    mesh_forearm_left_14Geometry,
+  const mesh_forearm_left_11 = new THREE.Mesh(
+    mesh_forearm_left_11Geometry,
     materialMap["black_fur"] ?? new THREE.MeshStandardMaterial({ color: 0x888888 })
   );
-  mesh_forearm_left_14.name = "Left forearm";
-  if (endpoint_forearm_left_14) {
-    mesh_forearm_left_14.position.copy(endpoint_forearm_left_14.midpoint);
-    mesh_forearm_left_14.quaternion.copy(endpoint_forearm_left_14.quaternion);
+  mesh_forearm_left_11.name = "Left forearm";
+  if (endpoint_forearm_left_11) {
+    mesh_forearm_left_11.position.copy(endpoint_forearm_left_11.midpoint);
+    mesh_forearm_left_11.quaternion.copy(endpoint_forearm_left_11.quaternion);
   }
-  mesh_forearm_left_14.castShadow = options.castShadow ?? true;
-  mesh_forearm_left_14.receiveShadow = options.receiveShadow ?? true;
-  mesh_forearm_left_14.userData.sculptComponent = {"actionProfile": {"animationRole": "forearm_left", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [2.9, 6.5, 3.1], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "black_fur", "detachableFragments": [], "fractureGroup": "forearm_left", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(36, 35, 34, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(9, 9, 9, 1.0)"}, "confidence": 0.88, "deformations": [], "details": ["pixel-fur"], "dimensions": {"confidence": 0.9, "depth": 3.1, "height": 6.5, "units": "Blockbench units", "width": 2.9}, "evidenceRefs": ["full-object"], "fidelityTier": "blockout", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "forearm_left", "importance": 1.0, "joints": [], "level": "macro", "localFeatures": ["pixel-fur"], "material": "black_fur", "materialLayers": ["black_fur"], "name": "Left forearm", "parent": null, "primitive": "box", "role": "ground-reaching left forearm", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [5.05, 5.0, 3.5], "rotation": [-0.17453292519943295, 0.0, 0.05235987755982989], "scale": [2.9, 6.5, 3.1]}};
-  node_forearm_left_14.add(mesh_forearm_left_14);
-  meshes["forearm_left"] = mesh_forearm_left_14;
+  mesh_forearm_left_11.castShadow = options.castShadow ?? true;
+  mesh_forearm_left_11.receiveShadow = options.receiveShadow ?? true;
+  mesh_forearm_left_11.userData.sculptComponent = {"actionProfile": {"animationRole": "forearm_left", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [2.9, 6.5, 3.1], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "black_fur", "detachableFragments": [], "fractureGroup": "forearm_left", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(36, 35, 34, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(9, 9, 9, 1.0)"}, "confidence": 0.88, "deformations": [], "details": ["pixel-fur"], "dimensions": {"confidence": 0.9, "depth": 3.1, "height": 6.5, "units": "Blockbench units", "width": 2.9}, "evidenceRefs": ["full-object"], "fidelityTier": "blockout", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "forearm_left", "importance": 1.0, "joints": [], "level": "macro", "localFeatures": ["pixel-fur"], "material": "black_fur", "materialLayers": ["black_fur"], "name": "Left forearm", "parent": null, "primitive": "box", "role": "ground-reaching left forearm", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [5.05, 5.0, 3.5], "rotation": [-0.17453292519943295, 0.0, 0.05235987755982989], "scale": [2.9, 6.5, 3.1]}};
+  node_forearm_left_11.add(mesh_forearm_left_11);
+  meshes["forearm_left"] = mesh_forearm_left_11;
   colliders["forearm_left"] = {"isTrigger": false, "offset": [0, 0, 0], "scale": [2.9, 6.5, 3.1], "type": "box"};
   destructionGroups["forearm_left"] ??= [];
-  destructionGroups["forearm_left"].push(node_forearm_left_14);
+  destructionGroups["forearm_left"].push(node_forearm_left_11);
 
-  const attachment_hand_left_15 = null;
-  const endpoint_hand_left_15 = makeAttachmentEndpoint(attachment_hand_left_15);
-  const node_hand_left_15 = new THREE.Group();
-  node_hand_left_15.name = "Left knuckle hand__pivot";
-  if (endpoint_hand_left_15) {
-    node_hand_left_15.position.copy(endpoint_hand_left_15.start);
-    node_hand_left_15.rotation.set(0, 0, 0);
-    node_hand_left_15.scale.set(1, 1, 1);
+  const attachment_hand_left_12 = null;
+  const endpoint_hand_left_12 = makeAttachmentEndpoint(attachment_hand_left_12);
+  const node_hand_left_12 = new THREE.Group();
+  node_hand_left_12.name = "Left knuckle hand__pivot";
+  if (endpoint_hand_left_12) {
+    node_hand_left_12.position.copy(endpoint_hand_left_12.start);
+    node_hand_left_12.rotation.set(0, 0, 0);
+    node_hand_left_12.scale.set(1, 1, 1);
   } else {
-    node_hand_left_15.position.set(5.05, 1.25, 5.0);
-    node_hand_left_15.rotation.set(0.0, 0.0, 0.0);
-    node_hand_left_15.scale.set(4.0, 2.3, 4.4);
+    node_hand_left_12.position.set(5.05, 1.25, 5.0);
+    node_hand_left_12.rotation.set(0.0, 0.0, 0.0);
+    node_hand_left_12.scale.set(4.0, 2.3, 4.4);
   }
-  node_hand_left_15.userData.sculptComponent = {"actionProfile": {"animationRole": "hand_left", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [4.0, 2.3, 4.4], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "palm_tan", "detachableFragments": [], "fractureGroup": "hand_left", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(158, 110, 76, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(104, 68, 47, 1.0)"}, "confidence": 0.88, "deformations": [], "details": ["grounded-knuckles"], "dimensions": {"confidence": 0.9, "depth": 4.4, "height": 2.3, "units": "Blockbench units", "width": 4.0}, "evidenceRefs": ["full-object"], "fidelityTier": "structural-pass", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "hand_left", "importance": 0.78, "joints": [], "level": "meso", "localFeatures": ["grounded-knuckles"], "material": "palm_tan", "materialLayers": ["palm_tan"], "name": "Left knuckle hand", "parent": null, "primitive": "box", "role": "broad grounded left hand", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [5.05, 1.25, 5.0], "rotation": [0.0, 0.0, 0.0], "scale": [4.0, 2.3, 4.4]}};
-  node_hand_left_15.userData.actionProfile = {"animationRole": "hand_left", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [4.0, 2.3, 4.4], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "palm_tan", "detachableFragments": [], "fractureGroup": "hand_left", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}};
-  (nodes["root"] ?? root).add(node_hand_left_15);
-  nodes["hand_left"] = node_hand_left_15;
-  const mesh_hand_left_15Geometry = endpoint_hand_left_15
-    ? new THREE.CylinderGeometry(endpoint_hand_left_15.endRadius, endpoint_hand_left_15.baseRadius, endpoint_hand_left_15.length, 32, 12)
+  node_hand_left_12.userData.sculptComponent = {"actionProfile": {"animationRole": "hand_left", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [4.0, 2.3, 4.4], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "palm_tan", "detachableFragments": [], "fractureGroup": "hand_left", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(158, 110, 76, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(104, 68, 47, 1.0)"}, "confidence": 0.88, "deformations": [], "details": ["grounded-knuckles"], "dimensions": {"confidence": 0.9, "depth": 4.4, "height": 2.3, "units": "Blockbench units", "width": 4.0}, "evidenceRefs": ["full-object"], "fidelityTier": "structural-pass", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "hand_left", "importance": 0.78, "joints": [], "level": "meso", "localFeatures": ["grounded-knuckles"], "material": "palm_tan", "materialLayers": ["palm_tan"], "name": "Left knuckle hand", "parent": null, "primitive": "box", "role": "broad grounded left hand", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [5.05, 1.25, 5.0], "rotation": [0.0, 0.0, 0.0], "scale": [4.0, 2.3, 4.4]}};
+  node_hand_left_12.userData.actionProfile = {"animationRole": "hand_left", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [4.0, 2.3, 4.4], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "palm_tan", "detachableFragments": [], "fractureGroup": "hand_left", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}};
+  (nodes["root"] ?? root).add(node_hand_left_12);
+  nodes["hand_left"] = node_hand_left_12;
+  const mesh_hand_left_12Geometry = endpoint_hand_left_12
+    ? new THREE.CylinderGeometry(endpoint_hand_left_12.endRadius, endpoint_hand_left_12.baseRadius, endpoint_hand_left_12.length, 32, 12)
     : new THREE.BoxGeometry(1, 1, 1, 12, 12, 12);
-  const mesh_hand_left_15 = new THREE.Mesh(
-    mesh_hand_left_15Geometry,
+  const mesh_hand_left_12 = new THREE.Mesh(
+    mesh_hand_left_12Geometry,
     materialMap["palm_tan"] ?? new THREE.MeshStandardMaterial({ color: 0x888888 })
   );
-  mesh_hand_left_15.name = "Left knuckle hand";
-  if (endpoint_hand_left_15) {
-    mesh_hand_left_15.position.copy(endpoint_hand_left_15.midpoint);
-    mesh_hand_left_15.quaternion.copy(endpoint_hand_left_15.quaternion);
+  mesh_hand_left_12.name = "Left knuckle hand";
+  if (endpoint_hand_left_12) {
+    mesh_hand_left_12.position.copy(endpoint_hand_left_12.midpoint);
+    mesh_hand_left_12.quaternion.copy(endpoint_hand_left_12.quaternion);
   }
-  mesh_hand_left_15.castShadow = options.castShadow ?? true;
-  mesh_hand_left_15.receiveShadow = options.receiveShadow ?? true;
-  mesh_hand_left_15.userData.sculptComponent = {"actionProfile": {"animationRole": "hand_left", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [4.0, 2.3, 4.4], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "palm_tan", "detachableFragments": [], "fractureGroup": "hand_left", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(158, 110, 76, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(104, 68, 47, 1.0)"}, "confidence": 0.88, "deformations": [], "details": ["grounded-knuckles"], "dimensions": {"confidence": 0.9, "depth": 4.4, "height": 2.3, "units": "Blockbench units", "width": 4.0}, "evidenceRefs": ["full-object"], "fidelityTier": "structural-pass", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "hand_left", "importance": 0.78, "joints": [], "level": "meso", "localFeatures": ["grounded-knuckles"], "material": "palm_tan", "materialLayers": ["palm_tan"], "name": "Left knuckle hand", "parent": null, "primitive": "box", "role": "broad grounded left hand", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [5.05, 1.25, 5.0], "rotation": [0.0, 0.0, 0.0], "scale": [4.0, 2.3, 4.4]}};
-  node_hand_left_15.add(mesh_hand_left_15);
-  meshes["hand_left"] = mesh_hand_left_15;
+  mesh_hand_left_12.castShadow = options.castShadow ?? true;
+  mesh_hand_left_12.receiveShadow = options.receiveShadow ?? true;
+  mesh_hand_left_12.userData.sculptComponent = {"actionProfile": {"animationRole": "hand_left", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [4.0, 2.3, 4.4], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "palm_tan", "detachableFragments": [], "fractureGroup": "hand_left", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(158, 110, 76, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(104, 68, 47, 1.0)"}, "confidence": 0.88, "deformations": [], "details": ["grounded-knuckles"], "dimensions": {"confidence": 0.9, "depth": 4.4, "height": 2.3, "units": "Blockbench units", "width": 4.0}, "evidenceRefs": ["full-object"], "fidelityTier": "structural-pass", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "hand_left", "importance": 0.78, "joints": [], "level": "meso", "localFeatures": ["grounded-knuckles"], "material": "palm_tan", "materialLayers": ["palm_tan"], "name": "Left knuckle hand", "parent": null, "primitive": "box", "role": "broad grounded left hand", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [5.05, 1.25, 5.0], "rotation": [0.0, 0.0, 0.0], "scale": [4.0, 2.3, 4.4]}};
+  node_hand_left_12.add(mesh_hand_left_12);
+  meshes["hand_left"] = mesh_hand_left_12;
   colliders["hand_left"] = {"isTrigger": false, "offset": [0, 0, 0], "scale": [4.0, 2.3, 4.4], "type": "box"};
   destructionGroups["hand_left"] ??= [];
-  destructionGroups["hand_left"].push(node_hand_left_15);
+  destructionGroups["hand_left"].push(node_hand_left_12);
 
-  const attachment_upper_arm_right_16 = null;
-  const endpoint_upper_arm_right_16 = makeAttachmentEndpoint(attachment_upper_arm_right_16);
-  const node_upper_arm_right_16 = new THREE.Group();
-  node_upper_arm_right_16.name = "Right upper arm__pivot";
-  if (endpoint_upper_arm_right_16) {
-    node_upper_arm_right_16.position.copy(endpoint_upper_arm_right_16.start);
-    node_upper_arm_right_16.rotation.set(0, 0, 0);
-    node_upper_arm_right_16.scale.set(1, 1, 1);
+  const attachment_upper_arm_right_13 = null;
+  const endpoint_upper_arm_right_13 = makeAttachmentEndpoint(attachment_upper_arm_right_13);
+  const node_upper_arm_right_13 = new THREE.Group();
+  node_upper_arm_right_13.name = "Right upper arm__pivot";
+  if (endpoint_upper_arm_right_13) {
+    node_upper_arm_right_13.position.copy(endpoint_upper_arm_right_13.start);
+    node_upper_arm_right_13.rotation.set(0, 0, 0);
+    node_upper_arm_right_13.scale.set(1, 1, 1);
   } else {
-    node_upper_arm_right_16.position.set(-4.65, 9.5, 2.1);
-    node_upper_arm_right_16.rotation.set(-0.13962634015954636, 0.0, -0.13962634015954636);
-    node_upper_arm_right_16.scale.set(3.1, 6.4, 3.5);
+    node_upper_arm_right_13.position.set(-4.65, 9.5, 2.1);
+    node_upper_arm_right_13.rotation.set(-0.13962634015954636, 0.0, -0.13962634015954636);
+    node_upper_arm_right_13.scale.set(3.1, 6.4, 3.5);
   }
-  node_upper_arm_right_16.userData.sculptComponent = {"actionProfile": {"animationRole": "upper_arm_right", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [3.1, 6.4, 3.5], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "black_fur", "detachableFragments": [], "fractureGroup": "upper_arm_right", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(36, 35, 34, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(9, 9, 9, 1.0)"}, "confidence": 0.88, "deformations": [], "details": ["pixel-fur"], "dimensions": {"confidence": 0.9, "depth": 3.5, "height": 6.4, "units": "Blockbench units", "width": 3.1}, "evidenceRefs": ["full-object"], "fidelityTier": "blockout", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "upper_arm_right", "importance": 1.0, "joints": [], "level": "macro", "localFeatures": ["pixel-fur"], "material": "black_fur", "materialLayers": ["black_fur"], "name": "Right upper arm", "parent": null, "primitive": "box", "role": "long right upper arm", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [-4.65, 9.5, 2.1], "rotation": [-0.13962634015954636, 0.0, -0.13962634015954636], "scale": [3.1, 6.4, 3.5]}};
-  node_upper_arm_right_16.userData.actionProfile = {"animationRole": "upper_arm_right", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [3.1, 6.4, 3.5], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "black_fur", "detachableFragments": [], "fractureGroup": "upper_arm_right", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}};
-  (nodes["root"] ?? root).add(node_upper_arm_right_16);
-  nodes["upper_arm_right"] = node_upper_arm_right_16;
-  const mesh_upper_arm_right_16Geometry = endpoint_upper_arm_right_16
-    ? new THREE.CylinderGeometry(endpoint_upper_arm_right_16.endRadius, endpoint_upper_arm_right_16.baseRadius, endpoint_upper_arm_right_16.length, 32, 12)
+  node_upper_arm_right_13.userData.sculptComponent = {"actionProfile": {"animationRole": "upper_arm_right", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [3.1, 6.4, 3.5], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "black_fur", "detachableFragments": [], "fractureGroup": "upper_arm_right", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(36, 35, 34, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(9, 9, 9, 1.0)"}, "confidence": 0.88, "deformations": [], "details": ["pixel-fur"], "dimensions": {"confidence": 0.9, "depth": 3.5, "height": 6.4, "units": "Blockbench units", "width": 3.1}, "evidenceRefs": ["full-object"], "fidelityTier": "blockout", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "upper_arm_right", "importance": 1.0, "joints": [], "level": "macro", "localFeatures": ["pixel-fur"], "material": "black_fur", "materialLayers": ["black_fur"], "name": "Right upper arm", "parent": null, "primitive": "box", "role": "long right upper arm", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [-4.65, 9.5, 2.1], "rotation": [-0.13962634015954636, 0.0, -0.13962634015954636], "scale": [3.1, 6.4, 3.5]}};
+  node_upper_arm_right_13.userData.actionProfile = {"animationRole": "upper_arm_right", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [3.1, 6.4, 3.5], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "black_fur", "detachableFragments": [], "fractureGroup": "upper_arm_right", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}};
+  (nodes["root"] ?? root).add(node_upper_arm_right_13);
+  nodes["upper_arm_right"] = node_upper_arm_right_13;
+  const mesh_upper_arm_right_13Geometry = endpoint_upper_arm_right_13
+    ? new THREE.CylinderGeometry(endpoint_upper_arm_right_13.endRadius, endpoint_upper_arm_right_13.baseRadius, endpoint_upper_arm_right_13.length, 32, 12)
     : new THREE.BoxGeometry(1, 1, 1, 12, 12, 12);
-  const mesh_upper_arm_right_16 = new THREE.Mesh(
-    mesh_upper_arm_right_16Geometry,
+  const mesh_upper_arm_right_13 = new THREE.Mesh(
+    mesh_upper_arm_right_13Geometry,
     materialMap["black_fur"] ?? new THREE.MeshStandardMaterial({ color: 0x888888 })
   );
-  mesh_upper_arm_right_16.name = "Right upper arm";
-  if (endpoint_upper_arm_right_16) {
-    mesh_upper_arm_right_16.position.copy(endpoint_upper_arm_right_16.midpoint);
-    mesh_upper_arm_right_16.quaternion.copy(endpoint_upper_arm_right_16.quaternion);
+  mesh_upper_arm_right_13.name = "Right upper arm";
+  if (endpoint_upper_arm_right_13) {
+    mesh_upper_arm_right_13.position.copy(endpoint_upper_arm_right_13.midpoint);
+    mesh_upper_arm_right_13.quaternion.copy(endpoint_upper_arm_right_13.quaternion);
   }
-  mesh_upper_arm_right_16.castShadow = options.castShadow ?? true;
-  mesh_upper_arm_right_16.receiveShadow = options.receiveShadow ?? true;
-  mesh_upper_arm_right_16.userData.sculptComponent = {"actionProfile": {"animationRole": "upper_arm_right", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [3.1, 6.4, 3.5], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "black_fur", "detachableFragments": [], "fractureGroup": "upper_arm_right", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(36, 35, 34, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(9, 9, 9, 1.0)"}, "confidence": 0.88, "deformations": [], "details": ["pixel-fur"], "dimensions": {"confidence": 0.9, "depth": 3.5, "height": 6.4, "units": "Blockbench units", "width": 3.1}, "evidenceRefs": ["full-object"], "fidelityTier": "blockout", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "upper_arm_right", "importance": 1.0, "joints": [], "level": "macro", "localFeatures": ["pixel-fur"], "material": "black_fur", "materialLayers": ["black_fur"], "name": "Right upper arm", "parent": null, "primitive": "box", "role": "long right upper arm", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [-4.65, 9.5, 2.1], "rotation": [-0.13962634015954636, 0.0, -0.13962634015954636], "scale": [3.1, 6.4, 3.5]}};
-  node_upper_arm_right_16.add(mesh_upper_arm_right_16);
-  meshes["upper_arm_right"] = mesh_upper_arm_right_16;
+  mesh_upper_arm_right_13.castShadow = options.castShadow ?? true;
+  mesh_upper_arm_right_13.receiveShadow = options.receiveShadow ?? true;
+  mesh_upper_arm_right_13.userData.sculptComponent = {"actionProfile": {"animationRole": "upper_arm_right", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [3.1, 6.4, 3.5], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "black_fur", "detachableFragments": [], "fractureGroup": "upper_arm_right", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(36, 35, 34, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(9, 9, 9, 1.0)"}, "confidence": 0.88, "deformations": [], "details": ["pixel-fur"], "dimensions": {"confidence": 0.9, "depth": 3.5, "height": 6.4, "units": "Blockbench units", "width": 3.1}, "evidenceRefs": ["full-object"], "fidelityTier": "blockout", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "upper_arm_right", "importance": 1.0, "joints": [], "level": "macro", "localFeatures": ["pixel-fur"], "material": "black_fur", "materialLayers": ["black_fur"], "name": "Right upper arm", "parent": null, "primitive": "box", "role": "long right upper arm", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [-4.65, 9.5, 2.1], "rotation": [-0.13962634015954636, 0.0, -0.13962634015954636], "scale": [3.1, 6.4, 3.5]}};
+  node_upper_arm_right_13.add(mesh_upper_arm_right_13);
+  meshes["upper_arm_right"] = mesh_upper_arm_right_13;
   colliders["upper_arm_right"] = {"isTrigger": false, "offset": [0, 0, 0], "scale": [3.1, 6.4, 3.5], "type": "box"};
   destructionGroups["upper_arm_right"] ??= [];
-  destructionGroups["upper_arm_right"].push(node_upper_arm_right_16);
+  destructionGroups["upper_arm_right"].push(node_upper_arm_right_13);
 
-  const attachment_forearm_right_17 = null;
-  const endpoint_forearm_right_17 = makeAttachmentEndpoint(attachment_forearm_right_17);
-  const node_forearm_right_17 = new THREE.Group();
-  node_forearm_right_17.name = "Right forearm__pivot";
-  if (endpoint_forearm_right_17) {
-    node_forearm_right_17.position.copy(endpoint_forearm_right_17.start);
-    node_forearm_right_17.rotation.set(0, 0, 0);
-    node_forearm_right_17.scale.set(1, 1, 1);
+  const attachment_forearm_right_14 = null;
+  const endpoint_forearm_right_14 = makeAttachmentEndpoint(attachment_forearm_right_14);
+  const node_forearm_right_14 = new THREE.Group();
+  node_forearm_right_14.name = "Right forearm__pivot";
+  if (endpoint_forearm_right_14) {
+    node_forearm_right_14.position.copy(endpoint_forearm_right_14.start);
+    node_forearm_right_14.rotation.set(0, 0, 0);
+    node_forearm_right_14.scale.set(1, 1, 1);
   } else {
-    node_forearm_right_17.position.set(-5.05, 5.0, 3.5);
-    node_forearm_right_17.rotation.set(-0.17453292519943295, 0.0, -0.05235987755982989);
-    node_forearm_right_17.scale.set(2.9, 6.5, 3.1);
+    node_forearm_right_14.position.set(-5.05, 5.0, 3.5);
+    node_forearm_right_14.rotation.set(-0.17453292519943295, 0.0, -0.05235987755982989);
+    node_forearm_right_14.scale.set(2.9, 6.5, 3.1);
   }
-  node_forearm_right_17.userData.sculptComponent = {"actionProfile": {"animationRole": "forearm_right", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [2.9, 6.5, 3.1], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "black_fur", "detachableFragments": [], "fractureGroup": "forearm_right", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(36, 35, 34, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(9, 9, 9, 1.0)"}, "confidence": 0.88, "deformations": [], "details": ["pixel-fur"], "dimensions": {"confidence": 0.9, "depth": 3.1, "height": 6.5, "units": "Blockbench units", "width": 2.9}, "evidenceRefs": ["full-object"], "fidelityTier": "blockout", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "forearm_right", "importance": 1.0, "joints": [], "level": "macro", "localFeatures": ["pixel-fur"], "material": "black_fur", "materialLayers": ["black_fur"], "name": "Right forearm", "parent": null, "primitive": "box", "role": "ground-reaching right forearm", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [-5.05, 5.0, 3.5], "rotation": [-0.17453292519943295, 0.0, -0.05235987755982989], "scale": [2.9, 6.5, 3.1]}};
-  node_forearm_right_17.userData.actionProfile = {"animationRole": "forearm_right", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [2.9, 6.5, 3.1], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "black_fur", "detachableFragments": [], "fractureGroup": "forearm_right", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}};
-  (nodes["root"] ?? root).add(node_forearm_right_17);
-  nodes["forearm_right"] = node_forearm_right_17;
-  const mesh_forearm_right_17Geometry = endpoint_forearm_right_17
-    ? new THREE.CylinderGeometry(endpoint_forearm_right_17.endRadius, endpoint_forearm_right_17.baseRadius, endpoint_forearm_right_17.length, 32, 12)
+  node_forearm_right_14.userData.sculptComponent = {"actionProfile": {"animationRole": "forearm_right", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [2.9, 6.5, 3.1], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "black_fur", "detachableFragments": [], "fractureGroup": "forearm_right", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(36, 35, 34, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(9, 9, 9, 1.0)"}, "confidence": 0.88, "deformations": [], "details": ["pixel-fur"], "dimensions": {"confidence": 0.9, "depth": 3.1, "height": 6.5, "units": "Blockbench units", "width": 2.9}, "evidenceRefs": ["full-object"], "fidelityTier": "blockout", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "forearm_right", "importance": 1.0, "joints": [], "level": "macro", "localFeatures": ["pixel-fur"], "material": "black_fur", "materialLayers": ["black_fur"], "name": "Right forearm", "parent": null, "primitive": "box", "role": "ground-reaching right forearm", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [-5.05, 5.0, 3.5], "rotation": [-0.17453292519943295, 0.0, -0.05235987755982989], "scale": [2.9, 6.5, 3.1]}};
+  node_forearm_right_14.userData.actionProfile = {"animationRole": "forearm_right", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [2.9, 6.5, 3.1], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "black_fur", "detachableFragments": [], "fractureGroup": "forearm_right", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}};
+  (nodes["root"] ?? root).add(node_forearm_right_14);
+  nodes["forearm_right"] = node_forearm_right_14;
+  const mesh_forearm_right_14Geometry = endpoint_forearm_right_14
+    ? new THREE.CylinderGeometry(endpoint_forearm_right_14.endRadius, endpoint_forearm_right_14.baseRadius, endpoint_forearm_right_14.length, 32, 12)
     : new THREE.BoxGeometry(1, 1, 1, 12, 12, 12);
-  const mesh_forearm_right_17 = new THREE.Mesh(
-    mesh_forearm_right_17Geometry,
+  const mesh_forearm_right_14 = new THREE.Mesh(
+    mesh_forearm_right_14Geometry,
     materialMap["black_fur"] ?? new THREE.MeshStandardMaterial({ color: 0x888888 })
   );
-  mesh_forearm_right_17.name = "Right forearm";
-  if (endpoint_forearm_right_17) {
-    mesh_forearm_right_17.position.copy(endpoint_forearm_right_17.midpoint);
-    mesh_forearm_right_17.quaternion.copy(endpoint_forearm_right_17.quaternion);
+  mesh_forearm_right_14.name = "Right forearm";
+  if (endpoint_forearm_right_14) {
+    mesh_forearm_right_14.position.copy(endpoint_forearm_right_14.midpoint);
+    mesh_forearm_right_14.quaternion.copy(endpoint_forearm_right_14.quaternion);
   }
-  mesh_forearm_right_17.castShadow = options.castShadow ?? true;
-  mesh_forearm_right_17.receiveShadow = options.receiveShadow ?? true;
-  mesh_forearm_right_17.userData.sculptComponent = {"actionProfile": {"animationRole": "forearm_right", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [2.9, 6.5, 3.1], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "black_fur", "detachableFragments": [], "fractureGroup": "forearm_right", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(36, 35, 34, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(9, 9, 9, 1.0)"}, "confidence": 0.88, "deformations": [], "details": ["pixel-fur"], "dimensions": {"confidence": 0.9, "depth": 3.1, "height": 6.5, "units": "Blockbench units", "width": 2.9}, "evidenceRefs": ["full-object"], "fidelityTier": "blockout", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "forearm_right", "importance": 1.0, "joints": [], "level": "macro", "localFeatures": ["pixel-fur"], "material": "black_fur", "materialLayers": ["black_fur"], "name": "Right forearm", "parent": null, "primitive": "box", "role": "ground-reaching right forearm", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [-5.05, 5.0, 3.5], "rotation": [-0.17453292519943295, 0.0, -0.05235987755982989], "scale": [2.9, 6.5, 3.1]}};
-  node_forearm_right_17.add(mesh_forearm_right_17);
-  meshes["forearm_right"] = mesh_forearm_right_17;
+  mesh_forearm_right_14.castShadow = options.castShadow ?? true;
+  mesh_forearm_right_14.receiveShadow = options.receiveShadow ?? true;
+  mesh_forearm_right_14.userData.sculptComponent = {"actionProfile": {"animationRole": "forearm_right", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [2.9, 6.5, 3.1], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "black_fur", "detachableFragments": [], "fractureGroup": "forearm_right", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(36, 35, 34, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(9, 9, 9, 1.0)"}, "confidence": 0.88, "deformations": [], "details": ["pixel-fur"], "dimensions": {"confidence": 0.9, "depth": 3.1, "height": 6.5, "units": "Blockbench units", "width": 2.9}, "evidenceRefs": ["full-object"], "fidelityTier": "blockout", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "forearm_right", "importance": 1.0, "joints": [], "level": "macro", "localFeatures": ["pixel-fur"], "material": "black_fur", "materialLayers": ["black_fur"], "name": "Right forearm", "parent": null, "primitive": "box", "role": "ground-reaching right forearm", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [-5.05, 5.0, 3.5], "rotation": [-0.17453292519943295, 0.0, -0.05235987755982989], "scale": [2.9, 6.5, 3.1]}};
+  node_forearm_right_14.add(mesh_forearm_right_14);
+  meshes["forearm_right"] = mesh_forearm_right_14;
   colliders["forearm_right"] = {"isTrigger": false, "offset": [0, 0, 0], "scale": [2.9, 6.5, 3.1], "type": "box"};
   destructionGroups["forearm_right"] ??= [];
-  destructionGroups["forearm_right"].push(node_forearm_right_17);
+  destructionGroups["forearm_right"].push(node_forearm_right_14);
 
-  const attachment_hand_right_18 = null;
-  const endpoint_hand_right_18 = makeAttachmentEndpoint(attachment_hand_right_18);
-  const node_hand_right_18 = new THREE.Group();
-  node_hand_right_18.name = "Right knuckle hand__pivot";
-  if (endpoint_hand_right_18) {
-    node_hand_right_18.position.copy(endpoint_hand_right_18.start);
-    node_hand_right_18.rotation.set(0, 0, 0);
-    node_hand_right_18.scale.set(1, 1, 1);
+  const attachment_hand_right_15 = null;
+  const endpoint_hand_right_15 = makeAttachmentEndpoint(attachment_hand_right_15);
+  const node_hand_right_15 = new THREE.Group();
+  node_hand_right_15.name = "Right knuckle hand__pivot";
+  if (endpoint_hand_right_15) {
+    node_hand_right_15.position.copy(endpoint_hand_right_15.start);
+    node_hand_right_15.rotation.set(0, 0, 0);
+    node_hand_right_15.scale.set(1, 1, 1);
   } else {
-    node_hand_right_18.position.set(-5.05, 1.25, 5.0);
-    node_hand_right_18.rotation.set(0.0, 0.0, 0.0);
-    node_hand_right_18.scale.set(4.0, 2.3, 4.4);
+    node_hand_right_15.position.set(-5.05, 1.25, 5.0);
+    node_hand_right_15.rotation.set(0.0, 0.0, 0.0);
+    node_hand_right_15.scale.set(4.0, 2.3, 4.4);
   }
-  node_hand_right_18.userData.sculptComponent = {"actionProfile": {"animationRole": "hand_right", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [4.0, 2.3, 4.4], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "palm_tan", "detachableFragments": [], "fractureGroup": "hand_right", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(158, 110, 76, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(104, 68, 47, 1.0)"}, "confidence": 0.88, "deformations": [], "details": [], "dimensions": {"confidence": 0.9, "depth": 4.4, "height": 2.3, "units": "Blockbench units", "width": 4.0}, "evidenceRefs": ["full-object"], "fidelityTier": "structural-pass", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "hand_right", "importance": 0.78, "joints": [], "level": "meso", "localFeatures": [], "material": "palm_tan", "materialLayers": ["palm_tan"], "name": "Right knuckle hand", "parent": null, "primitive": "box", "role": "broad grounded right hand", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [-5.05, 1.25, 5.0], "rotation": [0.0, 0.0, 0.0], "scale": [4.0, 2.3, 4.4]}};
-  node_hand_right_18.userData.actionProfile = {"animationRole": "hand_right", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [4.0, 2.3, 4.4], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "palm_tan", "detachableFragments": [], "fractureGroup": "hand_right", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}};
-  (nodes["root"] ?? root).add(node_hand_right_18);
-  nodes["hand_right"] = node_hand_right_18;
-  const mesh_hand_right_18Geometry = endpoint_hand_right_18
-    ? new THREE.CylinderGeometry(endpoint_hand_right_18.endRadius, endpoint_hand_right_18.baseRadius, endpoint_hand_right_18.length, 32, 12)
+  node_hand_right_15.userData.sculptComponent = {"actionProfile": {"animationRole": "hand_right", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [4.0, 2.3, 4.4], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "palm_tan", "detachableFragments": [], "fractureGroup": "hand_right", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(158, 110, 76, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(104, 68, 47, 1.0)"}, "confidence": 0.88, "deformations": [], "details": [], "dimensions": {"confidence": 0.9, "depth": 4.4, "height": 2.3, "units": "Blockbench units", "width": 4.0}, "evidenceRefs": ["full-object"], "fidelityTier": "structural-pass", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "hand_right", "importance": 0.78, "joints": [], "level": "meso", "localFeatures": [], "material": "palm_tan", "materialLayers": ["palm_tan"], "name": "Right knuckle hand", "parent": null, "primitive": "box", "role": "broad grounded right hand", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [-5.05, 1.25, 5.0], "rotation": [0.0, 0.0, 0.0], "scale": [4.0, 2.3, 4.4]}};
+  node_hand_right_15.userData.actionProfile = {"animationRole": "hand_right", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [4.0, 2.3, 4.4], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "palm_tan", "detachableFragments": [], "fractureGroup": "hand_right", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}};
+  (nodes["root"] ?? root).add(node_hand_right_15);
+  nodes["hand_right"] = node_hand_right_15;
+  const mesh_hand_right_15Geometry = endpoint_hand_right_15
+    ? new THREE.CylinderGeometry(endpoint_hand_right_15.endRadius, endpoint_hand_right_15.baseRadius, endpoint_hand_right_15.length, 32, 12)
     : new THREE.BoxGeometry(1, 1, 1, 12, 12, 12);
-  const mesh_hand_right_18 = new THREE.Mesh(
-    mesh_hand_right_18Geometry,
+  const mesh_hand_right_15 = new THREE.Mesh(
+    mesh_hand_right_15Geometry,
     materialMap["palm_tan"] ?? new THREE.MeshStandardMaterial({ color: 0x888888 })
   );
-  mesh_hand_right_18.name = "Right knuckle hand";
-  if (endpoint_hand_right_18) {
-    mesh_hand_right_18.position.copy(endpoint_hand_right_18.midpoint);
-    mesh_hand_right_18.quaternion.copy(endpoint_hand_right_18.quaternion);
+  mesh_hand_right_15.name = "Right knuckle hand";
+  if (endpoint_hand_right_15) {
+    mesh_hand_right_15.position.copy(endpoint_hand_right_15.midpoint);
+    mesh_hand_right_15.quaternion.copy(endpoint_hand_right_15.quaternion);
   }
-  mesh_hand_right_18.castShadow = options.castShadow ?? true;
-  mesh_hand_right_18.receiveShadow = options.receiveShadow ?? true;
-  mesh_hand_right_18.userData.sculptComponent = {"actionProfile": {"animationRole": "hand_right", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [4.0, 2.3, 4.4], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "palm_tan", "detachableFragments": [], "fractureGroup": "hand_right", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(158, 110, 76, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(104, 68, 47, 1.0)"}, "confidence": 0.88, "deformations": [], "details": [], "dimensions": {"confidence": 0.9, "depth": 4.4, "height": 2.3, "units": "Blockbench units", "width": 4.0}, "evidenceRefs": ["full-object"], "fidelityTier": "structural-pass", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "hand_right", "importance": 0.78, "joints": [], "level": "meso", "localFeatures": [], "material": "palm_tan", "materialLayers": ["palm_tan"], "name": "Right knuckle hand", "parent": null, "primitive": "box", "role": "broad grounded right hand", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [-5.05, 1.25, 5.0], "rotation": [0.0, 0.0, 0.0], "scale": [4.0, 2.3, 4.4]}};
-  node_hand_right_18.add(mesh_hand_right_18);
-  meshes["hand_right"] = mesh_hand_right_18;
+  mesh_hand_right_15.castShadow = options.castShadow ?? true;
+  mesh_hand_right_15.receiveShadow = options.receiveShadow ?? true;
+  mesh_hand_right_15.userData.sculptComponent = {"actionProfile": {"animationRole": "hand_right", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [4.0, 2.3, 4.4], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "palm_tan", "detachableFragments": [], "fractureGroup": "hand_right", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(158, 110, 76, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(104, 68, 47, 1.0)"}, "confidence": 0.88, "deformations": [], "details": [], "dimensions": {"confidence": 0.9, "depth": 4.4, "height": 2.3, "units": "Blockbench units", "width": 4.0}, "evidenceRefs": ["full-object"], "fidelityTier": "structural-pass", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "hand_right", "importance": 0.78, "joints": [], "level": "meso", "localFeatures": [], "material": "palm_tan", "materialLayers": ["palm_tan"], "name": "Right knuckle hand", "parent": null, "primitive": "box", "role": "broad grounded right hand", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [-5.05, 1.25, 5.0], "rotation": [0.0, 0.0, 0.0], "scale": [4.0, 2.3, 4.4]}};
+  node_hand_right_15.add(mesh_hand_right_15);
+  meshes["hand_right"] = mesh_hand_right_15;
   colliders["hand_right"] = {"isTrigger": false, "offset": [0, 0, 0], "scale": [4.0, 2.3, 4.4], "type": "box"};
   destructionGroups["hand_right"] ??= [];
-  destructionGroups["hand_right"].push(node_hand_right_18);
+  destructionGroups["hand_right"].push(node_hand_right_15);
 
-  const attachment_thigh_left_19 = null;
-  const endpoint_thigh_left_19 = makeAttachmentEndpoint(attachment_thigh_left_19);
-  const node_thigh_left_19 = new THREE.Group();
-  node_thigh_left_19.name = "Left thigh__pivot";
-  if (endpoint_thigh_left_19) {
-    node_thigh_left_19.position.copy(endpoint_thigh_left_19.start);
-    node_thigh_left_19.rotation.set(0, 0, 0);
-    node_thigh_left_19.scale.set(1, 1, 1);
+  const attachment_thigh_left_16 = null;
+  const endpoint_thigh_left_16 = makeAttachmentEndpoint(attachment_thigh_left_16);
+  const node_thigh_left_16 = new THREE.Group();
+  node_thigh_left_16.name = "Left thigh__pivot";
+  if (endpoint_thigh_left_16) {
+    node_thigh_left_16.position.copy(endpoint_thigh_left_16.start);
+    node_thigh_left_16.rotation.set(0, 0, 0);
+    node_thigh_left_16.scale.set(1, 1, 1);
   } else {
-    node_thigh_left_19.position.set(2.55, 5.6, -1.7);
-    node_thigh_left_19.rotation.set(0.22689280275926285, 0.0, 0.0);
-    node_thigh_left_19.scale.set(3.3, 4.7, 3.9);
+    node_thigh_left_16.position.set(2.55, 5.6, -1.7);
+    node_thigh_left_16.rotation.set(0.22689280275926285, 0.0, 0.0);
+    node_thigh_left_16.scale.set(3.3, 4.7, 3.9);
   }
-  node_thigh_left_19.userData.sculptComponent = {"actionProfile": {"animationRole": "thigh_left", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [3.3, 4.7, 3.9], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "black_fur", "detachableFragments": [], "fractureGroup": "thigh_left", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(36, 35, 34, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(9, 9, 9, 1.0)"}, "confidence": 0.88, "deformations": [], "details": ["pixel-fur"], "dimensions": {"confidence": 0.9, "depth": 3.9, "height": 4.7, "units": "Blockbench units", "width": 3.3}, "evidenceRefs": ["full-object"], "fidelityTier": "structural-pass", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "thigh_left", "importance": 0.78, "joints": [], "level": "meso", "localFeatures": ["pixel-fur"], "material": "black_fur", "materialLayers": ["black_fur"], "name": "Left thigh", "parent": null, "primitive": "box", "role": "compact bent left thigh", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [2.55, 5.6, -1.7], "rotation": [0.22689280275926285, 0.0, 0.0], "scale": [3.3, 4.7, 3.9]}};
-  node_thigh_left_19.userData.actionProfile = {"animationRole": "thigh_left", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [3.3, 4.7, 3.9], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "black_fur", "detachableFragments": [], "fractureGroup": "thigh_left", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}};
-  (nodes["root"] ?? root).add(node_thigh_left_19);
-  nodes["thigh_left"] = node_thigh_left_19;
-  const mesh_thigh_left_19Geometry = endpoint_thigh_left_19
-    ? new THREE.CylinderGeometry(endpoint_thigh_left_19.endRadius, endpoint_thigh_left_19.baseRadius, endpoint_thigh_left_19.length, 32, 12)
+  node_thigh_left_16.userData.sculptComponent = {"actionProfile": {"animationRole": "thigh_left", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [3.3, 4.7, 3.9], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "black_fur", "detachableFragments": [], "fractureGroup": "thigh_left", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(36, 35, 34, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(9, 9, 9, 1.0)"}, "confidence": 0.88, "deformations": [], "details": ["pixel-fur"], "dimensions": {"confidence": 0.9, "depth": 3.9, "height": 4.7, "units": "Blockbench units", "width": 3.3}, "evidenceRefs": ["full-object"], "fidelityTier": "structural-pass", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "thigh_left", "importance": 0.78, "joints": [], "level": "meso", "localFeatures": ["pixel-fur"], "material": "black_fur", "materialLayers": ["black_fur"], "name": "Left thigh", "parent": null, "primitive": "box", "role": "compact bent left thigh", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [2.55, 5.6, -1.7], "rotation": [0.22689280275926285, 0.0, 0.0], "scale": [3.3, 4.7, 3.9]}};
+  node_thigh_left_16.userData.actionProfile = {"animationRole": "thigh_left", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [3.3, 4.7, 3.9], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "black_fur", "detachableFragments": [], "fractureGroup": "thigh_left", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}};
+  (nodes["root"] ?? root).add(node_thigh_left_16);
+  nodes["thigh_left"] = node_thigh_left_16;
+  const mesh_thigh_left_16Geometry = endpoint_thigh_left_16
+    ? new THREE.CylinderGeometry(endpoint_thigh_left_16.endRadius, endpoint_thigh_left_16.baseRadius, endpoint_thigh_left_16.length, 32, 12)
     : new THREE.BoxGeometry(1, 1, 1, 12, 12, 12);
-  const mesh_thigh_left_19 = new THREE.Mesh(
-    mesh_thigh_left_19Geometry,
+  const mesh_thigh_left_16 = new THREE.Mesh(
+    mesh_thigh_left_16Geometry,
     materialMap["black_fur"] ?? new THREE.MeshStandardMaterial({ color: 0x888888 })
   );
-  mesh_thigh_left_19.name = "Left thigh";
-  if (endpoint_thigh_left_19) {
-    mesh_thigh_left_19.position.copy(endpoint_thigh_left_19.midpoint);
-    mesh_thigh_left_19.quaternion.copy(endpoint_thigh_left_19.quaternion);
+  mesh_thigh_left_16.name = "Left thigh";
+  if (endpoint_thigh_left_16) {
+    mesh_thigh_left_16.position.copy(endpoint_thigh_left_16.midpoint);
+    mesh_thigh_left_16.quaternion.copy(endpoint_thigh_left_16.quaternion);
   }
-  mesh_thigh_left_19.castShadow = options.castShadow ?? true;
-  mesh_thigh_left_19.receiveShadow = options.receiveShadow ?? true;
-  mesh_thigh_left_19.userData.sculptComponent = {"actionProfile": {"animationRole": "thigh_left", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [3.3, 4.7, 3.9], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "black_fur", "detachableFragments": [], "fractureGroup": "thigh_left", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(36, 35, 34, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(9, 9, 9, 1.0)"}, "confidence": 0.88, "deformations": [], "details": ["pixel-fur"], "dimensions": {"confidence": 0.9, "depth": 3.9, "height": 4.7, "units": "Blockbench units", "width": 3.3}, "evidenceRefs": ["full-object"], "fidelityTier": "structural-pass", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "thigh_left", "importance": 0.78, "joints": [], "level": "meso", "localFeatures": ["pixel-fur"], "material": "black_fur", "materialLayers": ["black_fur"], "name": "Left thigh", "parent": null, "primitive": "box", "role": "compact bent left thigh", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [2.55, 5.6, -1.7], "rotation": [0.22689280275926285, 0.0, 0.0], "scale": [3.3, 4.7, 3.9]}};
-  node_thigh_left_19.add(mesh_thigh_left_19);
-  meshes["thigh_left"] = mesh_thigh_left_19;
+  mesh_thigh_left_16.castShadow = options.castShadow ?? true;
+  mesh_thigh_left_16.receiveShadow = options.receiveShadow ?? true;
+  mesh_thigh_left_16.userData.sculptComponent = {"actionProfile": {"animationRole": "thigh_left", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [3.3, 4.7, 3.9], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "black_fur", "detachableFragments": [], "fractureGroup": "thigh_left", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(36, 35, 34, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(9, 9, 9, 1.0)"}, "confidence": 0.88, "deformations": [], "details": ["pixel-fur"], "dimensions": {"confidence": 0.9, "depth": 3.9, "height": 4.7, "units": "Blockbench units", "width": 3.3}, "evidenceRefs": ["full-object"], "fidelityTier": "structural-pass", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "thigh_left", "importance": 0.78, "joints": [], "level": "meso", "localFeatures": ["pixel-fur"], "material": "black_fur", "materialLayers": ["black_fur"], "name": "Left thigh", "parent": null, "primitive": "box", "role": "compact bent left thigh", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [2.55, 5.6, -1.7], "rotation": [0.22689280275926285, 0.0, 0.0], "scale": [3.3, 4.7, 3.9]}};
+  node_thigh_left_16.add(mesh_thigh_left_16);
+  meshes["thigh_left"] = mesh_thigh_left_16;
   colliders["thigh_left"] = {"isTrigger": false, "offset": [0, 0, 0], "scale": [3.3, 4.7, 3.9], "type": "box"};
   destructionGroups["thigh_left"] ??= [];
-  destructionGroups["thigh_left"].push(node_thigh_left_19);
+  destructionGroups["thigh_left"].push(node_thigh_left_16);
 
-  const attachment_shin_left_20 = null;
-  const endpoint_shin_left_20 = makeAttachmentEndpoint(attachment_shin_left_20);
-  const node_shin_left_20 = new THREE.Group();
-  node_shin_left_20.name = "Left shin__pivot";
-  if (endpoint_shin_left_20) {
-    node_shin_left_20.position.copy(endpoint_shin_left_20.start);
-    node_shin_left_20.rotation.set(0, 0, 0);
-    node_shin_left_20.scale.set(1, 1, 1);
+  const attachment_shin_left_17 = null;
+  const endpoint_shin_left_17 = makeAttachmentEndpoint(attachment_shin_left_17);
+  const node_shin_left_17 = new THREE.Group();
+  node_shin_left_17.name = "Left shin__pivot";
+  if (endpoint_shin_left_17) {
+    node_shin_left_17.position.copy(endpoint_shin_left_17.start);
+    node_shin_left_17.rotation.set(0, 0, 0);
+    node_shin_left_17.scale.set(1, 1, 1);
   } else {
-    node_shin_left_20.position.set(2.55, 3.0, -0.35);
-    node_shin_left_20.rotation.set(-0.2792526803190927, 0.0, 0.0);
-    node_shin_left_20.scale.set(2.9, 3.9, 3.1);
+    node_shin_left_17.position.set(2.55, 3.0, -0.35);
+    node_shin_left_17.rotation.set(-0.2792526803190927, 0.0, 0.0);
+    node_shin_left_17.scale.set(2.9, 3.9, 3.1);
   }
-  node_shin_left_20.userData.sculptComponent = {"actionProfile": {"animationRole": "shin_left", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [2.9, 3.9, 3.1], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "black_fur", "detachableFragments": [], "fractureGroup": "shin_left", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(36, 35, 34, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(9, 9, 9, 1.0)"}, "confidence": 0.88, "deformations": [], "details": ["pixel-fur"], "dimensions": {"confidence": 0.9, "depth": 3.1, "height": 3.9, "units": "Blockbench units", "width": 2.9}, "evidenceRefs": ["full-object"], "fidelityTier": "structural-pass", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "shin_left", "importance": 0.78, "joints": [], "level": "meso", "localFeatures": ["pixel-fur"], "material": "black_fur", "materialLayers": ["black_fur"], "name": "Left shin", "parent": null, "primitive": "box", "role": "forward angled left shin", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [2.55, 3.0, -0.35], "rotation": [-0.2792526803190927, 0.0, 0.0], "scale": [2.9, 3.9, 3.1]}};
-  node_shin_left_20.userData.actionProfile = {"animationRole": "shin_left", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [2.9, 3.9, 3.1], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "black_fur", "detachableFragments": [], "fractureGroup": "shin_left", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}};
-  (nodes["root"] ?? root).add(node_shin_left_20);
-  nodes["shin_left"] = node_shin_left_20;
-  const mesh_shin_left_20Geometry = endpoint_shin_left_20
-    ? new THREE.CylinderGeometry(endpoint_shin_left_20.endRadius, endpoint_shin_left_20.baseRadius, endpoint_shin_left_20.length, 32, 12)
+  node_shin_left_17.userData.sculptComponent = {"actionProfile": {"animationRole": "shin_left", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [2.9, 3.9, 3.1], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "black_fur", "detachableFragments": [], "fractureGroup": "shin_left", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(36, 35, 34, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(9, 9, 9, 1.0)"}, "confidence": 0.88, "deformations": [], "details": ["pixel-fur"], "dimensions": {"confidence": 0.9, "depth": 3.1, "height": 3.9, "units": "Blockbench units", "width": 2.9}, "evidenceRefs": ["full-object"], "fidelityTier": "structural-pass", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "shin_left", "importance": 0.78, "joints": [], "level": "meso", "localFeatures": ["pixel-fur"], "material": "black_fur", "materialLayers": ["black_fur"], "name": "Left shin", "parent": null, "primitive": "box", "role": "forward angled left shin", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [2.55, 3.0, -0.35], "rotation": [-0.2792526803190927, 0.0, 0.0], "scale": [2.9, 3.9, 3.1]}};
+  node_shin_left_17.userData.actionProfile = {"animationRole": "shin_left", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [2.9, 3.9, 3.1], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "black_fur", "detachableFragments": [], "fractureGroup": "shin_left", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}};
+  (nodes["root"] ?? root).add(node_shin_left_17);
+  nodes["shin_left"] = node_shin_left_17;
+  const mesh_shin_left_17Geometry = endpoint_shin_left_17
+    ? new THREE.CylinderGeometry(endpoint_shin_left_17.endRadius, endpoint_shin_left_17.baseRadius, endpoint_shin_left_17.length, 32, 12)
     : new THREE.BoxGeometry(1, 1, 1, 12, 12, 12);
-  const mesh_shin_left_20 = new THREE.Mesh(
-    mesh_shin_left_20Geometry,
+  const mesh_shin_left_17 = new THREE.Mesh(
+    mesh_shin_left_17Geometry,
     materialMap["black_fur"] ?? new THREE.MeshStandardMaterial({ color: 0x888888 })
   );
-  mesh_shin_left_20.name = "Left shin";
-  if (endpoint_shin_left_20) {
-    mesh_shin_left_20.position.copy(endpoint_shin_left_20.midpoint);
-    mesh_shin_left_20.quaternion.copy(endpoint_shin_left_20.quaternion);
+  mesh_shin_left_17.name = "Left shin";
+  if (endpoint_shin_left_17) {
+    mesh_shin_left_17.position.copy(endpoint_shin_left_17.midpoint);
+    mesh_shin_left_17.quaternion.copy(endpoint_shin_left_17.quaternion);
   }
-  mesh_shin_left_20.castShadow = options.castShadow ?? true;
-  mesh_shin_left_20.receiveShadow = options.receiveShadow ?? true;
-  mesh_shin_left_20.userData.sculptComponent = {"actionProfile": {"animationRole": "shin_left", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [2.9, 3.9, 3.1], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "black_fur", "detachableFragments": [], "fractureGroup": "shin_left", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(36, 35, 34, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(9, 9, 9, 1.0)"}, "confidence": 0.88, "deformations": [], "details": ["pixel-fur"], "dimensions": {"confidence": 0.9, "depth": 3.1, "height": 3.9, "units": "Blockbench units", "width": 2.9}, "evidenceRefs": ["full-object"], "fidelityTier": "structural-pass", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "shin_left", "importance": 0.78, "joints": [], "level": "meso", "localFeatures": ["pixel-fur"], "material": "black_fur", "materialLayers": ["black_fur"], "name": "Left shin", "parent": null, "primitive": "box", "role": "forward angled left shin", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [2.55, 3.0, -0.35], "rotation": [-0.2792526803190927, 0.0, 0.0], "scale": [2.9, 3.9, 3.1]}};
-  node_shin_left_20.add(mesh_shin_left_20);
-  meshes["shin_left"] = mesh_shin_left_20;
+  mesh_shin_left_17.castShadow = options.castShadow ?? true;
+  mesh_shin_left_17.receiveShadow = options.receiveShadow ?? true;
+  mesh_shin_left_17.userData.sculptComponent = {"actionProfile": {"animationRole": "shin_left", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [2.9, 3.9, 3.1], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "black_fur", "detachableFragments": [], "fractureGroup": "shin_left", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(36, 35, 34, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(9, 9, 9, 1.0)"}, "confidence": 0.88, "deformations": [], "details": ["pixel-fur"], "dimensions": {"confidence": 0.9, "depth": 3.1, "height": 3.9, "units": "Blockbench units", "width": 2.9}, "evidenceRefs": ["full-object"], "fidelityTier": "structural-pass", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "shin_left", "importance": 0.78, "joints": [], "level": "meso", "localFeatures": ["pixel-fur"], "material": "black_fur", "materialLayers": ["black_fur"], "name": "Left shin", "parent": null, "primitive": "box", "role": "forward angled left shin", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [2.55, 3.0, -0.35], "rotation": [-0.2792526803190927, 0.0, 0.0], "scale": [2.9, 3.9, 3.1]}};
+  node_shin_left_17.add(mesh_shin_left_17);
+  meshes["shin_left"] = mesh_shin_left_17;
   colliders["shin_left"] = {"isTrigger": false, "offset": [0, 0, 0], "scale": [2.9, 3.9, 3.1], "type": "box"};
   destructionGroups["shin_left"] ??= [];
-  destructionGroups["shin_left"].push(node_shin_left_20);
+  destructionGroups["shin_left"].push(node_shin_left_17);
 
-  const attachment_foot_left_21 = null;
-  const endpoint_foot_left_21 = makeAttachmentEndpoint(attachment_foot_left_21);
-  const node_foot_left_21 = new THREE.Group();
-  node_foot_left_21.name = "Left foot__pivot";
-  if (endpoint_foot_left_21) {
-    node_foot_left_21.position.copy(endpoint_foot_left_21.start);
-    node_foot_left_21.rotation.set(0, 0, 0);
-    node_foot_left_21.scale.set(1, 1, 1);
+  const attachment_foot_left_18 = null;
+  const endpoint_foot_left_18 = makeAttachmentEndpoint(attachment_foot_left_18);
+  const node_foot_left_18 = new THREE.Group();
+  node_foot_left_18.name = "Left foot__pivot";
+  if (endpoint_foot_left_18) {
+    node_foot_left_18.position.copy(endpoint_foot_left_18.start);
+    node_foot_left_18.rotation.set(0, 0, 0);
+    node_foot_left_18.scale.set(1, 1, 1);
   } else {
-    node_foot_left_21.position.set(2.55, 0.85, 1.3);
-    node_foot_left_21.rotation.set(0.0, 0.0, 0.0);
-    node_foot_left_21.scale.set(3.9, 1.7, 4.9);
+    node_foot_left_18.position.set(2.55, 0.85, 1.3);
+    node_foot_left_18.rotation.set(0.0, 0.0, 0.0);
+    node_foot_left_18.scale.set(3.9, 1.7, 4.9);
   }
-  node_foot_left_21.userData.sculptComponent = {"actionProfile": {"animationRole": "foot_left", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [3.9, 1.7, 4.9], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "palm_tan", "detachableFragments": [], "fractureGroup": "foot_left", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(158, 110, 76, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(104, 68, 47, 1.0)"}, "confidence": 0.88, "deformations": [], "details": [], "dimensions": {"confidence": 0.9, "depth": 4.9, "height": 1.7, "units": "Blockbench units", "width": 3.9}, "evidenceRefs": ["full-object"], "fidelityTier": "structural-pass", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "foot_left", "importance": 0.78, "joints": [], "level": "meso", "localFeatures": [], "material": "palm_tan", "materialLayers": ["palm_tan"], "name": "Left foot", "parent": null, "primitive": "box", "role": "broad left foot", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [2.55, 0.85, 1.3], "rotation": [0.0, 0.0, 0.0], "scale": [3.9, 1.7, 4.9]}};
-  node_foot_left_21.userData.actionProfile = {"animationRole": "foot_left", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [3.9, 1.7, 4.9], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "palm_tan", "detachableFragments": [], "fractureGroup": "foot_left", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}};
-  (nodes["root"] ?? root).add(node_foot_left_21);
-  nodes["foot_left"] = node_foot_left_21;
-  const mesh_foot_left_21Geometry = endpoint_foot_left_21
-    ? new THREE.CylinderGeometry(endpoint_foot_left_21.endRadius, endpoint_foot_left_21.baseRadius, endpoint_foot_left_21.length, 32, 12)
+  node_foot_left_18.userData.sculptComponent = {"actionProfile": {"animationRole": "foot_left", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [3.9, 1.7, 4.9], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "palm_tan", "detachableFragments": [], "fractureGroup": "foot_left", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(158, 110, 76, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(104, 68, 47, 1.0)"}, "confidence": 0.88, "deformations": [], "details": [], "dimensions": {"confidence": 0.9, "depth": 4.9, "height": 1.7, "units": "Blockbench units", "width": 3.9}, "evidenceRefs": ["full-object"], "fidelityTier": "structural-pass", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "foot_left", "importance": 0.78, "joints": [], "level": "meso", "localFeatures": [], "material": "palm_tan", "materialLayers": ["palm_tan"], "name": "Left foot", "parent": null, "primitive": "box", "role": "broad left foot", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [2.55, 0.85, 1.3], "rotation": [0.0, 0.0, 0.0], "scale": [3.9, 1.7, 4.9]}};
+  node_foot_left_18.userData.actionProfile = {"animationRole": "foot_left", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [3.9, 1.7, 4.9], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "palm_tan", "detachableFragments": [], "fractureGroup": "foot_left", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}};
+  (nodes["root"] ?? root).add(node_foot_left_18);
+  nodes["foot_left"] = node_foot_left_18;
+  const mesh_foot_left_18Geometry = endpoint_foot_left_18
+    ? new THREE.CylinderGeometry(endpoint_foot_left_18.endRadius, endpoint_foot_left_18.baseRadius, endpoint_foot_left_18.length, 32, 12)
     : new THREE.BoxGeometry(1, 1, 1, 12, 12, 12);
-  const mesh_foot_left_21 = new THREE.Mesh(
-    mesh_foot_left_21Geometry,
+  const mesh_foot_left_18 = new THREE.Mesh(
+    mesh_foot_left_18Geometry,
     materialMap["palm_tan"] ?? new THREE.MeshStandardMaterial({ color: 0x888888 })
   );
-  mesh_foot_left_21.name = "Left foot";
-  if (endpoint_foot_left_21) {
-    mesh_foot_left_21.position.copy(endpoint_foot_left_21.midpoint);
-    mesh_foot_left_21.quaternion.copy(endpoint_foot_left_21.quaternion);
+  mesh_foot_left_18.name = "Left foot";
+  if (endpoint_foot_left_18) {
+    mesh_foot_left_18.position.copy(endpoint_foot_left_18.midpoint);
+    mesh_foot_left_18.quaternion.copy(endpoint_foot_left_18.quaternion);
   }
-  mesh_foot_left_21.castShadow = options.castShadow ?? true;
-  mesh_foot_left_21.receiveShadow = options.receiveShadow ?? true;
-  mesh_foot_left_21.userData.sculptComponent = {"actionProfile": {"animationRole": "foot_left", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [3.9, 1.7, 4.9], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "palm_tan", "detachableFragments": [], "fractureGroup": "foot_left", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(158, 110, 76, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(104, 68, 47, 1.0)"}, "confidence": 0.88, "deformations": [], "details": [], "dimensions": {"confidence": 0.9, "depth": 4.9, "height": 1.7, "units": "Blockbench units", "width": 3.9}, "evidenceRefs": ["full-object"], "fidelityTier": "structural-pass", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "foot_left", "importance": 0.78, "joints": [], "level": "meso", "localFeatures": [], "material": "palm_tan", "materialLayers": ["palm_tan"], "name": "Left foot", "parent": null, "primitive": "box", "role": "broad left foot", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [2.55, 0.85, 1.3], "rotation": [0.0, 0.0, 0.0], "scale": [3.9, 1.7, 4.9]}};
-  node_foot_left_21.add(mesh_foot_left_21);
-  meshes["foot_left"] = mesh_foot_left_21;
+  mesh_foot_left_18.castShadow = options.castShadow ?? true;
+  mesh_foot_left_18.receiveShadow = options.receiveShadow ?? true;
+  mesh_foot_left_18.userData.sculptComponent = {"actionProfile": {"animationRole": "foot_left", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [3.9, 1.7, 4.9], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "palm_tan", "detachableFragments": [], "fractureGroup": "foot_left", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(158, 110, 76, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(104, 68, 47, 1.0)"}, "confidence": 0.88, "deformations": [], "details": [], "dimensions": {"confidence": 0.9, "depth": 4.9, "height": 1.7, "units": "Blockbench units", "width": 3.9}, "evidenceRefs": ["full-object"], "fidelityTier": "structural-pass", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "foot_left", "importance": 0.78, "joints": [], "level": "meso", "localFeatures": [], "material": "palm_tan", "materialLayers": ["palm_tan"], "name": "Left foot", "parent": null, "primitive": "box", "role": "broad left foot", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [2.55, 0.85, 1.3], "rotation": [0.0, 0.0, 0.0], "scale": [3.9, 1.7, 4.9]}};
+  node_foot_left_18.add(mesh_foot_left_18);
+  meshes["foot_left"] = mesh_foot_left_18;
   colliders["foot_left"] = {"isTrigger": false, "offset": [0, 0, 0], "scale": [3.9, 1.7, 4.9], "type": "box"};
   destructionGroups["foot_left"] ??= [];
-  destructionGroups["foot_left"].push(node_foot_left_21);
+  destructionGroups["foot_left"].push(node_foot_left_18);
 
-  const attachment_thigh_right_22 = null;
-  const endpoint_thigh_right_22 = makeAttachmentEndpoint(attachment_thigh_right_22);
-  const node_thigh_right_22 = new THREE.Group();
-  node_thigh_right_22.name = "Right thigh__pivot";
-  if (endpoint_thigh_right_22) {
-    node_thigh_right_22.position.copy(endpoint_thigh_right_22.start);
-    node_thigh_right_22.rotation.set(0, 0, 0);
-    node_thigh_right_22.scale.set(1, 1, 1);
+  const attachment_thigh_right_19 = null;
+  const endpoint_thigh_right_19 = makeAttachmentEndpoint(attachment_thigh_right_19);
+  const node_thigh_right_19 = new THREE.Group();
+  node_thigh_right_19.name = "Right thigh__pivot";
+  if (endpoint_thigh_right_19) {
+    node_thigh_right_19.position.copy(endpoint_thigh_right_19.start);
+    node_thigh_right_19.rotation.set(0, 0, 0);
+    node_thigh_right_19.scale.set(1, 1, 1);
   } else {
-    node_thigh_right_22.position.set(-2.55, 5.6, -1.7);
-    node_thigh_right_22.rotation.set(0.22689280275926285, 0.0, 0.0);
-    node_thigh_right_22.scale.set(3.3, 4.7, 3.9);
+    node_thigh_right_19.position.set(-2.55, 5.6, -1.7);
+    node_thigh_right_19.rotation.set(0.22689280275926285, 0.0, 0.0);
+    node_thigh_right_19.scale.set(3.3, 4.7, 3.9);
   }
-  node_thigh_right_22.userData.sculptComponent = {"actionProfile": {"animationRole": "thigh_right", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [3.3, 4.7, 3.9], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "black_fur", "detachableFragments": [], "fractureGroup": "thigh_right", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(36, 35, 34, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(9, 9, 9, 1.0)"}, "confidence": 0.88, "deformations": [], "details": ["pixel-fur"], "dimensions": {"confidence": 0.9, "depth": 3.9, "height": 4.7, "units": "Blockbench units", "width": 3.3}, "evidenceRefs": ["full-object"], "fidelityTier": "structural-pass", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "thigh_right", "importance": 0.78, "joints": [], "level": "meso", "localFeatures": ["pixel-fur"], "material": "black_fur", "materialLayers": ["black_fur"], "name": "Right thigh", "parent": null, "primitive": "box", "role": "compact bent right thigh", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [-2.55, 5.6, -1.7], "rotation": [0.22689280275926285, 0.0, 0.0], "scale": [3.3, 4.7, 3.9]}};
-  node_thigh_right_22.userData.actionProfile = {"animationRole": "thigh_right", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [3.3, 4.7, 3.9], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "black_fur", "detachableFragments": [], "fractureGroup": "thigh_right", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}};
-  (nodes["root"] ?? root).add(node_thigh_right_22);
-  nodes["thigh_right"] = node_thigh_right_22;
-  const mesh_thigh_right_22Geometry = endpoint_thigh_right_22
-    ? new THREE.CylinderGeometry(endpoint_thigh_right_22.endRadius, endpoint_thigh_right_22.baseRadius, endpoint_thigh_right_22.length, 32, 12)
+  node_thigh_right_19.userData.sculptComponent = {"actionProfile": {"animationRole": "thigh_right", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [3.3, 4.7, 3.9], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "black_fur", "detachableFragments": [], "fractureGroup": "thigh_right", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(36, 35, 34, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(9, 9, 9, 1.0)"}, "confidence": 0.88, "deformations": [], "details": ["pixel-fur"], "dimensions": {"confidence": 0.9, "depth": 3.9, "height": 4.7, "units": "Blockbench units", "width": 3.3}, "evidenceRefs": ["full-object"], "fidelityTier": "structural-pass", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "thigh_right", "importance": 0.78, "joints": [], "level": "meso", "localFeatures": ["pixel-fur"], "material": "black_fur", "materialLayers": ["black_fur"], "name": "Right thigh", "parent": null, "primitive": "box", "role": "compact bent right thigh", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [-2.55, 5.6, -1.7], "rotation": [0.22689280275926285, 0.0, 0.0], "scale": [3.3, 4.7, 3.9]}};
+  node_thigh_right_19.userData.actionProfile = {"animationRole": "thigh_right", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [3.3, 4.7, 3.9], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "black_fur", "detachableFragments": [], "fractureGroup": "thigh_right", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}};
+  (nodes["root"] ?? root).add(node_thigh_right_19);
+  nodes["thigh_right"] = node_thigh_right_19;
+  const mesh_thigh_right_19Geometry = endpoint_thigh_right_19
+    ? new THREE.CylinderGeometry(endpoint_thigh_right_19.endRadius, endpoint_thigh_right_19.baseRadius, endpoint_thigh_right_19.length, 32, 12)
     : new THREE.BoxGeometry(1, 1, 1, 12, 12, 12);
-  const mesh_thigh_right_22 = new THREE.Mesh(
-    mesh_thigh_right_22Geometry,
+  const mesh_thigh_right_19 = new THREE.Mesh(
+    mesh_thigh_right_19Geometry,
     materialMap["black_fur"] ?? new THREE.MeshStandardMaterial({ color: 0x888888 })
   );
-  mesh_thigh_right_22.name = "Right thigh";
-  if (endpoint_thigh_right_22) {
-    mesh_thigh_right_22.position.copy(endpoint_thigh_right_22.midpoint);
-    mesh_thigh_right_22.quaternion.copy(endpoint_thigh_right_22.quaternion);
+  mesh_thigh_right_19.name = "Right thigh";
+  if (endpoint_thigh_right_19) {
+    mesh_thigh_right_19.position.copy(endpoint_thigh_right_19.midpoint);
+    mesh_thigh_right_19.quaternion.copy(endpoint_thigh_right_19.quaternion);
   }
-  mesh_thigh_right_22.castShadow = options.castShadow ?? true;
-  mesh_thigh_right_22.receiveShadow = options.receiveShadow ?? true;
-  mesh_thigh_right_22.userData.sculptComponent = {"actionProfile": {"animationRole": "thigh_right", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [3.3, 4.7, 3.9], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "black_fur", "detachableFragments": [], "fractureGroup": "thigh_right", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(36, 35, 34, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(9, 9, 9, 1.0)"}, "confidence": 0.88, "deformations": [], "details": ["pixel-fur"], "dimensions": {"confidence": 0.9, "depth": 3.9, "height": 4.7, "units": "Blockbench units", "width": 3.3}, "evidenceRefs": ["full-object"], "fidelityTier": "structural-pass", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "thigh_right", "importance": 0.78, "joints": [], "level": "meso", "localFeatures": ["pixel-fur"], "material": "black_fur", "materialLayers": ["black_fur"], "name": "Right thigh", "parent": null, "primitive": "box", "role": "compact bent right thigh", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [-2.55, 5.6, -1.7], "rotation": [0.22689280275926285, 0.0, 0.0], "scale": [3.3, 4.7, 3.9]}};
-  node_thigh_right_22.add(mesh_thigh_right_22);
-  meshes["thigh_right"] = mesh_thigh_right_22;
+  mesh_thigh_right_19.castShadow = options.castShadow ?? true;
+  mesh_thigh_right_19.receiveShadow = options.receiveShadow ?? true;
+  mesh_thigh_right_19.userData.sculptComponent = {"actionProfile": {"animationRole": "thigh_right", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [3.3, 4.7, 3.9], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "black_fur", "detachableFragments": [], "fractureGroup": "thigh_right", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(36, 35, 34, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(9, 9, 9, 1.0)"}, "confidence": 0.88, "deformations": [], "details": ["pixel-fur"], "dimensions": {"confidence": 0.9, "depth": 3.9, "height": 4.7, "units": "Blockbench units", "width": 3.3}, "evidenceRefs": ["full-object"], "fidelityTier": "structural-pass", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "thigh_right", "importance": 0.78, "joints": [], "level": "meso", "localFeatures": ["pixel-fur"], "material": "black_fur", "materialLayers": ["black_fur"], "name": "Right thigh", "parent": null, "primitive": "box", "role": "compact bent right thigh", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [-2.55, 5.6, -1.7], "rotation": [0.22689280275926285, 0.0, 0.0], "scale": [3.3, 4.7, 3.9]}};
+  node_thigh_right_19.add(mesh_thigh_right_19);
+  meshes["thigh_right"] = mesh_thigh_right_19;
   colliders["thigh_right"] = {"isTrigger": false, "offset": [0, 0, 0], "scale": [3.3, 4.7, 3.9], "type": "box"};
   destructionGroups["thigh_right"] ??= [];
-  destructionGroups["thigh_right"].push(node_thigh_right_22);
+  destructionGroups["thigh_right"].push(node_thigh_right_19);
 
-  const attachment_shin_right_23 = null;
-  const endpoint_shin_right_23 = makeAttachmentEndpoint(attachment_shin_right_23);
-  const node_shin_right_23 = new THREE.Group();
-  node_shin_right_23.name = "Right shin__pivot";
-  if (endpoint_shin_right_23) {
-    node_shin_right_23.position.copy(endpoint_shin_right_23.start);
-    node_shin_right_23.rotation.set(0, 0, 0);
-    node_shin_right_23.scale.set(1, 1, 1);
+  const attachment_shin_right_20 = null;
+  const endpoint_shin_right_20 = makeAttachmentEndpoint(attachment_shin_right_20);
+  const node_shin_right_20 = new THREE.Group();
+  node_shin_right_20.name = "Right shin__pivot";
+  if (endpoint_shin_right_20) {
+    node_shin_right_20.position.copy(endpoint_shin_right_20.start);
+    node_shin_right_20.rotation.set(0, 0, 0);
+    node_shin_right_20.scale.set(1, 1, 1);
   } else {
-    node_shin_right_23.position.set(-2.55, 3.0, -0.35);
-    node_shin_right_23.rotation.set(-0.2792526803190927, 0.0, 0.0);
-    node_shin_right_23.scale.set(2.9, 3.9, 3.1);
+    node_shin_right_20.position.set(-2.55, 3.0, -0.35);
+    node_shin_right_20.rotation.set(-0.2792526803190927, 0.0, 0.0);
+    node_shin_right_20.scale.set(2.9, 3.9, 3.1);
   }
-  node_shin_right_23.userData.sculptComponent = {"actionProfile": {"animationRole": "shin_right", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [2.9, 3.9, 3.1], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "black_fur", "detachableFragments": [], "fractureGroup": "shin_right", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(36, 35, 34, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(9, 9, 9, 1.0)"}, "confidence": 0.88, "deformations": [], "details": ["pixel-fur"], "dimensions": {"confidence": 0.9, "depth": 3.1, "height": 3.9, "units": "Blockbench units", "width": 2.9}, "evidenceRefs": ["full-object"], "fidelityTier": "structural-pass", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "shin_right", "importance": 0.78, "joints": [], "level": "meso", "localFeatures": ["pixel-fur"], "material": "black_fur", "materialLayers": ["black_fur"], "name": "Right shin", "parent": null, "primitive": "box", "role": "forward angled right shin", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [-2.55, 3.0, -0.35], "rotation": [-0.2792526803190927, 0.0, 0.0], "scale": [2.9, 3.9, 3.1]}};
-  node_shin_right_23.userData.actionProfile = {"animationRole": "shin_right", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [2.9, 3.9, 3.1], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "black_fur", "detachableFragments": [], "fractureGroup": "shin_right", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}};
-  (nodes["root"] ?? root).add(node_shin_right_23);
-  nodes["shin_right"] = node_shin_right_23;
-  const mesh_shin_right_23Geometry = endpoint_shin_right_23
-    ? new THREE.CylinderGeometry(endpoint_shin_right_23.endRadius, endpoint_shin_right_23.baseRadius, endpoint_shin_right_23.length, 32, 12)
+  node_shin_right_20.userData.sculptComponent = {"actionProfile": {"animationRole": "shin_right", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [2.9, 3.9, 3.1], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "black_fur", "detachableFragments": [], "fractureGroup": "shin_right", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(36, 35, 34, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(9, 9, 9, 1.0)"}, "confidence": 0.88, "deformations": [], "details": ["pixel-fur"], "dimensions": {"confidence": 0.9, "depth": 3.1, "height": 3.9, "units": "Blockbench units", "width": 2.9}, "evidenceRefs": ["full-object"], "fidelityTier": "structural-pass", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "shin_right", "importance": 0.78, "joints": [], "level": "meso", "localFeatures": ["pixel-fur"], "material": "black_fur", "materialLayers": ["black_fur"], "name": "Right shin", "parent": null, "primitive": "box", "role": "forward angled right shin", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [-2.55, 3.0, -0.35], "rotation": [-0.2792526803190927, 0.0, 0.0], "scale": [2.9, 3.9, 3.1]}};
+  node_shin_right_20.userData.actionProfile = {"animationRole": "shin_right", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [2.9, 3.9, 3.1], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "black_fur", "detachableFragments": [], "fractureGroup": "shin_right", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}};
+  (nodes["root"] ?? root).add(node_shin_right_20);
+  nodes["shin_right"] = node_shin_right_20;
+  const mesh_shin_right_20Geometry = endpoint_shin_right_20
+    ? new THREE.CylinderGeometry(endpoint_shin_right_20.endRadius, endpoint_shin_right_20.baseRadius, endpoint_shin_right_20.length, 32, 12)
     : new THREE.BoxGeometry(1, 1, 1, 12, 12, 12);
-  const mesh_shin_right_23 = new THREE.Mesh(
-    mesh_shin_right_23Geometry,
+  const mesh_shin_right_20 = new THREE.Mesh(
+    mesh_shin_right_20Geometry,
     materialMap["black_fur"] ?? new THREE.MeshStandardMaterial({ color: 0x888888 })
   );
-  mesh_shin_right_23.name = "Right shin";
-  if (endpoint_shin_right_23) {
-    mesh_shin_right_23.position.copy(endpoint_shin_right_23.midpoint);
-    mesh_shin_right_23.quaternion.copy(endpoint_shin_right_23.quaternion);
+  mesh_shin_right_20.name = "Right shin";
+  if (endpoint_shin_right_20) {
+    mesh_shin_right_20.position.copy(endpoint_shin_right_20.midpoint);
+    mesh_shin_right_20.quaternion.copy(endpoint_shin_right_20.quaternion);
   }
-  mesh_shin_right_23.castShadow = options.castShadow ?? true;
-  mesh_shin_right_23.receiveShadow = options.receiveShadow ?? true;
-  mesh_shin_right_23.userData.sculptComponent = {"actionProfile": {"animationRole": "shin_right", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [2.9, 3.9, 3.1], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "black_fur", "detachableFragments": [], "fractureGroup": "shin_right", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(36, 35, 34, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(9, 9, 9, 1.0)"}, "confidence": 0.88, "deformations": [], "details": ["pixel-fur"], "dimensions": {"confidence": 0.9, "depth": 3.1, "height": 3.9, "units": "Blockbench units", "width": 2.9}, "evidenceRefs": ["full-object"], "fidelityTier": "structural-pass", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "shin_right", "importance": 0.78, "joints": [], "level": "meso", "localFeatures": ["pixel-fur"], "material": "black_fur", "materialLayers": ["black_fur"], "name": "Right shin", "parent": null, "primitive": "box", "role": "forward angled right shin", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [-2.55, 3.0, -0.35], "rotation": [-0.2792526803190927, 0.0, 0.0], "scale": [2.9, 3.9, 3.1]}};
-  node_shin_right_23.add(mesh_shin_right_23);
-  meshes["shin_right"] = mesh_shin_right_23;
+  mesh_shin_right_20.castShadow = options.castShadow ?? true;
+  mesh_shin_right_20.receiveShadow = options.receiveShadow ?? true;
+  mesh_shin_right_20.userData.sculptComponent = {"actionProfile": {"animationRole": "shin_right", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [2.9, 3.9, 3.1], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "black_fur", "detachableFragments": [], "fractureGroup": "shin_right", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(36, 35, 34, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(9, 9, 9, 1.0)"}, "confidence": 0.88, "deformations": [], "details": ["pixel-fur"], "dimensions": {"confidence": 0.9, "depth": 3.1, "height": 3.9, "units": "Blockbench units", "width": 2.9}, "evidenceRefs": ["full-object"], "fidelityTier": "structural-pass", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "shin_right", "importance": 0.78, "joints": [], "level": "meso", "localFeatures": ["pixel-fur"], "material": "black_fur", "materialLayers": ["black_fur"], "name": "Right shin", "parent": null, "primitive": "box", "role": "forward angled right shin", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [-2.55, 3.0, -0.35], "rotation": [-0.2792526803190927, 0.0, 0.0], "scale": [2.9, 3.9, 3.1]}};
+  node_shin_right_20.add(mesh_shin_right_20);
+  meshes["shin_right"] = mesh_shin_right_20;
   colliders["shin_right"] = {"isTrigger": false, "offset": [0, 0, 0], "scale": [2.9, 3.9, 3.1], "type": "box"};
   destructionGroups["shin_right"] ??= [];
-  destructionGroups["shin_right"].push(node_shin_right_23);
+  destructionGroups["shin_right"].push(node_shin_right_20);
 
-  const attachment_foot_right_24 = null;
-  const endpoint_foot_right_24 = makeAttachmentEndpoint(attachment_foot_right_24);
-  const node_foot_right_24 = new THREE.Group();
-  node_foot_right_24.name = "Right foot__pivot";
-  if (endpoint_foot_right_24) {
-    node_foot_right_24.position.copy(endpoint_foot_right_24.start);
-    node_foot_right_24.rotation.set(0, 0, 0);
-    node_foot_right_24.scale.set(1, 1, 1);
+  const attachment_foot_right_21 = null;
+  const endpoint_foot_right_21 = makeAttachmentEndpoint(attachment_foot_right_21);
+  const node_foot_right_21 = new THREE.Group();
+  node_foot_right_21.name = "Right foot__pivot";
+  if (endpoint_foot_right_21) {
+    node_foot_right_21.position.copy(endpoint_foot_right_21.start);
+    node_foot_right_21.rotation.set(0, 0, 0);
+    node_foot_right_21.scale.set(1, 1, 1);
   } else {
-    node_foot_right_24.position.set(-2.55, 0.85, 1.3);
-    node_foot_right_24.rotation.set(0.0, 0.0, 0.0);
-    node_foot_right_24.scale.set(3.9, 1.7, 4.9);
+    node_foot_right_21.position.set(-2.55, 0.85, 1.3);
+    node_foot_right_21.rotation.set(0.0, 0.0, 0.0);
+    node_foot_right_21.scale.set(3.9, 1.7, 4.9);
   }
-  node_foot_right_24.userData.sculptComponent = {"actionProfile": {"animationRole": "foot_right", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [3.9, 1.7, 4.9], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "palm_tan", "detachableFragments": [], "fractureGroup": "foot_right", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(158, 110, 76, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(104, 68, 47, 1.0)"}, "confidence": 0.88, "deformations": [], "details": [], "dimensions": {"confidence": 0.9, "depth": 4.9, "height": 1.7, "units": "Blockbench units", "width": 3.9}, "evidenceRefs": ["full-object"], "fidelityTier": "structural-pass", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "foot_right", "importance": 0.78, "joints": [], "level": "meso", "localFeatures": [], "material": "palm_tan", "materialLayers": ["palm_tan"], "name": "Right foot", "parent": null, "primitive": "box", "role": "broad right foot", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [-2.55, 0.85, 1.3], "rotation": [0.0, 0.0, 0.0], "scale": [3.9, 1.7, 4.9]}};
-  node_foot_right_24.userData.actionProfile = {"animationRole": "foot_right", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [3.9, 1.7, 4.9], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "palm_tan", "detachableFragments": [], "fractureGroup": "foot_right", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}};
-  (nodes["root"] ?? root).add(node_foot_right_24);
-  nodes["foot_right"] = node_foot_right_24;
-  const mesh_foot_right_24Geometry = endpoint_foot_right_24
-    ? new THREE.CylinderGeometry(endpoint_foot_right_24.endRadius, endpoint_foot_right_24.baseRadius, endpoint_foot_right_24.length, 32, 12)
+  node_foot_right_21.userData.sculptComponent = {"actionProfile": {"animationRole": "foot_right", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [3.9, 1.7, 4.9], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "palm_tan", "detachableFragments": [], "fractureGroup": "foot_right", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(158, 110, 76, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(104, 68, 47, 1.0)"}, "confidence": 0.88, "deformations": [], "details": [], "dimensions": {"confidence": 0.9, "depth": 4.9, "height": 1.7, "units": "Blockbench units", "width": 3.9}, "evidenceRefs": ["full-object"], "fidelityTier": "structural-pass", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "foot_right", "importance": 0.78, "joints": [], "level": "meso", "localFeatures": [], "material": "palm_tan", "materialLayers": ["palm_tan"], "name": "Right foot", "parent": null, "primitive": "box", "role": "broad right foot", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [-2.55, 0.85, 1.3], "rotation": [0.0, 0.0, 0.0], "scale": [3.9, 1.7, 4.9]}};
+  node_foot_right_21.userData.actionProfile = {"animationRole": "foot_right", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [3.9, 1.7, 4.9], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "palm_tan", "detachableFragments": [], "fractureGroup": "foot_right", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}};
+  (nodes["root"] ?? root).add(node_foot_right_21);
+  nodes["foot_right"] = node_foot_right_21;
+  const mesh_foot_right_21Geometry = endpoint_foot_right_21
+    ? new THREE.CylinderGeometry(endpoint_foot_right_21.endRadius, endpoint_foot_right_21.baseRadius, endpoint_foot_right_21.length, 32, 12)
     : new THREE.BoxGeometry(1, 1, 1, 12, 12, 12);
-  const mesh_foot_right_24 = new THREE.Mesh(
-    mesh_foot_right_24Geometry,
+  const mesh_foot_right_21 = new THREE.Mesh(
+    mesh_foot_right_21Geometry,
     materialMap["palm_tan"] ?? new THREE.MeshStandardMaterial({ color: 0x888888 })
   );
-  mesh_foot_right_24.name = "Right foot";
-  if (endpoint_foot_right_24) {
-    mesh_foot_right_24.position.copy(endpoint_foot_right_24.midpoint);
-    mesh_foot_right_24.quaternion.copy(endpoint_foot_right_24.quaternion);
+  mesh_foot_right_21.name = "Right foot";
+  if (endpoint_foot_right_21) {
+    mesh_foot_right_21.position.copy(endpoint_foot_right_21.midpoint);
+    mesh_foot_right_21.quaternion.copy(endpoint_foot_right_21.quaternion);
   }
-  mesh_foot_right_24.castShadow = options.castShadow ?? true;
-  mesh_foot_right_24.receiveShadow = options.receiveShadow ?? true;
-  mesh_foot_right_24.userData.sculptComponent = {"actionProfile": {"animationRole": "foot_right", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [3.9, 1.7, 4.9], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "palm_tan", "detachableFragments": [], "fractureGroup": "foot_right", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(158, 110, 76, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(104, 68, 47, 1.0)"}, "confidence": 0.88, "deformations": [], "details": [], "dimensions": {"confidence": 0.9, "depth": 4.9, "height": 1.7, "units": "Blockbench units", "width": 3.9}, "evidenceRefs": ["full-object"], "fidelityTier": "structural-pass", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "foot_right", "importance": 0.78, "joints": [], "level": "meso", "localFeatures": [], "material": "palm_tan", "materialLayers": ["palm_tan"], "name": "Right foot", "parent": null, "primitive": "box", "role": "broad right foot", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [-2.55, 0.85, 1.3], "rotation": [0.0, 0.0, 0.0], "scale": [3.9, 1.7, 4.9]}};
-  node_foot_right_24.add(mesh_foot_right_24);
-  meshes["foot_right"] = mesh_foot_right_24;
+  mesh_foot_right_21.castShadow = options.castShadow ?? true;
+  mesh_foot_right_21.receiveShadow = options.receiveShadow ?? true;
+  mesh_foot_right_21.userData.sculptComponent = {"actionProfile": {"animationRole": "foot_right", "collider": {"isTrigger": false, "offset": [0, 0, 0], "scale": [3.9, 1.7, 4.9], "type": "box"}, "constraints": [], "destruction": {"breakImpulse": 0.0, "breakable": false, "debrisMaterial": "palm_tan", "detachableFragments": [], "fractureGroup": "foot_right", "seamRefs": []}, "pivot": {"axis": [0, 1, 0], "confidence": 0.85, "localPosition": [0, 0, 0], "mode": "component-center"}, "sockets": [], "transformChannels": {"bend": false, "detach": false, "materialState": true, "rotate": true, "scale": true, "translate": true, "twist": false, "visibility": true}}, "attachment": null, "colorMaterialRecipe": {"dominantAlbedo": "rgba(158, 110, 76, 1.0)", "materialClass": "rubber", "materialClassConfidence": 0.82, "secondaryAlbedo": "rgba(104, 68, 47, 1.0)"}, "confidence": 0.88, "deformations": [], "details": [], "dimensions": {"confidence": 0.9, "depth": 4.9, "height": 1.7, "units": "Blockbench units", "width": 3.9}, "evidenceRefs": ["full-object"], "fidelityTier": "structural-pass", "geometryDescriptor": {"deformationStack": [], "edgeTreatment": {"bevelRadius": 0.0, "segments": 1, "type": "none"}, "normalStrategy": "flat cuboid normals", "topologyIntent": "native Minecraft cuboid with hard square edges", "uvStrategy": "generated procedural coordinates"}, "id": "foot_right", "importance": 0.78, "joints": [], "level": "meso", "localFeatures": [], "material": "palm_tan", "materialLayers": ["palm_tan"], "name": "Right foot", "parent": null, "primitive": "box", "role": "broad right foot", "seams": [], "surfaceDetail": {"bumpAmplitude": 0.02, "displacementPattern": "", "edgeWearPattern": "minimal", "macroRoughness": 0.12, "microRoughness": 0.04, "normalPattern": "square-pixel mottling", "notes": "Preserve the Minecraft block silhouette.", "occlusionPattern": "contact darkening"}, "topologyClass": "assembled-solid", "topologyRationale": "The reference is explicitly constructed from crisp rectangular Minecraft volumes.", "transform": {"position": [-2.55, 0.85, 1.3], "rotation": [0.0, 0.0, 0.0], "scale": [3.9, 1.7, 4.9]}};
+  node_foot_right_21.add(mesh_foot_right_21);
+  meshes["foot_right"] = mesh_foot_right_21;
   colliders["foot_right"] = {"isTrigger": false, "offset": [0, 0, 0], "scale": [3.9, 1.7, 4.9], "type": "box"};
   destructionGroups["foot_right"] ??= [];
-  destructionGroups["foot_right"].push(node_foot_right_24);
+  destructionGroups["foot_right"].push(node_foot_right_21);
 
   // repetition system: paired-anatomy (InstancedMesh, radial, count=16, level=meso)
   {

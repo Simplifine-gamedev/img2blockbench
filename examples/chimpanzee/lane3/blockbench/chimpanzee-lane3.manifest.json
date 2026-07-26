@@ -1,29 +1,29 @@
 {
   "artifacts": [
     {
-      "bytes": 278962,
+      "bytes": 24795,
       "path": "chimpanzee-lane3.model-spec.json",
-      "sha256": "48b078d8de09ce1202fe5aab1d99e191075ce6be7e47c843d854808b0f5d4f24"
+      "sha256": "0e01759e6fd2a612a95647403c1505047d8c12c8d3a04ccb2b9094100daf7490"
     },
     {
-      "bytes": 4934,
+      "bytes": 3672,
       "path": "chimpanzee-lane3.png",
-      "sha256": "056bc2bb3837c006a1d78b93eb10a3006bcae0859bff237f6d17139bc116d6ab"
+      "sha256": "2dfce9e81ce4fd398ed5a3e969e3eec8b89ffb5ebdb429355d7323c0421f277a"
     },
     {
-      "bytes": 55180,
+      "bytes": 47886,
       "path": "chimpanzee-lane3.bbmodel",
-      "sha256": "700c2ac0807247dab6e83f6d3aa69cdb8ae3a9fb689ea88b98083968086ec1fb"
+      "sha256": "1cc9579d415b4bf136257f72a839ee7e87ab87369399d17d284f636b81373f58"
     },
     {
-      "bytes": 52915,
+      "bytes": 46634,
       "path": "chimpanzee-lane3.geo.json",
-      "sha256": "ac54a15747d97a3aba5305cd3a86756f037985f6f02d0fed2d957650fa886112"
+      "sha256": "28a61f56c21344910f51b9dcf07fb8fb16ce31f385e7d8e7fd1fe44516078792"
     },
     {
       "bytes": 155,
       "path": "chimpanzee-lane3.audit.json",
-      "sha256": "e54401d4e4fed05a774773c28307430c22eab388a49f7dd96a102e6bde1b458d"
+      "sha256": "f599675c9d2368342f55dda324ce6b491c425f9529828d7c4f3c3f3ebce0a554"
     },
     {
       "bytes": 1382543,

@@ -4,9 +4,9 @@ Turn one Minecraft-style reference image into a native Blockbench model using
 agent vision, optional mesh guidance, and deterministic compilation.
 
 ```text
-Lane 1: image → native cuboid reasoning → .bbmodel
-Lane 2: image → Trellis mesh → cuboid reconstruction → .bbmodel
-Lane 3: image → img2threejs scene → Three.js albedo transfer → .bbmodel
+Lane 1: image → cuboid + texture reasoning → density-locked .bbmodel
+Lane 2: image → Trellis mesh → cuboid reconstruction → palette-repaired .bbmodel
+Lane 3: image → img2threejs scene → semantic texture pass → .bbmodel
 ```
 
 ### Lane 1: direct
@@ -57,42 +57,43 @@ Three.js scene.
       <td><img src="examples/platypus/reference.png" width="190" alt="Minecraft-style platypus reference"></td>
       <td><img src="examples/platypus/lane1/render.png" width="190" alt="Direct platypus Blockbench model"><br><a href="examples/platypus/lane1/platypus.bbmodel">16-cuboid .bbmodel</a></td>
       <td><img src="examples/platypus/lane2/render.png" width="190" alt="Trellis-assisted platypus Blockbench model"><br><a href="examples/platypus/lane2/platypus.bbmodel">22-cuboid .bbmodel</a> · <a href="examples/platypus/lane2/source.glb">GLB</a></td>
-      <td><img src="examples/platypus/lane3/render.png" width="190" alt="img2threejs platypus Blockbench model"><br><a href="examples/platypus/lane3/blockbench/platypus-lane3.bbmodel">34-cuboid .bbmodel</a> · <a href="examples/platypus/lane3/platypus.img2threejs.three.json">scene</a></td>
+      <td><img src="examples/platypus/lane3/render.png" width="190" alt="img2threejs platypus Blockbench model"><br><a href="examples/platypus/lane3/blockbench/platypus-lane3.bbmodel">28-cuboid .bbmodel</a> · <a href="examples/platypus/lane3/platypus.img2threejs.three.json">scene</a></td>
     </tr>
     <tr>
       <td><strong>Chimpanzee</strong></td>
       <td><img src="examples/chimpanzee/reference.png" width="190" alt="Minecraft-style chimpanzee reference"></td>
       <td><img src="examples/chimpanzee/lane1/render.png" width="190" alt="Direct chimpanzee Blockbench model"><br><a href="examples/chimpanzee/lane1/chimpanzee.bbmodel">22-cuboid .bbmodel</a></td>
       <td><img src="examples/chimpanzee/lane2/render.png" width="190" alt="Trellis-assisted chimpanzee Blockbench model"><br><a href="examples/chimpanzee/lane2/chimpanzee.bbmodel">24-cuboid .bbmodel</a> · <a href="examples/chimpanzee/lane2/source.glb">GLB</a></td>
-      <td><img src="examples/chimpanzee/lane3/render.png" width="190" alt="img2threejs chimpanzee Blockbench model"><br><a href="examples/chimpanzee/lane3/blockbench/chimpanzee-lane3.bbmodel">25-cuboid .bbmodel</a> · <a href="examples/chimpanzee/lane3/chimpanzee.img2threejs.three.json">scene</a></td>
+      <td><img src="examples/chimpanzee/lane3/render.png" width="190" alt="img2threejs chimpanzee Blockbench model"><br><a href="examples/chimpanzee/lane3/blockbench/chimpanzee-lane3.bbmodel">22-cuboid .bbmodel</a> · <a href="examples/chimpanzee/lane3/chimpanzee.img2threejs.three.json">scene</a></td>
     </tr>
     <tr>
       <td><strong>Elephant</strong></td>
       <td><img src="examples/elephant/reference.png" width="190" alt="Minecraft-style elephant reference"></td>
       <td><img src="examples/elephant/lane1/render.png" width="190" alt="Direct elephant Blockbench model"><br><a href="examples/elephant/lane1/elephant.bbmodel">21-cuboid .bbmodel</a></td>
       <td><img src="examples/elephant/lane2/render.png" width="190" alt="Trellis-assisted elephant Blockbench model"><br><a href="examples/elephant/lane2/elephant.bbmodel">24-cuboid .bbmodel</a> · <a href="examples/elephant/lane2/source.glb">GLB</a></td>
-      <td><img src="examples/elephant/lane3/render.png" width="190" alt="img2threejs elephant Blockbench model"><br><a href="examples/elephant/lane3/blockbench/elephant-lane3.bbmodel">25-cuboid .bbmodel</a> · <a href="examples/elephant/lane3/elephant.img2threejs.three.json">scene</a></td>
+      <td><img src="examples/elephant/lane3/render.png" width="190" alt="img2threejs elephant Blockbench model"><br><a href="examples/elephant/lane3/blockbench/elephant-lane3.bbmodel">21-cuboid .bbmodel</a> · <a href="examples/elephant/lane3/elephant.img2threejs.three.json">scene</a></td>
     </tr>
     <tr>
       <td><strong>Tiger</strong></td>
       <td><img src="examples/tiger/reference.png" width="190" alt="Minecraft-style tiger reference"></td>
       <td><img src="examples/tiger/lane1/render.png" width="190" alt="Direct tiger Blockbench model"><br><a href="examples/tiger/lane1/tiger.bbmodel">20-cuboid .bbmodel</a></td>
       <td><img src="examples/tiger/lane2/render.png" width="190" alt="Trellis-assisted tiger Blockbench model"><br><a href="examples/tiger/lane2/tiger.bbmodel">23-cuboid .bbmodel</a> · <a href="examples/tiger/lane2/source.glb">GLB</a></td>
-      <td><img src="examples/tiger/lane3/render.png" width="190" alt="img2threejs tiger Blockbench model"><br><a href="examples/tiger/lane3/blockbench/tiger-lane3.bbmodel">26-cuboid .bbmodel</a> · <a href="examples/tiger/lane3/tiger.img2threejs.three.json">scene</a></td>
+      <td><img src="examples/tiger/lane3/render.png" width="190" alt="img2threejs tiger Blockbench model"><br><a href="examples/tiger/lane3/blockbench/tiger-lane3.bbmodel">20-cuboid .bbmodel</a> · <a href="examples/tiger/lane3/tiger.img2threejs.three.json">scene</a></td>
     </tr>
     <tr>
       <td><strong>Coyote</strong></td>
       <td><img src="examples/coyote/reference.png" width="190" alt="Minecraft-style coyote reference"></td>
       <td><img src="examples/coyote/lane1/render.png" width="190" alt="Direct coyote Blockbench model"><br><a href="examples/coyote/lane1/coyote.bbmodel">20-cuboid .bbmodel</a></td>
       <td><img src="examples/coyote/lane2/render.png" width="190" alt="Trellis-assisted coyote Blockbench model"><br><a href="examples/coyote/lane2/coyote.bbmodel">23-cuboid .bbmodel</a> · <a href="examples/coyote/lane2/source.glb">GLB</a></td>
-      <td><img src="examples/coyote/lane3/render.png" width="190" alt="img2threejs coyote Blockbench model"><br><a href="examples/coyote/lane3/blockbench/coyote-lane3.bbmodel">24-cuboid .bbmodel</a> · <a href="examples/coyote/lane3/coyote.img2threejs.three.json">scene</a></td>
+      <td><img src="examples/coyote/lane3/render.png" width="190" alt="img2threejs coyote Blockbench model"><br><a href="examples/coyote/lane3/blockbench/coyote-lane3.bbmodel">20-cuboid .bbmodel</a> · <a href="examples/coyote/lane3/coyote.img2threejs.three.json">scene</a></td>
     </tr>
   </tbody>
 </table>
 
 Every output includes its embedded texture and a structural audit. Lane 2 also
-preserves the source GLB; Lane 3 preserves the procedural scene, direct
-base-color transfer audit, and provenance.
+preserves the source GLB and records its source-palette facial repair. Lane 3
+preserves the procedural scene, clustered albedo audit, semantic texture
+landmarks, and provenance.
 
 The reusable image prompts are recorded in
 [`examples/lane1-five-animals-prompts.md`](examples/lane1-five-animals-prompts.md).
@@ -114,7 +115,8 @@ Minecraft-style image
   → browser-executed THREE.Group
   → visible Object3D scene
   → box geometry adapter
-  → MeshPhysicalMaterial base-color map transfer
+  → Minecraft-clustered material map transfer
+  → texture-only semantic landmarks
   → nearest-neighbor Blockbench atlas
   → .bbmodel
 ```
@@ -122,14 +124,17 @@ Minecraft-style image
 The five-animal benchmark pins upstream commit
 `c9077d5ecce834f6802d6742b4a5b2c682d6279d` and preserves the
 spec, generated source, scene JSON, provenance, and converted model for every
-animal. Each source uses boxes, so dimensions and rotations transfer directly.
+animal. Eyes, nostrils, inner ears, and markings are declared texture-only
+before factory generation, rather than surviving as decorative boxes. Each
+remaining source component uses boxes, so dimensions and rotations transfer
+directly.
 The five factories are generated at `optimization-pass` after the ordered
 blockout, structural, form, material, surface, lighting, interaction, and
 optimization reviews. The adapter preserves each generated
-`MeshPhysicalMaterial.map`, transfers it to the corresponding cuboids, packs
-the face patches into one nearest-neighbor atlas, and quantizes only after
-transfer. This avoids the smearing and false colors caused by projecting a
-single perspective reference across overlapping cuboids.
+`MeshPhysicalMaterial.map`, clusters it to Minecraft-scale texels, transfers it
+to the corresponding cuboids, and paints semantic landmarks into one
+nearest-neighbor atlas. This avoids both perspective-projection smearing and
+geometry being misused for eyes or stripes.
 
 Three.js roughness, normal, and AO maps remain preview-only because
 Blockbench's Minecraft texture format has no equivalent PBR channels.
@@ -141,14 +146,31 @@ normalization. They do not measure texture similarity.
 
 | Animal | Boxes L1/L3 | Shape IoU | Topology F1 | Box count | Dimensions | Rotations | Weighted |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| Platypus | 16 / 34 | 67.0% | 96.0% | 47.1% | 85.6% | 99.9% | 76.8% |
-| Chimpanzee | 22 / 25 | 83.5% | 92.1% | 88.0% | 96.2% | 99.7% | 90.1% |
-| Elephant | 21 / 25 | 90.5% | 100.0% | 84.0% | 97.5% | 99.7% | 93.7% |
-| Tiger | 20 / 26 | 81.7% | 95.8% | 76.9% | 93.1% | 99.2% | 87.8% |
-| Coyote | 20 / 24 | 82.9% | 100.0% | 83.3% | 94.1% | 99.7% | 90.3% |
+| Platypus | 16 / 28 | 67.0% | 96.0% | 57.1% | 85.6% | 99.9% | 78.3% |
+| Chimpanzee | 22 / 22 | 83.5% | 92.1% | 100.0% | 96.2% | 99.7% | 91.9% |
+| Elephant | 21 / 21 | 90.5% | 100.0% | 100.0% | 97.5% | 99.7% | 96.2% |
+| Tiger | 20 / 20 | 80.5% | 95.8% | 100.0% | 93.5% | 99.2% | 90.9% |
+| Coyote | 20 / 20 | 82.9% | 100.0% | 100.0% | 94.1% | 99.7% | 92.8% |
 
 Run `cd demo && npm run benchmark:geometry` to reproduce the comparison.
 Rotation scores are high because both baselines are predominantly axis-aligned.
+
+### Quality gates
+
+These measurements cover all five animals. A UV-density outlier is a face
+whose texel density is outside the accepted range; a detail cuboid is geometry
+misused for a flat eye, nostril, marking, or stripe.
+
+| Metric | Lane 1 | Lane 2 | Lane 3 |
+|---|---:|---:|---:|
+| Average cuboids | 19.8 | 23.2 | 22.2 |
+| UV-density outlier faces | 0 | 0 | 0 |
+| Flat detail cuboids | 0 | 0 | 0 |
+| Texture landmarks | 25 | 16 | 42 |
+| Explicit front axis | Yes | Yes | Yes |
+
+Run `python3 tools/benchmark-quality.py` to reproduce
+[`examples/quality-benchmark.json`](examples/quality-benchmark.json).
 
 ## Why
 
@@ -229,13 +251,22 @@ img2blockbench from-threejs \
   --description "A Minecraft-style red panda" \
   --output ./red-panda-threejs.json
 
-# Preserve and audit the img2threejs base-color maps.
+# Minecraftize and audit the img2threejs base-color maps.
 pip install -e '.[reference-projection]'
 python tools/img2threejs/bake-reference-faces.py \
   ./red-panda-threejs.json \
   --reference ./reference.png \
-  --output-spec ./red-panda-textured.json \
+  --output-spec ./red-panda-imported.json \
   --audit ./red-panda-texture-transfer-audit.json
+
+# After defining a red-panda entry in semantic-recipes.json, remove
+# texture-only detail geometry and paint its landmarks.
+python tools/img2threejs/semanticize-model-spec.py \
+  ./red-panda-imported.json \
+  --animal red-panda \
+  --recipes ./tools/img2threejs/semantic-recipes.json \
+  --reference ./reference.png \
+  --output ./red-panda-textured.json
 
 # Re-audit an existing Blockbench file.
 img2blockbench audit ./dist/red-panda.bbmodel
@@ -267,7 +298,7 @@ and delivery bundle, but their upstream reasoning is separate.
 | Intermediate | Native cuboid JSON | Textured GLB | Generated TypeScript + Object3D JSON |
 | External 3D GPU | None | Required | None |
 | Best fit | Minecraft-native references | Ambiguous organic depth | Cheaper procedural 3D reconstruction |
-| Platypus cuboids | 16 | 22 | 34 |
+| Platypus cuboids | 16 | 22 | 28 |
 | Shared output | `.bbmodel`, texture, `geo.json`, audit, bundle | Same | Same |
 
 Lane 1 may optionally render its cuboid spec through Three.js for review. That

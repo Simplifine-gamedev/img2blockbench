@@ -1,12 +1,17 @@
 {
-  "bones": 20,
+  "path": "examples/chimpanzee/lane1/chimpanzee.bbmodel",
   "cuboids": 22,
-  "errors": [],
   "estimated_triangles": 264,
-  "ok": true,
+  "groups": 20,
+  "animations": 0,
   "texture_size": [
     256,
     256
   ],
-  "warnings": []
+  "uv_density_median": 2.0,
+  "uv_density_outliers": [],
+  "bilateral": {},
+  "errors": [],
+  "warnings": [],
+  "ok": true
 }

@@ -6,9 +6,9 @@
   },
   "converter_version": "1.0.0",
   "files": {
-    "elephant_lane2.bbmodel": "286b34f897aa283cae97c6c38d82a3e863e80b6461ff39d0c14b4ee54211ec26",
+    "elephant_lane2.bbmodel": "d8fb985ac1b8200a09f9368117476172c5290832cd04c74f7340deb0ddfec912",
     "elephant_lane2.geo.json": "d6a7214c7ffc6b0d5205631f409db65a413edf40a16e3431157ddd854ca42447",
-    "elephant_lane2.png": "e2e637ee186527e2023c1d6018950be61aa133840d4cf85351fb9ade9259b626",
+    "elephant_lane2.png": "b02b093e8bad7466e11479ccf1d5350246f456a579d217d3b98913142f6dc840",
     "model-audit.json": "313b554ec78943a359a0b015348a5a5f24e4c54108f967381ab40880ff5c62d0",
     "source-audit.json": "b3d0c7334a6a81bd4f21579405b15dc44b142a9f44ce38dd45aabb9ef73ee46b"
   },

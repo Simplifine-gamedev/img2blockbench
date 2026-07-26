@@ -73,6 +73,11 @@ test("ships every reference and all three BBModel outputs", async () => {
       const parsed = JSON.parse(model);
       assert.ok(parsed.elements.length >= 15);
       assert.ok(parsed.textures[0].source.startsWith("data:image/png;base64,"));
+      assert.equal(
+        parsed.img2blockbench.front_axis,
+        lane === "lane2" ? "negative_z" : "positive_z",
+      );
+      assert.equal(parsed.img2blockbench.texture_density, 2);
     }
 
     const image = await readFile(
@@ -84,11 +89,11 @@ test("ships every reference and all three BBModel outputs", async () => {
 
 test("ships every official img2threejs Lane 3 intermediate", async () => {
   const expectedGeometry = {
-    platypus: 34,
-    chimpanzee: 25,
-    elephant: 25,
-    tiger: 26,
-    coyote: 24,
+    platypus: 28,
+    chimpanzee: 22,
+    elephant: 21,
+    tiger: 20,
+    coyote: 20,
   };
 
   for (const [animal, geometryCount] of Object.entries(expectedGeometry)) {
@@ -113,6 +118,32 @@ test("ships every official img2threejs Lane 3 intermediate", async () => {
       scene.materials.every(
         (material) => material.type === "MeshPhysicalMaterial",
       ),
+    );
+  }
+});
+
+test("Lane 3 keeps flat identity details in textures", async () => {
+  const forbidden = /(?:^|_)(?:eye|glint|nostril|brow|stripe)(?:_|$)/;
+
+  for (const animal of [
+    "platypus",
+    "chimpanzee",
+    "elephant",
+    "tiger",
+    "coyote",
+  ]) {
+    const model = JSON.parse(
+      await readFile(
+        new URL(`public/models/${animal}-lane3.bbmodel`, templateRoot),
+        "utf8",
+      ),
+    );
+    assert.ok(model.elements.every((element) => !forbidden.test(element.name)));
+    assert.equal(model.img2blockbench.front_axis, "positive_z");
+    assert.ok(
+      model.img2blockbench.texture_density === 2
+        && model.resolution.width === 256
+        && model.resolution.height === 256,
     );
   }
 });
