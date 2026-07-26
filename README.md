@@ -3,6 +3,12 @@
 Turn one Minecraft-style reference image into a native Blockbench model using
 agent vision, optional mesh guidance, and deterministic compilation.
 
+img2blockbench is Orca's open-source image-to-Blockbench benchmark and
+compiler. Use it directly, or explore Orca's broader Minecraft creation tools
+through the [Orca CLI](https://orcaclient.com/minecraft-cli),
+[Orca MCP](https://orcaclient.com/minecraft-mcp), and
+[orcaclient.com](https://orcaclient.com).
+
 ```text
 Lane 1: image → cuboid + texture reasoning → density-locked .bbmodel
 Lane 2: image → Trellis mesh → cuboid reconstruction → palette-repaired .bbmodel
@@ -107,6 +113,16 @@ auditing, Bedrock geometry, and reproducible manifests.
 
 Lane 3 runs the official
 [`img2threejs/img2threejs`](https://github.com/img2threejs/img2threejs) generator:
+
+Its explicit implementation dependencies are:
+
+- [`img2threejs`](https://github.com/img2threejs/img2threejs), pinned to commit
+  `f1ade81d45252ede20323d74a5b269c819f75245`, for procedural TypeScript scene
+  generation;
+- [`Three.js`](https://threejs.org/) `0.185.1` for executing, serializing, and
+  rendering the generated `Object3D`; and
+- this repository's `img2blockbench` adapter for converting compatible
+  `BoxGeometry` and native material maps into a textured `.bbmodel`.
 
 ```text
 Minecraft-style image
